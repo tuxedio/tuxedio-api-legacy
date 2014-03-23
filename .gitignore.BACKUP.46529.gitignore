@@ -35,3 +35,9 @@ Gemfile.lock
 
 # Remove OSX's annoying files
 *.DS_Store
+
+<<<<<<< HEAD
+#this will conflict
+=======
+#cause conflict
+>>>>>>> 3fbb0f3c1b780141d3abee4065a863dea267da07
