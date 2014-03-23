@@ -1,5 +1,6 @@
 #Tuxedo Prototype
-
+###An app that connects allows people to connect with a local city or town, giving the user a true taste of what a city has to offer.
+####Team Members: Austin Wood, Brandon Mikulka, Ian Ker-Seymer
 ***
 
 ###Notes to devs:
