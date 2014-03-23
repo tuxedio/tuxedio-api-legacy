@@ -7,7 +7,7 @@
 *.rbc
 capybara-*.html
 .rspec
-#causing a conflict
+.rvmrc
 
 /public/system
 /public/assets
