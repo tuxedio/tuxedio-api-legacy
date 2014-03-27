@@ -14,7 +14,7 @@
   2. Pull remote changes ```git pull```
     1. Use naming convention f-<featurename> for creating feature branches, c-<name> for chores
   3. Do development in feature branch
-  4. Merge any changes in development branch into the feature branch or your code might break!!!!!
+  4. Pull any changes in development branch into the feature branch or your code might break!!!!!
   5. Make sure you pass the tests and the feature does not break any other features
   6. Push the feature branch to github (git push origin f-<featurename>)
   7. Make a Pull request to merge back into develop branch.
