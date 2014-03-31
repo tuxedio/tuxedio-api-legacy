@@ -14,7 +14,7 @@ class UsersController < ApplicationController
     end
     @user[:blogger] = false
     if @user.save
-      flash[:success] = "Welcome to the Sample App"
+      flash[:success] = "Welcome to Tuxedo"
       redirect_to @user
     else
       flash[:error] = "Something Went Wrong"
