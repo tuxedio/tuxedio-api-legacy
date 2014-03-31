@@ -43,6 +43,11 @@ Spork.prefork do
     #     --seed 1234
     config.order = "random"
     config.include Capybara::DSL
+
+    # Color Config
+    config.color_enabled = true
+    config.tty = true
+    config.formatter = :documentation
   end
 end
 
