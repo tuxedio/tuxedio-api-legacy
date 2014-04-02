@@ -30,6 +30,7 @@
 ```
   bundle install
   rake db:migrate
+  rake db:populate
   rake test:prepare
 ```
 
