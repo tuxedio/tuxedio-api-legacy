@@ -1,8 +1,9 @@
 - provide(:title, 'Sign up')
+
 %h1 Sign up
 .center
-  %div{class: ".col-md-6.col-md-offset-3"}
-    = form_for(@user) do |f|
+  .col-md-6.col-md-offset-3
+    = form_for @user, :class => "horizontal-form" do |f|
       = render 'shared/error_messages', object: f.object
       .form-group
         = f.label :name
@@ -19,7 +20,9 @@
       .form-group
         = f.label :password_confirmation, "Confirmation"
         = f.password_field :password_confirmation
-      .field
+      .form-group
         = f.label :vendor
-        = f.check_box :vendor
-      = f.submit "Create my account", class: "btn btn-medium btn-primary"
+        .checkbox-inline
+          = f.check_box :vendor
+      .form-group
+        = f.submit "Create my account", class: "btn btn-medium btn-primary"
