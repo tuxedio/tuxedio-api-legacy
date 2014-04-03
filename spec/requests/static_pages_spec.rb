@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "StaticPages" do
+describe "StaticPages".upcase.colorize(:light_blue) do
   describe "Home page" do
     it "should have the content 'Tuxedio'" do
       visit '/static_pages/home'
@@ -11,5 +11,4 @@ describe "StaticPages" do
       expect(page).to have_title("Tuxedio | Home")
     end
   end
-
 end
