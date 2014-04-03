@@ -55,6 +55,22 @@ describe User do
     it { should_not be_valid }
   end
 
+  describe "when vendor location is valid" do
+    before { @user.customer = false }
+    before { @user.vendor   = true }
+    before { @user.blogger  = false }
+    before { @user.location = User.allowed_locations.sample }
+    it { should be_valid }
+  end
+
+  describe "when vendor location is invalid" do
+    before { @user.customer = false }
+    before { @user.vendor   = true }
+    before { @user.blogger  = false }
+    before { @user.location   = "Invalid" }
+    it { should_not be_valid }
+  end
+
   describe "when name is too long" do
     before { @user.name = "z" * 51 }
     it { should_not be_valid }

@@ -1,28 +1,24 @@
 - provide(:title, 'Sign up')
 
 %h1 Sign up
-.center
-  .col-md-6.col-md-offset-3
-    = form_for @user, :class => "horizontal-form" do |f|
+.row
+  .col-md-6.col-md-offset-6
+    = bootstrap_form_for @user, layout: :horizontal do |f|
       = render 'shared/error_messages', object: f.object
-      .form-group
-        = f.label :name
+
+      .row-padding
         = f.text_field :name
-      .form-group
-        = f.label :email
-        = f.text_field :email
-      .form-group
-        = f.label :location
+      .row-padding
+        = f.email_field :email
+      .row-padding
         = f.text_field :location
-      .form-group
-        = f.label :password
+      .row-padding
         = f.password_field :password
-      .form-group
-        = f.label :password_confirmation, "Confirmation"
-        = f.password_field :password_confirmation
-      .form-group
-        = f.label :vendor
-        .checkbox-inline
-          = f.check_box :vendor
-      .form-group
-        = f.submit "Create my account", class: "btn btn-medium btn-primary"
+      .row-padding
+        = f.password_field :password_confirmation, :label => "Confirmation"
+      .row-padding
+        = f.form_group :vendor do
+          = f.check_box :vendor, label: "I wish to be a vendor on this site"
+      .row-padding
+        = f.form_group do
+          = f.submit "Create my account"

@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
   validates :blogger,      :inclusion => { :in => [true, false] }
 
   validates_with ExclusiveValidator
+  validates_with VendorValidator
 
   def self.allowed_locations
     ['Boulder']

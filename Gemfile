@@ -3,6 +3,7 @@ ruby '2.1.1'
 
 gem 'rails', '4.0.3'
 gem 'bootstrap-sass', '2.3.2.0'
+gem 'bootstrap_form'
 gem 'bcrypt-ruby', '3.1.2'
 gem 'haml'
 

@@ -23,7 +23,7 @@ describe "User pages" do
         fill_in "Location",     with: "Invalid"
         fill_in "Password",     with: "foobar"
         fill_in "Confirmation", with: "foobar"
-        check   "Vendor"
+        check   "I wish to be a vendor on this site"
       end
 
       it "should not create a user" do
@@ -38,7 +38,7 @@ describe "User pages" do
         fill_in "Location",     with: "Boulder"
         fill_in "Password",     with: "foobar"
         fill_in "Confirmation", with: "foobar"
-        uncheck "Vendor"
+        uncheck "I wish to be a vendor on this site"
       end
 
       it "should create a user" do
@@ -46,5 +46,4 @@ describe "User pages" do
       end
     end
   end
-
 end
