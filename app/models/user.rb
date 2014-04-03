@@ -15,4 +15,7 @@ class User < ActiveRecord::Base
 
   validates_with ExclusiveValidator
 
+  def self.allowed_locations
+    ['Boulder']
+  end
 end
