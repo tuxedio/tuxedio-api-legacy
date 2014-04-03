@@ -17,6 +17,15 @@ describe "User pages" do
     let(:submit) { "Create my account" }
 
     describe "with invalid information" do
+      before do
+        fill_in "Name",         with: "Example User"
+        fill_in "Email",        with: "user@example.com"
+        fill_in "Location",     with: "Invalid"
+        fill_in "Password",     with: "foobar"
+        fill_in "Confirmation", with: "foobar"
+        check   "Vendor"
+      end
+
       it "should not create a user" do
         expect { click_button submit }.not_to change(User, :count)
       end
@@ -26,9 +35,10 @@ describe "User pages" do
       before do
         fill_in "Name",         with: "Example User"
         fill_in "Email",        with: "user@example.com"
-        select  "Boulder",      from: "Location"
+        fill_in "Location",     with: "Boulder"
         fill_in "Password",     with: "foobar"
         fill_in "Confirmation", with: "foobar"
+        uncheck "Vendor"
       end
 
       it "should create a user" do

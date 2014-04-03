@@ -6,14 +6,14 @@ When(/^the user submits (in)*valid signup information$/) do |invalid|
   if (invalid)
     fill_in "Name",         with: "Example User"
     fill_in "Email",        with: "userexample.com"
-    select  "Boulder",      from: "Location"
+    fill_in "Location",     with: "Boulder"
     fill_in "Password",     with: "foobar"
     fill_in "Confirmation", with: "foobar"
     click_button "Create my account"
   else
     fill_in "Name",         with: "Example User"
     fill_in "Email",        with: "user@example.com"
-    select  "Boulder",      from: "Location"
+    fill_in "Location",     with: "Boulder"
     fill_in "Password",     with: "foobar"
     fill_in "Confirmation", with: "foobar"
     click_button "Create my account"
