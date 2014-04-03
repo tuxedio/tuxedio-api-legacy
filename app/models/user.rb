@@ -17,6 +17,6 @@ class User < ActiveRecord::Base
   validates_with VendorValidator
 
   def self.allowed_locations
-    ['Boulder']
+    ['Boulder', 'Longmont', 'Broomfield']
   end
 end
