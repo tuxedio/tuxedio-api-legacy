@@ -20,6 +20,15 @@ class ExclusiveValidator < ActiveModel::Validator
     if (types.all? { |elem| elem == true } or types.all? { |elem| elem == false })
       record.errors[:base] << "Customer has all 3 types"
     end
+  end
+end
+
+class VendorValidator < ActiveModel::Validator
+  def validate(record)
+
+    if (record.vendor && !record.location.in?(User.allowed_locations) )
+      record.errors[:base] << "Vendors are not permitted in this area yet."
+    end
 
   end
 end
