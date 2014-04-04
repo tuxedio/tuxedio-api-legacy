@@ -5,17 +5,19 @@ end
 When(/^the user submits (in)*valid signup information$/) do |invalid|
   if (invalid)
     fill_in "Name",         with: "Example User"
-    fill_in "Location",     with: "Springfield"
     fill_in "Email",        with: "userexample.com"
+    fill_in "Location",     with: "Boulder"
     fill_in "Password",     with: "foobar"
     fill_in "Confirmation", with: "foobar"
+    uncheck "I wish to be a vendor on this site"
     click_button "Create my account"
   else
     fill_in "Name",         with: "Example User"
-    fill_in "Location",     with: "Springfield"
     fill_in "Email",        with: "user@example.com"
+    fill_in "Location",     with: "Boulder"
     fill_in "Password",     with: "foobar"
     fill_in "Confirmation", with: "foobar"
+    uncheck "I wish to be a vendor on this site"
     click_button "Create my account"
   end
 end
