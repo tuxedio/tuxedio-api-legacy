@@ -1,4 +1,5 @@
 set :application, 'tuxedo'
+set :scm, :git
 set :repo_url, 'git@github.com:tuxedio/tuxedo-proto.git'
 
 set :deploy_to, '/home/deploy/tuxedo'
@@ -17,4 +18,5 @@ namespace :deploy do
   end
 
   after :finishing, 'deploy:cleanup'
+  after "deploy", "deploy:migrate"
 end
