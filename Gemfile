@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 ruby '2.1.1'
 
 gem 'rails', '4.0.3'
-gem 'bootstrap-sass'
+gem 'bootstrap-sass', '2.3.2.0'
 gem 'bootstrap_form'
 gem 'bcrypt-ruby', '3.1.2'
 gem 'haml'
@@ -15,7 +15,7 @@ group :development, :test do
   gem 'sqlite3', '1.3.8'
   gem 'rspec-rails', '2.13.1'
   gem 'guard-rspec', '2.5.0'
-  gem 'spork-rails'
+  gem 'spork-rails', '4.0.0'
   gem 'guard-spork', '1.5.0'
   gem 'childprocess', '0.3.6'
 end
@@ -30,7 +30,7 @@ group :test do
   gem 'colorize'
 end
 
-gem 'sass-rails', '4.0.1'
+gem 'sass-rails', "~> 4.0.2"
 gem 'uglifier', '2.1.1'
 gem 'coffee-rails', '4.0.1'
 gem 'jquery-rails', '3.0.4'
