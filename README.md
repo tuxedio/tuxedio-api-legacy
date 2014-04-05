@@ -10,7 +10,7 @@
   1. No one works on the master branch! Please create feature branches, and make pull requests to the master
   2. Commit frequently to make conflicts easier to deal with
   3. Start working by creating a feature branch, and make pull requests when features are completed.
- 
+
 
 ###Git Workflow - Using a modified Gitflow approach
   1. Create feature branch off of development branch ```git checkout development```
@@ -39,12 +39,21 @@
 
 
 ###Coding Style:
-  1. Try to stay consistent in coding styles. 
-  2. Use 2 spaces for tabbing, 
-  3. Align characters when possible. (tip: use a monospaced font like Inconsolata) 
+  1. Try to stay consistent in coding styles.
+  2. Use 2 spaces for tabbing,
+  3. Align characters when possible. (tip: use a monospaced font like Inconsolata)
   4. Naming conventions:
     1. Methods:   snake_case
     2. Classes:   CamelCase
     3. Constants: SCREAMING_SNAKE_CASE
   5. Comment about WHAT your code does, not HOW. If someone else can't understand the logic, you might want to refactor your code...
   6. For general CS knowledge, you should read [this](https://www.kernel.org/doc/Documentation/CodingStyle) (even though it does not fully apply to out application, there are abundant gems).
+
+###Deploy to Server
+  1. Make sure your current branch is being tracked by origin
+    ```git push origin my-branch```
+  2. Run: 
+    * ```cap development deploy```
+    *  ```cap master deploy```
+    *  ```cap current_branch deploy```
+  3. Visit the [webpage](http://107.170.226.89)
