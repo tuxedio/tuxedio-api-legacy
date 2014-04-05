@@ -18,5 +18,4 @@ namespace :deploy do
 
   after :finishing, 'deploy:cleanup'
   after "deploy", "deploy:migrate"
-  after "deploy", "rspec spec/"
 end
