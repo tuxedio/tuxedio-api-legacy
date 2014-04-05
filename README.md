@@ -52,5 +52,8 @@
 ###Deploy to Server
   1. Make sure your current branch is being tracked by origin
     ```git push origin my-branch```
-  2. Run: ```cap production deploy```
+  2. Run: 
+    * ```cap development deploy```
+    *  ```cap master deploy```
+    *  ```cap current_branch deploy```
   3. Visit the [webpage](http://107.170.226.89)
