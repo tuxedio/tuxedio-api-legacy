@@ -3,7 +3,6 @@ set :scm, :git
 set :repo_url, 'git@github.com:tuxedio/tuxedo-proto.git'
 
 set :deploy_to, '/home/deploy/tuxedo'
-set :deploy_via, :remote_cache
 
 set :linked_files, %w{config/database.yml}
 set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
@@ -19,4 +18,5 @@ namespace :deploy do
 
   after :finishing, 'deploy:cleanup'
   after "deploy", "deploy:migrate"
+  after "deploy", "rspec spec/"
 end
