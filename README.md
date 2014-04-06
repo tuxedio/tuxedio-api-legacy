@@ -56,6 +56,7 @@
   2. To deploy development branch:
     * ```cap production deploy```
   3. --**OR**-- To deploy custom branches:
-    *  ```cap production deploy branch=master```
     *  ```cap production deploy branch=my_branch```
-  4. Visit the [webpage](http://107.170.226.89)
+  4. If neccesary, run migrations:
+    *  ```cap production db:migrate```
+  5. Visit the [Tuxedo webpage](http://107.170.226.89)
