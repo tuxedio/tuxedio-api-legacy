@@ -1,12 +1,8 @@
 set :application, 'tuxedo'
+set :scm, :git
 set :repo_url, 'git@github.com:tuxedio/tuxedo-proto.git'
 
 set :deploy_to, '/home/deploy/tuxedo'
-
-# Bonus! Colors are pretty!
-def red(str)
-  "\e[31m#{str}\e[0m"
-end
 
 # Set the deploy branch to the current branch
 set :branch, ENV['branch'] || 'development'
@@ -25,4 +21,5 @@ namespace :deploy do
   end
 
   after :finishing, 'deploy:cleanup'
+  after "deploy", "deploy:migrate"
 end
