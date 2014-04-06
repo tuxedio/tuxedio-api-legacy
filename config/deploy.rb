@@ -31,7 +31,7 @@ namespace :db do
   task :migrate do
     on roles(:app), in: :sequence do
       within "#{current_path}" do
-        execute :rake, 'db:migrate #{rails_env}'
+        execute :rake, 'db:migrate RAILS_ENV=production'
       end
     end
   end
@@ -39,7 +39,7 @@ namespace :db do
   task :populate do
     on roles(:app), in: :sequence do
       within "#{current_path}" do
-        execute :rake, 'db:populate #{rails_env}'
+        execute :rake, 'db:populate RAILS_ENV=production'
       end
     end
   end
@@ -47,7 +47,7 @@ namespace :db do
   task :reset do
     on roles(:app), in: :sequence do
       within "#{current_path}" do
-        execute :rake, 'db:reset #{rails_env}'
+        execute :rake, 'db:reset RAILS_ENV=production'
       end
     end
   end
@@ -55,7 +55,7 @@ namespace :db do
   task :drop do
     on roles(:app), in: :sequence do
       within "#{current_path}" do
-        execute :rake, 'db:reset #{rails_env}'
+        execute :rake, 'db:reset RAILS_ENV=production'
       end
     end
   end
