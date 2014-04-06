@@ -7,8 +7,8 @@
 ***
 
 ###Notes to devs:
-  1. No one works on the master branch! Please create feature branches, and make pull requests to the master
-  2. Commit frequently to make conflicts easier to deal with
+  1. No one works on the master branch! Please create feature branches, and make pull requests to the master.
+  2. Commit frequently to make conflicts easier to deal with.
   3. Start working by creating a feature branch, and make pull requests when features are completed.
 
 
@@ -49,11 +49,12 @@
   5. Comment about WHAT your code does, not HOW. If someone else can't understand the logic, you might want to refactor your code...
   6. For general CS knowledge, you should read [this](https://www.kernel.org/doc/Documentation/CodingStyle) (even though it does not fully apply to out application, there are abundant gems).
 
-###Deploy to Server
+  ###Deploy to Server
   1. Make sure your current branch is being tracked by origin
     ```git push origin my-branch```
-  2. Run: 
-    * ```cap development deploy```
-    *  ```cap master deploy```
-    *  ```cap current_branch deploy```
-  3. Visit the [webpage](http://107.170.226.89)
+  2. To deploy development branch:
+    * ```cap production deploy```
+  3. --**OR**-- To deploy custom branches:
+    *  ```cap production deploy branch=master```
+    *  ```cap production deploy branch=my_branch```
+  4. Visit the [webpage](http://107.170.226.89)
