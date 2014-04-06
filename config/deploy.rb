@@ -39,7 +39,7 @@ namespace :db do
   task :populate do
     on roles(:app), in: :sequence do
       within "#{current_path}" do
-        execute :rake, 'db:pupulate #{rails_env}'
+        execute :rake, 'db:populate #{rails_env}'
       end
     end
   end
