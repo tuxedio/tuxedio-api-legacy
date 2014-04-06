@@ -25,6 +25,8 @@ namespace :deploy do
   after :finishing, 'deploy:cleanup'
 end
 
+#------------------------------------
+# Database Methods
 
 namespace :db do
 
@@ -55,8 +57,26 @@ namespace :db do
   task :drop do
     on roles(:app), in: :sequence do
       within "#{current_path}" do
-        execute :rake, 'db:reset RAILS_ENV=production'
+        execute :rake, 'db:drop RAILS_ENV=production'
       end
     end
   end
+
+  task :create do
+    on roles(:app), in: :sequence do
+      within "#{current_path}" do
+        execute :rake, 'db:create RAILS_ENV=production'
+      end
+    end
+  end
+
+  desc 'kill pgsql users so database can be dropped'
+  task :kill_postgres_connections do
+    on roles(:app), in: :sequence do
+      execute :psql, '-c "SELECT procpid, pg_terminate_backend(procpid) as terminated FROM pg_stat_activity WHERE procpid <> pg_backend_pid();" -d production-tux'
+    end
+  end
 end
+
+
+
