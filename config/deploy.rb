@@ -10,6 +10,8 @@ end
 
 # Set the deploy branch to the current branch
 set :branch, ENV['branch'] || 'development'
+set :stage, :production
+set :rails_env, "production"
 
 set :linked_files, %w{config/database.yml}
 set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
