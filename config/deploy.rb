@@ -1,3 +1,5 @@
+require 'sshkit/dsl'
+
 set :application, 'tuxedo'
 set :scm, :git
 set :repo_url, 'git@github.com:tuxedio/tuxedo-proto.git'
@@ -22,4 +24,23 @@ namespace :deploy do
 
   after :finishing, 'deploy:cleanup'
   after "deploy", "deploy:migrate"
+end
+
+
+namespace :db do
+  task :migrate do
+    on roles(:app), in: :sequence do
+      within "#{current_path}" do
+        execute :rake, 'db:migrate RAILS_ENV=production'
+      end
+    end
+  end
+
+  task :reset do
+    on roles(:app), in: :sequence do
+      within "#{current_path}" do
+        execute :rake, 'db:reset RAILS_ENV=production'
+      end
+    end
+  end
 end
