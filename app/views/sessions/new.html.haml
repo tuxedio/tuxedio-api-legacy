@@ -1,0 +1,19 @@
+- provide(:title, 'Sign in')
+
+%h1 Sign In
+
+.row
+  .span6.offset3
+    = bootstrap_form_for :session, url: sessions_path, layout: :horizontal  do |f|
+      / = render 'shared/error_messages', object: f.object
+      .row-padding
+        = f.text_field :email
+      .row-padding
+        = f.password_field :password
+      .row-padding
+        = f.form_group do
+          = f.submit "Sign in", class: "btn btn-large btn-primary"
+    .center
+      = "New User? "
+      = link_to signup_path do
+        = "Sign up now!"

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe User do
+describe "User".upcase.colorize(:light_blue) do
   before { @user = User.new(name: "John Smith", email: "JohnSmith@example.com", location: "Boulder",
                             vendor: false, customer: true, blogger: false,
                             password: "mypassword", password_confirmation: "mypassword")  }
@@ -12,6 +12,8 @@ describe User do
   it { should respond_to(:password_digest) }
   it { should respond_to(:password) }
   it { should respond_to(:password_confirmation) }
+  it { should respond_to(:remember_token) }
+  it { should respond_to(:authenticate) }
   it { should respond_to(:location) }
   it { should respond_to(:vendor) }
   it { should respond_to(:customer) }
