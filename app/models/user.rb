@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
   before_save { self.email = email.downcase }
   before_create :create_remember_token
 
+  # This section is a repeat from customer.rb and can be DRYed with module
+  #-----------------------------------------------------------------
   validates :name,         presence: true, length: { maximum: 50 }
   validates :location,     presence: true, length: { maximum: 30 }
   validates :email,        presence: true, email: true, uniqueness: { case_sensitive: false }
@@ -13,6 +15,7 @@ class User < ActiveRecord::Base
   validates :vendor,       :inclusion => { :in => [true, false] }
   validates :customer,     :inclusion => { :in => [true, false] }
   validates :blogger,      :inclusion => { :in => [true, false] }
+  #-----------------------------------------------------------------
 
   validates_with ExclusiveValidator
   validates_with VendorValidator
