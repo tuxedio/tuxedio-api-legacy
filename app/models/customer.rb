@@ -1,10 +1,6 @@
-require 'custom_validations'
+class Customer < User
 
-class User < ActiveRecord::Base
-  before_save { self.email = email.downcase }
-  before_create :create_remember_token
-
-  # This section is a repeat from customer.rb and can be DRYed with module
+  # This section is a repeat from user.rb and can be DRYed with module
   #-----------------------------------------------------------------
   validates :name,         presence: true, length: { maximum: 50 }
   validates :location,     presence: true, length: { maximum: 30 }
@@ -17,25 +13,8 @@ class User < ActiveRecord::Base
   validates :blogger,      :inclusion => { :in => [true, false] }
   #-----------------------------------------------------------------
 
-  validates_with ExclusiveValidator
-  validates_with VendorValidator
-
-  def self.allowed_locations
-    ['Boulder', 'Longmont', 'Broomfield']
-  end
-
-  def User.new_remember_token
-    SecureRandom.urlsafe_base64
-  end
-
-  def User.hash(token)
-    Digest::SHA1.hexdigest(token.to_s)
-  end
-
-  private
-
-    def create_remember_token
-      self.remember_token = User.hash(User.new_remember_token)
-    end
-
+  validates :bio,      presence: true
+  validates :pick_1,   presence: true
+  validates :pick_2,   presence: true
+  validates :pick_3,   presence: true
 end

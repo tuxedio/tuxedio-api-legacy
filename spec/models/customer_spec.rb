@@ -1,9 +1,11 @@
 require 'spec_helper'
 
 describe "Customer".upcase.colorize(:light_blue) do
-  before { @customer = Customer.new(name: "John Smith", email: "JohnSmith@example.com", location: "Boulder",
-                            vendor: false, customer: true, blogger: false,
-                            password: "mypassword", password_confirmation: "mypassword")  }
+  before { @customer = Customer.new(
+                       name: "John Smith", email: "JohnSmith@example.com", location: "Boulder",
+                       vendor: false, customer: true, blogger: false,
+                       password: "mypassword", password_confirmation: "mypassword", bio: "Ipsum schplitsum", 
+                       pick_1: "Lark Burger", pick_2: "Sushi Tora", pick_3: "Chataqua Park" ) }
 
   subject { @customer }
 
@@ -18,6 +20,10 @@ describe "Customer".upcase.colorize(:light_blue) do
   it { should respond_to(:vendor) }
   it { should respond_to(:customer) }
   it { should respond_to(:blogger) }
+  it { should respond_to(:bio) }
+  it { should respond_to(:pick_1) }
+  it { should respond_to(:pick_2) }
+  it { should respond_to(:pick_3) }
 
   it { should be_valid }
 
@@ -62,16 +68,16 @@ describe "Customer".upcase.colorize(:light_blue) do
 ## Top 3
   describe "\ntop 3".upcase.colorize(:light_blue) do
     describe "when customer has valid top 3" do
-      before { @customer.choice_1 = "Larkburger"    }
-      before { @customer.choice_2 = "Sushi Tora"    }
-      before { @customer.choice_3 = "Chataqua Park" }
+      before { @customer.pick_1 = "Larkburger"    }
+      before { @customer.pick_2 = "Sushi Tora"    }
+      before { @customer.pick_3 = "DuzNotExist"   }
       it { should be_valid }
     end
 
     describe "when a customer has invalid top 3" do
-      before { @customer.choice_1 = "Larkburger"    }
-      before { @customer.choice_2 = "Sushi Tora"    }
-      before { @customer.choice_3 = "DuzNotExist"   }
+      before { @customer.pick_1 = "Larkburger"    }
+      before { @customer.pick_2 = "Sushi Tora"    }
+      before { @customer.pick_3 = "DuzNotExist"   }
       it { should_not be_valid }
     end
   end
