@@ -11,7 +11,7 @@ describe "User pages".upcase.colorize(:light_blue) do
   end
 
   describe "signup page" do
-    before { visit signup_path }
+    before { visit new_customer_registration_path }
 
     it { should have_content('Sign up') }
     it { should have_title(full_title('Sign up')) }
