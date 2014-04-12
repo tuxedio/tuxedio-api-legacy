@@ -16,7 +16,9 @@ ActiveRecord::Schema.define(version: 20140412152355) do
   create_table "users", force: true do |t|
     t.string   "name"
     t.string   "location"
+    t.string   "bio"
     t.string   "user_role"
+    t.text     "top_choices"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "email",                  default: "", null: false
