@@ -3,34 +3,26 @@ require 'spec_helper'
 describe "User pages".upcase.colorize(:light_blue) do
   subject { page }
 
-  describe "profile page" do
-    let(:user) { FactoryGirl.create(:user) }
-    before { visit user_path(user) }
-
-    it { should have_content(user.name) }
-  end
-
   describe "signup page" do
-    before { visit new_customer_registration_path }
+    before { visit registration_choice_path }
 
     it { should have_content('Sign up') }
     it { should have_title(full_title('Sign up')) }
   end
 
-  describe "signup" do
+  describe "register customer" do
 
-    before { visit signup_path }
+    before { visit new_customer_registration_path }
 
     let(:submit) { "Create my account" }
 
     describe "with invalid information" do
       before do
-        fill_in "Name",         with: "Example User"
-        fill_in "Email",        with: "user@example.com"
+        fill_in "Name",         with: ""
+        fill_in "Email",        with: "user@example"
         fill_in "Location",     with: "Invalid"
         fill_in "Password",     with: "foobar"
-        fill_in "Confirmation", with: "foobar"
-        check   "I wish to be a vendor on this site"
+        fill_in "Confirmation", with: "foobar2"
       end
 
       it "should not create a user" do
@@ -43,9 +35,8 @@ describe "User pages".upcase.colorize(:light_blue) do
         fill_in "Name",         with: "Example User"
         fill_in "Email",        with: "user@example.com"
         fill_in "Location",     with: "Boulder"
-        fill_in "Password",     with: "foobar"
-        fill_in "Confirmation", with: "foobar"
-        uncheck "I wish to be a vendor on this site"
+        fill_in "Password",     with: "foobar123"
+        fill_in "Confirmation", with: "foobar123"
       end
 
       it "should create a user" do
@@ -60,7 +51,6 @@ describe "User pages".upcase.colorize(:light_blue) do
         it { should have_title(user.name) }
         it { should have_selector('div.alert.alert-success', text: 'Welcome') }
       end
-
     end
   end
 end
