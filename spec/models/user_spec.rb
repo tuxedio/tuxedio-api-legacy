@@ -2,22 +2,15 @@ require 'spec_helper'
 
 describe "User".upcase.colorize(:light_blue) do
   before { @user = User.new(name: "John Smith", email: "JohnSmith@example.com", location: "Boulder",
-                            vendor: false, customer: true, blogger: false,
                             password: "mypassword", password_confirmation: "mypassword")  }
 
   subject { @user }
 
   it { should respond_to(:name) }
   it { should respond_to(:email) }
-  it { should respond_to(:password_digest) }
   it { should respond_to(:password) }
   it { should respond_to(:password_confirmation) }
-  it { should respond_to(:remember_token) }
-  it { should respond_to(:authenticate) }
   it { should respond_to(:location) }
-  it { should respond_to(:vendor) }
-  it { should respond_to(:customer) }
-  it { should respond_to(:blogger) }
 
   it { should be_valid }
 
@@ -40,68 +33,27 @@ describe "User".upcase.colorize(:light_blue) do
   end
 
 #------------------------------------
-  describe "\nUser types".upcase.colorize(:light_blue) do
-    describe "when user type is valid" do
-      before { @user.customer = true }
-      before { @user.vendor   = false }
-      before { @user.blogger  = false }
-      it { should be_valid }
-    end
+  describe "\nUser Roles".upcase.colorize(:light_blue) do
 
-    describe "when user type is invalid" do
-      before { @user.customer = true }
-      before { @user.vendor   = true }
-      before { @user.blogger  = true }
+    describe "when name is too long" do
+      before { @user.name = "z" * 51 }
       it { should_not be_valid }
     end
 
-  describe "when vendor location is valid" do
-    before { @user.customer = false }
-    before { @user.vendor   = true }
-    before { @user.blogger  = false }
-    before { @user.location = User.allowed_locations.sample }
-    it { should be_valid }
-  end
-
-  describe "when vendor location is invalid" do
-    before { @user.customer = false }
-    before { @user.vendor   = true }
-    before { @user.blogger  = false }
-    before { @user.location   = "Invalid" }
-    it { should_not be_valid }
-  end
-
-  describe "when name is too long" do
-    before { @user.name = "z" * 51 }
-    it { should_not be_valid }
-  end
-
-    describe "when user type is invalid" do
-      before { @user.customer = false }
-      before { @user.vendor   = true }
-      before { @user.blogger  = true }
-      it { should_not be_valid }
-    end
-  end
-
-#------------------------------------
     describe "\nVendor location".upcase.colorize(:light_blue) do
       describe "when vendor location is valid" do
-        before { @user.customer = false }
-        before { @user.vendor   = true }
-        before { @user.blogger  = false }
+        before { @user.user_role = "Vendor"}
         before { @user.location = User.allowed_locations.sample }
         it { should be_valid }
       end
 
       describe "when vendor location is invalid" do
-        before { @user.customer = false }
-        before { @user.vendor   = true }
-        before { @user.blogger  = false }
+        before { @user.user_role = "Vendor"}
         before { @user.location   = "Invalid" }
         it { should_not be_valid }
       end
     end
+  end
 
 #------------------------------------
   describe "\nLength of inputs".upcase.colorize(:light_blue) do
