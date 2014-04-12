@@ -1,47 +1,29 @@
 require 'spec_helper'
 
 describe "Customer".upcase.colorize(:light_blue) do
-  before { @customer = Customer.new(name: "John Smith", email: "JohnSmith@example.com", location: "Boulder",
-                            vendor: false, customer: true, blogger: false,
-                            password: "mypassword", password_confirmation: "mypassword")  }
+  before { @customer = 
+           Customer.new(name: "John Smith", email: "JohnSmith@example.com", location: "Boulder",
+                        password: "mypassword", password_confirmation: "mypassword")  }
 
   subject { @customer }
 
   it { should respond_to(:name) }
   it { should respond_to(:email) }
-  it { should respond_to(:password_digest) }
-  it { should respond_to(:password) }
-  it { should respond_to(:password_confirmation) }
-  it { should respond_to(:remember_token) }
-  it { should respond_to(:authenticate) }
   it { should respond_to(:location) }
-  it { should respond_to(:vendor) }
-  it { should respond_to(:customer) }
-  it { should respond_to(:blogger) }
+  it { should respond_to(:bio) }
 
   it { should be_valid }
 
 #------------------------------------
 # Type
-  describe "\ncustomer types".upcase.colorize(:light_blue) do
+  describe "\ncustomer user_role".upcase.colorize(:light_blue) do
     describe "when customer type is valid" do
-      before { @customer.customer = true }
-      before { @customer.vendor   = false }
-      before { @customer.blogger  = false }
+      before { @customer.user_role = "Customer" }
       it { should be_valid }
     end
 
     describe "when customer type is valid" do
-      before { @customer.customer = true }
-      before { @customer.vendor   = false }
-      before { @customer.blogger  = true }
-      it { should_not be_valid }
-    end
-
-    describe "when customer type is valid" do
-      before { @customer.customer = true }
-      before { @customer.vendor   = true }
-      before { @customer.blogger  = false }
+      before { @customer.user_role = "Invlaid" }
       it { should_not be_valid }
     end
   end
