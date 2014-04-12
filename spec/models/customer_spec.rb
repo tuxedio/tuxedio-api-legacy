@@ -22,8 +22,8 @@ describe "Customer".upcase.colorize(:light_blue) do
       it { should be_valid }
     end
 
-    describe "when customer type is valid" do
-      before { @customer.user_role = "Invlaid" }
+    describe "when customer type is invalid" do
+      before { @customer.user_role = "Invalid" }
       it { should_not be_valid }
     end
   end
