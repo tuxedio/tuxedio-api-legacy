@@ -5,6 +5,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string  :location
       t.string  :bio
       t.string  :user_role
+      t.text    :top_choices
 
       t.timestamps
     end
