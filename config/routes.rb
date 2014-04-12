@@ -1,11 +1,31 @@
 TuxedoProto::Application.routes.draw do
 
+  devise_for :users, skip: [:registrations]
+  devise_for :admins, skip: [:sessions, :registrations]
+  devise_for :customers, skip: :sessions
+  devise_for :vendors, skip: :sessions
+
+  namespace :admin do
+    root to: "static_pages#home"
+    resources :sellers
+    resources :profile, only: [:edit, :update]
+  end
+  namespace :customer do
+    root to: "static_pages#home"
+    resources :profile, only: [:edit, :update]
+  end
+  namespace :vendor do
+    root to: "static_pages#home"
+    resources :profile, only: [:edit, :update]
+  end
+
   #RESOURCES
-  resources :users
+  # resources :users
   # resources :sessions, only: [:new, :create, :destroy]
 
   #ROUTES
-  root  'static_pages#home'
+  root to: 'static_pages#home'
+  match  '/registration_choice', to: 'static_pages#registration_choice', via: 'get'
 
   # match '/signup',  to: 'users#new',        via: 'get'
   # match '/signin',  to: 'sessions#new',     via: 'get'
