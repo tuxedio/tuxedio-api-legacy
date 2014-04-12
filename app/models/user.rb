@@ -1,5 +1,3 @@
-require 'custom_validations'
-
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
@@ -18,7 +16,7 @@ class User < ActiveRecord::Base
 
   validates :name,         presence: true, length: { maximum: 50 }
   validates :location,     presence: true, length: { maximum: 30 }
-  validates :email, :presence => true, :email => true
+  validates :email,        presence: true, :email => true
 
   #validates_with ExclusiveValidator
   validates_with VendorValidator
