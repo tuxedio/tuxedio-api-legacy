@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  attr_accessible :name, :email, :location, :password, :password_confirmation
+  #attr_accessible :name, :email, :location, :password, :password_confirmation
 
   self.inheritance_column = :user_role
   scope :customer, -> { where(user_role: 'Customer')}
