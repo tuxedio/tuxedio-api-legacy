@@ -44,16 +44,16 @@ describe "Customer".upcase.colorize(:light_blue) do
 ## Top 3
   describe "\ntop 3".upcase.colorize(:light_blue) do
     describe "when customer has valid top 3" do
-      before { @customer.choice_1 = "Larkburger"    }
-      before { @customer.choice_2 = "Sushi Tora"    }
-      before { @customer.choice_3 = "Chataqua Park" }
+      before { @customer.top_choices << "Larkburger"    }
+      before { @customer.top_choices << "Sushi Tora"    }
+      before { @customer.top_choices << "Chataqua Park"    }
       it { should be_valid }
     end
 
     describe "when a customer has invalid top 3" do
-      before { @customer.choice_1 = "Larkburger"    }
-      before { @customer.choice_2 = "Sushi Tora"    }
-      before { @customer.choice_3 = "DuzNotExist"   }
+      before { @customer.top_choices << "Larkburger"    }
+      before { @customer.top_choices << "Sushi Tora"    }
+      before { @customer.top_choices << "DuzNotExist"    }
       it { should_not be_valid }
     end
   end
