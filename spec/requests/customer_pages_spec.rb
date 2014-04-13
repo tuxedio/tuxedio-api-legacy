@@ -21,7 +21,7 @@ describe "Customer Sign-in pages".upcase.colorize(:light_blue) do
       before do
         fill_in "Name",         with: ""
         fill_in "Email",        with: "customer@example"
-        select  "",             from: "Location"
+        fill_in  "Location",    with: "Invalid"
         fill_in "Password",     with: "short"
         fill_in "Confirmation", with: "short2"
       end
@@ -35,7 +35,7 @@ describe "Customer Sign-in pages".upcase.colorize(:light_blue) do
       before do
         fill_in "Name",         with: "Example Customer"
         fill_in "Email",        with: "customer@example.com"
-        select  "Boulder",      from: "Location"
+        fill_in "Location",     with: "Boulder"
         fill_in "Password",     with: "foobar123"
         fill_in "Confirmation", with: "foobar123"
       end
