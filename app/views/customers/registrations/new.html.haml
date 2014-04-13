@@ -11,7 +11,7 @@
         .row-padding
           = f.email_field :email, autofocus: true
         .row-padding
-          = f.select :location, options_for_select([[''], ['Boulder'], ['Broomfield'], ['Longmont']], params[:location])
+          = f.text_field :location
         .row-padding
           = f.password_field :password, autocomplete: "off"
         .row-padding
