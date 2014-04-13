@@ -22,8 +22,8 @@ describe "Customer Sign-in pages".upcase.colorize(:light_blue) do
         fill_in "Name",         with: ""
         fill_in "Email",        with: "customer@example"
         fill_in "Location",     with: "Invalid"
-        fill_in "Password",     with: "foobar"
-        fill_in "Confirmation", with: "foobar2"
+        fill_in "Password",     with: "short"
+        fill_in "Confirmation", with: "short2"
       end
 
       it "should not create a customer" do
@@ -50,6 +50,7 @@ describe "Customer Sign-in pages".upcase.colorize(:light_blue) do
 
         it { should have_link('Sign out') }
         it { should have_content(customer.name) }
+
         it { should have_selector('div.alert.alert-notice', text: 'Welcome') }
       end
     end
