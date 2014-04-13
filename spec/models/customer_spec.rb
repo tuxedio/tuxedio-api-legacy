@@ -4,10 +4,10 @@ describe "Customer".upcase.colorize(:light_blue) do
 
 
 
-  before { @customer =
-           Customer.create(name: "John Smith", email: "JohnSmith@example.com", location: "Boulder",
-                        password: "mypassword", password_confirmation: "mypassword") }
+  before { @customer =  Customer.new(name: "John Smith", email: "JohnSmith@example.com", location: "Boulder",
+                            password: "mypassword", password_confirmation: "mypassword") }
 
+  ## Dummy Vendors
   before do
     Vendor.create(name: "Larkburger", email: "Vendor1@example.com", location: "Boulder",
                   password: "mypassword1", password_confirmation: "mypassword1")
@@ -130,13 +130,12 @@ describe "Customer".upcase.colorize(:light_blue) do
   describe "\ntop 3".upcase.colorize(:light_blue) do
 
     describe "when customer has valid top 3" do
-
-      before { @customer.update(top_choices: ["Larkburger", "Sushi Tora","Illegal Pete's"]) }
+      before { @customer.update( top_choices: ["Larkburger", "Sushi Tora", "Illegal Pete's"] ) }
       it { should be_valid }
     end
 
     describe "when a customer has invalid top 3" do
-      before { @customer.update(top_choices: ["Larkburger", "Sushi Tora","Blah"]) }
+      before { @customer.update( top_choices: ["Larkburger", "Sushi Tora", "Blah"] ) }
       it { should_not be_valid }
     end
   end

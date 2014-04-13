@@ -11,7 +11,7 @@ class Vendor < ActiveRecord::Base
   #VALIDATION
   validates :name,         presence: true, length: { maximum: 50 }
   validates :location,     presence: true, length: { maximum: 30 }
-  validates :email,        presence: true, :email => true
+  validates :email,        presence: true, email: true, uniqueness: true
   validates_with VendorValidator
 
   #Condition to make locations local
