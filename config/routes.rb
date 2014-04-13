@@ -8,7 +8,6 @@ TuxedoProto::Application.routes.draw do
   root to: 'static_pages#home'
   match  '/registration_choice', to: 'static_pages#registration_choice', via: 'get'
   match '/profile', to: 'customers#show', via: 'get'
-  match '/profile/edit', to: 'static_pages#profile_edit', via: 'get'
 
   #RESOURCES
   resource :customers

@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-describe "Customer".upcase.colorize(:light_blue) do
+describe "Vendor".upcase.colorize(:light_blue) do
   before { @vendor =
-           Vendor.new(name: "New Customer", email: "customer@example.com", location: "Boulder", password: "mypassword", password_confirmation: "mypassword")  }
+           Vendor.new(name: "New Vendor", email: "Vendor@example.com", location: "Boulder", password: "mypassword", password_confirmation: "mypassword")  }
   subject { @vendor }
 
   it { should respond_to(:name) }
@@ -31,7 +31,7 @@ describe "Customer".upcase.colorize(:light_blue) do
     end
   end
 
-  describe "\nCustomer Validation".upcase.colorize(:light_blue) do
+  describe "\nVendor Validation".upcase.colorize(:light_blue) do
 
     describe "when name is too long" do
       before { @vendor.name = "z" * 51 }
@@ -45,8 +45,7 @@ describe "Customer".upcase.colorize(:light_blue) do
 
     describe "when email format is invalid" do
       it "it should be invalid" do
-      addresses = %w[user@foo,com user_at_foo.org example.user@foo.
-                       foo@bar_baz.com foo@bar+baz.com]
+      addresses = %w[user@foo,com user_at_foo.org example.user@foo. foo@bar_baz.com foo@bar+baz.com]
         addresses.each do |invalid|
           @vendor.email = invalid
           expect(@vendor).not_to be_valid

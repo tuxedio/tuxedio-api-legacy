@@ -9,6 +9,7 @@ Devise.setup do |config|
   # Configure the class responsible to send e-mails.
   # config.mailer = "Devise::Mailer"
 
+
   # ==> ORM configuration
   # Load and configure the ORM. Supports :active_record (default) and
   # :mongoid (bson_ext recommended) by default. Other ORMs may be
@@ -243,5 +244,7 @@ Devise.setup do |config|
   # When using omniauth, Devise cannot automatically set Omniauth path,
   # so you need to do it manually. For the users scope, it would be:
   # config.omniauth_path_prefix = "/my_engine/users/auth"
+
+  #secret Key -- can be created using 'rake secret'
   config.secret_key = '86bb36012b72f9bcaa7661760f3493745df52bc94dcbf4966d85c4e8f0a4fafdfee13563517b459990fde92b9d266621e00256a0a033831c61ba5302b58fb07c'
 end
