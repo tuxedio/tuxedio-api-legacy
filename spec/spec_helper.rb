@@ -50,6 +50,9 @@ Spork.prefork do
     config.tty = true
     config.formatter = :documentation
     config.include Devise::TestHelpers, type: :controller
+
+    #Add Factory Girl
+    config.include FactoryGirl::Syntax::Methods
   end
 end
 

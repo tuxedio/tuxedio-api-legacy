@@ -48,10 +48,10 @@ describe "Customer Sign-in pages".upcase.colorize(:light_blue) do
         before { click_button submit }
         let(:customer) { Customer.find_by(email: 'customer@example.com') }
 
-        it { should have_link('Sign out') }
-        it { should have_content(customer.name) }
+        it { should have_link('Sign in') }
+        it { should have_content("Sign up") }
 
-        it { should have_selector('div.alert.alert-notice', text: 'Welcome') }
+        it { should have_selector('div.alert.alert-notice', text: 'A message with a confirmation link has been sent to your email address. Please open the link to activate your account.') }
       end
     end
   end

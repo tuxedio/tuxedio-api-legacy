@@ -30,6 +30,7 @@ describe "Customer Authentication".upcase.colorize(:light_blue) do
     describe "with valid information" do
       let(:customer) { FactoryGirl.create(:customer) }
       before do
+        customer.confirm!
         fill_in "Email",    with: customer.email.upcase
         fill_in "Password", with: customer.password
         click_button "Sign in"
