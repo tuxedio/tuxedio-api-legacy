@@ -10,6 +10,7 @@ group :development, :test do
   gem 'spork-rails', '4.0.0'
   gem 'guard-spork', '1.5.0'
   gem 'childprocess', '0.3.6'
+  gem 'debugger'
 end
 
 group :test do
@@ -45,3 +46,5 @@ gem 'capistrano', '~> 3.1.0'
 gem 'capistrano-bundler', '~> 1.1.2'
 gem 'capistrano-rails', '~> 1.1.1'
 gem 'capistrano-rvm', github: "capistrano/rvm"
+gem 'devise', '3.1'
+gem 'protected_attributes', '1.0.7'

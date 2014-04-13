@@ -1,50 +1,104 @@
 require 'spec_helper'
 
 describe "Customer".upcase.colorize(:light_blue) do
-  before { @customer = Customer.new(name: "John Smith", email: "JohnSmith@example.com", location: "Boulder",
-                            vendor: false, customer: true, blogger: false,
-                            password: "mypassword", password_confirmation: "mypassword")  }
+  before { @customer =
+           Customer.new(name: "John Smith", email: "JohnSmith@example.com", location: "Boulder",
+                        password: "mypassword", password_confirmation: "mypassword")  }
+
 
   subject { @customer }
 
   it { should respond_to(:name) }
   it { should respond_to(:email) }
-  it { should respond_to(:password_digest) }
+  it { should respond_to(:location) }
   it { should respond_to(:password) }
   it { should respond_to(:password_confirmation) }
-  it { should respond_to(:remember_token) }
-  it { should respond_to(:authenticate) }
-  it { should respond_to(:location) }
-  it { should respond_to(:vendor) }
-  it { should respond_to(:customer) }
-  it { should respond_to(:blogger) }
+  it { should respond_to(:bio) }
 
   it { should be_valid }
 
 #------------------------------------
-# Type
-  describe "\ncustomer types".upcase.colorize(:light_blue) do
-    describe "when customer type is valid" do
-      before { @customer.customer = true }
-      before { @customer.vendor   = false }
-      before { @customer.blogger  = false }
-      it { should be_valid }
-    end
-
-    describe "when customer type is valid" do
-      before { @customer.customer = true }
-      before { @customer.vendor   = false }
-      before { @customer.blogger  = true }
+  describe "\nCheck parameters for blankness".upcase.colorize(:light_blue) do
+    describe "when name is not present" do
+      before { @customer.name = " " }
       it { should_not be_valid }
     end
 
-    describe "when customer type is valid" do
-      before { @customer.customer = true }
-      before { @customer.vendor   = true }
-      before { @customer.blogger  = false }
+    describe "when email is not present" do
+      before { @customer.email = " " }
+      it { should_not be_valid }
+    end
+
+    describe "when location is not present" do
+      before { @customer.location = " " }
       it { should_not be_valid }
     end
   end
+
+  describe "\nCustomer Validation".upcase.colorize(:light_blue) do
+
+    describe "when name is too long" do
+      before { @customer.name = "z" * 51 }
+      it { should_not be_valid }
+    end
+
+    describe "when location is too long" do
+      before { @customer.location = "z" * 31 }
+      it { should_not be_valid }
+    end
+
+    describe "when email format is invalid" do
+      it "it should be invalid" do
+      addresses = %w[user@foo,com user_at_foo.org example.user@foo.
+                       foo@bar_baz.com foo@bar+baz.com]
+        addresses.each do |invalid|
+          @customer.email = invalid
+          expect(@customer).not_to be_valid
+        end
+      end
+    end
+
+    describe "when email format is valid" do
+      it "it should be valid" do
+        addresses = %w[user@foo.COM A_US-ER@f.b.org frst.lst@foo.jp a+b@baz.cn]
+        addresses.each do |valid|
+          @customer.email = valid
+          expect(@customer).to be_valid
+        end
+      end
+    end
+
+    describe "when email adresss is taken" do
+      before do
+        user_email_duplicate = @customer.dup
+        user_email_duplicate.email = @customer.email.upcase
+        user_email_duplicate.save
+      end
+
+      it { should_not be_valid }
+    end
+
+    describe "when password is not present" do
+      before do
+        @customer = Customer.new(name: "John Smith", email: "JohnSmith@example.com", location: "Boulder",
+                         password: "", password_confirmation: "")
+      end
+
+      it { should_not be_valid }
+    end
+
+    describe "when password doesn't match confirmation" do
+      before { @customer.password_confirmation = "mismatch" }
+      it { should_not be_valid }
+    end
+
+    describe "with a password that's too short" do
+      before { @customer.password = @customer.password_confirmation = "a" * 5 }
+      it { should be_invalid }
+    end
+
+  end
+
 #------------------------------------
 # Bio
   describe "\nbio".upcase.colorize(:light_blue) do
@@ -61,22 +115,32 @@ describe "Customer".upcase.colorize(:light_blue) do
 #------------------------------------
 ## Top 3
   describe "\ntop 3".upcase.colorize(:light_blue) do
+    let(:vend1) { FactoryGirl.create(:vendor1) } 
+    let(:vend2) { FactoryGirl.create(:vendor2) }
+    let(:vend3) { FactoryGirl.create(:vendor3) }
+
+    before do
+      vend1.confirm!
+      vend2.confirm!
+      vend3.confirm!
+    end
+
     describe "when customer has valid top 3" do
-      before { @customer.choice_1 = "Larkburger"    }
-      before { @customer.choice_2 = "Sushi Tora"    }
-      before { @customer.choice_3 = "Chataqua Park" }
+      before { @customer.top_choices << "Larkburger"      }
+      before { @customer.top_choices << "Sushi Tora"      }
+      before { @customer.top_choices << "Illegal Pete's"  }
       it { should be_valid }
     end
 
     describe "when a customer has invalid top 3" do
-      before { @customer.choice_1 = "Larkburger"    }
-      before { @customer.choice_2 = "Sushi Tora"    }
-      before { @customer.choice_3 = "DuzNotExist"   }
+      before { @customer.top_choices << "Larkburger"    }
+      before { @customer.top_choices << "Sushi Tora"    }
+      before { @customer.top_choices << "DuzNotExist"    }
       it { should_not be_valid }
     end
   end
-#------------------------------------
-# Itinerary
+  #------------------------------------
+  # Itinerary
   describe "\nitinerary".upcase.colorize(:light_blue) do
     describe "when a customer has a valid itinerary" do
     end
