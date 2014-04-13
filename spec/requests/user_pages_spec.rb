@@ -21,12 +21,12 @@ describe "User pages".upcase.colorize(:light_blue) do
         fill_in "Name",         with: ""
         fill_in "Email",        with: "user@example"
         fill_in "Location",     with: "Invalid"
-        fill_in "Password",     with: "foobar"
-        fill_in "Confirmation", with: "foobar2"
+        fill_in "Password",     with: "short"
+        fill_in "Confirmation", with: "short2"
       end
 
       it "should not create a user" do
-        expect { click_button submit }.not_to change(User, :count)
+        expect { click_button submit }.not_to change(Customer, :count)
       end
     end
 
@@ -40,16 +40,16 @@ describe "User pages".upcase.colorize(:light_blue) do
       end
 
       it "should create a user" do
-        expect { click_button submit }.to change(User, :count).by(1)
+        expect { click_button submit }.to change(Customer, :count).by(1)
       end
 
       describe "after saving the user" do
         before { click_button submit }
-        let(:user) { User.find_by(email: 'user@example.com') }
+        let(:user) { Customer.find_by(email: 'user@example.com') }
 
         it { should have_link('Sign out') }
         it { should have_title(user.name) }
-        it { should have_selector('div.alert.alert-success', text: 'Welcome') }
+        it { should have_selector('div.alert.alert-notice', text: 'Welcome') }
       end
     end
   end
