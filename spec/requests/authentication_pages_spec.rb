@@ -1,17 +1,17 @@
 require 'spec_helper'
 
-describe "Authentication".upcase.colorize(:light_blue) do
+describe "Customer Authentication".upcase.colorize(:light_blue) do
 
   subject { page }
 
   describe "signin page" do
-    before { visit user_session_path }
+    before { visit new_customer_session_path }
 
     it { should have_content('Sign in') }
     it { should have_title('Tuxedio | Sign in') }
   end
   describe "signin" do
-    before { visit new_user_session_path }
+    before { visit new_customer_session_path }
 
     describe "with invalid information" do
       before { click_button "Sign in" }
@@ -22,22 +22,29 @@ describe "Authentication".upcase.colorize(:light_blue) do
       describe "after visiting another page" do
         before { visit root_path }
         it { should_not have_selector('div.alert.alert-alert') }
+        it { should have_link('Sign in', href: new_customer_session_path) }
       end
     end
 
 
     describe "with valid information" do
-      let(:user) { FactoryGirl.create(:customer) }
+      let(:customer) { FactoryGirl.create(:customer) }
       before do
-        fill_in "Email",    with: user.email.upcase
-        fill_in "Password", with: user.password
+        fill_in "Email",    with: customer.email.upcase
+        fill_in "Password", with: customer.password
         click_button "Sign in"
       end
 
       #it { should have_title("Tuxedio | " + user.name) }
-      it { should have_link('Profile',     href: user_path(user)) }
-      it { should have_link('Sign out',    href: destroy_user_session_path) }
-      it { should_not have_link('Sign in', href: new_user_session_path) }
+      it { should have_link('Change Settings',     href: edit_customer_registration_path) }
+      it { should have_link('Sign out',    href: destroy_customer_session_path) }
+      it { should_not have_link('Sign in',    href: new_customer_session_path) }
+      it {should have_selector('div.alert.alert-notice', text:'Signed in successfully.')}
+
+      describe "after visiting another page" do
+        before { visit root_path }
+        it { should_not have_selector('div.alert.alert-notice') }
+      end
 
       describe "followed by signout" do
         before { click_link "Sign out" }
