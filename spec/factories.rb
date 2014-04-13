@@ -12,7 +12,7 @@ FactoryGirl.define do
     password_confirmation "foobar1234"
     top_choices ["Larkburger", "Sushi Tora", "Illegal Pete's"]
   end
-  
+
   factory :vendor, class: Vendor do
     name     "MyVendor"
     email    "vendor@example.com"
@@ -20,6 +20,7 @@ FactoryGirl.define do
     password "foobar1234"
     password_confirmation "foobar1234"
   end
+
   factory :vendor1, class: Vendor do
     name     "Larkburger"
     email    "test1@vend.com"

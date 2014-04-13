@@ -12,7 +12,7 @@ class Customer < ActiveRecord::Base
   validates :name,         presence: true, length: { maximum: 50 }
   validates :location,     presence: true, length: { maximum: 30 }
   validates :email,        presence: true, :email => true
-  validates_with  TopChoicesValidator
+  validates :top_choices,  choice: true, on: :update
 
   #Make top choices a serialized array
   serialize       :top_choices, Array

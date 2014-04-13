@@ -1,9 +1,23 @@
 require 'spec_helper'
 
 describe "Customer".upcase.colorize(:light_blue) do
+
+
+
   before { @customer =
-           Customer.new(name: "John Smith", email: "JohnSmith@example.com", location: "Boulder",
-                        password: "mypassword", password_confirmation: "mypassword" ) }
+           Customer.create(name: "John Smith", email: "JohnSmith@example.com", location: "Boulder",
+                        password: "mypassword", password_confirmation: "mypassword") }
+
+  before do
+    Vendor.create(name: "Larkburger", email: "Vendor1@example.com", location: "Boulder",
+                  password: "mypassword1", password_confirmation: "mypassword1")
+
+    Vendor.create(name: "Sushi Tora", email: "Vendor2@example.com", location: "Boulder",
+                  password: "mypassword1", password_confirmation: "mypassword1")
+
+    Vendor.create(name: "Illegal Pete's", email: "Vendor3@example.com", location: "Boulder",
+                  password: "mypassword1", password_confirmation: "mypassword1")
+  end
 
   subject { @customer }
 
@@ -116,12 +130,14 @@ describe "Customer".upcase.colorize(:light_blue) do
   describe "\ntop 3".upcase.colorize(:light_blue) do
 
     describe "when customer has valid top 3" do
-      #before { @customer = Customer.create(top_choices: ['Test']) }
+
+      before { @customer.update(top_choices: ["Larkburger", "Sushi Tora","Illegal Pete's"]) }
       it { should be_valid }
     end
 
     describe "when a customer has invalid top 3" do
-      #it { should_not be_valid }
+      before { @customer.update(top_choices: ["Larkburger", "Sushi Tora","Blah"]) }
+      it { should_not be_valid }
     end
   end
   #------------------------------------
