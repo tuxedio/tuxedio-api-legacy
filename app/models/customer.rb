@@ -4,8 +4,8 @@ class Customer < ActiveRecord::Base
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  attr_accessible :bio
-  serialize       :top_choices, Array
+  #attr_accessible :bio
+  #serialize       :top_choices, Array
 
   attr_accessible :name, :email, :location, :password, :password_confirmation
 
