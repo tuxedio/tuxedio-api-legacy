@@ -7,9 +7,6 @@ TuxedoProto::Application.routes.draw do
   #ROUTES
   root to: 'static_pages#home'
   match  '/registration_choice', to: 'static_pages#registration_choice', via: 'get'
-
-  # match '/signup',  to: 'users#new',        via: 'get'
-  # match '/signin',  to: 'sessions#new',     via: 'get'
-  # match '/signout', to: 'sessions#destroy', via: 'delete'
-
+  match '/profile', to: 'static_pages#profile', via: 'get'
+  match '/profile/edit', to: 'static_pages#profile_edit', via: 'get'
 end
