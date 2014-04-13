@@ -5,6 +5,7 @@ describe "Customer".upcase.colorize(:light_blue) do
            Customer.new(name: "John Smith", email: "JohnSmith@example.com", location: "Boulder",
                         password: "mypassword", password_confirmation: "mypassword")  }
 
+
   subject { @customer }
 
   it { should respond_to(:name) }
@@ -114,10 +115,20 @@ describe "Customer".upcase.colorize(:light_blue) do
 #------------------------------------
 ## Top 3
   describe "\ntop 3".upcase.colorize(:light_blue) do
+    let(:vend1) { FactoryGirl.create(:vendor1) } 
+    let(:vend2) { FactoryGirl.create(:vendor2) }
+    let(:vend3) { FactoryGirl.create(:vendor3) }
+
+    before do
+      vend1.confirm!
+      vend2.confirm!
+      vend3.confirm!
+    end
+
     describe "when customer has valid top 3" do
-      before { @customer.top_choices << "Larkburger"    }
-      before { @customer.top_choices << "Sushi Tora"    }
-      before { @customer.top_choices << "Chataqua Park"    }
+      before { @customer.top_choices << "Larkburger"      }
+      before { @customer.top_choices << "Sushi Tora"      }
+      before { @customer.top_choices << "Illegal Pete's"  }
       it { should be_valid }
     end
 
@@ -128,8 +139,8 @@ describe "Customer".upcase.colorize(:light_blue) do
       it { should_not be_valid }
     end
   end
-#------------------------------------
-# Itinerary
+  #------------------------------------
+  # Itinerary
   describe "\nitinerary".upcase.colorize(:light_blue) do
     describe "when a customer has a valid itinerary" do
     end
