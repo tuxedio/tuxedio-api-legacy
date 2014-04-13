@@ -4,4 +4,5 @@
   %h1 Welcome to the Tuxedio Home Page
   %h2
     We help you plan and book your travels.
-  = link_to "Sign up now!", registration_choice_path, class: "btn btn-large btn-primary"
+  - if ( !customer_signed_in? and !vendor_signed_in? )
+    = link_to "Sign up now!", registration_choice_path, class: "btn btn-large btn-primary"

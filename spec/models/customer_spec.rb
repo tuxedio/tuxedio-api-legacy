@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe "Customer".upcase.colorize(:light_blue) do
-  before { @customer = 
+  before { @customer =
            Customer.new(name: "John Smith", email: "JohnSmith@example.com", location: "Boulder",
                         password: "mypassword", password_confirmation: "mypassword")  }
 

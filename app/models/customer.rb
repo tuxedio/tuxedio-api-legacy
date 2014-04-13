@@ -1,11 +1,18 @@
-class Customer < User
+class Customer < ActiveRecord::Base
+  # Include default devise modules. Others available are:
+  # :token_authenticatable, :confirmable,
+  # :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable
   attr_accessible :bio
   serialize       :top_choices, Array
 
-  validates       :user_role, presence: true, format: { with: /Customer\z/ }
-  validates_with  TopChoicesValidator
+  attr_accessible :name, :email, :location, :password, :password_confirmation
 
-  def proper_user_role?
-    user_role == "Customer"
-  end
+  #validates_with  TopChoicesValidator
+
+  validates :name,         presence: true, length: { maximum: 50 }
+  validates :location,     presence: true, length: { maximum: 30 }
+  validates :email,        presence: true, :email => true
+
 end
