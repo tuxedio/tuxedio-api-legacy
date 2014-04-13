@@ -11,4 +11,10 @@ class ApplicationController < ActionController::Base
                  :password_confirmation, :current_password, :vendor)
       end
     end
+    def after_sign_in_path_for(resource)
+      #debugger
+      if resource.class.name == "Customer"
+        return profile_path
+      end
+    end
 end

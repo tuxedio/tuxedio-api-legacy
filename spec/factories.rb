@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :customer do
-    name     "John Smith"
-    email    "jsmith@tuxedio.com"
+    name     "New Customer"
+    email    "customer@tuxedio.com"
     location "Boulder"
     password "foobar1234"
     password_confirmation "foobar1234"

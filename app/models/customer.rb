@@ -5,9 +5,9 @@ class Customer < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   #attr_accessible :bio
-  #serialize       :top_choices, Array
+  serialize       :top_choices, Array
 
-  attr_accessible :name, :email, :location, :password, :password_confirmation
+  attr_accessible :name, :email, :location, :password, :password_confirmation, :bio
 
   #validates_with  TopChoicesValidator
 

@@ -36,7 +36,7 @@ describe "Customer Authentication".upcase.colorize(:light_blue) do
       end
 
       #it { should have_title("Tuxedio | " + user.name) }
-      it { should have_link('Change Settings',     href: edit_customer_registration_path) }
+      it { should have_link('Account Settings',     href: edit_customer_registration_path) }
       it { should have_link('Sign out',    href: destroy_customer_session_path) }
       it { should_not have_link('Sign in',    href: new_customer_session_path) }
       it {should have_selector('div.alert.alert-notice', text:'Signed in successfully.')}
