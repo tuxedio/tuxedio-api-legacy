@@ -1,13 +1,14 @@
 require 'spec_helper'
 
-describe "User pages".upcase.colorize(:light_blue) do
+describe "Customer Sign-in pages".upcase.colorize(:light_blue) do
   subject { page }
 
   describe "signup page" do
     before { visit registration_choice_path }
 
     it { should have_content('Sign up') }
-    it { should have_title(full_title('Sign up')) }
+    it { should have_link('Register Customer', href: new_customer_registration_path) }
+    it { should have_link('Register Vendor', href: new_vendor_registration_path) }
   end
 
   describe "register customer" do
@@ -19,36 +20,37 @@ describe "User pages".upcase.colorize(:light_blue) do
     describe "with invalid information" do
       before do
         fill_in "Name",         with: ""
-        fill_in "Email",        with: "user@example"
+        fill_in "Email",        with: "customer@example"
         fill_in "Location",     with: "Invalid"
         fill_in "Password",     with: "short"
         fill_in "Confirmation", with: "short2"
       end
 
-      it "should not create a user" do
+      it "should not create a customer" do
         expect { click_button submit }.not_to change(Customer, :count)
       end
     end
 
     describe "with valid information" do
       before do
-        fill_in "Name",         with: "Example User"
-        fill_in "Email",        with: "user@example.com"
+        fill_in "Name",         with: "Example Customer"
+        fill_in "Email",        with: "customer@example.com"
         fill_in "Location",     with: "Boulder"
         fill_in "Password",     with: "foobar123"
         fill_in "Confirmation", with: "foobar123"
       end
 
-      it "should create a user" do
+      it "should create a customer" do
         expect { click_button submit }.to change(Customer, :count).by(1)
       end
 
-      describe "after saving the user" do
+      describe "after saving the customer" do
         before { click_button submit }
-        let(:user) { Customer.find_by(email: 'user@example.com') }
+        let(:customer) { Customer.find_by(email: 'customer@example.com') }
 
         it { should have_link('Sign out') }
-        it { should have_title(user.name) }
+        it { should have_content(customer.name) }
+
         it { should have_selector('div.alert.alert-notice', text: 'Welcome') }
       end
     end
