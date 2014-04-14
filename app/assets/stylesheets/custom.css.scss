@@ -92,6 +92,12 @@ p {
   @include box_sizing;
 }
 
-.row-padding {
-  padding-top: 10px;
+
+.form-group{
+  margin-bottom: 15px;
+
+}
+.dropdown-menu {
+  padding: 10px;
+  padding-top: 20px;
 }

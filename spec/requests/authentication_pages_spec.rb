@@ -22,7 +22,6 @@ describe "Customer Authentication".upcase.colorize(:light_blue) do
       describe "after visiting another page" do
         before { visit root_path }
         it { should_not have_selector('div.alert.alert-alert') }
-        it { should have_link('Sign in', href: new_customer_session_path) }
       end
     end
 

@@ -21,7 +21,6 @@ When(/^the customer submits (in)*valid signup information$/) do |invalid|
 end
 
 Then(/^they should see email confirmation notice$/) do
-  #expect(page).to have_selector('div.alert.alert-alert')
   expect(page).to have_content("A message with a confirmation link has been sent to your email address. Please open the link to activate your account.")
 end
 

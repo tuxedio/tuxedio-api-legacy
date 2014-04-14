@@ -2,6 +2,10 @@ Given /^a customer visits the signin page$/ do
   visit new_customer_session_path
 end
 
+Given /^a customer visits the home page$/ do
+  visit root_path
+end
+
 When /^they submit invalid signin information$/ do
   click_button "Sign in"
 end
@@ -17,7 +21,7 @@ Given /^the customer has an account$/ do
 end
 
 When /^the customer submits valid signin information$/ do
-  fill_in "Email",    with: @customer.email
+  fill_in "customer_email",    with: @customer.email
   fill_in "Password", with: @customer.password
   click_button "Sign in"
 end
@@ -34,6 +38,6 @@ When(/^the customer clicks the signout link$/) do
   click_link "Sign out"
 end
 
-Then /^they should see a signin link$/ do
-  expect(page).to have_link('Sign in', href: new_customer_session_path)
+Then /^they should see the home page$/ do
+  expect(page).to have_title('Tuxedo | Home')
 end
