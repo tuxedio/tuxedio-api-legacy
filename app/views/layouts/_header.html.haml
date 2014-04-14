@@ -41,4 +41,9 @@
                   = bootstrap_form_for(:customer, url:  customer_session_path, layout: :inline) do |f|
                     %li= f.email_field :email, :autofocus => true
                     %li= f.password_field :password
-                    %li= f.submit "Sign in", class: "btn btn-success"
+                    %li
+                      = f.submit "Sign in", class: "btn btn-success"
+                      %li.pull-right
+                        %li= link_to "New user? Sign up!", registration_choice_path
+                        %li= link_to "Vendor? Click here.", new_vendor_session_path
+
