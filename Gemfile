@@ -22,6 +22,7 @@ group :test do
   gem 'cucumber-rails', '1.4.0', :require => false
   gem 'database_cleaner', github: 'bmabey/database_cleaner'
   gem 'colorize'
+  gem 'simplecov', '~> 0.7.1', :require => false
 end
 
 group :doc do
