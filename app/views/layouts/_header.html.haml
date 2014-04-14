@@ -32,4 +32,13 @@
                 %li
                   = link_to "Sign out", destroy_vendor_session_path, method: "delete"
           - else
-            %li= link_to "Sign in", new_customer_session_path
+            - unless current_page?(new_customer_session_path)
+              %li#fat-menu.dropdown
+                %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
+                  Sign in
+                  %b.caret
+                %ul.dropdown-login.dropdown-menu
+                  = bootstrap_form_for(:customer, :url => customer_session_path) do |f|
+                    %li= f.email_field :email, :autofocus => true
+                    %li= f.password_field :password
+                    %li= f.submit "Sign in"
