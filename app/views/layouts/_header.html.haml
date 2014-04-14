@@ -32,7 +32,7 @@
                 %li
                   = link_to "Sign out", destroy_vendor_session_path, method: "delete"
           - else
-            - unless controller.controller_name == "sessions"
+            - unless controller.controller_name == "sessions" or controller.controller_name == "registrations"
               %li#fat-menu.dropdown
                 %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
                   Sign in
