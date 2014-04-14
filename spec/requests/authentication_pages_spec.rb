@@ -8,7 +8,7 @@ describe "Customer Authentication".upcase.colorize(:light_blue) do
     before { visit new_customer_session_path }
 
     it { should have_content('Sign in') }
-    it { should have_title('Tuxedio | Sign in') }
+    it { should have_title('Tuxedo | Sign in') }
   end
   describe "signin" do
     before { visit new_customer_session_path }
