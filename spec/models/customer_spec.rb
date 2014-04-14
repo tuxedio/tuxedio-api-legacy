@@ -1,10 +1,23 @@
 require 'spec_helper'
 
 describe "Customer".upcase.colorize(:light_blue) do
-  before { @customer =
-           Customer.new(name: "John Smith", email: "JohnSmith@example.com", location: "Boulder",
-                        password: "mypassword", password_confirmation: "mypassword")  }
 
+
+
+  before { @customer =  Customer.new(name: "John Smith", email: "JohnSmith@example.com", location: "Boulder",
+                            password: "mypassword", password_confirmation: "mypassword") }
+
+  ## Dummy Vendors
+  before do
+    Vendor.create(name: "Larkburger", email: "Vendor1@example.com", location: "Boulder",
+                  password: "mypassword1", password_confirmation: "mypassword1")
+
+    Vendor.create(name: "Sushi Tora", email: "Vendor2@example.com", location: "Boulder",
+                  password: "mypassword1", password_confirmation: "mypassword1")
+
+    Vendor.create(name: "Illegal Pete's", email: "Vendor3@example.com", location: "Boulder",
+                  password: "mypassword1", password_confirmation: "mypassword1")
+  end
 
   subject { @customer }
 
@@ -14,6 +27,7 @@ describe "Customer".upcase.colorize(:light_blue) do
   it { should respond_to(:password) }
   it { should respond_to(:password_confirmation) }
   it { should respond_to(:bio) }
+  it { should respond_to(:top_choices) }
 
   it { should be_valid }
 
@@ -81,7 +95,7 @@ describe "Customer".upcase.colorize(:light_blue) do
     describe "when password is not present" do
       before do
         @customer = Customer.new(name: "John Smith", email: "JohnSmith@example.com", location: "Boulder",
-                         password: "", password_confirmation: "")
+                                 password: "", password_confirmation: "")
       end
 
       it { should_not be_valid }
@@ -96,9 +110,7 @@ describe "Customer".upcase.colorize(:light_blue) do
       before { @customer.password = @customer.password_confirmation = "a" * 5 }
       it { should be_invalid }
     end
-
   end
-
 #------------------------------------
 # Bio
   describe "\nbio".upcase.colorize(:light_blue) do
@@ -112,30 +124,18 @@ describe "Customer".upcase.colorize(:light_blue) do
       it { should be_valid }
     end
   end
-#------------------------------------
-## Top 3
-  describe "\ntop 3".upcase.colorize(:light_blue) do
-    let(:vend1) { FactoryGirl.create(:vendor1) } 
-    let(:vend2) { FactoryGirl.create(:vendor2) }
-    let(:vend3) { FactoryGirl.create(:vendor3) }
 
-    before do
-      vend1.confirm!
-      vend2.confirm!
-      vend3.confirm!
-    end
+  #------------------------------------
+  ## Top 3
+  describe "\ntop 3".upcase.colorize(:light_blue) do
 
     describe "when customer has valid top 3" do
-      before { @customer.top_choices << "Larkburger"      }
-      before { @customer.top_choices << "Sushi Tora"      }
-      before { @customer.top_choices << "Illegal Pete's"  }
+      before { @customer.update( top_choices: ["Larkburger", "Sushi Tora", "Illegal Pete's"] ) }
       it { should be_valid }
     end
 
     describe "when a customer has invalid top 3" do
-      before { @customer.top_choices << "Larkburger"    }
-      before { @customer.top_choices << "Sushi Tora"    }
-      before { @customer.top_choices << "DuzNotExist"    }
+      before { @customer.update( top_choices: ["Larkburger", "Sushi Tora", "Blah"] ) }
       it { should_not be_valid }
     end
   end
