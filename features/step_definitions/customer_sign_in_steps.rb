@@ -6,11 +6,11 @@ Given /^a customer visits the home page$/ do
   visit root_path
 end
 
-When /^they submit invalid signin information$/ do
+When /^the customer submits invalid signin information$/ do
   click_button "Sign in"
 end
 
-Then /^they should see an error message$/ do
+Then /^the customer should see an error message$/ do
   expect(page).to have_selector('div.alert.alert-alert')
 end
 
@@ -26,11 +26,11 @@ When /^the customer submits valid signin information$/ do
   click_button "Sign in"
 end
 
-Then /^they should see their profile page$/ do
+Then /^the customer should see their profile page$/ do
   expect(page).to have_title("Tuxedo | " + @customer.name)
 end
 
-Then /^they should see a signout link$/ do
+Then /^the customer should see a signout link$/ do
   expect(page).to have_link('Sign out', href: destroy_customer_session_path)
 end
 
@@ -38,6 +38,6 @@ When(/^the customer clicks the signout link$/) do
   click_link "Sign out"
 end
 
-Then /^they should see the home page$/ do
+Then /^the customer should see the home page$/ do
   expect(page).to have_title('Tuxedo | Home')
 end
