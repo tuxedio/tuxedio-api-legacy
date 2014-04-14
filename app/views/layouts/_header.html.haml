@@ -1,10 +1,12 @@
-%header.navbar.navbar-fixed-top.navbar-inverse
+%header.navbar.navbar-fixed-top.navbar-default
   .navbar-inner
     .container
-      = link_to "Tuxedio", root_path, id: "logo"
+      = link_to "Tuxedo", root_path, id: "logo"
       %nav
         %ul.nav.pull-right
           %li= link_to "Explore", "#"
+          %li= link_to "Local's Pick", "#"
+          %li= link_to "Blog", "#"
           - if customer_signed_in?
             / %li= link_to "Users", '#'
             %li#fat-menu.dropdown
