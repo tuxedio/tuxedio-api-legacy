@@ -1,4 +1,4 @@
-Feature: Signing in
+Feature: Vendor signing in
 
   Scenario: Unsuccessful signin
     Given a vendor visits the signin page

@@ -1,4 +1,4 @@
-Feature: Signing in
+Feature: Customer signing in
 
   Scenario: Unsuccessful signin
     Given a customer visits the signin page
