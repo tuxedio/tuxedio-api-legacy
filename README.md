@@ -31,10 +31,12 @@
 
 ###Setup:
 ```
+  gem install mailcatcher
   bundle install
   rake db:migrate
   rake db:populate
   rake test:prepare
+  mailcatcher
 ```
 
 
