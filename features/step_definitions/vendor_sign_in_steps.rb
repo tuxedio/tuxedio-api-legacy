@@ -6,7 +6,7 @@ Given /^a vendor visits the home page$/ do
   visit root_path
 end
 
-When /^vendor submits invalid signin information$/ do
+When /^the vendor submits invalid signin information$/ do
   click_button "Sign in"
 end
 

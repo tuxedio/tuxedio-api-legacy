@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
       if resource.class.name == "Customer"
         profile_path
       elsif resource.class.name == "Vendor"
-        profile_path
+        vendor_profile_path
       else
         root_path
       end
