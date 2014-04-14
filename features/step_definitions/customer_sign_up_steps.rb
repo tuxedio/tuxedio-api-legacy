@@ -1,4 +1,4 @@
-Given(/^a (.*?) visits the sign up page$/) do |user|
+Given(/^a customer visits the sign up page$/) do
   visit new_customer_registration_path
 end
 
@@ -20,10 +20,10 @@ When(/^the customer submits (in)*valid signup information$/) do |invalid|
   end
 end
 
-Then(/^they should see email confirmation notice$/) do
+Then(/^the customer should see email confirmation notice$/) do
   expect(page).to have_content("A message with a confirmation link has been sent to your email address. Please open the link to activate your account.")
 end
 
-Then(/^they should be redirected to the the sign up page$/) do
+Then(/^the customer should be redirected to the the sign up page$/) do
   expect(page).to have_title("Sign up")
 end
