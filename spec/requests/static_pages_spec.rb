@@ -1,4 +1,5 @@
 require 'spec_helper'
+SimpleCov.command_name 'RSPEC TESTING'
 
 describe "StaticPages".upcase.colorize(:light_blue) do
   describe "Home page" do

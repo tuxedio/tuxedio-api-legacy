@@ -1,3 +1,4 @@
+SimpleCov.command_name 'CUCUMBER TESTING'
 Given /^a vendor visits the signin page$/ do
   visit new_vendor_session_path
 end
