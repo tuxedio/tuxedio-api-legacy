@@ -33,9 +33,6 @@ ActiveRecord::Schema.define(version: 20140413181615) do
     t.string   "name"
     t.string   "location"
     t.text     "bio"
-    t.text     "pick_1"
-    t.text     "pick_2"
-    t.text     "pick_3"
     t.text     "top_choices"
   end
 
