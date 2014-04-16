@@ -19,11 +19,11 @@ class ApplicationController < ActionController::Base
     #REDIRECT DEVISE AFTER SIGN IN
     def after_sign_in_path_for(resource)
       if resource.class.name == "Customer"
-        profile_path
+        return customer_profile_path
       elsif resource.class.name == "Vendor"
-        vendor_profile_path
+        return vendor_profile_path
       else
-        root_path
+        return root_path
       end
     end
 end
