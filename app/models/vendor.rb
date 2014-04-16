@@ -14,6 +14,9 @@ class Vendor < ActiveRecord::Base
   validates :email,        presence: true, email: true, uniqueness: true
   validates_with VendorValidator
 
+  #ASSOCIATIONS
+  has_many :activities
+
   #Condition to make locations local
   def self.allowed_locations
     ['Boulder', 'Longmont', 'Broomfield']

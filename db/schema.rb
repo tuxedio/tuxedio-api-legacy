@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140413181615) do
+ActiveRecord::Schema.define(version: 20140416030942) do
+
+  create_table "activities", force: true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.string   "location"
+    t.decimal  "price",       precision: 8, scale: 2
+    t.integer  "vendor_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "activity_id"
+  end
 
   create_table "customers", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -33,10 +44,8 @@ ActiveRecord::Schema.define(version: 20140413181615) do
     t.string   "name"
     t.string   "location"
     t.text     "bio"
-    t.text     "pick_1"
-    t.text     "pick_2"
-    t.text     "pick_3"
     t.text     "top_choices"
+    t.integer  "customer_id"
   end
 
   add_index "customers", ["email"], name: "index_customers_on_email", unique: true
@@ -61,6 +70,7 @@ ActiveRecord::Schema.define(version: 20140413181615) do
     t.datetime "updated_at"
     t.string   "name"
     t.string   "location"
+    t.integer  "vendor_id"
   end
 
   add_index "vendors", ["email"], name: "index_vendors_on_email", unique: true
