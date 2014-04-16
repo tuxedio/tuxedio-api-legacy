@@ -5,7 +5,7 @@ describe "Activity".upcase.colorize(:light_blue) do
   ## Dummy Vendors
   before do
     @vendor = Vendor.create(name: "Boulder Skydiving", email: "Vendor1@example.com", location: "Boulder",
-                            password: "mypassword1", password_confirmation: "mypassword1")
+                            zip_code: 80301, password: "mypassword1", password_confirmation: "mypassword1")
   end
 
   before do 
