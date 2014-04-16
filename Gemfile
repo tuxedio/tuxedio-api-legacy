@@ -10,6 +10,7 @@ group :development, :test do
   gem 'guard-livereload', require: false
   gem 'spork-rails', '4.0.0'
   gem 'guard-spork', '1.5.0'
+  gem 'guard-cucumber'
   gem 'childprocess', '0.3.6'
   gem 'debugger'
 end
