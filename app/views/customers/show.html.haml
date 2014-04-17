@@ -1,7 +1,9 @@
 - provide(:title, current_customer.name)
 .row
-  %aside.span4
-    %section
-      %h1
-        = current_customer.name
-  .span8
+  .col-md-4.col.col-md-offset-4
+    %h1
+      = current_customer.name 
+  .col-md-12
+    .col-md-3
+      = image_tag("http://psych.colorado.edu/~cuchangelab/styled-37/styled-5/files/ker-seymer.jpg")
+      = current_customer.name

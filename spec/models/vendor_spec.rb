@@ -2,14 +2,16 @@ require 'spec_helper'
 
 describe "Vendor".upcase.colorize(:light_blue) do
   before { @vendor =
-           Vendor.new(name: "New Vendor", email: "Vendor@example.com", location: "Boulder", password: "mypassword", password_confirmation: "mypassword")  }
+           Vendor.new(name: "New Vendor", email: "Vendor@example.com", location: "Boulder", password: "mypassword", password_confirmation: "mypassword", zip_code: 80301)  }
   subject { @vendor }
 
   it { should respond_to(:name) }
   it { should respond_to(:email) }
   it { should respond_to(:location) }
   it { should respond_to(:password) }
+  it { should respond_to(:vendor_id) }
   it { should respond_to(:password_confirmation) }
+  it { should respond_to(:zip_code) }
 
   it { should be_valid }
 
@@ -29,12 +31,37 @@ describe "Vendor".upcase.colorize(:light_blue) do
       before { @vendor.location = " " }
       it { should_not be_valid }
     end
+
+    describe "when zip code is not present" do
+      before { @vendor.zip_code = nil  }
+      it { should_not be_valid }
+    end
   end
 
   describe "\nVendor Validation".upcase.colorize(:light_blue) do
 
     describe "when name is too long" do
       before { @vendor.name = "z" * 51 }
+      it { should_not be_valid }
+    end
+
+    describe "when zip_code is too long" do
+      before { @vendor.location = 803011 }
+      it { should_not be_valid }
+    end
+
+    describe "when location is too long" do
+      before { @vendor.location = "z" * 31 }
+      it { should_not be_valid }
+    end
+
+    describe "when location is too long" do
+      before { @vendor.location = "z" * 31 }
+      it { should_not be_valid }
+    end
+
+    describe "when location is too long" do
+      before { @vendor.location = "z" * 31 }
       it { should_not be_valid }
     end
 
@@ -92,7 +119,5 @@ describe "Vendor".upcase.colorize(:light_blue) do
       before { @vendor.password = @vendor.password_confirmation = "a" * 5 }
       it { should be_invalid }
     end
-
   end
-
 end

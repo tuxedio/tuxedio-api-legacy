@@ -10,13 +10,13 @@ describe "Customer".upcase.colorize(:light_blue) do
   ## Dummy Vendors
   before do
     Vendor.create(name: "Larkburger", email: "Vendor1@example.com", location: "Boulder",
-                  password: "mypassword1", password_confirmation: "mypassword1")
+                  password: "mypassword1", password_confirmation: "mypassword1", zip_code: 80301)
 
     Vendor.create(name: "Sushi Tora", email: "Vendor2@example.com", location: "Boulder",
-                  password: "mypassword1", password_confirmation: "mypassword1")
+                  password: "mypassword1", password_confirmation: "mypassword1", zip_code: 80301)
 
     Vendor.create(name: "Illegal Pete's", email: "Vendor3@example.com", location: "Boulder",
-                  password: "mypassword1", password_confirmation: "mypassword1")
+                  password: "mypassword1", password_confirmation: "mypassword1", zip_code: 80301)
   end
 
   subject { @customer }
