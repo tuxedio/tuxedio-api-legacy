@@ -1,9 +1,19 @@
 - provide(:title, current_vendor.name)
 .row
-  %aside.span4
+  .col-md-4
     %section
+      %div.profile-picture
       %h1
         = current_vendor.name
-  .span8
+      %p.center
+        = "Located in "
+        = current_vendor.location
+        %br
+        = link_to "Edit Profile", edit_vendor_registration_path, {:class => 'btn btn-lg btn-primary'}
+  .col-md-8
     %section
+      %div.vendor-description
+        = current_vendor.name
+      %div.activities-container
       =link_to 'Add an activity', '#', {:class => 'btn btn-lg btn-primary'}
+
