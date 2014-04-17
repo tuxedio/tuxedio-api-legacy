@@ -1,9 +1,32 @@
 - provide(:title, current_customer.name)
-.row
-  .col-md-4.col.col-md-offset-4
-    %h1
-      = current_customer.name 
-  .col-md-12
-    .col-md-3
-      = image_tag("http://psych.colorado.edu/~cuchangelab/styled-37/styled-5/files/ker-seymer.jpg")
-      = current_customer.name
+.container
+  .row
+    .col-md-4.col.col-md-offset-4
+      .page-header
+        %h1
+          = current_customer.name 
+          .small
+            Personal Profile
+  .row
+    .col-sm-12
+      .row
+        .col-sm-4
+          .customer-image
+            = image_tag("http://psych.colorado.edu/~cuchangelab/styled-37/styled-5/files/ker-seymer.jpg", class: "img-rounded")
+        .col-sm-8
+          .panel.panel-primary
+            .panel-heading
+              %h5 Information
+            .panel-body
+              .p= current_customer.bio
+            %table.table-hover.table-bordered
+              %h3
+                %tr
+                  %td Name
+                  %td= current_customer.name
+                %tr
+                  %td Email
+                  %td= current_customer.email
+                %tr
+                  %td Location
+                  %td= current_customer.location
