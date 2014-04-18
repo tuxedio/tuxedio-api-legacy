@@ -7,5 +7,16 @@ Scenario: A logged in vendor can see their profile
 
 Scenario: If logged out, there is no link to vendor account
   Given a vendor is logged out
-  Then the vendor should should see the "Login" link
+  Then the vendor should see the "Login" link
   And the vendor should not see the "View My Account" link
+
+Scenario: If on the vendor profile, I should see profile elements.
+  Given a vendor is logged in
+  When the vendor clicks the "View My Account" link
+  Then the vendor should see their profile picture
+  And the vendor should see the "Edit Profile" link
+  And the vendor should see the "Add an activity" link
+  And the vendor should see their name
+  And the vendor should see their location
+  When then vendor has activities
+  Then the vendor should see their offered activities
