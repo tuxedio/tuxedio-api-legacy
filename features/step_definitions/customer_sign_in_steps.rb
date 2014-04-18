@@ -11,7 +11,7 @@ When /^the customer submits invalid signin information$/ do
 end
 
 Then /^the customer should see an error message$/ do
-  expect(page).to have_selector('div.alert.alert-alert')
+  expect(page).to have_selector('div.alert.alert-warning')
 end
 
 Given /^the customer has an account$/ do
