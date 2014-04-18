@@ -9,7 +9,7 @@ class ActivitiesController < ApplicationController
     if @activity.save
       redirect_to vendor_profile_path
     else
-      flash[:error] = "Something went wrong"
+      flash[:alert] = "Something went wrong"
       redirect_to new_vendors_activities_path
     end
   end
