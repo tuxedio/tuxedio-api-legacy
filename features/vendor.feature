@@ -7,5 +7,5 @@ Scenario: A logged in vendor can see their profile
 
 Scenario: If logged out, there is no link to vendor account
   Given a vendor is logged out
-  Then the vendor should should see the "Sign in" link
+  Then the vendor should should see the "Login" link
   And the vendor should not see the "View My Account" link
