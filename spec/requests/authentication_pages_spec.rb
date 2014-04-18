@@ -17,11 +17,11 @@ describe "Customer Authentication".upcase.colorize(:light_blue) do
       before { click_button "Sign in" }
 
       it { should have_content('Sign in') }
-      it { should have_selector('div.alert.alert-alert') }
+      it { should have_selector('div.alert.alert-warning') }
 
       describe "after visiting another page" do
         before { visit root_path }
-        it { should_not have_selector('div.alert.alert-alert') }
+        it { should_not have_selector('div.alert.alert-warning') }
       end
     end
 
@@ -39,11 +39,11 @@ describe "Customer Authentication".upcase.colorize(:light_blue) do
       it { should have_link('Account Settings',     href: edit_customer_registration_path) }
       it { should have_link('Sign out',    href: destroy_customer_session_path) }
       it { should_not have_link('Sign in',    href: new_customer_session_path) }
-      it {should have_selector('div.alert.alert-notice', text:'Signed in successfully.')}
+      it {should have_selector('div.alert.alert-info', text:'Signed in successfully.')}
 
       describe "after visiting another page" do
         before { visit root_path }
-        it { should_not have_selector('div.alert.alert-notice') }
+        it { should_not have_selector('div.alert.alert-info') }
       end
 
       describe "followed by signout" do
