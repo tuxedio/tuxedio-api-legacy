@@ -12,8 +12,7 @@ TuxedoProto::Application.routes.draw do
 
   #RESOURCES
   resource :customers
-  resource :vendors do
-    resource :activities, only: [:new, :create]
-  end
+  resource :vendors
+  resource :activities
 
 end

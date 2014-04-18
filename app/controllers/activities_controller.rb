@@ -5,7 +5,7 @@ class ActivitiesController < ApplicationController
   end
 
   def create
-    @activity = current_vendor.activities.build(params)
+    @activity = current_vendor.activities.build(activities_params)
     if(@activity.save)
       redirect_to vendor_profile
     else
