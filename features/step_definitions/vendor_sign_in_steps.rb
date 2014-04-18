@@ -12,7 +12,7 @@ When /^the vendor submits invalid signin information$/ do
 end
 
 Then /^the vendor should see an error message$/ do
-  expect(page).to have_selector('div.alert.alert-alert')
+  expect(page).to have_selector('div.alert.alert-warning')
 end
 
 Given /^the vendor has an account$/ do

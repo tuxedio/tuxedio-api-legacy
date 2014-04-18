@@ -51,7 +51,7 @@ describe "Customer Sign-in pages".upcase.colorize(:light_blue) do
         it { should have_link('Sign in') }
         it { should have_content("Sign up") }
 
-        it { should have_selector('div.alert.alert-notice', text: 'A message with a confirmation link has been sent to your email address. Please open the link to activate your account.') }
+        it { should have_selector('div.alert.alert-info', text: 'A message with a confirmation link has been sent to your email address. Please open the link to activate your account.') }
       end
     end
   end
