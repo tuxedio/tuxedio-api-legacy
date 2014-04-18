@@ -1,0 +1,50 @@
+.vendor-picture{
+  min-height: 300px;
+  background-color: #DDD;
+  margin-bottom:20px;
+}
+.vendor-name{
+
+}
+
+.vendor-location{
+  padding:10px;
+}
+
+.vendor-description{
+  min-height:200px;
+  background-color:#EEE;
+  padding:10px;
+}
+.activities{
+  margin-top:20px;
+}
+.activity{
+  background-color:#EEE;
+  padding:20px;
+  margin: 20px 0;
+}
+
+.activity-picture{
+  min-height:150px;
+  width:100%;
+  background-color:#DDD;
+}
+.activity-name{
+  font-size:20px;
+  font-weight:bold;
+  margin-bottom:10px;
+}
+.activity-description{
+  min-height:100px;
+  background-color:#FFF;
+}
+.activity-price{
+  text-align:center;
+  font-weight:bold;
+  font-size:1.5em;
+  margin-bottom:20px;
+}
+.activity-edit{
+  text-align: center;
+}
