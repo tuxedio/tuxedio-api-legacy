@@ -12,7 +12,7 @@ TuxedoProto::Application.routes.draw do
 
   #RESOURCES
   resource :customers
-  resource :vendors
-  resource :activities
-
+  resource :vendors do
+    resource :activities
+  end
 end

@@ -4,15 +4,15 @@
 
 .row
   .col-md-6
-    = bootstrap_form_tag activities_path do
+    = bootstrap_form_for(@activity, url: vendors_activities_path) do |f|
       = render 'shared/error_messages', object: f.object
 
-      = text_field :name
+      = f.text_field :name
 
-      = text_field :location
+      = f.text_field :location
 
-      = text_field :description
+      = f.text_field :description
 
-      = number_field :price
+      = f.number_field :price
 
-      = submit "Create Activity", class: "btn btn-large btn-primary"
+      = f.submit "Create Activity", class: "btn btn-large btn-primary"
