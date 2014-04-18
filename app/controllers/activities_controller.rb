@@ -1,14 +1,13 @@
 class ActivitiesController < ApplicationController
 
-  def new
-    @activity = current_vendor.activities.new
-  end
+
 
   def create
     @activity = current_vendor.activities.build(activities_params)
-    if(@activity.save)
-      redirect_to vendor_profile
+    if @activity.save
+      redirect_to vendor_profile_path
     else
+      redirect_to new_activities_path
     end
   end
 
@@ -16,7 +15,7 @@ class ActivitiesController < ApplicationController
   private
 
   def activities_params
-    params.require(:name, :location, :description, :price)
+    params.require(:activity).permit(:name, :location, :description, :price)
   end
 
 end
