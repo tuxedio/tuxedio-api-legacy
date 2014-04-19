@@ -11,7 +11,9 @@ TuxedoProto::Application.routes.draw do
   match '/vendor_profile', to: 'vendors#show', via: 'get'
 
   #RESOURCES
-  resource :customers
+  resource :customers do
+    resource :trips
+  end
   resource :vendors do
     resource :activities
   end

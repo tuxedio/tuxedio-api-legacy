@@ -19,4 +19,7 @@ class Customer < ActiveRecord::Base
 
   serialize :top_choices, Array
 
+  #ASSOCIATIONS
+  has_many :trips
+
 end

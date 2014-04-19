@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140416212746) do
+ActiveRecord::Schema.define(version: 20140419175857) do
 
   create_table "activities", force: true do |t|
     t.string   "name"
@@ -50,6 +50,15 @@ ActiveRecord::Schema.define(version: 20140416212746) do
 
   add_index "customers", ["email"], name: "index_customers_on_email", unique: true
   add_index "customers", ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
+
+  create_table "itinerary_items", force: true do |t|
+    t.integer "trip_id"
+    t.integer "activity_id"
+  end
+
+  create_table "trips", force: true do |t|
+    t.integer "customer_id"
+  end
 
   create_table "vendors", force: true do |t|
     t.string   "email",                  default: "", null: false
