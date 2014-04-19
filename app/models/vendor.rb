@@ -23,9 +23,9 @@ class Vendor < ActiveRecord::Base
   validates :state,        presence: true, on: :update
   validates :address,      presence: true, on: :update
   validates :country,      presence: true, on: :update
-  validates :coordinates,  presence: true, on: :update
   validates :confirmed,    presence: true, on: :update
 
+  serialized :coordinates, Hash
   validates_with VendorValidator
 
   #ASSOCIATIONS
