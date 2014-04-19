@@ -11,4 +11,4 @@
       .activity-price
         = activity.price
       .activity-edit
-        = link_to "Edit Activity", "#", {:class => 'btn btn-lg btn-primary'}
+        = link_to "Edit Activity", edit_vendors_activities_path(@activity, :id => activity.id), {:class => 'btn btn-lg btn-primary'}
