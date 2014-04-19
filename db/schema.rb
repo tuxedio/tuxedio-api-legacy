@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140416212746) do
+ActiveRecord::Schema.define(version: 20140419050658) do
 
   create_table "activities", force: true do |t|
     t.string   "name"
@@ -72,6 +72,11 @@ ActiveRecord::Schema.define(version: 20140416212746) do
     t.string   "location"
     t.integer  "vendor_id"
     t.integer  "zip_code"
+    t.string   "phone_number"
+    t.string   "sample_image"
+    t.string   "state"
+    t.string   "country"
+    t.text     "coordinates"
   end
 
   add_index "vendors", ["email"], name: "index_vendors_on_email", unique: true
