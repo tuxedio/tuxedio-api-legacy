@@ -13,10 +13,11 @@ Scenario: The vendor should be able to add a new activity and see it on their pr
   When the vendor submits valid activity information
   Then the vendor should see their new activity
 
-Scenario: The vendor should be able to add a new activity and see it on their profile
+Scenario: The vendor should not be able to submit an invalid activity
   Given the vendor visits the "Add an activity" page
   When the vendor submits invalid activity information
-  Then the vendor should see the "Add an activity" page
+  Then the vendor should redirect to the "Add an activity" page
+  And the vendor should see warnings
 
 Scenario: A user is logged out
   When the vendor clicks the "Sign out" link

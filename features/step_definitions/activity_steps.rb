@@ -2,6 +2,10 @@ Then(/^the vendor should see the "Add an activity" page$/) do
   expect(current_path).to eq(new_vendors_activities_path)
 end
 
+Then(/^the vendor should redirect to the "Add an activity" page$/) do
+  expect(current_path).to eq(vendors_activities_path)
+end
+
 Given(/^the vendor visits the "Add an activity" page$/) do
   visit new_vendors_activities_path
 end
@@ -31,4 +35,10 @@ end
 
 Then(/^they should see the vendor sign in page$/) do
   expect(current_path).to eq(new_vendor_session_path)
+end
+
+
+
+Then(/^the vendor should see warnings$/) do
+  expect(page).to have_selector('.alert.alert-warning')
 end

@@ -14,10 +14,10 @@ class ActivitiesController < ApplicationController
   def create
     @activity = current_vendor.activities.build(activities_params)
     if @activity.save
+      flash[:success] = "Activity successfully added!"
       redirect_to vendor_profile_path
     else
-      flash[:alert] = "Something went wrong"
-      redirect_to new_vendors_activities_path
+      render 'new'
     end
   end
 
