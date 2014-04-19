@@ -9,7 +9,13 @@ class Vendor < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
   #ACCESS ATTRIBUTES OF THE MODEL
-  attr_accessible :name, :email, :location, :zip_code, :password, :password_confirmation, :vendor_id, :description, :confirmed
+  attr_accessible :name, :email, :location, :zip_code, :password,
+                  :password_confirmation, :vendor_id, :description,
+                  :confirmed, :address, :phone_number, :country,
+                  :coordinates, :state, :sample_image
+
+  serialize :coordinates, Hash
+
 
   #VALIDATION
   validates :name,         presence: true, length: { maximum: 50 }
@@ -17,7 +23,6 @@ class Vendor < ActiveRecord::Base
   validates :email,        presence: true, email: true, uniqueness: true
   validates :zip_code,     presence: true, length: { maximum: 5 }
 
-  validates :confirmed,    presence: true, on: :update
   validates_with VendorValidator
 
   #ASSOCIATIONS
