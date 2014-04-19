@@ -1,0 +1,25 @@
+- provide(:title, 'Confirm details')
+.container
+  .row
+    .col-md-4.col-md-offset-4
+      .page-header
+        %h1
+          = current_vendor.name
+          .small
+            Confirm details
+            %span.glyphicon.glyphicon-list
+
+  .row
+    .col-md-4.col-md-offset-4
+      .panel.panel-primary
+        .panel-heading
+          %h5 Are these details correct?
+        %ul.list-group
+          - @data.each do |key, value|
+            - unless key == :vendor_coordinates or key == :vendor_image
+              %li.list-group-item= value
+
+  .row
+    .center
+      =link_to "Yes", '#', class: "btn btn-success btn-md"
+      =link_to "No", '#', class: "btn btn-danger btn-md"
