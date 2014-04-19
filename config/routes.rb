@@ -13,7 +13,7 @@ TuxedoProto::Application.routes.draw do
   #RESOURCES
   resource :vendors do
     collection do
-      get 'details'
+      get 'confirm_details'
     end
   end
 

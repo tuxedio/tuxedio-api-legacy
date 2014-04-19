@@ -21,7 +21,11 @@ class ApplicationController < ActionController::Base
       if resource.class.name == "Customer"
         return customer_profile_path
       elsif resource.class.name == "Vendor"
-        return vendor_profile_path
+        if current_vendor.sign_in_count < 2
+          confirm_details_vendors_path
+        else
+          vendor_profile_path
+        end
       else
         return root_path
       end
