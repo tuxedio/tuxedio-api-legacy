@@ -9,8 +9,8 @@ ipsum = "8-bit umami selvage cornhole asymmetrical cred. Scenester kitsch wolf, 
 samuelipsum = "Normally, both your asses would be dead as fucking fried chicken, but you happen to pull this shit while I'm in a transitional period so I don't wanna kill you, I wanna help you. But I can't give you this case, it don't belong to me. Besides, I've already been through too much shit this morning over this case to hand it over to your dumb ass."
 
 choices = ["Larkburger", "Tangerine", "Chataqua Park"]
-vend1 = Vendor.create!(name: "Larkburger", email: "Vendor1@example.com", location: "Boulder",
-             password: "mypassword1", password_confirmation: "mypassword1", zip_code: 80301)
+vend1 = Vendor.create!(name: "Larkburger", email: "larkburger@example.com", location: "Boulder",
+             password: "mypassword1", password_confirmation: "mypassword1", zip_code: 80302)
 vend1.confirm!
 
 vend2 = Vendor.create!(name: "Tangerine", email: "tangerine@example.com", location: "Boulder",

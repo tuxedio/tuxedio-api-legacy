@@ -77,6 +77,7 @@ ActiveRecord::Schema.define(version: 20140419050658) do
     t.string   "state"
     t.string   "country"
     t.text     "coordinates"
+    t.boolean  "confirmed"
   end
 
   add_index "vendors", ["email"], name: "index_vendors_on_email", unique: true
