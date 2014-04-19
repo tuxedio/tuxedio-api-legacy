@@ -1,12 +1,14 @@
 class ActivitiesController < ApplicationController
+  before_action :authenticate_vendor!, only: [:new, :create, :edit, :destroy]
 
   def new
-    if vendor_signed_in?
       @activity = current_vendor.activities.new
+  end
 
-    else
-      redirect_to new_vendor_session_path
-    end
+  def edit
+  end
+
+  def destroy
   end
 
   def create
