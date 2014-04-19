@@ -13,8 +13,8 @@ vend1 = Vendor.create!(name: "Larkburger", email: "Vendor1@example.com", locatio
              password: "mypassword1", password_confirmation: "mypassword1", zip_code: 80301)
 vend1.confirm!
 
-vend2 = Vendor.create!(name: "Tangerine", email: "Vendor2@example.com", location: "Boulder",
-             password: "mypassword1", password_confirmation: "mypassword1", zip_code: 80301)
+vend2 = Vendor.create!(name: "Tangerine", email: "tangerine@example.com", location: "Boulder",
+             password: "mypassword1", password_confirmation: "mypassword1", zip_code: 80304)
 vend2.confirm!
 
 vend3 = Vendor.create!(name: "Chataqua Park", email: "Vendor3@example.com", location: "Boulder",
