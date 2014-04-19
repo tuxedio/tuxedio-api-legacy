@@ -10,7 +10,7 @@ class Customer < ActiveRecord::Base
          :validatable, :confirmable
 
   attr_accessible :name, :email, :location, :password,
-                  :password_confirmation, :bio, :top_choices
+                  :password_confirmation, :bio, :top_choices, :picture
 
   validates :name,         presence: true, length: { maximum: 50 }
   validates :location,     presence: true, length: { maximum: 30 }
@@ -19,4 +19,6 @@ class Customer < ActiveRecord::Base
 
   serialize :top_choices, Array
 
+  has_attached_file :picture, :styles => { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
+  validates_attachment_content_type :picture, content_type: /\Aimage\/.*\Z/
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140416212746) do
+ActiveRecord::Schema.define(version: 20140419181150) do
 
   create_table "activities", force: true do |t|
     t.string   "name"
@@ -46,6 +46,10 @@ ActiveRecord::Schema.define(version: 20140416212746) do
     t.text     "bio"
     t.text     "top_choices"
     t.integer  "customer_id"
+    t.string   "picture_file_name"
+    t.string   "picture_content_type"
+    t.integer  "picture_file_size"
+    t.datetime "picture_updated_at"
   end
 
   add_index "customers", ["email"], name: "index_customers_on_email", unique: true
