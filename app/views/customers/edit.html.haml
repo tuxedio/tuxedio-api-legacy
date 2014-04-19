@@ -14,7 +14,7 @@
       .row
         .col-sm-4
           .customer-image
-            =image_tag current_customer.picture.url(:medium)
+            =image_tag current_customer.picture.url(:thumb)
         .col-sm-8
           .panel.panel-primary
             .panel-heading
@@ -47,4 +47,4 @@
 
   .row
     .pull-right
-      =link_to "Edit profile", customer_profile_edit_path, class: "btn btn-success btn-sm"
+      =link_to "Save changes", customer_profile_path, class: "btn btn-success btn-sm"
