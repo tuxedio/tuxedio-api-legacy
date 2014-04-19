@@ -75,6 +75,7 @@ ActiveRecord::Schema.define(version: 20140419050658) do
     t.string   "phone_number"
     t.string   "sample_image"
     t.string   "state"
+    t.string   "address"
     t.string   "country"
     t.text     "coordinates"
     t.boolean  "confirmed"

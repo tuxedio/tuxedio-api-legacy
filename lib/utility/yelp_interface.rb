@@ -1,6 +1,7 @@
 #require 'rubygems'
 require 'json'
 require 'oauth'
+require 'uri'
 
 class Yelp
 
@@ -8,7 +9,7 @@ class Yelp
   @@results_limit = 1
 
   def initialize( name, zip_code )
-    @name     = name
+    @name     = URI.encode_www_form_component(name)
     @zip_code = zip_code.to_s
   end
 
