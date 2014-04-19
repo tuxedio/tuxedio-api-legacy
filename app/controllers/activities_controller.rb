@@ -1,7 +1,12 @@
 class ActivitiesController < ApplicationController
 
   def new
-    @activity = current_vendor.activities.new
+    if vendor_signed_in?
+      @activity = current_vendor.activities.new
+
+    else
+      redirect_to new_vendor_session_path
+    end
   end
 
   def create
