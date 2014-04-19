@@ -37,12 +37,14 @@ class Yelp
   private
 
     def parse_data
-      data = JSON.parse(get_raw_data)['businesses'][0]
+      raw_data = get_raw_data
 
-      if data.nil?
-        'No vendor data.'
+      if raw_data.nil?
+        puts 'No vendor data.'
         return
       end
+        
+      data = JSON.parse(raw_data)['businesses'][0]
 
       name     = data['name']
       add      = data['location']['display_address'][0]
