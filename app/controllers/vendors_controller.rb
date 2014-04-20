@@ -13,7 +13,7 @@ class VendorsController < ApplicationController
     @data ||= get_vendor_data
 
     if @data == false
-      redirect_to root_path
+      redirect_to vendor_profile_path
     end
 
   end

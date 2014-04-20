@@ -3,6 +3,7 @@ module Yelp
   def get_vendor_data
     data = parse_data
 
+
     if data.nil? or data.values.any? {|x| x.nil?}
       return false
     end
@@ -12,7 +13,6 @@ module Yelp
 
   def get_vendor_json
     data = get_raw_data
-
     if data.nil?
       return false
     end
@@ -23,12 +23,13 @@ module Yelp
   def parse_data
     raw_data = get_raw_data
 
-    data = JSON.parse(raw_data)['businesses'][0]
+    data = JSON.parse(raw_data)
 
-    if data.nil?
-      puts 'No vendor data.'
+    if data['total'] == 0
       return
     end
+
+    data = data['businesses'][0]
 
     name     = data['name']
     add      = data['location']['display_address'][0]

@@ -47,3 +47,4 @@ end
 Then /^the vendor should see the home page$/ do
   expect(page).to have_title('Tuxedo | Home')
 end
+

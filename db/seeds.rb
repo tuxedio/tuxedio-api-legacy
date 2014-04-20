@@ -21,9 +21,15 @@ vend3 = Vendor.create!(name: "Chataqua Park", email: "Vendor3@example.com", loca
              password: "mypassword1", password_confirmation: "mypassword1", zip_code: 80301)
 vend3.confirm!
 
-vender = Vendor.create!(name: "Example Vendor", email: "vendor@vendor.com", location: "Boulder",
+vend4 = Vendor.create!(name: "Example Vendor", email: "vendor@vendor.com", location: "Boulder",
              password: "mypassword1", password_confirmation: "mypassword1", zip_code: 80027)
-vender.confirm!
+vend4.confirm!
+
+vend5 = Vendor.create!(name: "gdfgdsfgasdf", email: "dummy@vendor.com", location: "Boulder",
+             password: "mypassword1", password_confirmation: "mypassword1", zip_code: 80027)
+vend5.confirm!
+
+
 
 
 cust1 = Customer.create!(name: "John", email: "customer1@example.com", location: "Boulder",
