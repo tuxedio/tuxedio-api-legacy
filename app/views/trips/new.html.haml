@@ -1,12 +1,15 @@
 - provide(:title, "Create a Trip")
 
-%h1 Create a New Trip
+%h1 Create a new trip
 
 .row
   .col-md-6
     = bootstrap_form_for(@trip, url: customers_trips_path) do |f|
       = render 'shared/error_messages', object: f.object
 
-      = f.text_field :trip_name
+      = f.text_field :trip_name, label: "What would you like to call this trip?"
+      = f.text_field :location, label: "Where will you be going?"
+      = f.date_select :start_date, { :label => "What is the start date for your trip?", :start_year => Time.new.year }
+      = f.number_field :number_of_days, value: 1, in: 1...90,  label: "How many days will you be going for?"
 
       = f.submit "Create Trip", class: "btn btn-large btn-primary"

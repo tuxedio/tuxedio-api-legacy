@@ -13,7 +13,7 @@
 .row
   .itinerary
     %h2
-      = @current_trip.trip_name
+      = @current_trip.trip_name + " to " + @current_trip.location + " starting on " + @current_trip.start_date.strftime('%A, %B %e, %Y')
     %br
     = render @activities
 
