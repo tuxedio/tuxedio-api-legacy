@@ -3,6 +3,14 @@ class TripsController < ApplicationController
 
   def show
     @trips = current_customer.trips
+
+    if(@trips.load.empty?)
+      flash[:notice] = "You currently have no trips created. Please create a trip to get started."
+      redirect_to new_customers_trips_path
+      return
+    end
+
+    #this should be moved to its own method. It sets the current trip off the session variable.
     @selected_trip = params[:trip_selection]
     @selected_trip ||= session[:trip_selection]
     if @selected_trip && !@selected_trip.empty?
@@ -10,8 +18,8 @@ class TripsController < ApplicationController
     else
       @selected_trip = session[:trip_selection]
     end
-    if !@selected_trip
-      @selected_trip = @trips.last.id
+    if !(@selected_trip = @trips.find_by_id(@selected_trip))
+      @selected_trip = @trips.first.id
     end
     @current_trip = @trips.find_by_id(@selected_trip)
     @activities = @current_trip.activities
