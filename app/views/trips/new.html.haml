@@ -8,7 +8,7 @@
       = render 'shared/error_messages', object: f.object
 
       = f.text_field :trip_name, label: "What would you like to call this trip?"
-      = f.text_field :location, label: "Where will you be going?"
+      = f.select :location, options_for_select(Vendor.allowed_locations, params[:location]), label: "Where will you be going?" 
       = f.date_select :start_date, { :label => "What is the start date for your trip?", :start_year => Time.new.year }
       = f.number_field :number_of_days, value: 1, in: 1...90,  label: "How many days will you be going for?"
 
