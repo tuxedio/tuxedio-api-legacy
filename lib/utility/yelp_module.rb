@@ -1,10 +1,4 @@
-#require 'rubygems'
-require 'json'
-require 'oauth'
-require 'uri'
-
 module Yelp
-
 
   def get_vendor_data
     data = parse_data
@@ -25,7 +19,6 @@ module Yelp
 
     return data
   end
-
 
   def parse_data
     raw_data = get_raw_data
