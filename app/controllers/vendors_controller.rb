@@ -11,10 +11,11 @@ class VendorsController < ApplicationController
   def confirm_details
 
     @data ||= get_vendor_data
+
     if @data == false
       redirect_to root_path
     end
-    
+
   end
 
   def update_details

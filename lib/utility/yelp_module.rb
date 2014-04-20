@@ -23,12 +23,12 @@ module Yelp
   def parse_data
     raw_data = get_raw_data
 
-    if raw_data.nil?
+    data = JSON.parse(raw_data)['businesses'][0]
+
+    if data.nil?
       puts 'No vendor data.'
       return
     end
-
-    data = JSON.parse(raw_data)['businesses'][0]
 
     name     = data['name']
     add      = data['location']['display_address'][0]
