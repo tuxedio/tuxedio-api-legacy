@@ -1,8 +1,9 @@
 module Yelp
 
+  # Main module method: this will return a
+  # hash of the Yelp vendor data.
   def get_vendor_data
     data = parse_data
-
 
     if data.nil? or data.values.any? {|x| x.nil?}
       return false
@@ -20,6 +21,7 @@ module Yelp
     return data
   end
 
+  # Convert raw JSON into Ruby hash
   def parse_data
     raw_data = get_raw_data
 
@@ -56,7 +58,6 @@ module Yelp
 
 
     if access_token.nil?
-      'Access Token is nil.'
       return
     end
 
@@ -65,7 +66,9 @@ module Yelp
   end
 
   def get_access_token
-
+    # Eventually this info should be hidden once
+    # we configure secrets.yml
+    # Info is benign, however
     info = {
       cons_key:     'jfVdueylcOuv7LseRvDL7w',
       cons_secret:  'hf9Ry3bdpdGt0f3QuUDNL6QV8hM',

@@ -15,6 +15,7 @@
         .panel-heading
           %h5 Are these details correct?
         %ul.list-group
+          / Loop through Yelp vendor hash, put them in table
           - @data.each do |key, value|
             - unless key == :vendor_coordinates or key == :vendor_image
               %li.list-group-item= value

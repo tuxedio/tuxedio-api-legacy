@@ -9,7 +9,7 @@ class VendorsController < ApplicationController
   end
 
   def confirm_details
-
+    #Vendor info pulled from Yelp
     @data ||= get_vendor_data
 
     if @data == false
@@ -18,6 +18,9 @@ class VendorsController < ApplicationController
 
   end
 
+  # If customer confirms details are correct,
+  # this controller will update database with
+  # information from Yelp.
   def update_details
 
     @data ||= get_vendor_data
