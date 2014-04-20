@@ -15,5 +15,5 @@ class Activity < ActiveRecord::Base
   #ASSOCIATIONS
   belongs_to :vendor
   has_many :itinerary_items
-  has_many :trips through: :itinerary_items
+  has_many :trips, through: :itinerary_items
 end

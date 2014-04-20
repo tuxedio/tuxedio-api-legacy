@@ -1,8 +1,11 @@
 class Trip < ActiveRecord::Base
 
+  #ACCESSORS
+  attr_accessible :trip_name, :customer_id
+
   #VALIDATION
-  validates :itinerary_item_id,  presence: true}
-  validates :customer_id,   presence: true}
+  validates :trip_name,  presence: true
+  validates :customer_id,   presence: true
 
   #ASSOCIATIONS
   belongs_to :customer

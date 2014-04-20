@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(version: 20140419175857) do
 
   create_table "trips", force: true do |t|
     t.integer "customer_id"
+    t.string  "trip_name"
   end
 
   create_table "vendors", force: true do |t|

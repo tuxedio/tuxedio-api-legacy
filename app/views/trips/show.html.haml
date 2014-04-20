@@ -1,7 +1,17 @@
 - provide(:title, current_customer.name + "s Trips")
 
-%h1 My Trips
+%h1 My Trip Itinerary
 
 .row
-  = "Trip Selection"
+  .trip-selector
+    = "Trip Selection -- which trip"
+    = bootstrap_form_tag(url: '/customers/trips', method: 'get', layout: :inline) do |f|
+      = f.collection_select(:trip_selection, @trips.all, :id, :trip_name, options = {:hide_label => true, :prompt => "-- Select another trip to View --"})
+      = f.submit "View Trip"
 .row
+  .itinerary
+    %h2
+      = @current_trip.trip_name
+    %br
+    = render @activities
+
