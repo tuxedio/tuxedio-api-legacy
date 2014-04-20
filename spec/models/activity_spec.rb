@@ -43,7 +43,7 @@ describe "Activity".upcase.colorize(:light_blue) do
   describe "\nactivity Validation".upcase.colorize(:light_blue) do
 
     describe "when name is too long" do
-      before { @activity.name = "z" * 51 }
+      before { @activity.name = "z" * 101 }
       it { should_not be_valid }
     end
 

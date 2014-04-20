@@ -3,7 +3,7 @@ class Activity < ActiveRecord::Base
 
   attr_accessible   :name, :location, :price, :description, :vendor_id
 
-  validates  :name,         presence: true, length: { maximum: 30  }
+  validates  :name,         presence: true, length: { maximum: 100  }
   validates  :location,     presence: true, length: { maximum: 30  }
   validates  :description,  presence: true, length: { maximum: 160 }
   validates  :price,        presence: true,
