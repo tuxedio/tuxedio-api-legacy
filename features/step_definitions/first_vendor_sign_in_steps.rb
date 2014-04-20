@@ -10,3 +10,14 @@ Then /^the vendor should see the confirm details page$/ do
   expect(page).to have_title("Tuxedo | Confirm details")
 end
 
+# When /^the vendor clicks (.*?)$/ do
+# 	click_link 'Yes'
+# end
+
+Then /^the vendors information should be updated$/ do
+	expect(page).to have_selector('div.alert.alert-success')
+end
+
+Then /^the vendors information should not be updated$/ do
+	expect(page).to_not have_selector('div.alert.alert-success')
+end

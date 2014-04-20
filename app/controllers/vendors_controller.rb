@@ -33,6 +33,8 @@ class VendorsController < ApplicationController
       confirmed: true
     )
 
+    flash[:success] = "Success! Your information was updated."
+
     redirect_to vendor_profile_path
 
   end

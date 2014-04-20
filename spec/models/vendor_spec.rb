@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'yelp_interface'
 
 describe "Vendor Create".upcase.colorize(:light_blue) do
   before { @vendor =
