@@ -12,6 +12,8 @@
       .row-padding
         = f.select :location, options_for_select(Vendor.allowed_locations, params[:location])
       .row-padding
+        = f.file_field :picture
+      .row-padding
         = f.text_field :zip_code
       .row-padding
         = f.password_field :password, autocomplete: "off"
