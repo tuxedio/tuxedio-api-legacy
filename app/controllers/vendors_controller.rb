@@ -13,6 +13,7 @@ class VendorsController < ApplicationController
     @data ||= get_vendor_data
 
     if @data == false
+      current_vendor.update(confirmed: true)
       redirect_to vendor_profile_path
     end
 
