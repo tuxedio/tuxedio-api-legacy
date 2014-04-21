@@ -8,7 +8,7 @@ end
 
 Given /^the vendor has an invalid Yelp information, yet hasn't logged in$/ do
   #creates a Vendor
-  @vendor = Vendor.create!(name: "hfgjfsfdtgdf", email: "vendor@example.com", password: "mypassword",password_confirmation: "mypassword", location: "Broomfield", zip_code: 80301, confirmed: false)
+  @vendor = Vendor.create!(name: "hfgjfsfdtgdf", email: "vendor@example.com", password: "mypassword",password_confirmation: "mypassword", location: "Broomfield", zip_code: 11111, confirmed: false)
   @vendor.confirm!
 end
 

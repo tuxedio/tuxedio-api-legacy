@@ -25,9 +25,10 @@ module Yelp
   def parse_data
     raw_data = get_raw_data
 
+
     data = JSON.parse(raw_data)
 
-    if data['total'] == 0
+    if data['total'] == 0 or data['error']
       return
     end
 
