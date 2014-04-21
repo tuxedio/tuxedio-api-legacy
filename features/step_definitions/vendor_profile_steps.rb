@@ -3,7 +3,7 @@ Given(/^a vendor is logged in$/) do
     Given a vendor visits the signin page
     And the vendor has an account
     When the vendor submits valid signin information
-    Then the vendor should see their profile page
+    Then the vendor should see the home page
     Given a vendor visits the home page
   }
 end

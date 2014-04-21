@@ -1,0 +1,27 @@
+- provide(:title, 'Confirm details')
+
+.col-sm-6.col-sm-offset-3.well.form-box
+  .col-sm-12
+    .row
+      %h1
+        .text-center
+          =current_vendor.name
+          .small
+            %span.glyphicon.glyphicon-list
+            Confirm details
+
+    .row.top-buffer
+      .col-md-4.col-md-offset-4
+        .panel.panel-default
+          .panel-heading
+            %h5 Are these details correct?
+          %ul.list-group
+            / Loop through Yelp vendor hash, put them in table
+            - @data.each do |key, value|
+              - unless key == :vendor_coordinates or key == :vendor_image
+                %li.list-group-item= value
+
+    .row
+      .center
+        =link_to "Yes", update_details_vendors_path, class: "btn btn-success btn-md"
+        =link_to "No", vendor_profile_path,  class: "btn btn-danger btn-md"

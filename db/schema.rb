@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140416212746) do
+ActiveRecord::Schema.define(version: 20140419050658) do
 
   create_table "activities", force: true do |t|
     t.string   "name"
@@ -52,12 +52,12 @@ ActiveRecord::Schema.define(version: 20140416212746) do
   add_index "customers", ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
 
   create_table "vendors", force: true do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "email",                  default: "",    null: false
+    t.string   "encrypted_password",     default: "",    null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",          default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -72,6 +72,13 @@ ActiveRecord::Schema.define(version: 20140416212746) do
     t.string   "location"
     t.integer  "vendor_id"
     t.integer  "zip_code"
+    t.string   "phone_number"
+    t.string   "sample_image"
+    t.string   "state"
+    t.string   "address"
+    t.string   "country"
+    t.text     "coordinates"
+    t.boolean  "confirmed",              default: false
   end
 
   add_index "vendors", ["email"], name: "index_vendors_on_email", unique: true
