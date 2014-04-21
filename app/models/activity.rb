@@ -1,7 +1,7 @@
 class Activity < ActiveRecord::Base
   PRICE_REGEX = /\A^\d+??(?:\.\d{0,2})?$\z/
 
-  attr_accessible   :name, :location, :price, :description, :vendor_id
+  attr_accessible   :name, :location, :price, :description, :vendor_id, :picture
 
   validates  :name,         presence: true, length: { maximum: 100  }
   validates  :location,     presence: true, length: { maximum: 30  }
