@@ -9,7 +9,7 @@ class Trip < ActiveRecord::Base
   validates :start_date, presence: true
   validates :number_of_days, presence: true, numericality: { greater_than_or_equal_to: 0 }
 
-  validates_with VendorValidator
+  validates_with LocationValidator
 
   #ASSOCIATIONS
   belongs_to :customer

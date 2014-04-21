@@ -16,7 +16,7 @@ class Vendor < ActiveRecord::Base
   validates :location,     presence: true, length: { maximum: 30 }
   validates :email,        presence: true, email: true, uniqueness: true
   validates :zip_code,     presence: true, length: { maximum: 5 }
-  validates_with VendorValidator
+  validates_with LocationValidator
 
   #ASSOCIATIONS
   has_many :activities
