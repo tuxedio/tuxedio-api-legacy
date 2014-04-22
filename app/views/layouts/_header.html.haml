@@ -9,7 +9,7 @@
 
     #tuxedo-navbar-collapse.collapse.navbar-collapse
       .nav.navbar-nav.navbar-right
-        %li{ class: ( (current_page? root_path) and 'active') }= link_to "Explore", '#'
+        %li{ class: ( (current_page? explore_path) and 'active') }= link_to "Explore", explore_path 
         %li= link_to "Local's Pick", "#"
         %li= link_to "Blog", "#"
         - if customer_signed_in?
