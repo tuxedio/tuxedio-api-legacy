@@ -42,4 +42,12 @@ namespace :db do
       end
     end
   end
+
+  task :rollback do
+    on roles(:app), in: :sequence do
+      within "#{current_path}" do
+        execute :rake, 'db:rollback RAILS_ENV=production'
+      end
+    end
+  end
 end

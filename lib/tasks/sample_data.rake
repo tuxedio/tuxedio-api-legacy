@@ -16,12 +16,12 @@ namespace :db do
       email = Faker::Internet.safe_email
       password  = "password"
       location = "Boulder"
-      customer = Customer.create!(name: name,
+      customers = Customer.create!(name: name,
                        email: email,
                        location: location,
                        password: password,
                        password_confirmation: password)
-      customer.confirm!
+      customers.confirm!
     end
 
 
@@ -31,13 +31,13 @@ namespace :db do
       password  = "password"
       location = "Boulder"
       zip_code = Faker::Address.zip
-      vendor = Vendor.create!(name: name,
+      vendors = Vendor.create!(name: name,
                        email: email,
                        location: location,
                        zip_code: zip_code,
                        password: password,
                        password_confirmation: password)
-      vendor.confirm!
+      vendors.confirm!
     end
     vendors = Vendor.all(limit: 10)
     vendors.each { |vendor|
@@ -49,6 +49,8 @@ namespace :db do
         vendor.activities.create!(name: activity_name, description: activity_description, location: activity_location, price: activity_price)
       end
     }
+    customer.trips.create(trip_name: "My Trip", location: "Boulder", start_date: Time.now, number_of_days: 2)
+    ItineraryItem.create(activity_id: Activity.all.first.id, trip_id: Trip.all.first.id)
 
   end
 end

@@ -17,6 +17,7 @@ FactoryGirl.define do
     name     "MyVendor"
     email    "vendor@example.com"
     location "Boulder"
+    zip_code "80301"
     password "foobar1234"
     password_confirmation "foobar1234"
   end
@@ -25,6 +26,7 @@ FactoryGirl.define do
     name     "Larkburger"
     email    "test1@vend.com"
     location "Boulder"
+    zip_code "80301"
     password "foobar1234"
     password_confirmation "foobar1234"
   end
@@ -33,6 +35,7 @@ FactoryGirl.define do
     name     "Sushi Tora"
     email    "test2@vend.com"
     location "Boulder"
+    zip_code "80301"
     password "foobar1234"
     password_confirmation "foobar1234"
   end
@@ -41,6 +44,7 @@ FactoryGirl.define do
     name     "Illegal Pete's"
     email    "test3@vend.com"
     location "Boulder"
+    zip_code "80301"
     password "foobar1234"
     password_confirmation "foobar1234"
   end
