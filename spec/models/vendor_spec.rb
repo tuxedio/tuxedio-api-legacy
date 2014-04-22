@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-describe "Vendor".upcase.colorize(:light_blue) do
+describe "Vendor Create".upcase.colorize(:light_blue) do
   before { @vendor =
-           Vendor.new(name: "New Vendor", email: "Vendor@example.com", location: "Boulder", password: "mypassword", password_confirmation: "mypassword", zip_code: 80301)  }
+           Vendor.new(name: "Larkburger", email: "Vendor@example.com", location: "Boulder", password: "mypassword", password_confirmation: "mypassword", zip_code: 80301)  }
   subject { @vendor }
 
   it { should respond_to(:name) }
@@ -12,6 +12,12 @@ describe "Vendor".upcase.colorize(:light_blue) do
   it { should respond_to(:vendor_id) }
   it { should respond_to(:password_confirmation) }
   it { should respond_to(:zip_code) }
+  it { should respond_to(:address) }
+  it { should respond_to(:coordinates) }
+  it { should respond_to(:country) }
+  it { should respond_to(:confirmed) }
+  it { should respond_to(:state) }
+  it { should respond_to(:sample_image) }
 
   it { should be_valid }
 
@@ -120,4 +126,21 @@ describe "Vendor".upcase.colorize(:light_blue) do
       it { should be_invalid }
     end
   end
+
+  describe "vendor confirms details with Yelp" do
+
+    describe "when vendor confirms details from Yelp" do
+      before do
+       @vendor.update(
+          name: "Tangerine", location: "Boulder",
+          zip_code: "80304", address: "123 Elm St.",
+          phone_number: "555-555-5555", country: "US",
+          coordinates: {:latitude => "100", :longitude => "100"}, state: "CO",
+          confirmed: true, sample_image: "test"
+        )
+     end
+      it { should be_valid }
+    end
+  end
 end
+

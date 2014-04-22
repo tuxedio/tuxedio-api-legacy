@@ -4,8 +4,10 @@
     %section
       = image_tag current_vendor.picture.url(:medium)
       .vendor-edit-link
-        = link_to "Edit Profile", edit_vendor_registration_path, {:class => 'btn btn-lg btn-primary'}
-        =link_to 'Add an activity', new_vendors_activities_path, {:class => 'btn btn-lg btn-primary'}
+        = link_to "Edit Profile", edit_vendor_registration_path, {:class => 'btn btn-sm btn-primary'}
+        = link_to 'Add an activity', new_vendors_activities_path, {:class => 'btn btn-sm btn-primary'}
+        = unless current_vendor.confirmed?
+          = link_to 'Import data from Yelp', confirm_details_vendors_path, {:class => 'btn btn-sm btn-primary'}
   .col-md-8
     %section
       .vendor-name

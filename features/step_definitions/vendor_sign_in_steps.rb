@@ -17,7 +17,8 @@ end
 
 Given /^the vendor has an account$/ do
   #creates a Vendor
-  @vendor = Vendor.create(name: "Example User", email: "vendor@example.com", password: "foobar",password_confirmation: "foobar", location: "Broomfield")
+  @vendor = Vendor.create!(name: "Example User", email: "vendor@example.com", password: "mypassword",password_confirmation: "mypassword", location: "Broomfield", zip_code: 80301)
+  @vendor.update confirmed: true
   @vendor.confirm!
 end
 
@@ -25,6 +26,10 @@ When /^the vendor submits valid signin information$/ do
   fill_in "vendor_email",    with: @vendor.email
   fill_in "Password", with: @vendor.password
   click_button "Sign in"
+end
+
+Then /^the vendor should see confirm details page$/ do
+  expect(page).to have_title("Tuxedo | Confirm details")
 end
 
 Then /^the vendor should see their profile page$/ do
@@ -42,3 +47,4 @@ end
 Then /^the vendor should see the home page$/ do
   expect(page).to have_title('Tuxedo | Home')
 end
+
