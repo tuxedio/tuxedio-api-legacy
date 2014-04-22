@@ -338,6 +338,7 @@ DEPENDENCIES
   protected_attributes (= 1.0.7)
   rails (= 4.0.3)
   rails_12factor (= 0.0.2)
+  rake
   rspec-rails (= 2.13.1)
   sass-rails (~> 4.0.2)
   sdoc (= 0.3.20)
