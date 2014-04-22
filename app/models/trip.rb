@@ -4,10 +4,10 @@ class Trip < ActiveRecord::Base
   attr_accessible :trip_name, :customer_id, :location, :start_date, :number_of_days
 
   #VALIDATION
-  validates :trip_name,  presence: true
-  validates :customer_id,   presence: true
-  validates :start_date, presence: true
-  validates :number_of_days, presence: true, numericality: { greater_than_or_equal_to: 0 }
+  validates :trip_name,      presence: true
+  validates :customer_id,    presence: true
+  validates :start_date,     presence: true
+  validates :number_of_days, presence: true, numericality: { greater_than: 0 }
 
   validates_with LocationValidator
   validates_with FutureDateValidator
