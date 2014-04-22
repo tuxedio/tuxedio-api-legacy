@@ -10,8 +10,8 @@
           See what's happening around town.
 
 .row
-  =9.times do
-    =render "activities/explore_activity"
+  =9.times do |i|
+    =render "activities/explore_activity", name: @act_arr[i].name, desc: @act_arr[i].description
 
 
 

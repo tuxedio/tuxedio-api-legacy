@@ -2,6 +2,6 @@
   .thumbnail
     =image_tag "https://www.ocoos.com/images/product/509414141eaa4_skydive01.jpg"
   .caption
-    %h3= Activity.find_by_id(1).name
-    %p=  Activity.find_by_id(1).description
+    %h3= name
+    %p=  desc
     %p.center=link_to 'Add to trip', '#', class: 'btn btn-primary'
