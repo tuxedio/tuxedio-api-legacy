@@ -10,10 +10,18 @@ TuxedoProto::Application.routes.draw do
   match '/customer_profile', to: 'customers#show', via: 'get'
   match '/vendor_profile', to: 'vendors#show', via: 'get'
 
-  #RESOURCES
-  resource :customers do
-    resource :trips
+  # Routes for Yelp information
+  resource :vendors do
+    collection do
+      get 'confirm_details'
+      get 'update_details'
+    end
   end
+
+  resource :customers do
+	 resource :trips
+  end
+
   resource :vendors do
     resource :activities
   end
