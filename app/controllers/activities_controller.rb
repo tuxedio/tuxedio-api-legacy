@@ -35,6 +35,9 @@ class ActivitiesController < ApplicationController
     end
   end
 
+  def explore
+  end
+
 
   private
 
