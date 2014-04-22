@@ -3,54 +3,15 @@
 .row
   .col-md-4.col-md-offset-4
     .page-header
-      %h1.center 
-        Explore 
+      %h1.center
+        Explore
         .small
           %span.glyphicon.glyphicon-glass
           See what's happening around town.
 
 .row
-  .col-sm-6.col-md-4.explore-activity.well
-    .thumbnail
-      =image_tag "https://www.ocoos.com/images/product/509414141eaa4_skydive01.jpg"
-    .caption
-      %h3= Activity.find_by_id(1).name 
-      %p=  Activity.find_by_id(1).description 
-      %p.center=link_to 'Add to trip', '#', class: 'btn btn-primary'
-  .col-sm-6.col-md-4.explore-activity.well
-    .thumbnail
-      =image_tag "https://www.ocoos.com/images/product/509414141eaa4_skydive01.jpg"
-    .caption
-      %h3= Activity.find_by_id(1).name 
-      %p=  Activity.find_by_id(1).description 
-      %p.center=link_to 'Add to trip', '#', class: 'btn btn-primary'
-  .col-sm-6.col-md-4.explore-activity.well
-    .thumbnail
-      =image_tag "https://www.ocoos.com/images/product/509414141eaa4_skydive01.jpg"
-    .caption
-      %h3= Activity.find_by_id(1).name 
-      %p=  Activity.find_by_id(1).description 
-      %p.center=link_to 'Add to trip', '#', class: 'btn btn-primary'
+  =9.times do
+    =render "activities/explore_activity"
 
-.row
-  .col-sm-6.col-md-4.explore-activity.well
-    .thumbnail
-      =image_tag "https://www.ocoos.com/images/product/509414141eaa4_skydive01.jpg"
-    .caption
-      %h3= Activity.find_by_id(1).name 
-      %p=  Activity.find_by_id(1).description 
-      %p.center=link_to 'Add to trip', '#', class: 'btn btn-primary'
-  .col-sm-6.col-md-4.explore-activity.well
-    .thumbnail
-      =image_tag "https://www.ocoos.com/images/product/509414141eaa4_skydive01.jpg"
-    .caption
-      %h3= Activity.find_by_id(1).name 
-      %p=  Activity.find_by_id(1).description 
-      %p.center=link_to 'Add to trip', '#', class: 'btn btn-primary'
-  .col-sm-6.col-md-4.explore-activity.well
-    .thumbnail
-      =image_tag "https://www.ocoos.com/images/product/509414141eaa4_skydive01.jpg"
-    .caption
-      %h3= Activity.find_by_id(1).name 
-      %p=  Activity.find_by_id(1).description 
-      %p.center=link_to 'Add to trip', '#', class: 'btn btn-primary'
+
+
