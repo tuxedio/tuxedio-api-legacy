@@ -3,8 +3,8 @@
     .thumbnail
       =image_tag "https://www.ocoos.com/images/product/509414141eaa4_skydive01.jpg"
     .caption
-      %h4.center-block= name
+      %h4.explore-name= name
       .explore-description
-        = desc
-      %p=  "$" + price.to_s
+        %p= desc
+      %p=  '$' + price.to_s + '0'
       %center=link_to 'Add to trip',  customer_signed_in? ? '#' : customer_session_path, class: 'btn btn-primary'

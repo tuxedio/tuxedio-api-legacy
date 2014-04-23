@@ -11,19 +11,17 @@
 
 .container
   .row
+    / Cart
     .sidebar.col-sm-3
       .sidebar-cart.affix
         .well
           %h3 Cart
           %p Here is a collection of your various activies. Use this area to plan, experiment, and see what you might want to do.
 
+    /Activities
     .col-sm-9
       -9.times do |i|
         =render "activities/explore_activity",
           name:  @act_arr[i].name,
           desc:  @act_arr[i].description,
           price: @act_arr[i].price
-
-
-
-
