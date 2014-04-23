@@ -9,11 +9,12 @@
 
     #tuxedo-navbar-collapse.collapse.navbar-collapse
       .nav.navbar-nav.navbar-right
-        %li{ class: ( (current_page? explore_path) and 'active') }= link_to "Explore", explore_path 
+        %li{ class: ( (current_page? explore_path) and 'active') }= link_to "Explore", explore_path
         %li= link_to "Local's Pick", "#"
         %li= link_to "Blog", "#"
+        %li{ class: ( (current_page? customers_trips_path) and 'active') }= link_to "My Trips", customers_trips_path
         - if customer_signed_in?
-          %li= link_to "Users", '#'
+          / %li= link_to "Users", '#'
           %li.dropdown
             %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
               My Profile
@@ -25,7 +26,7 @@
               %li
                 =link_to "Sign out", destroy_customer_session_path, method: "delete"
         - elsif vendor_signed_in?
-          %li= link_to "Businesses", '#'
+          / %li= link_to "Businesses", '#'
           %li.dropdown
             %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
               My Account
