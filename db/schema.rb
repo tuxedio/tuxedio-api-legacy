@@ -59,6 +59,19 @@ ActiveRecord::Schema.define(version: 20140420192415) do
   add_index "customers", ["email"], name: "index_customers_on_email", unique: true
   add_index "customers", ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
 
+  create_table "itinerary_items", force: true do |t|
+    t.integer "trip_id"
+    t.integer "activity_id"
+  end
+
+  create_table "trips", force: true do |t|
+    t.integer "customer_id"
+    t.string  "trip_name"
+    t.string  "location"
+    t.date    "start_date"
+    t.integer "number_of_days"
+  end
+
   create_table "vendors", force: true do |t|
     t.string   "email",                  default: "",    null: false
     t.string   "encrypted_password",     default: "",    null: false

@@ -12,8 +12,12 @@ class Activity < ActiveRecord::Base
   validates  :vendor_id,    presence: true
   validates_presence_of :vendor
 
+  #ASSOCIATIONS
   belongs_to :vendor
 
   has_attached_file :picture, :styles => { medium: "300x300#", thumb: "100x100#" }, default_url: ActionController::Base.helpers.asset_path('missing_activity_pic.jpg')
   validates_attachment_content_type :picture, content_type: /\Aimage\/.*\Z/
+
+  has_many :itinerary_items
+  has_many :trips, through: :itinerary_items
 end

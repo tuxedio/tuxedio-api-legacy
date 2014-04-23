@@ -19,7 +19,10 @@ TuxedoProto::Application.routes.draw do
     end
   end
 
-  resource :customers
+  resource :customers do
+	 resource :trips
+  end
+
   resource :vendors do
     resource :activities
   end

@@ -21,4 +21,7 @@ class Customer < ActiveRecord::Base
 
   has_attached_file :picture, :styles => { medium: "300x300#", thumb: "100x100#" }, default_url: ActionController::Base.helpers.asset_path('missing_avatar.jpg')
   validates_attachment_content_type :picture, content_type: /\Aimage\/.*\Z/
+
+  #ASSOCIATIONS
+  has_many :trips
 end
