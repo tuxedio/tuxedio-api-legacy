@@ -13,7 +13,6 @@ describe "Activity".upcase.colorize(:light_blue) do
     )
   }
 
-
   before { @activity =  Activity.new(
       name: "Skydiving",
       price: 150.00,
