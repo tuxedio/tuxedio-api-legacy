@@ -1,3 +1,4 @@
+@explore
 Feature: As a user, I should be able to view activities with the explore page.
 
   Scenario: Customer (signed in)
