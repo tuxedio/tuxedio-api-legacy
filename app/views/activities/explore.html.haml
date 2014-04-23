@@ -9,21 +9,20 @@
           %span.glyphicon.glyphicon-glass
           See what's happening around town.
 
-.row
-  -(@display_count / 3).times do |i|
-    =render "activities/explore_activity",
-      name:  @act_arr[i].name,
-      desc:  @act_arr[i].description,
-      price: @act_arr[i].price
-    =render "activities/explore_activity",
-      name:  @act_arr[i+1].name,
-      desc:  @act_arr[i+1].description,
-      price: @act_arr[i+1].price
-    =render "activities/explore_activity",
-      name:  @act_arr[i+2].name,
-      desc:  @act_arr[i+2].description,
-      price: @act_arr[i+2].price
-    .clearfix.visible-md
+.container
+  .row
+    .sidebar.col-sm-3
+      .sidebar-cart.affix
+        .well
+          %h3 Cart
+          %p Here is a collection of your various activies. Use this area to plan, experiment, and see what you might want to do.
+
+    .col-sm-9
+      -9.times do |i|
+        =render "activities/explore_activity",
+          name:  @act_arr[i].name,
+          desc:  @act_arr[i].description,
+          price: @act_arr[i].price
 
 
 
