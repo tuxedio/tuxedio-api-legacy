@@ -38,9 +38,10 @@ class ActivitiesController < ApplicationController
   def explore
     @act_arr   ||= []
     @act_count ||= Activity.count
+    @display_count = @act_count
 
     # Pick random activities from database to display in view
-    9.times do
+    @act_count.times do
       @act_arr << Activity.find_by_id(Random.rand(@act_count) + 1)
     end
   end

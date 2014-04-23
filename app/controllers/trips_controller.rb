@@ -18,7 +18,7 @@ class TripsController < ApplicationController
     else
       @selected_trip = session[:trip_selection]
     end
-    if !(@selected_trip = @trips.find_by_id(@selected_trip))
+    unless (@selected_trip = @trips.find_by_id(@selected_trip))
       @selected_trip = @trips.first.id
     end
     @current_trip = @trips.find_by_id(@selected_trip)

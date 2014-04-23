@@ -1,7 +1,10 @@
-.col-sm-6.col-md-4.explore-activity.well
+.col-sm-6.col-md-4.well.explore-activity
   .thumbnail
     =image_tag "https://www.ocoos.com/images/product/509414141eaa4_skydive01.jpg"
   .caption
-    %h3= name
-    %p=  desc
-    %p.center=link_to 'Add to trip', '#', class: 'btn btn-primary'
+    %h4.center-block= name
+    .text-area
+      =  desc
+    %p=  "$" + price.to_s
+    - path = customer_signed_in? ? '#' : customer_session_path
+    %p.center=link_to 'Add to trip', path, class: 'btn btn-primary'
