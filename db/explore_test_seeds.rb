@@ -3,8 +3,8 @@ samuelipsum = "Normally, both your asses would be dead as fucking fried chicken,
 choices = ["Larkburger", "Tangerine", "Chataqua Park"]
 
 vend1 = Vendor.create!(
-  name: "Larkburger", 
-  email: "larkburger@example.com", 
+  name: "Larkburger123", 
+  email: "larkburger123@example.com", 
   location: "Boulder",
   password: "mypassword1", 
   password_confirmation: "mypassword1", 
