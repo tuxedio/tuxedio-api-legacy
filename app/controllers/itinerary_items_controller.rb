@@ -1,9 +1,11 @@
 class ItineraryItemsController < ApplicationController
 
+  def new
+  end
+
   def create
-    @current_trip = Trip.find_by_id(1)
     @itinerary_item = @current_trip.itinerary_items.create(
-      trip_id:     @current_trip.id, 
+      trip_id:     @current_trip.id,
       activity_id: params[:activity_id],
       start_time:  params[:start_time],
       end_time:    params[:end_time]
@@ -12,9 +14,9 @@ class ItineraryItemsController < ApplicationController
 
   def itinerary_items_params
     params.require(:itinerary_item).permit(
-      :trip_id, 
-      :activity_id, 
-      :start_time, 
+      :trip_id,
+      :activity_id,
+      :start_time,
       :end_time
     )
   end

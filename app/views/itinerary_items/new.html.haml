@@ -1,0 +1,18 @@
+- provide(:title, "Add an Activity")
+
+%h1 Add an itinerary item
+
+/ .row
+/   .col-md-6
+/     = bootstrap_form_for(@activity, url: vendors_activities_path) do |f|
+/       = render 'shared/error_messages', object: f.object
+
+/       = f.text_field :name
+
+/       = f.text_field :location
+
+/       = f.text_field :description
+
+/       = f.number_field :price
+
+/       = f.submit "Create activity", class: "btn btn-large btn-primary"
