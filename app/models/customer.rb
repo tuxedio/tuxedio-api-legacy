@@ -10,7 +10,7 @@ class Customer < ActiveRecord::Base
          :validatable, :confirmable
 
   attr_accessible :name, :email, :location, :password,
-                  :password_confirmation, :bio, :top_choices, :picture
+                  :password_confirmation, :bio, :top_choices, :picture_file_size
 
   validates :name,         presence: true, length: { maximum: 50 }
   validates :location,     presence: true, length: { maximum: 30 }
@@ -21,6 +21,7 @@ class Customer < ActiveRecord::Base
 
   has_attached_file :picture, :styles => { medium: "300x300#", thumb: "100x100#" }, default_url: ActionController::Base.helpers.asset_path('missing_avatar.jpg')
   validates_attachment_content_type :picture, content_type: /\Aimage\/.*\Z/
+  validates :picture_file_size, numericality: { less_than_or_equal_to: 10000000 }, allow_nil: true
 
   #ASSOCIATIONS
   has_many :trips

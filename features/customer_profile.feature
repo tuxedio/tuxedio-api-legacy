@@ -7,5 +7,5 @@ Scenario: A logged in customer can see their profile
 
 Scenario: If logged out, there is no link to customer account
   Given a customer is logged out
-  Then the customer should should see the "Sign in" link
+  Then the customer should see the "Sign in" link
   And the customer should not see the "View Profile" link

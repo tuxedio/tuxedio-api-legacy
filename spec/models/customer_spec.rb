@@ -28,6 +28,9 @@ describe "Customer".upcase.colorize(:light_blue) do
   it { should respond_to(:password_confirmation) }
   it { should respond_to(:bio) }
   it { should respond_to(:top_choices) }
+  it { should respond_to(:picture_file_name) }
+  it { should respond_to(:picture_content_type) }
+  it { should respond_to(:picture_file_size) }
 
   it { should be_valid }
 
@@ -130,12 +133,12 @@ describe "Customer".upcase.colorize(:light_blue) do
   describe "\ntop 3".upcase.colorize(:light_blue) do
 
     describe "when customer has valid top 3" do
-      before { @customer.update( top_choices: ["Larkburger", "Sushi Tora", "Illegal Pete's"] ) }
+      before { @customer.update(top_choices: ["Larkburger", "Sushi Tora", "Illegal Pete's"]) }
       it { should be_valid }
     end
 
     describe "when a customer has invalid top 3" do
-      before { @customer.update( top_choices: ["Larkburger", "Sushi Tora", "Blah"] ) }
+      before { @customer.update(top_choices: ["Larkburger", "Sushi Tora", "Blah"]) }
       it { should_not be_valid }
     end
   end
@@ -146,6 +149,30 @@ describe "Customer".upcase.colorize(:light_blue) do
     end
 
     describe "when a customer has a invalid itinerary" do
+    end
+  end
+
+ #------------------------------------
+ # Profile/Activity Picture
+  describe "\npictures".upcase.colorize(:light_blue) do
+    describe "when a customer has a profile picture" do
+      before { @customer.picture_file_name = "FishShapes.jpg" }
+      it { should be_valid }
+    end
+
+    describe "when a customer's picture is too large" do
+      before { @customer.picture_file_size = 63067000 }
+      it { should_not be_valid }
+    end
+
+    describe "when a customer's picture is an okay size" do
+      before { @customer.picture_file_size = 630670 }
+      it { should be_valid }
+    end
+
+    describe "when a customer's picture is the default image" do
+      before { @customer.picture_file_name = nil }
+      it { should be_valid }
     end
   end
 end
