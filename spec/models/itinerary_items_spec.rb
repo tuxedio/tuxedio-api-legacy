@@ -9,7 +9,7 @@ describe "Itinerary Item".upcase.colorize(:light_blue) do
     location: "Boulder",
     password: "mypassword",
     password_confirmation: "mypassword"
-    )
+  )
   }
 
   before { @vendor = Vendor.create(
@@ -19,16 +19,16 @@ describe "Itinerary Item".upcase.colorize(:light_blue) do
     password: "mypassword1",
     password_confirmation: "mypassword1",
     zip_code: 80302
-    )
+  )
   }
 
   before { @activity =  @vendor.activities.create(
-      name: "Skydiving",
-      price: 150.00,
-      location: "Boulder",
-      description: "Ipsum splitsum",
-      vendor_id: 1
-    )
+    name: "Skydiving",
+    price: 150.00,
+    location: "Boulder",
+    description: "Ipsum splitsum",
+    vendor_id: 1
+  )
   }
 
   before { @trip = @customer.trips.create(
@@ -36,24 +36,29 @@ describe "Itinerary Item".upcase.colorize(:light_blue) do
     location: "Boulder",
     start_date: Time.now,
     number_of_days: 2
-    )
+  )
+  }
+
+  before { @activity_time  = @activity.activity_times.create(
+    start_time: Time.new(2002, 10, 31, 2, 2, 2, "+02:00"),
+    end_time:   Time.new(2002, 10, 31, 2, 2, 2, "+03:00"),
+    activity_id: 1
+  )
   }
 
   before { @itinerary_item = @trip.itinerary_items.create(
-      activity_id: 1,
-      trip_id: 1,
-      start_time: Time.now.tomorrow,
-      end_time:   Time.now.tomorrow.tomorrow
-    )
+    activity_id: 1,
+    trip_id: 1,
+    activity_time_id: 1
+  )
   }
+
 
   subject { @itinerary_item }
 
   it { should respond_to(:activity_id) }
   it { should respond_to(:trip_id) }
   it { should respond_to(:trip) }
-  it { should respond_to(:start_time) }
-  it { should respond_to(:end_time) }
 
   it { should be_valid }
 
@@ -81,19 +86,6 @@ describe "Itinerary Item".upcase.colorize(:light_blue) do
 
     describe "valid activity ID" do
       before { @itinerary_item.activity_id = 1 }
-      it { should be_valid }
-    end
-  end
-
-  describe "activity time" do
-    describe "invalid trip timing" do
-      before { @itinerary_item.start_time = Time.now.tomorrow.tomorrow.tomorrow  }
-      it { should_not be_valid }
-
-    end
-
-    describe "valid trip timing" do
-      before { @itinerary_item.start_time = Time.now.tomorrow  }
       it { should be_valid }
     end
   end
