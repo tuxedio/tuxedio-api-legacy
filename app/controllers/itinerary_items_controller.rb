@@ -1,6 +1,7 @@
 class ItineraryItemsController < ApplicationController
 
   def new
+    @test = params[:test]
   end
 
   def create

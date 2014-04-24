@@ -8,4 +8,4 @@
         %p= desc
       %p=  '$' + price.to_s + '0'
       - add_path = new_trips_itinerary_items_path
-      %center=link_to 'Add to trip',  customer_signed_in? ?  add_path : customer_session_path, class: 'btn btn-primary'
+      %center=link_to 'Add to trip',  customer_signed_in? ?  add_path : customer_session_path, class: 'btn btn-primary', test: :activity_id
