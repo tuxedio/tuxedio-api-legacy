@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "Customer".upcase.colorize(:light_blue) do
+describe "Activity time".upcase.colorize(:light_blue) do
 
   before { @vendor = Vendor.create(
     name: "Boulder Skydiving",
@@ -36,4 +36,40 @@ describe "Customer".upcase.colorize(:light_blue) do
 
   it { should be_valid }
 
+  
+  describe "when vendor adds activity time" do
+
+    describe "with valid start time" do 
+      before { @activity_time.start_time = Time.now.tomorrow }
+      it { should be_valid }
+    end
+
+    describe "with invalid start time" do 
+      before { @activity_time.start_time = Time.now.yesterday }
+      it { should_not be_valid }
+    end
+    
+    describe "with valid end time" do 
+      before { @activity_time.start_time = Time.now.tomorrow.tomorrow }
+      it { should be_valid }
+    end
+
+    describe "with invalid end time" do 
+      before { @activity_time.start_time = Time.now.yesterday }
+      it { should_not be_valid }
+    end
+  end
+
+  describe "association with actitivty" do
+
+    describe "with valid association" do
+      before { @activity_time.activity_id = 1 }
+      it { should be_valid }
+    end
+
+    describe "with invalid association" do
+      before { @activity_time.activity_id = nil }
+      it { should_not be_valid }
+    end
+  end
 end
