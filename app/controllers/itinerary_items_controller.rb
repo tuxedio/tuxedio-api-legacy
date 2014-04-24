@@ -9,7 +9,9 @@ class ItineraryItemsController < ApplicationController
 
   def create
     @trip = current_customer.trips.find_by_id(itinerary_items_params['trip_id'])
-    @itinerary_item = @trip.itinerary_items.create(itinerary_items_params)
+    @params = itinerary_items_params
+    @params['activity_id'] = params[:activity_id]
+    @itinerary_item = @trip.itinerary_items.build(@params)
 
     if @itinerary_item.save
       redirect_to explore_path
