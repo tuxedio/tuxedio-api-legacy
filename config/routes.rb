@@ -36,4 +36,8 @@ TuxedoProto::Application.routes.draw do
   resource :vendors do
     resource :activities
   end
+
+  resource :activities do
+    resource :activity_times
+  end
 end
