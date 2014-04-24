@@ -5,8 +5,6 @@ class ItineraryItemsController < ApplicationController
     @itinerary_item = ItineraryItem.new
 
     @trips = current_customer.trips
-
-
   end
 
   def create
