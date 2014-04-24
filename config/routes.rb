@@ -29,6 +29,10 @@ TuxedoProto::Application.routes.draw do
 	 resource :trips
   end
 
+  resource :trips do
+    resource :itinerary_items
+  end
+
   resource :vendors do
     resource :activities
   end
