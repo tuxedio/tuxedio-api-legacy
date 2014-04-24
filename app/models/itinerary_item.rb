@@ -9,8 +9,9 @@ class ItineraryItem < ActiveRecord::Base
   validates :start_time,   presence: true
   validates :end_time,     presence: true
 
-  validates_datetime :start_time, :after => Time.now
-  validates_datetime :end_time, :after => :start_time
+  ##### This should be validated later, but we need to implement selectors first.
+  # validates_datetime :start_time, :after => Time.now
+  # validates_datetime :end_time, :after => :start_time
 
   validates_presence_of :trip
   validates_presence_of :activity
