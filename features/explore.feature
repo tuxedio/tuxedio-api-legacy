@@ -6,4 +6,5 @@ Feature: As a user, I should be able to view activities with the explore page.
     When the customer clicks the "Explore" link
     Then the customer should see the "/explore" page
     Then the customer should see activities displayed
-    When the customer clicks an "Add to trip" link 
+    When the customer clicks the "Add to trip" link
+    Then the customer should see their item in trip
