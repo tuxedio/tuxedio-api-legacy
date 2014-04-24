@@ -2,6 +2,8 @@
 
 %h1 Add an itinerary item
 
+%h3= @activity.id
+
 .row
   .col-md-6
     = bootstrap_form_for(@itinerary_item, :url => {:controller => :itinerary_items, :action => :create}) do |f|
@@ -9,6 +11,10 @@
 
       = f.collection_select(:trip_id, @trips.load, :id, :trip_name, options = {:label => "Which trip would you like to add to?"} )
 
-      = hidden_field_tag(:activity_id, @activity.id)
+      = f.datetime_select :end_time, label: "Start time"
+
+      = f.datetime_select :end_time, label: "End time"
+
+      = f.text_field :activity_id, hide_label: :true, placeholder: @activity.id
 
       = f.submit "Add to my trip", class: "btn btn-large btn-primary"
