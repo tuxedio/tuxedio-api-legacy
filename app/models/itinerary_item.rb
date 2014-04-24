@@ -19,5 +19,6 @@ class ItineraryItem < ActiveRecord::Base
   #ASSOCIATIONS
   belongs_to :trip
   belongs_to :activity
+  has_many :activity_times, through: :activities
 
 end

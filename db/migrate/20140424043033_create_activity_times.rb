@@ -3,7 +3,8 @@ class CreateActivityTimes < ActiveRecord::Migration
     create_table :activity_times do |t|
       t.datetime :start_time
       t.datetime :end_time
-      t.integer :activity_id
+      t.integer  :activity_id
+      t.integer  :itinerary_item_id
 
       t.timestamps
     end

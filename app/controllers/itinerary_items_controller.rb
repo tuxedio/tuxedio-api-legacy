@@ -5,9 +5,7 @@ class ItineraryItemsController < ApplicationController
     @activity = Activity.find(params[:activity_id])
     @itinerary_item = ItineraryItem.new
     @trips = current_customer.trips
-    debugger
     @activity_times = @activity.activity_times || 'None'
-
 
   end
 
