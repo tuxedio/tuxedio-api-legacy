@@ -6,11 +6,11 @@ class ItineraryItem < ActiveRecord::Base
   #VALIDATION
   validates :trip_id,      presence: true
   validates :activity_id,  presence: true
-  #validates :start_time,   presence: true
-  #validates :end_time,     presence: true
+  validates :start_time,   presence: true
+  validates :end_time,     presence: true
 
-  #validates_datetime :start_time, :after => Time.now
-  #validates_datetime :end_time, :after => :start_time
+  validates_datetime :start_time, :after => Time.now
+  validates_datetime :end_time, :after => :start_time
 
   validates_presence_of :trip
   validates_presence_of :activity

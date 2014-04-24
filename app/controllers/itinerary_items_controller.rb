@@ -18,7 +18,6 @@ class ItineraryItemsController < ApplicationController
     else
       render 'new'
     end
-
   end
 
   private
