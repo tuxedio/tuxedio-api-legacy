@@ -1,5 +1,5 @@
-Then(/^the vendor should see the "Add an activity" page$/) do
-  expect(current_path).to eq(new_vendors_activities_path)
+Then(/^the vendor should see the "(.*?)" page$/) do |p|
+  expect(page).to have_title("Tuxedo | " + p)
 end
 
 Then(/^the vendor should redirect to the "Add an activity" page$/) do
