@@ -5,6 +5,9 @@ class ItineraryItemsController < ApplicationController
     @activity = Activity.find(params[:activity_id])
     @itinerary_item = ItineraryItem.new
     @trips = current_customer.trips
+    debugger
+    @activity_times = @activity.activity_times || 'None'
+
 
   end
 
@@ -13,6 +16,7 @@ class ItineraryItemsController < ApplicationController
     # find customer's trips
     @trip = current_customer.trips.find_by_id(itinerary_items_params['trip_id'])
     @activity = Activity.find(params[:activity_id])
+
 
     @params = itinerary_items_params.merge!(params)
     @itinerary_item = @trip.itinerary_items.build(@params)
@@ -33,8 +37,7 @@ class ItineraryItemsController < ApplicationController
       params.require(:itinerary_item).permit(
         :trip_id,
         :activity_id,
-        :start_time,
-        :end_time
+        :time_id
       )
     end
 

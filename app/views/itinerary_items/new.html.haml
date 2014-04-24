@@ -13,7 +13,6 @@
       = bootstrap_form_for(@itinerary_item, :url => {:controller => :itinerary_items, :action => :create}) do |f|
         = render 'shared/error_messages', object: f.object
         = f.collection_select :trip_id, @trips.load, :id, :trip_name, label: "Which trip would you like to add to?"
-        = f.datetime_select :start_time, label: "Start time"
-        = f.datetime_select :end_time, label: "End time"
+        = f.collection_select :start_time, @activity_times.load, label: "Start time"
         = hidden_field_tag :activity_id, @activity.id
         .center= f.submit "Add to my trip", class: "btn btn-large btn-primary"
