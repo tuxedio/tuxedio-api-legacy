@@ -10,9 +10,8 @@
           Book this activity?
 
     .row.top-buffer
-      = bootstrap_form_for(@itinerary_item, :url => {:controller => :itinerary_items, :action => :create}) do |f|
-        = render 'shared/error_messages', object: f.object
-        = f.collection_select :trip_id, @trips.load, :id, :trip_name, label: "Which trip would you like to add to?"
-        = f.collection_select :start_time, @activity_times.load, label: "Start time"
+      = bootstrap_form_tag url: trips_itinerary_items_path do |f|
+        = f.select :trip_id, @trips.load.collect { |p| [p.trip_name, p.id] }
+        = f.select :activity_time_id, @activity_times.load.collect  { |p| [p.start_time, p.id] }
         = hidden_field_tag :activity_id, @activity.id
         .center= f.submit "Add to my trip", class: "btn btn-large btn-primary"

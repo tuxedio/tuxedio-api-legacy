@@ -57,15 +57,10 @@ namespace :db do
         random_day = rand(1..28)
         activity_start = Time.new(2020, random_month, random_day, 2, 2, 2, "+02:00")
         activity_end = Time.new(2020, random_month, random_day, 2, 2, 2, "+03:00")
-        # activity_name = vendor.name + " Activity #" + n.to_s
-        # activity_description = Faker::Lorem.sentence(5)
-        # activity_location = Faker::Address.city
-        # activity_price = Faker::Number.number(2)
         activity.activity_times.create!(start_time: activity_start, end_time: activity_end, activity_id: activity.id)
       end
     }
     customer.trips.create(trip_name: "My Trip", location: "Boulder", start_date: Time.now, number_of_days: 2)
-    ItineraryItem.create(activity_id: Activity.all.first.id, trip_id: Trip.all.first.id)
 
   end
 end

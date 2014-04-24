@@ -3,6 +3,7 @@ class ActivityTime < ActiveRecord::Base
 
   validates :start_time,  presence: true
   validates :end_time,    presence: true
+  validates :activity_id, presence: true
 
   belongs_to :activity
 end
