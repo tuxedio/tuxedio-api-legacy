@@ -1,16 +1,20 @@
 class ItineraryItemsController < ApplicationController
 
   def new
-    @test = params[:test]
+    @activity = Activity.find(params[:activity_id])
+    @itinerary_item = ItineraryItem.new(activity_id: @activity.id)
+    @trips = current_customer.trips
   end
 
   def create
-    @itinerary_item = @current_trip.itinerary_items.create(
-      trip_id:     @current_trip.id,
-      activity_id: params[:activity_id],
-      start_time:  params[:start_time],
-      end_time:    params[:end_time]
-    )
+    @activity = Activity.find(params[:activity_id])
+    @trips = current_customer.trips
+    @itinerary_item = ItineraryItem.new(itinerary_items_params)
+    if @itinerary_item.save
+      redirect_to root_path
+    else
+      render 'new'
+    end
   end
 
   def itinerary_items_params

@@ -2,19 +2,13 @@
 
 %h1 Add an itinerary item
 
-%h3= @test
+.row
+  .col-md-6
+    = bootstrap_form_for(@itinerary_item, :url => {:controller => :itinerary_items, :action => :create}) do |f|
+      = render 'shared/error_messages', object: f.object
 
-/ .row
-/   .col-md-6
-/     = bootstrap_form_for(@activity, url: vendors_activities_path) do |f|
-/       = render 'shared/error_messages', object: f.object
+      = f.collection_select(:trip_id, @trips.load, :id, :trip_name, options = {:label => "Which trip would you like to add to?"} )
 
-/       = f.text_field :name
+      = hidden_field_tag(:activity_id, @activity.id)
 
-/       = f.text_field :location
-
-/       = f.text_field :description
-
-/       = f.number_field :price
-
-/       = f.submit "Create activity", class: "btn btn-large btn-primary"
+      = f.submit "Add to my trip", class: "btn btn-large btn-primary"
