@@ -12,14 +12,9 @@
     .row.top-buffer
       = bootstrap_form_for(@activity, :url => vendors_activities_path(@activity, :id => params[:id] ) ) do |f|
         = render 'shared/error_messages', object: f.object
-
         = f.text_field :name
-
         = f.text_field :location
-
         = f.text_field :description
-
         = f.number_field :price
-
         = f.submit "Save activity", class: "btn btn-large btn-primary"
         =link_to "Add activity time", new_activities_activity_times_path(:activity_id => @activity.id), class: "btn btn-large btn-primary"

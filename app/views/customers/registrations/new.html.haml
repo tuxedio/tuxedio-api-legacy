@@ -11,19 +11,12 @@
 
     .row.top-buffer
       = bootstrap_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-        = devise_error_messages!
-
-        .row-padding
-          = f.text_field :name
-        .row-padding
-          = f.email_field :email, autofocus: true
-        .row-padding
-          = f.text_field :location
-        .row-padding
-          = f.password_field :password, autocomplete: "off"
-        .row-padding
-          = f.password_field :password_confirmation, :label => "Confirmation", autocomplete: "off"
-        .row-padding
-          = f.form_group do
-            = f.submit "Create my account"
+        = render 'shared/error_messages', object: f.object
+        = f.text_field :name
+        = f.email_field :email, autofocus: true
+        = f.text_field :location
+        = f.password_field :password, autocomplete: "off"
+        = f.password_field :password_confirmation, :label => "Confirmation", autocomplete: "off"
+        = f.form_group do
+          = f.submit "Create my account", class: "btn btn-large btn-success"
       = render "devise/shared/links"
