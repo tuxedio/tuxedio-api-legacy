@@ -6,7 +6,7 @@ class ActivityTime < ActiveRecord::Base
   validates :activity_id, presence: true
 
   validates_datetime :start_time, :after => Time.now
-  validates_datetime :end_time,   :after => Time.now
+  validates_datetime :end_time,   :after => :start_time
 
   belongs_to :activity
 end

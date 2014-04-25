@@ -1,8 +1,15 @@
 - provide(:title, 'Sign up')
-%h1 Customer Sign up
-%h2
-  .row
-    .col-md-6.col-md-offset-6
+
+.col-sm-6.col-sm-offset-3.well.form-box
+  .col-sm-12
+    .row
+      %h1
+        .text-center Sign up.
+        .small.text-center
+          %span.glyphicon.glyphicon-thumbs-up
+          Prepare for a grand time!
+
+    .row.top-buffer
       = bootstrap_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
         = devise_error_messages!
 
