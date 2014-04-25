@@ -26,10 +26,12 @@ class ActivitiesController < ApplicationController
   end
 
   def create
+    params_hash = params[:activity]
+
     @activity = current_vendor.activities.build(activities_params)
+
     if @activity.save
-      flash[:success] = "Activity successfully added!"
-      redirect_to vendor_profile_path
+      redirect_to new_activities_activity_times_path(:activity_id => @activity.id)
     else
       render 'new'
     end
@@ -38,11 +40,10 @@ class ActivitiesController < ApplicationController
   def explore
     @act_arr   ||= []
     @act_count ||= Activity.count
-    @display_count = @act_count
 
     # Pick random activities from database to display in view
-    @act_count.times do
-      @act_arr << Activity.find_by_id(Random.rand(@act_count) + 1)
+    @act_count.times do |i|
+      @act_arr << Activity.find_by_id(i+1)
     end
   end
 
@@ -50,7 +51,14 @@ class ActivitiesController < ApplicationController
   private
 
   def activities_params
-    params.require(:activity).permit(:name, :location, :description, :price)
+    params.require(:activity).permit(
+      :name,
+      :location,
+      :description,
+      :price,
+      :start_time,
+      :end_time
+    )
   end
 
 end

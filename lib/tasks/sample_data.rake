@@ -7,8 +7,8 @@ namespace :db do
              password: "mypassword1", password_confirmation: "mypassword1", bio: samuelipsum)
     customer.confirm!
 
-    vender = Vendor.create!(name: "Example Vendor", email: "vendor@vendor.com", location: "Boulder",
-             password: "mypassword1", password_confirmation: "mypassword1", zip_code: 80027)
+    vender = Vendor.create!(name: "Tangerine", email: "vendor@vendor.com", location: "Boulder",
+             password: "mypassword1", password_confirmation: "mypassword1", zip_code: 80304)
     vender.confirm!
 
     20.times do |n|
@@ -49,8 +49,18 @@ namespace :db do
         vendor.activities.create!(name: activity_name, description: activity_description, location: activity_location, price: activity_price)
       end
     }
+
+    activities = Activity.all
+    activities.each { |activity|
+      10.times do |n|
+        random_month = rand(1..12)
+        random_day = rand(1..28)
+        activity_start = Time.new(2015, random_month, random_day, 2, 2, 2, "+02:00")
+        activity_end = Time.new(2015, random_month, random_day, 3, 3, 3, "+03:00")
+        activity.activity_times.create!(start_time: activity_start, end_time: activity_end, activity_id: activity.id)
+      end
+    }
     customer.trips.create(trip_name: "My Trip", location: "Boulder", start_date: Time.now, number_of_days: 2)
-    ItineraryItem.create(activity_id: Activity.all.first.id, trip_id: Trip.all.first.id)
 
   end
 end

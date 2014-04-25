@@ -5,17 +5,21 @@ class ItineraryItemsController < ApplicationController
     @activity = Activity.find(params[:activity_id])
     @itinerary_item = ItineraryItem.new
     @trips = current_customer.trips
+    @activity_times = @activity.activity_times 
 
   end
 
   def create
 
     # find customer's trips
-    @trip = current_customer.trips.find_by_id(itinerary_items_params['trip_id'])
+    @trip = current_customer.trips.find(itinerary_items_params[:trip_id])
     @activity = Activity.find(params[:activity_id])
 
-    @params = itinerary_items_params.merge!(params)
-    @itinerary_item = @trip.itinerary_items.build(@params)
+    @itinerary_item = @trip.itinerary_items.build(
+      trip_id:          params[:trip_id],
+      activity_id:      params[:activity_id],
+      activity_time_id: params[:activity_time_id] 
+    )
 
     if @itinerary_item.save
       flash[:success] = "#{@activity.name} added to trip!"
@@ -30,11 +34,10 @@ class ItineraryItemsController < ApplicationController
   private
 
     def itinerary_items_params
-      params.require(:itinerary_item).permit(
+      params.permit(
         :trip_id,
-        :activity_id,
-        :start_time,
-        :end_time
+        :activity_time_id,
+        :time_id
       )
     end
 
