@@ -3,6 +3,7 @@ Feature: As a logged in customer, So I can keep track of my chosen activities, I
 
 Background:
   Given a customer is logged in
+  And the customer has created a trip
 
 Scenario: A customer fills in Add and activity with valid information
   Given a customer visits the "explore" page

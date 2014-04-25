@@ -1,3 +1,11 @@
+Given(/^the customer has created a trip$/) do
+  steps %{
+  Given a customer visits the "customer_profile" page
+  When the customer clicks the "View my upcoming trips" link
+  When the customer submits valid trip information
+  }
+end
+
 When(/^the customer selects an activity to add$/) do
   pending # express the regexp above with the code you wish you had
 end
@@ -8,10 +16,7 @@ When(/^the customer submits (in)*valid itinerary item information$/) do |invalid
     fill_in "trip_number_of_days",    with: "asdf"
     click_button "Create trip"
   else
-    fill_in "trip_trip_name",         with: "Trip Name"
-    select "Boulder",                 from: "trip_location"
-    fill_in "trip_number_of_days",    with: 1
-    click_button "Create trip"
+    click_button "Add to my trip"
   end
 end
 
