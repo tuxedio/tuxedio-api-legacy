@@ -22,12 +22,10 @@ ActiveRecord::Schema.define(version: 20140424043033) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "activity_id"
-<<<<<<< HEAD
     t.string   "picture_file_name"
     t.string   "picture_content_type"
     t.integer  "picture_file_size"
     t.datetime "picture_updated_at"
-=======
     t.datetime "start_time"
     t.datetime "end_time"
   end
@@ -38,7 +36,6 @@ ActiveRecord::Schema.define(version: 20140424043033) do
     t.integer  "activity_id"
     t.datetime "created_at"
     t.datetime "updated_at"
->>>>>>> b3189f2e7926ff6770c099b7555b1af902b50c2d
   end
 
   create_table "customers", force: true do |t|
@@ -107,10 +104,6 @@ ActiveRecord::Schema.define(version: 20140424043033) do
     t.string   "location"
     t.integer  "vendor_id"
     t.integer  "zip_code"
-    t.string   "picture_file_name"
-    t.string   "picture_content_type"
-    t.integer  "picture_file_size"
-    t.datetime "picture_updated_at"
     t.string   "phone_number"
     t.string   "sample_image"
     t.string   "state"
@@ -118,6 +111,10 @@ ActiveRecord::Schema.define(version: 20140424043033) do
     t.string   "country"
     t.text     "coordinates"
     t.boolean  "confirmed",              default: false
+    t.string   "picture_file_name"
+    t.string   "picture_content_type"
+    t.integer  "picture_file_size"
+    t.datetime "picture_updated_at"
   end
 
   add_index "vendors", ["email"], name: "index_vendors_on_email", unique: true

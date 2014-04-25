@@ -4,7 +4,7 @@ Given(/^the customer has chosen a profile picture$/) do
 end
 
 Then(/^the customer should see their profile picture$/) do
-  pending
+  page.should have_xpath("//img[@alt]")
 end
 
 Given(/^the customer has not chosen a profile picture$/) do
@@ -13,5 +13,5 @@ Given(/^the customer has not chosen a profile picture$/) do
 end
 
 Then(/^the customer should see the default image for their profile picture$/) do
-  pending
+  page.should have_xpath("//img[@src=\"/assets/missing_avatar.jpg\"]")
 end
