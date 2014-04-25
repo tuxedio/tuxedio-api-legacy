@@ -1,0 +1,28 @@
+- provide(:title, "Explore")
+
+.row
+  .col-md-4.col-md-offset-4
+    .page-header
+      %h1.center
+        Explore
+        .small
+          %span.glyphicon.glyphicon-glass
+          See what's happening around town.
+
+.container
+  .row
+    / Cart
+    .sidebar.col-sm-3
+      .sidebar-cart.affix
+        .well
+          %h3 Cart
+          %p Here is a collection of your various activies. Use this area to plan, experiment, and see what you might want to do.
+
+    /Activities
+    .col-sm-9
+      - if @act_count >= 9
+        - 9.times do |i|
+          =render "activities/explore_activity", name: @act_arr[i].name, desc: @act_arr[i].description, price: @act_arr[i].price, id:  @act_arr[i].id
+      - else
+        -@act_count.times do |i|
+          =render "activities/explore_activity", name: @act_arr[i].name, desc: @act_arr[i].description, price: @act_arr[i].price, id:  @act_arr[i].id

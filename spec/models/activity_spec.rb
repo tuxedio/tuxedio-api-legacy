@@ -3,15 +3,24 @@ require 'spec_helper'
 describe "Activity".upcase.colorize(:light_blue) do
 
   ## Dummy Vendors
-  before do
-    @vendor = Vendor.create(name: "Boulder Skydiving", email: "Vendor1@example.com", location: "Boulder",
-                            zip_code: 80301, password: "mypassword1", password_confirmation: "mypassword1")
-  end
+  before { @vendor = Vendor.create(
+      name: "Boulder Skydiving",
+      email: "Vendor1@example.com",
+      location: "Boulder",
+      zip_code: 80301,
+      password: "mypassword1",
+      password_confirmation: "mypassword1"
+    )
+  }
 
-  before do
-    @activity =  Activity.new(name: "Skydiving", price: 150.00,  location: "Boulder",
-                              description: "Ipsum splitsum", vendor_id: 1)
-  end
+  before { @activity =  Activity.new(
+      name: "Skydiving",
+      price: 150.00,
+      location: "Boulder",
+      description: "Ipsum splitsum",
+      vendor_id: 1
+    )
+  }
 
   subject { @activity }
 
@@ -19,6 +28,7 @@ describe "Activity".upcase.colorize(:light_blue) do
   it { should respond_to(:location) }
   it { should respond_to(:description) }
   it { should respond_to(:price) }
+  it { should respond_to(:vendor) }
 
   it { should be_valid }
 

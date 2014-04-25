@@ -4,8 +4,14 @@ describe "Customer".upcase.colorize(:light_blue) do
 
 
 
-  before { @customer =  Customer.new(name: "John Smith", email: "JohnSmith@example.com", location: "Boulder",
-                            password: "mypassword", password_confirmation: "mypassword") }
+  before { @customer =  Customer.new(
+    name: "John Smith",
+    email: "JohnSmith@example.com",
+    location: "Boulder",
+    password: "mypassword",
+    password_confirmation: "mypassword"
+    )
+  }
 
   ## Dummy Vendors
   before do
