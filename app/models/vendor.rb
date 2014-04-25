@@ -12,11 +12,9 @@ class Vendor < ActiveRecord::Base
   attr_accessible :name, :email, :location, :zip_code, :password,
                   :password_confirmation, :vendor_id, :description,
                   :confirmed, :address, :phone_number, :country,
-                  :coordinates, :state, :sample_image
+                  :coordinates, :state, :sample_image, :picture
 
   serialize :coordinates, Hash
-
-
   #VALIDATION
   validates :name,         presence: true, length: { maximum: 50 }
   validates :location,     presence: true, length: { maximum: 30 }
@@ -31,5 +29,8 @@ class Vendor < ActiveRecord::Base
   def self.allowed_locations
     ['Boulder', 'Longmont', 'Broomfield']
   end
+
+  has_attached_file :picture, :styles => { medium: "300x300#", thumb: "100x100#" }, default_url: ActionController::Base.helpers.asset_path('missing_avatar.jpg')
+  validates_attachment_content_type :picture, content_type: /\Aimage\/.*\Z/
 
 end

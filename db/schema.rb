@@ -17,11 +17,15 @@ ActiveRecord::Schema.define(version: 20140424043033) do
     t.string   "name"
     t.text     "description"
     t.string   "location"
-    t.decimal  "price",       precision: 8, scale: 2
+    t.decimal  "price",                precision: 8, scale: 2
     t.integer  "vendor_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "activity_id"
+    t.string   "picture_file_name"
+    t.string   "picture_content_type"
+    t.integer  "picture_file_size"
+    t.datetime "picture_updated_at"
     t.datetime "start_time"
     t.datetime "end_time"
   end
@@ -56,6 +60,10 @@ ActiveRecord::Schema.define(version: 20140424043033) do
     t.text     "bio"
     t.text     "top_choices"
     t.integer  "customer_id"
+    t.string   "picture_file_name"
+    t.string   "picture_content_type"
+    t.integer  "picture_file_size"
+    t.datetime "picture_updated_at"
   end
 
   add_index "customers", ["email"], name: "index_customers_on_email", unique: true
@@ -103,6 +111,10 @@ ActiveRecord::Schema.define(version: 20140424043033) do
     t.string   "country"
     t.text     "coordinates"
     t.boolean  "confirmed",              default: false
+    t.string   "picture_file_name"
+    t.string   "picture_content_type"
+    t.integer  "picture_file_size"
+    t.datetime "picture_updated_at"
   end
 
   add_index "vendors", ["email"], name: "index_vendors_on_email", unique: true

@@ -1,7 +1,7 @@
 class Activity < ActiveRecord::Base
   PRICE_REGEX = /\A^\d+??(?:\.\d{0,2})?$\z/
 
-  attr_accessible   :name, :location, :price, :description, :vendor_id
+  attr_accessible   :name, :location, :price, :description, :vendor_id, :picture
 
   validates  :name,         presence: true, length: { maximum: 100  }
   validates  :location,     presence: true, length: { maximum: 30  }
@@ -14,6 +14,8 @@ class Activity < ActiveRecord::Base
 
   #ASSOCIATIONS
   belongs_to :vendor
+  has_attached_file :picture, :styles => { medium: "300x300#", thumb: "100x100#" }, default_url: ActionController::Base.helpers.asset_path('missing_activity_pic.jpg')
+  validates_attachment_content_type :picture, content_type: /\Aimage\/.*\Z/
   has_many  :itinerary_items
   has_many  :activity_times
   has_many  :trips, through: :itinerary_items

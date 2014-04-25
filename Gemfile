@@ -55,5 +55,6 @@ gem 'devise', '3.1'
 gem 'protected_attributes', '1.0.7'
 gem 'will_paginate', '3.0.5'
 gem 'will_paginate-bootstrap', '1.0.0'
-gem 'oauth-plugin'
 gem 'faker', '1.3.0'
+gem 'paperclip', github: "thoughtbot/paperclip"
+gem 'oauth-plugin'

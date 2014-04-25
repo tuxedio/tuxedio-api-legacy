@@ -54,6 +54,7 @@ class ActivitiesController < ApplicationController
     params.require(:activity).permit(
       :name,
       :location,
+      :picture,
       :description,
       :price,
       :start_time,

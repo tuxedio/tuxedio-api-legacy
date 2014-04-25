@@ -16,7 +16,7 @@ Given(/^a customer is logged out$/) do
   visit root_path
 end
 
-Then(/^the customer should should see the "(.*?)" link$/) do |link_name|
+Then(/^the customer should see the "(.*?)" link$/) do |link_name|
   page.should have_link(link_name)
 end
 
