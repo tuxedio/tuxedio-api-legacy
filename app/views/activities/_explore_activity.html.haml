@@ -7,4 +7,12 @@
       .explore-description
         %p= desc
       %p=  '$' + price.to_s + '0'
-      %center=link_to 'Add to trip',  customer_signed_in? ?  new_trips_itinerary_items_path(activity_id: id) : customer_session_path, class: 'btn btn-primary'
+      / if customer doesn't have trip, make new trip
+      - if customer_signed_in?
+        - if current_customer.trips.count == 0
+          - path = new_trips_path
+        -else
+          - path = new_trips_itinerary_items_path(activity_id: id) 
+      - else
+        - path = customer_session_path
+      %center=link_to 'Add to trip', path, class: 'btn btn-primary'
