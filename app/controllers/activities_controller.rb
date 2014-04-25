@@ -40,11 +40,10 @@ class ActivitiesController < ApplicationController
   def explore
     @act_arr   ||= []
     @act_count ||= Activity.count
-    @display_count = @act_count
 
     # Pick random activities from database to display in view
-    @act_count.times do
-      @act_arr << Activity.find_by_id(Random.rand(@act_count) + 1)
+    @act_count.times do |i|
+      @act_arr << Activity.find_by_id(i+1)
     end
   end
 
@@ -53,9 +52,9 @@ class ActivitiesController < ApplicationController
 
   def activities_params
     params.require(:activity).permit(
-      :name, 
-      :location, 
-      :description, 
+      :name,
+      :location,
+      :description,
       :price,
       :start_time,
       :end_time

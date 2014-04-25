@@ -18,3 +18,15 @@ Then(/^the customer clicks the "(.*?)" button$/) do |button|
   click_button button
 end
 
+Given(/^the customer has a trip$/) do
+  @customer.trips.create!(trip_name: "My Trip", location: "Boulder", start_date: Time.now, number_of_days: 2)
+end
+
+Given(/^the customer selects trip and activity time$/) do
+  select 'My Trip',   from: '_trip_id'
+  find("option[value='3']").click
+end
+
+Then(/^they should see "(.*?)" flash$/) do |flizzash|
+  expect(page).to have_selector('div.alert.alert-' + flizzash)
+end

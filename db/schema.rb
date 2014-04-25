@@ -30,7 +30,6 @@ ActiveRecord::Schema.define(version: 20140424043033) do
     t.datetime "start_time"
     t.datetime "end_time"
     t.integer  "activity_id"
-    t.integer  "itinerary_item_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
