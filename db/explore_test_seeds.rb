@@ -25,7 +25,7 @@ activities = Activity.all
 activities.each do |activity|
   3.times do
     activity_start = Time.new(2020, 1, 1, 2, 2, 2, "+02:00")
-    activity_end   = Time.new(2020, 1, 1, 2, 2, 2, "+03:00")
+    activity_end   = Time.new(2020, 1, 1, 3, 3, 3, "+03:00")
     activity.activity_times.create!(start_time: activity_start, end_time: activity_end, activity_id: activity.id)
   end
 end
