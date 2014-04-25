@@ -4,7 +4,7 @@ end
 
 When(/^the vendor submits (in)*valid signup information$/) do |invalid|
   if (invalid)
-    fill_in "Name",         with: "Example Vendor"
+    fill_in "Name",         with: "My Example Vendor"
     fill_in "Email",        with: "Vendorexample.com"
     page.select "Boulder",  from: "Location"
     fill_in "Zip code",     with: "803011"
@@ -12,8 +12,8 @@ When(/^the vendor submits (in)*valid signup information$/) do |invalid|
     fill_in "Confirmation", with: "foobarfoobar"
     click_button "Create my account"
   else
-    fill_in "Name",         with: "Example Vendor"
-    fill_in "Email",        with: "user@example.com"
+    fill_in "Name",         with: "My Example Vendor"
+    fill_in "Email",        with: "user12345@example.com"
     page.select "Boulder",  from: "Location"
     fill_in "Zip code",     with: "80301"
     fill_in "Password",     with: "foobarfoobar"

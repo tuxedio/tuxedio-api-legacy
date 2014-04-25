@@ -11,6 +11,8 @@ Scenario: The vendor should be able to click add an activity
 Scenario: The vendor should be able to add a new activity and see it on their profile
   Given the vendor visits the "Add an activity" page
   When the vendor submits valid activity information
+  Then the vendor should see the "Add activity time" page
+  Given the vendor submits valid time information
   Then the vendor should see their new activity
 
 Scenario: The vendor should not be able to submit an invalid activity

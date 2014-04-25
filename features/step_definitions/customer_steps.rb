@@ -9,7 +9,7 @@ Given(/^a customer is logged in$/) do
 end
 
 When(/^the customer clicks the "(.*?)" link$/) do |link_name|
-  click_link(link_name)
+  click_link(link_name.to_s)
 end
 
 Given(/^a customer is logged out$/) do

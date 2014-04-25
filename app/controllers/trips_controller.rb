@@ -13,16 +13,19 @@ class TripsController < ApplicationController
     #this should be moved to its own method. It sets the current trip off the session variable.
     @selected_trip = params[:trip_selection]
     @selected_trip ||= session[:trip_selection]
+
     if @selected_trip && !@selected_trip.empty?
       session[:trip_selection] = @selected_trip
     else
       @selected_trip = session[:trip_selection]
     end
-    if !(@selected_trip = @trips.find_by_id(@selected_trip))
+
+    unless (@selected_trip = @trips.find_by_id(@selected_trip))
       @selected_trip = @trips.first.id
     end
+
     @current_trip = @trips.find_by_id(@selected_trip)
-    @activities = @current_trip.activities
+    @activities   = @current_trip.activities
   end
 
   def new
@@ -40,8 +43,8 @@ class TripsController < ApplicationController
 
   private
 
-  def trips_params
-    params.require(:trip).permit(:trip_name, :location, :start_date, :number_of_days)
-  end
+    def trips_params
+      params.require(:trip).permit(:trip_name, :location, :start_date, :number_of_days)
+    end
 
 end

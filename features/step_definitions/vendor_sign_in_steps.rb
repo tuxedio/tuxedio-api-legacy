@@ -17,7 +17,7 @@ end
 
 Given /^the vendor has an account$/ do
   #creates a Vendor
-  @vendor = Vendor.create!(name: "Example User", email: "vendor@example.com", password: "mypassword",password_confirmation: "mypassword", location: "Broomfield", zip_code: 80301)
+  @vendor = Vendor.create!(name: "My Own Example Vendor", email: "vendor123454321@example.com", password: "mypassword",password_confirmation: "mypassword", location: "Broomfield", zip_code: 80301)
   @vendor.update confirmed: true
   @vendor.confirm!
 end

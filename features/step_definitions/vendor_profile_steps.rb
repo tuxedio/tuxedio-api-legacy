@@ -37,7 +37,7 @@ Then(/^the vendor should see their location$/) do
 end
 
 When(/^then vendor has activities$/) do
-  @activity1 = @vendor.activities.create(name:"Activity", location: "Location", description:"description", price:"100.00")
+  @activity1 = @vendor.activities.create(name:"My Own Activity", location: "Boulder", description:"description", price: 100.00)
   visit vendor_profile_path
 end
 
