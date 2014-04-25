@@ -1,0 +1,19 @@
+- provide(:title, current_customer.name + "s Trips")
+
+%h1 My Trip Itinerary
+.row
+  .col-md-9
+    -if (@trips.load.count > 1)
+      .trip-selector
+        = bootstrap_form_tag(url: '/customers/trips', method: 'get', layout: :inline) do |f|
+          = f.collection_select(:trip_selection, @trips.load, :id, :trip_name, options = {:hide_label => true, :prompt => "-- Select another trip to View --"})
+          = f.submit "View Trip"
+  .col-med-3
+    = link_to "Create a new Trip", new_customers_trips_path, {:class => "btn btn-lg btn-primary"}
+.row
+  .itinerary
+    %h2
+      = @current_trip.trip_name + " to " + @current_trip.location + " starting on " + @current_trip.start_date.strftime('%A, %B %e, %Y')
+    %br
+    = render @activities
+

@@ -1,0 +1,18 @@
+.col-sm-6.col-md-4
+  .well.explore-activity
+    .thumbnail
+      =image_tag "https://www.ocoos.com/images/product/509414141eaa4_skydive01.jpg"
+    .caption
+      %h4.explore-name= name
+      .explore-description
+        %p= desc
+      %p=  '$' + price.to_s + '0'
+      / if customer doesn't have trip, make new trip
+      - if customer_signed_in?
+        - if current_customer.trips.count == 0
+          - path = new_trips_path
+        -else
+          - path = new_trips_itinerary_items_path(activity_id: id) 
+      - else
+        - path = customer_session_path
+      %center=link_to 'Add to trip', path, class: 'btn btn-primary'

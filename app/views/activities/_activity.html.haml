@@ -1,0 +1,16 @@
+.row
+  .activity.clearfix
+    .col-md-2
+      .activity-picture
+        = image_tag activity.picture.url(:medium), class: "img-responsive"
+    .col-md-8
+      .activity-name
+        = activity.name
+      .activity-description
+        = activity.description
+    .col-md-2
+      .activity-price
+        = activity.price
+      .activity-edit
+        - if vendor_signed_in?
+          = link_to "Edit Activity", edit_vendors_activities_path(@activity, :id => activity.id), {:class => 'btn btn-lg btn-primary'}

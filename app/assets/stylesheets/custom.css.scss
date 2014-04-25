@@ -47,14 +47,12 @@ h1 {
   font-size: 3em;
   letter-spacing: -2px;
   margin-bottom: 30px;
-  text-align: center;
 }
 
 h2 {
   font-size: 1.2em;
   letter-spacing: -1px;
   margin-bottom: 30px;
-  text-align: center;
   font-weight: normal;
   color: #999;
 }
@@ -70,8 +68,7 @@ p {
   float: left;
   margin-right: 10px;
   font-size: 1.7em;
-  color: #fff;
-  text-transform: uppercase;
+  color: #000;
   letter-spacing: -1px;
   padding-top: 9px;
   font-weight: bold;
@@ -79,7 +76,7 @@ p {
 }
 
 #logo:hover {
-  color: #fff;
+  color: #323232;
   text-decoration: none;
 }
 
@@ -93,6 +90,28 @@ p {
   @include box_sizing;
 }
 
-.row-padding {
-  padding-top: 10px;
+.form-group{
+  margin-bottom: 15px;
+
+}
+.dropdown-menu {
+  padding: 10px;
+  padding-top: 20px;
+}
+
+.top_three {
+  border: 1px solid;
+  border-color: #428bca;
+  border-radius:4px;
+}
+
+.top_three_key {
+  position: relative;
+  color: #FFF;
+  background-color: #428bca;
+}
+
+.top_three_hash {
+  border-top: 1px solid;
+  border-color: #428bca;
 }

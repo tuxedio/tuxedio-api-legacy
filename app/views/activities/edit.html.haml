@@ -1,0 +1,20 @@
+- provide(:title, "Edit an Activity")
+
+.col-sm-6.col-sm-offset-3.well.form-box
+  .col-sm-12
+    .row
+      %h1
+        .text-center Edit activity.
+        .small.text-center
+          %span.glyphicon.glyphicon-info-sign
+          Need to change your activity?
+    .row.top-buffer
+      = bootstrap_form_for(@activity, :url => vendors_activities_path(@activity, :id => params[:id] ) ) do |f|
+        = render 'shared/error_messages', object: f.object
+        = f.text_field :name
+        = f.text_field :location
+        = f.file_field :picture
+        = f.text_field :description
+        = f.number_field :price
+        = f.submit "Save activity", class: "btn btn-large btn-primary"
+        =link_to "Add activity time", new_activities_activity_times_path(:activity_id => @activity.id), class: "btn btn-large btn-primary"
