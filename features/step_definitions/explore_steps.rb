@@ -7,7 +7,7 @@ When(/^the customer clicks an Add to trip link$/) do
 end
 
 Then(/^they should see the "(.*?)" page$/) do |title|
-  expect(page).to have_title("Tuxedo | " + title)
+  expect(page).to have_title("tuxedio | " + title)
 end
 
 Then(/^the customer should see their item in intinerary cart$/) do

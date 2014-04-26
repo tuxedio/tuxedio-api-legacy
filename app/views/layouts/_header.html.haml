@@ -1,13 +1,13 @@
 .navbar.navbar-fixed-top.navbar-default
   .container
-    %button.navbar-toggle{"data-target" => "#tuxedo-navbar-collapse", "data-toggle" => "collapse", type: "button"}
+    %button.navbar-toggle{"data-target" => "#tuxedio-navbar-collapse", "data-toggle" => "collapse", type: "button"}
       %span.sr-only Toggle navigation
       %span.icon-bar
       %span.icon-bar
       %span.icon-bar
-    = link_to "Tuxedo", root_path, class: "navbar-brand"
+    = link_to "tuxedio", root_path, class: "navbar-brand", id: "logo"
 
-    #tuxedo-navbar-collapse.collapse.navbar-collapse
+    #tuxedio-navbar-collapse.collapse.navbar-collapse
       .nav.navbar-nav.navbar-right
         %li{ class: ( (current_page? explore_path) and 'active') }= link_to "Explore", explore_path
         %li= link_to "Local's Pick", "#"
