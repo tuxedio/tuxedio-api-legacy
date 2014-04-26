@@ -31,7 +31,7 @@
             %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
               My Account
               %b.caret
-            %ul.dropdown-menu.dropdown-menu-right
+            %ul.dropdown-menu
               %li= link_to "View My Account", vendor_profile_path
               %li= link_to "Account Settings", edit_vendor_registration_path
               %li.divider
@@ -43,14 +43,12 @@
               %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
                 Sign in
                 %span.glyphicon.glyphicon-log-in
-              %ul.dropdown-login.dropdown-menu.dropdown-menu-right
+              %ul.dropdown-login.dropdown-menu
                 %li.navbar-form
                   = bootstrap_form_for(:customer, url:  customer_session_path) do |f|
-                    = f.email_field :email, :autofocus => true
-
-                    = f.password_field :password
-
-                    = f.submit "Sign in", class: "btn btn-md btn-success"
+                    = f.email_field :email, hide_label: true, placeholder: "Email", :autofocus => true, id: "navbar-input"
+                    = f.password_field :password, hide_label: true, placeholder: "Password", id: "navbar-input"
+                    = f.submit "Sign in", class: "btn btn-block btn-success", id: "navbar-input"
                 %li.divider
                 %li= link_to "New user? Sign up!", registration_choice_path
                 %li= link_to "Vendor? Click here.", new_vendor_session_path
