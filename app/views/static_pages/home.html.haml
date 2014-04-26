@@ -1,8 +1,31 @@
 - provide(:title, 'Home')
-/ - debugger
-.center.jumbotron
-  %h1 Welcome to the Tuxedo Home Page
-  %h2
-    We help you plan and book your travels.
-  - if ( !customer_signed_in? and !vendor_signed_in? )
-    = link_to "Sign up now!", registration_choice_path, class: "btn btn-large btn-primary"
+.navbar-right
+-if !customer_signed_in?
+  - unless controller.controller_name == "sessions" or controller.controller_name == "registrations"
+    .dropdown.pull-right.sign-in-link
+      %a.btn.btn-large.btn-default.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
+        Sign in
+        %span.glyphicon.glyphicon-log-in
+      %ul.dropdown-login.dropdown-menu.dropdown-menu-right
+        %li.navbar-form
+          = bootstrap_form_for(:customer, url:  customer_session_path, class: 'inline-form') do |f|
+            = f.email_field :email, :autofocus => true
+
+            = f.password_field :password
+
+            = f.submit "Sign in", class: "btn btn-md btn-success"
+        %li.divider
+        %li= link_to "New user? Sign up!", registration_choice_path
+        %li= link_to "Vendor? Click here.", new_vendor_session_path
+.site-wrapper
+
+  .site-wrapper-inner
+
+    .cover-container
+      .inner.cover
+        %h1.cover-heading Tuxedo App
+        %h2.lead
+          We help you plan and book your travels.
+        - if ( !customer_signed_in? and !vendor_signed_in? )
+          = link_to "Sign up now!", registration_choice_path, class: "btn btn-large btn-primary"
+          = link_to "Explore the site", explore_path, class: "btn btn-large btn-success"
