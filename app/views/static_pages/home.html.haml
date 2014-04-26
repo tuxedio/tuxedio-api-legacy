@@ -25,7 +25,7 @@
       .inner.cover
         %h1.cover-heading Tuxedo App
         %h2.lead
-          We help you plan and book your travels.
+          We help you plan and book awesome adventures while <br/> you get to focus on the fun part, traveling.
         - if ( !customer_signed_in? and !vendor_signed_in? )
           = link_to "Sign up now!", registration_choice_path, class: "btn btn-large btn-primary"
           = link_to "Explore the site", explore_path, class: "btn btn-large btn-success"
