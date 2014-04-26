@@ -1,10 +1,10 @@
 require 'sshkit/dsl'
 
-set :application, 'tuxedio'
+set :application, 'tuxedo'
 set :scm, :git
-set :repo_url, 'git@github.com:tuxedio/tuxedio-proto.git'
+set :repo_url, 'git@github.com:tuxedoapp/tuxedo-proto.git'
 
-set :deploy_to, '/home/deploy/tuxedio'
+set :deploy_to, '/home/deploy/tuxedo'
 
 # Set the deploy branch to the current branch
 set :branch, ENV['branch'] || 'development'
