@@ -3,7 +3,10 @@ class StaticPagesController < ApplicationController
   def home
     if customer_signed_in?
       redirect_to explore_path
+    elsif vendor_signed_in?
+      redirect_to vendor_profile_path
     end
+
   end
 
 end
