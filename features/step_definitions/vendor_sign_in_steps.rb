@@ -29,11 +29,11 @@ When /^the vendor submits valid signin information$/ do
 end
 
 Then /^the vendor should see confirm details page$/ do
-  expect(page).to have_title("Tuxedo | Confirm details")
+  expect(page).to have_title("tuxedio | Confirm details")
 end
 
 Then /^the vendor should see their profile page$/ do
-  expect(page).to have_title("Tuxedo | " + @vendor.name)
+  expect(page).to have_title("tuxedio | " + @vendor.name)
 end
 
 Then /^the vendor should see a signout link$/ do
@@ -45,6 +45,6 @@ When(/^the vendor clicks the signout link$/) do
 end
 
 Then /^the vendor should see the home page$/ do
-  expect(page).to have_title('Tuxedo | Home')
+  expect(page).to have_title('tuxedio | Home')
 end
 

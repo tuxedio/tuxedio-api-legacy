@@ -27,7 +27,7 @@ When /^the customer submits valid signin information$/ do
 end
 
 Then /^the customer should see their profile page$/ do
-  expect(page).to have_title("Tuxedo | " + @customer.name)
+  expect(page).to have_title("tuxedio | " + @customer.name)
 end
 
 Then /^the customer should see a signout link$/ do
@@ -39,5 +39,5 @@ When(/^the customer clicks the signout link$/) do
 end
 
 Then /^the customer should see the home page$/ do
-  expect(page).to have_title('Tuxedo | Home')
+  expect(page).to have_title('tuxedio | Home')
 end

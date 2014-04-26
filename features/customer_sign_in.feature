@@ -9,7 +9,7 @@ Feature: Customer signing in
     Given a customer visits the signin page
     And the customer has an account
     When the customer submits valid signin information
-    Then the customer should see the home page
+    Then the customer should see the "/explore" page
     And the customer should see a signout link
     When the customer clicks the signout link
     Then the customer should see the home page
@@ -18,7 +18,7 @@ Feature: Customer signing in
     Given a customer visits the home page
     And the customer has an account
     When the customer submits valid signin information
-    Then the customer should see the home page
+    Then the customer should see the "/explore" page
     And the customer should see a signout link
     When the customer clicks the signout link
     Then the customer should see the home page
