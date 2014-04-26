@@ -3,24 +3,31 @@ namespace :db do
   desc "Fill database with sample data"
   task populate: :environment do
     samuelipsum = "Normally, both your asses would be dead as fucking fried chicken, but you happen to pull this shit while I'm in a transitional period so I don't wanna kill you, I wanna help you. But I can't give you this case, it don't belong to me. Besides, I've already been through too much shit this morning over this case to hand it over to your dumb ass."
-    customer = Customer.create!(name: "Eve", email: "customer@customer.com", location: "Boulder",
+    customer = Customer.new(name: "Eve", email: "customer@customer.com", location: "Boulder",
              password: "mypassword1", password_confirmation: "mypassword1", bio: samuelipsum)
+    customer.skip_confirmation!
+    customer.save
     customer.confirm!
+    customer.trips.create(trip_name: "My Trip", location: "Boulder", start_date: Time.now, number_of_days: 2)
 
-    vender = Vendor.create!(name: "Tangerine", email: "vendor@vendor.com", location: "Boulder",
+    vendor = Vendor.new(name: "Tangerine", email: "vendor@vendor.com", location: "Boulder",
              password: "mypassword1", password_confirmation: "mypassword1", zip_code: 80304)
-    vender.confirm!
+    vendor.skip_confirmation!
+    vendor.save
+    vendor.confirm!
 
     20.times do |n|
       name  = Faker::Name.name
       email = Faker::Internet.safe_email
       password  = "password"
       location = "Boulder"
-      customers = Customer.create!(name: name,
+      customers = Customer.new(name: name,
                        email: email,
                        location: location,
                        password: password,
                        password_confirmation: password)
+      customers.skip_confirmation!
+      customers.save
       customers.confirm!
     end
 
@@ -31,12 +38,14 @@ namespace :db do
       password  = "password"
       location = "Boulder"
       zip_code = Faker::Address.zip
-      vendors = Vendor.create!(name: name,
+      vendors = Vendor.new(name: name,
                        email: email,
                        location: location,
                        zip_code: zip_code,
                        password: password,
                        password_confirmation: password)
+      vendors.skip_confirmation!
+      vendors.save
       vendors.confirm!
     end
     vendors = Vendor.all(limit: 10)
@@ -60,7 +69,7 @@ namespace :db do
         activity.activity_times.create!(start_time: activity_start, end_time: activity_end, activity_id: activity.id)
       end
     }
-    customer.trips.create(trip_name: "My Trip", location: "Boulder", start_date: Time.now, number_of_days: 2)
+
 
   end
 end

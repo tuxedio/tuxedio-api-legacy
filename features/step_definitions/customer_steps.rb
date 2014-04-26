@@ -3,7 +3,7 @@ Given(/^a customer is logged in$/) do
     Given a customer visits the signin page
     And the customer has an account
     When the customer submits valid signin information
-    Then the customer should see the home page
+    Then the customer should see the "/explore" page
     Given a customer visits the home page
   }
 end

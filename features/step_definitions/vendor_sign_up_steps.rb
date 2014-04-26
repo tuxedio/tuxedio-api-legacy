@@ -27,5 +27,5 @@ Then(/^the vendor should see email confirmation notice$/) do
 end
 
 Then(/^vendor should be redirected to the the sign up page$/) do
-  expect(page).to have_title("Tuxedo | Sign up")
+  expect(page).to have_title("tuxedio | Sign up")
 end
