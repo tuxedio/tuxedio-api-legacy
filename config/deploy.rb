@@ -10,8 +10,8 @@ set :deploy_to, '/home/deploy/tuxedo'
 set :branch, ENV['branch'] || 'development'
 set :rails_env, "production"
 
-set :linked_files, %w{config/database.yml config/environments/production.rb}
-set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
+set :linked_files, %w{config/database.yml config/environments/production.rb }
+set :linked_dirs, %w{ bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system }
 
 namespace :deploy do
 

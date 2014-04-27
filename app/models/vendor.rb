@@ -30,7 +30,12 @@ class Vendor < ActiveRecord::Base
     ['Boulder', 'Longmont', 'Broomfield']
   end
 
-  has_attached_file :picture, :styles => { medium: "300x300#", thumb: "100x100#" }, default_url: ActionController::Base.helpers.asset_path('missing_avatar.jpg')
+  if Rails.env == 'production'
+    has_attached_file :picture, :styles => { medium: "300x300#", thumb: "100x100#" }, default_url: '/home/deploy/tuxedo/public/system/assets/images/missing_avatar.jpg'
+  else
+    has_attached_file :picture, :styles => { medium: "300x300#", thumb: "100x100#" }, default_url: ActionController::Base.helpers.asset_path('missing_avatar.jpg')
+  end
+
   validates_attachment_content_type :picture, content_type: /\Aimage\/.*\Z/
 
 end
