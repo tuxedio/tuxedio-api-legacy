@@ -14,7 +14,13 @@ class Activity < ActiveRecord::Base
 
   #ASSOCIATIONS
   belongs_to :vendor
-  has_attached_file :picture, :styles => { medium: "300x300#", thumb: "100x100#" }, default_url: ActionController::Base.helpers.asset_path('missing_activity_pic.jpg')
+
+  if Rails.env == 'production'
+    has_attached_file :picture, :styles => { medium: "300x300#", thumb: "100x100#" }, default_url: 'missing_activity_pic.jpg'
+  else
+    has_attached_file :picture, :styles => { medium: "300x300#", thumb: "100x100#" }, default_url: ActionController::Base.helpers.asset_path('missing_activity_pic.jpg')
+  end
+
   validates_attachment_content_type :picture, content_type: /\Aimage\/.*\Z/
   has_many  :itinerary_items
   has_many  :activity_times

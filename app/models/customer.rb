@@ -20,7 +20,7 @@ class Customer < ActiveRecord::Base
   serialize :top_choices, Array
 
   if Rails.env == 'production'
-    has_attached_file :picture, :styles => { medium: "300x300#", thumb: "100x100#" }, default_url: 'assets/missing_avatar.jpg'
+    has_attached_file :picture, :styles => { medium: "300x300#", thumb: "100x100#" }, default_url: 'missing_avatar.jpg'
   else
     has_attached_file :picture, :styles => { medium: "300x300#", thumb: "100x100#" }, default_url: ActionController::Base.helpers.asset_path('missing_avatar.jpg')
   end
