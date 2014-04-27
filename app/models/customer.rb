@@ -10,7 +10,7 @@ class Customer < ActiveRecord::Base
          :validatable, :confirmable
 
   attr_accessible :name, :email, :location, :password,
-                  :password_confirmation, :bio, :top_choices, :picture_file_size
+                  :password_confirmation, :bio, :top_choices, :picture_file_size, :picture
 
   validates :name,         presence: true, length: { maximum: 50 }
   validates :location,     presence: true, length: { maximum: 30 }
