@@ -1,30 +1,33 @@
-%h1 Edit #{resource_name.to_s.humanize} Account
-= devise_error_messages!
-%h2
-  = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
-    %div
-      = f.label :email
-      %br/
-      = f.email_field :email, :autofocus => true
-    - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-      %div
-        Currently waiting confirmation for: #{resource.unconfirmed_email}
-    %div
-      = f.label :password
-      %i (leave blank to keep current password)
-      %br/
-      = f.password_field :password, :autocomplete => "off"
-    %div
-      = f.label :password_confirmation
-      %br/
-      = f.password_field :password_confirmation
-    %div
-      = f.label :current_password
-      %i (confirm your changes)
-      %br/
-      = f.password_field :current_password
-    %div= f.submit "Update"
-  %h3 Cancel my account
-  %p
-    Unhappy? #{button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete}
-  = link_to "Back", :back
+- provide(:title, "Edit Profile for #{current_customer.name}")
+.col-sm-6.col-sm-offset-3.well.form-box
+  .col-sm-12
+    .row
+      %h1
+        .text-center Edit my profile.
+        .small.text-center
+          %span.glyphicon.glyphicon-thumbs-up
+    .row.top-buffer
+      = bootstrap_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
+        = f.text_field :name
+        %br/
+        = f.email_field :email, :autofocus => true
+        = f.text_field :location
+        = f.file_field :picture
+        - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+          %div
+            Currently waiting confirmation for: #{resource.unconfirmed_email}
+
+        %i (leave blank to keep current password)
+        = f.password_field :password, :autocomplete => "off"
+        = f.password_field :password_confirmation
+
+        %i (confirm your changes)
+        %br/
+        = f.password_field :current_password
+        = f.submit "Update"
+.col-sm-6.col-sm-offset-3.well.form-box
+  .col-sm-12
+    .row
+      %h3 Cancel my account
+      %p
+        Unhappy? #{button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete}

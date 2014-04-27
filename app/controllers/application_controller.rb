@@ -14,6 +14,10 @@ class ApplicationController < ActionController::Base
         u.permit(:name, :location, :email, :password,
                  :password_confirmation, :current_password, :zip_code, :vendor, :picture)
       end
+      devise_parameter_sanitizer.for(:account_update) do |u|
+        u.permit(:name, :location, :email, :password,
+                 :password_confirmation, :current_password, :zip_code, :vendor, :picture)
+      end
     end
 
     #REDIRECT DEVISE AFTER SIGN IN
