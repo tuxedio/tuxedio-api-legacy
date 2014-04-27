@@ -1,50 +1,19 @@
-- provide(:title, current_customer.name)
-.container
-  .row
-    .col-md-4.col-md-offset-4
-      .page-header
-        %h1
-          = current_customer.name
-          .small
-            %span.glyphicon.glyphicon-user
-            Personal Profile
+- provide(:title, "Edit Profile for #{current_customer.name}")
+.col-sm-6.col-sm-offset-3.well.form-box
+  .col-sm-12
+    .row
+      %h1
+        .text-center Edit my profile.
+        .small.text-center
+          %span.glyphicon.glyphicon-thumbs-up
 
-  .row
-    .col-sm-12
-      .row
-        .col-sm-4
-          .customer-image
-            =image_tag current_customer.picture.url(:thumb)
-        .col-sm-8
-          .panel.panel-primary
-            .panel-heading
-              %h5 Information
-            .panel-body
-              .p= current_customer.bio
-            %ul.list-group
-              %li.list-group-item= current_customer.name
-              %li.list-group-item= current_customer.email
-              %li.list-group-item= current_customer.location
 
-  /top_choices object, needs serious DRY and redesign, only functional for testing
-  .row
-    .top_three.col-sm-8.col-sm-offset-4
-      .row
-        .top_three_key.col-sm-3
-          %h5 Pick Uno
-        .top_three_hash.col-sm-9
-          %h6=current_customer.top_choices[0]
-      .row
-        .top_three_key.col-sm-3
-          %h5 Pick Dos
-        .top_three_hash.col-sm-9
-          %h6=current_customer.top_choices[1]
-      .row
-        .top_three_key.col-sm-3
-          %h5 Pick Tres
-        .top_three_hash.col-sm-9
-          %h6= current_customer.top_choices[2]
-
-  .row
-    .pull-right
-      =link_to "Save changes", customer_profile_path, class: "btn btn-success btn-sm"
+    .row.top-buffer
+      = bootstrap_form_for(@customer, url: customer_profile_edit_path, html: {:method => :put}) do |f|
+        = render 'shared/error_messages', object: f.object
+        = f.text_field :name
+        = f.email_field :email, autofocus: true
+        = f.text_field :location
+        = f.file_field :picture
+        = f.form_group do
+          = f.submit "Save changes", class: "btn btn-large btn-success"
