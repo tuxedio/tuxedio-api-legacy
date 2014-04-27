@@ -13,6 +13,9 @@
   .site-wrapper-inner
 
     .cover-container
+      - flash.each do |key, value|
+        %div{class: flash_class(key)}
+          = value
       .inner.cover
         %h1.cover-heading tuxedio
         %h2.lead
