@@ -19,7 +19,12 @@ class Customer < ActiveRecord::Base
 
   serialize :top_choices, Array
 
-  has_attached_file :picture, :styles => { medium: "300x300#", thumb: "100x100#" }, default_url: ActionController::Base.helpers.asset_path('missing_avatar.jpg')
+  if Rails.env == 'production'
+    has_attached_file :picture, :styles => { medium: "300x300#", thumb: "100x100#" }, default_url: 'missing_avatar.jpg'
+  else
+    has_attached_file :picture, :styles => { medium: "300x300#", thumb: "100x100#" }, default_url: ActionController::Base.helpers.asset_path('missing_avatar.jpg')
+  end
+
   validates_attachment_content_type :picture, content_type: /\Aimage\/.*\Z/
   validates :picture_file_size, numericality: { less_than_or_equal_to: 10000000 }, allow_nil: true
 
