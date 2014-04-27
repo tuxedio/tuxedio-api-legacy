@@ -1,22 +1,13 @@
 - provide(:title, 'Home')
 .navbar-right
--if !customer_signed_in?
+- unless customer_signed_in?
   - unless controller.controller_name == "sessions" or controller.controller_name == "registrations"
     .dropdown.pull-right.sign-in-link
       %a.btn.btn-large.btn-default.dropdown-toggle{"data-toggle" => "dropdown", href: new_customer_session_path}
         Sign in
         %span.glyphicon.glyphicon-log-in
       %ul.dropdown-login.dropdown-menu.dropdown-menu-right
-        %li.navbar-form
-          = bootstrap_form_for(:customer, url:  customer_session_path, class: 'inline-form') do |f|
-            = f.email_field :email, :autofocus => true
-
-            = f.password_field :password
-
-            = f.submit "Sign in", class: "btn btn-md btn-success"
-        %li.divider
-        %li= link_to "New user? Sign up!", registration_choice_path
-        %li= link_to "Vendor? Click here.", new_vendor_session_path
+        = render 'layouts/sign_in_dropdown'
 .site-wrapper
 
   .site-wrapper-inner
