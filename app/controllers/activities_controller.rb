@@ -45,6 +45,8 @@ class ActivitiesController < ApplicationController
     @act_count.times do |i|
       @act_arr << Activity.find_by_id(i+1)
     end
+
+    @act_arr.shuffle!
   end
 
 
