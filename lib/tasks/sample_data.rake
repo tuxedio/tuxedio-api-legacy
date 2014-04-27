@@ -33,7 +33,7 @@ namespace :db do
 
 
     40.times do |n|
-      name  = Faker::Name.name
+      name  = Faker::Company.name
       email = Faker::Internet.safe_email
       password  = "password"
       location = "Boulder"
