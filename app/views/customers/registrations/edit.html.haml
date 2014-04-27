@@ -14,6 +14,7 @@
         = f.email_field :email, :autofocus => true
         = f.text_field :location
         = f.file_field :picture
+        = f.text_area :bio
         - if devise_mapping.confirmable? && resource.pending_reconfirmation?
           %div
             Currently waiting confirmation for: #{resource.unconfirmed_email}
