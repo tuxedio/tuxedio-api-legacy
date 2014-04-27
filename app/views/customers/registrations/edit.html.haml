@@ -14,7 +14,7 @@
         = f.email_field :email, :autofocus => true
         = f.text_field :location
         = f.file_field :picture
-        = f.text_area :bio
+        = f.text_area :bio, size: "10x10"
         - if devise_mapping.confirmable? && resource.pending_reconfirmation?
           %div
             Currently waiting confirmation for: #{resource.unconfirmed_email}
@@ -26,7 +26,8 @@
         %i (confirm your changes)
         %br/
         = f.password_field :current_password
-        = f.submit "Update"
+        = f.submit "Update Profile", class: "btn btn-md btn-success"
+        = link_to "Cancel", customers_path, class: "btn btn-md btn-danger"
 .col-sm-6.col-sm-offset-3.well.form-box
   .col-sm-12
     .row
