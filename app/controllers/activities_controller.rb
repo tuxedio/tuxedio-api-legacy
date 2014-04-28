@@ -40,7 +40,10 @@ class ActivitiesController < ApplicationController
   def explore
     @act_arr   ||= Activity.all
     @act_count ||= Activity.count
-    @itinerary ||= current_customer.trips.find(1).itinerary_items
+
+    if customer_signed_in?
+      @itinerary ||= current_customer.trips.find(1).itinerary_items
+    end
   end
 
 
