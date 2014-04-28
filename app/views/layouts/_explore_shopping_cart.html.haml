@@ -1,17 +1,25 @@
-.list-group.affix
-  .list-group-item.active
-    %h4.center
-      %span.glyphicon.glyphicon-shopping-cart
-      Trip items
-  -itinerary.each do |item|
-    .list-group-item
-      %h5.list-group-item-header
-        = item.activity.name
-      %p.list-group-item-header-text
-        - time = item.activity_time.start_time
-        .small= time.to_formatted_s(:long)
-      = check_box 'item', 'remove'
-      Delete
-  .top-buffer
-    = link_to 'Update trip', '#', class: 'btn btn-sm btn-block btn-success'
+=form_tag change_trips_itinerary_items_path do
+  .list-group.affix
+    .list-group-item.active
+      %h4.center
+        %span.glyphicon.glyphicon-shopping-cart
+        Trip items
+    -if itinerary.empty?
+      .list-group-item
+        %h5.list-group-item-header
+          Your trip is empty!
+        %p.list-group-item-header-text
+          Don't be shy, add something.
+    -else
+      -itinerary.each do |item|
+        .list-group-item
+          %h5.list-group-item-header
+            = item.activity.name
+          %p.list-group-item-header-text
+            - time = item.activity_time.start_time
+            .small= time.to_formatted_s(:long)
+          = check_box_tag 'delete[]', item.id
+          Delete
+      .top-buffer
+        = submit_tag 'Update trip', class: 'btn btn-sm btn-block btn-success'
 

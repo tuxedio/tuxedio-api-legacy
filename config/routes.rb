@@ -32,7 +32,7 @@ TuxedoProto::Application.routes.draw do
   resource :trips do
     resource :itinerary_items do
       member do
-        post :update_cart
+        post :change
       end
     end
   end

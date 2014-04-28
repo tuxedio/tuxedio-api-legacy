@@ -34,7 +34,13 @@ class ItineraryItemsController < ApplicationController
   def destroy
   end
 
-  def update_cart
+  def change
+
+    params[:delete].each do |i|
+      ItineraryItem.find(i).destroy
+    end
+
+    redirect_to explore_path
   end
 
   private
