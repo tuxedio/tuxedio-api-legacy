@@ -1,10 +1,12 @@
-.list-group
+.list-group.affix
   .list-group-item.active
     %h4.center
       %span.glyphicon.glyphicon-shopping-cart
       Cart
-  .list-group-item
-  .list-group-item
-  .list-group-item
-  .list-group-item
-  .list-group-item
+  -itinerary.each do |item|
+    .list-group-item
+      %strong Name:
+      =Activity.find(item.activity_id).name
+      %strong Time:
+      =ActivityTime.find(item.activity_time_id).start_time
+

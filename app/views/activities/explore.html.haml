@@ -28,6 +28,6 @@
             =render "activities/explore_activity", name: @act_arr[i].name, desc: @act_arr[i].description, price: @act_arr[i].price, id:  @act_arr[i].id
     - if customer_signed_in?
       #sidebar.col-xs-6.col-sm-3.sidebar-offcanvas{role: "navigation"}
-        = render 'layouts/explore_shopping_cart'
+        = render 'layouts/explore_shopping_cart', itinerary: @itinerary
 
 

@@ -38,13 +38,9 @@ class ActivitiesController < ApplicationController
   end
 
   def explore
-    @act_arr   ||= []
+    @act_arr   ||= Activity.all
     @act_count ||= Activity.count
-
-    # Pick random activities from database to display in view
-    @act_count.times do |i|
-      @act_arr << Activity.find_by_id(i+1)
-    end
+    @itinerary ||= current_customer.trips.find(1).itinerary_items
   end
 
 
