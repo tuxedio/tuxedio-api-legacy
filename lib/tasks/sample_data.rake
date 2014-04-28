@@ -35,7 +35,7 @@ namespace :db do
     40.times do |n|
       name  = Faker::Company.name
       email = Faker::Internet.safe_email
-      password  = "password"
+      password = "password"
       location = "Boulder"
       zip_code = Faker::Address.zip
       vendors = Vendor.new(name: name,
@@ -55,7 +55,12 @@ namespace :db do
         activity_description = Faker::Lorem.sentence(5)
         activity_location = Faker::Address.city
         activity_price = Faker::Number.number(2)
-        vendor.activities.create!(name: activity_name, description: activity_description, location: activity_location, price: activity_price)
+        vendor.activities.create!(
+          name: activity_name,
+          description: activity_description,
+          location: activity_location,
+          price: activity_price,
+          )
       end
     }
 
