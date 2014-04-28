@@ -49,10 +49,12 @@ class TripsController < ApplicationController
       @current_trip_id ||= session[:current_trip_id]
       session[:current_trip_id] = @current_trip_id
 
-      unless (@current_trip = @trips.find_by_id(@current_trip_id))
-        @current_trip_id = @trips.first.id
+      if @current_trip_id.nil?
+        @current_trip_id = @trips.last.id
       end
+
       @current_trip = @trips.find_by_id(@current_trip_id)
+
     end
 
 end
