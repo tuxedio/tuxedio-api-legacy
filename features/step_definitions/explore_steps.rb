@@ -30,3 +30,16 @@ end
 Then(/^they should see "(.*?)" flash$/) do |flizzash|
   expect(page).to have_selector('div.alert.alert-' + flizzash)
 end
+
+Then(/^the intinerary cart should(.*?) be empty$/) do |i|
+		if i == " not"
+    expect(page).to_not have_content('Your trip is empty!')
+  else
+    expect(page).to have_content('Your trip is empty!')
+  end
+end
+
+When(/^(?:|I )check "(.*?)" field$/) do |field|
+  check(field)
+end
+

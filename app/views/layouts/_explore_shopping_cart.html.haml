@@ -18,8 +18,9 @@
           %p.list-group-item-header-text
             - time = item.activity_time.start_time
             .small= time.to_formatted_s(:long)
+
           = check_box_tag 'delete[]', item.id
-          Delete
+          = label_tag 'delete', 'Delete'
       .top-buffer
         = submit_tag 'Update trip', class: 'btn btn-sm btn-block btn-success'
 

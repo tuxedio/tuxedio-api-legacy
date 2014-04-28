@@ -32,10 +32,10 @@ class ItineraryItemsController < ApplicationController
   end
 
   def change
-    debugger
     params[:delete].each do |i|
       ItineraryItem.find(i).destroy
     end
+    flash[:notice] = "Items successfully removed from trip!"
     redirect_to explore_path
   end
 
