@@ -7,6 +7,9 @@
     .list-group-item
       %strong Name:
       =Activity.find(item.activity_id).name
+      %br
       %strong Time:
-      =ActivityTime.find(item.activity_time_id).start_time
+      %divider
+      - time =ActivityTime.find(item.activity_time_id).start_time
+      = time.to_formatted_s(:long)
 
