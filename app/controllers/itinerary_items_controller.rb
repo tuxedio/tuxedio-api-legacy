@@ -32,9 +32,14 @@ class ItineraryItemsController < ApplicationController
   end
 
   def change
+    
     params[:delete].each do |i|
-      ItineraryItem.find(i).destroy
+      # Security: make sure that trip belongs to customer
+      if ItineraryItem.find(i).trip.customer == current_customer
+        ItineraryItem.find(i).destroy
+      end
     end
+
     flash[:notice] = "Items successfully removed from trip!"
     redirect_to explore_path
   end
