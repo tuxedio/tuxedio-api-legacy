@@ -10,10 +10,10 @@
     #tuxedio-navbar-collapse.collapse.navbar-collapse
       .nav.navbar-nav.navbar-right
         %li{ class: ( (current_page? explore_path) and 'active') }= link_to "Explore", explore_path
-        %li= link_to "Local's Pick", "#"
-        %li= link_to "Blog", "#"
-        %li{ class: ( (current_page? customers_trips_path) and 'active') }= link_to "My Trips", customers_trips_path
+        /%li= link_to "Local's Pick", "#"
+        /%li= link_to "Blog", "#"
         - if customer_signed_in?
+          %li{ class: ( (current_page? customers_trips_path) and 'active') }= link_to "My Trips", customers_trips_path
           / %li= link_to "Users", '#'
           %li.dropdown
             %a.dropdown-toggle{"data-toggle" => "dropdown", href: customer_profile_path}
