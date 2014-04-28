@@ -5,13 +5,13 @@
       Trip items
   -itinerary.each do |item|
     .list-group-item
-      %h4.list-group-item-header
-        =Activity.find(item.activity_id).name
+      %h5.list-group-item-header
+        = item.activity.name
       %p.list-group-item-header-text
-        - time =ActivityTime.find(item.activity_time_id).start_time
-        = time.to_formatted_s(:long)
-      Remove
+        - time = item.activity_time.start_time
+        .small= time.to_formatted_s(:long)
       = check_box 'item', 'remove'
+      Delete
   .top-buffer
-    = link_to 'Update trip', 'Update trip', class: 'btn btn-small btn-block btn-success'
+    = link_to 'Update trip', '#', class: 'btn btn-sm btn-block btn-success'
 

@@ -38,10 +38,11 @@ class ActivitiesController < ApplicationController
   end
 
   def explore
-    @act_arr   ||= Activity.all
-    @act_count ||= Activity.count
+    @act_arr    ||= Activity.all
+    @act_count  ||= Activity.count
+    @trip_count ||= current_customer.trips.count
 
-    if customer_signed_in?
+    if customer_signed_in? and @trip_count > 0
       @itinerary ||= current_customer.trips.find(1).itinerary_items
     end
   end
