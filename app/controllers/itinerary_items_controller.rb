@@ -31,10 +31,8 @@ class ItineraryItemsController < ApplicationController
 
   end
 
-  def destroy
-  end
-
   def change
+    debugger
     params[:delete].each do |i|
       ItineraryItem.find(i).destroy
     end

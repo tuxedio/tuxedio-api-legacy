@@ -47,6 +47,7 @@ class ActivitiesController < ApplicationController
       @trip_count = 0
     end
 
+    # later refactor to implement session var for :current_trip
     if customer_signed_in? and @trip_count > 0
       @itinerary ||= current_customer.trips.find(1).itinerary_items
     end
