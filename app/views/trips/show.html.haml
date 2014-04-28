@@ -15,5 +15,25 @@
     %h2
       = @current_trip.trip_name + " to " + @current_trip.location + " starting on " + @current_trip.start_date.strftime('%A, %B %e, %Y')
     %br
-    = render @activities
+    -if @itinerary_items.empty?
+      %h3.center.well= "There are currently no activities in your itinerary."
+    - @itinerary_items.each do |item|
+      .row
+        .activity.clearfix
+          .col-md-2
+            .activity-picture
+              = image_tag item.activity.picture.url(:medium), class: "img-responsive"
+          .col-md-8
+            .activity-name
+              = item.activity.name
+              = " - "
+              = item.activity_time.start_time.strftime("%A %B %d, %Y at  %l%P")
+            .activity-description
+              = item.activity.description
+          .col-md-2
+            .activity-price
+              = item.activity.price
+            .activity-edit
+              - if vendor_signed_in?
+                = link_to "Edit Activity", edit_vendors_activities_path(@activity, :id => activity.id), {:class => 'btn btn-lg btn-primary'}
 
