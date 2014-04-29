@@ -30,4 +30,6 @@ class Customer < ActiveRecord::Base
 
   #ASSOCIATIONS
   has_many :trips
+
+
 end

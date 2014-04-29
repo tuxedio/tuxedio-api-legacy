@@ -22,6 +22,7 @@ class ItineraryItemsController < ApplicationController
     )
 
     if @itinerary_item.save
+      session[:current_trip_id] = params[:trip_id]
       flash[:success] = "#{@activity.name} added to trip!"
       redirect_to explore_path
     else
@@ -32,7 +33,7 @@ class ItineraryItemsController < ApplicationController
   end
 
   def change
-    unless params[:delete].nil? 
+    unless params[:delete].nil?
       params[:delete].each do |i|
         # Security: make sure that trip belongs to customer
         if ItineraryItem.find(i).trip.customer == current_customer
