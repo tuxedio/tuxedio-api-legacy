@@ -1,5 +1,5 @@
 =form_tag change_trips_itinerary_items_path do
-  .list-group.affix
+  #cart.list-group{"data-offset-top" => "145", "data-spy" => "affix"}
     .list-group-item.active
       %h4.center
         %span.glyphicon.glyphicon-shopping-cart
@@ -14,7 +14,7 @@
           Don't be shy, add something.
     -else
       -itinerary.each do |item|
-        .list-group-item
+        .list-group-item.item
           %h5.list-group-item-header
             = item.activity.name
           %p.list-group-item-header-text

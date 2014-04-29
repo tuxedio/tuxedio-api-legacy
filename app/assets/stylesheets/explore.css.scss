@@ -7,11 +7,17 @@
 
 }
 
-.list-group.affix{
-   width: 200px;
-   max-height:60%;
+#cart.list-group.affix{
+   //width: 200px;
+   max-height:70%;
    overflow: scroll;
-   top: auto;
+   top: 60px;
+   position: fixed;
+
+}
+
+#explore-header{
+
 }
 
 @media screen and (max-width: 767px) {
