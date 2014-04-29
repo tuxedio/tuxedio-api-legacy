@@ -4,6 +4,8 @@
       %h4.center
         %span.glyphicon.glyphicon-shopping-cart
         Trip items
+        %br
+      .center=itinerary[0].trip.trip_name
     -if itinerary.empty?
       .list-group-item
         %h5.list-group-item-header
@@ -18,8 +20,6 @@
           %p.list-group-item-header-text
             - time = item.activity_time.start_time
             .small= time.to_formatted_s(:long)
-            %br
-            .small= item.trip.trip_name
 
           = check_box_tag 'delete[]', item.id
           = label_tag 'delete', 'Delete'

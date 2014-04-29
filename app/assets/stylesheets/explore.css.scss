@@ -7,15 +7,12 @@
 
 }
 
-.explore-name{
-  min-height: 40px !important;
-}
-
-.affix{
+.list-group.affix{
    width: 200px;
+   max-height:60%;
+   overflow: scroll;
    top: auto;
 }
-
 
 @media screen and (max-width: 767px) {
   .row-offcanvas {
