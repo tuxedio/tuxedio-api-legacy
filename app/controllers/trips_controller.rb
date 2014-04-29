@@ -39,6 +39,8 @@ class TripsController < ApplicationController
       params.require(:trip).permit(:trip_name, :location, :start_date, :number_of_days)
     end
 
+    # Eventually this method should be in customer model
+    # so we can use customer.current_trip
     def current_trip
       #grab params from the website
 
@@ -46,15 +48,14 @@ class TripsController < ApplicationController
         @current_trip_id = params[:trip_selection]
       end
 
-      @current_trip_id ||= session[:current_trip_id]
-      session[:current_trip_id] = @current_trip_id
-
-      if @current_trip_id.nil?
+      if Trip.exists?(session[:current_trip_id])
+        @current_trip_id ||= session[:current_trip_id]
+        session[:current_trip_id] = @current_trip_id
+      else
         @current_trip_id = @trips.last.id
       end
 
       @current_trip = @trips.find_by_id(@current_trip_id)
 
     end
-
 end

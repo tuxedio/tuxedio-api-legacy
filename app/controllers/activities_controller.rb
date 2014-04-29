@@ -38,12 +38,23 @@ class ActivitiesController < ApplicationController
   end
 
   def explore
-    @act_arr   ||= []
-    @act_count ||= Activity.count
+    @act_arr    ||= Activity.all
+    @act_count  ||= Activity.count
 
-    # Pick random activities from database to display in view
-    @act_count.times do |i|
-      @act_arr << Activity.find_by_id(i+1)
+    if customer_signed_in?
+      @trip_count ||= current_customer.trips.count
+    else
+      @trip_count = 0
+    end
+
+    # later refactor to implement session var for :current_trip
+    if customer_signed_in? and @trip_count > 0
+      if Trip.exists?(session[:current_trip_id])
+        @trip = Trip.find(session[:current_trip_id])
+      else
+        @trip = current_customer.trips.last
+      end
+      @itinerary = @trip.itinerary_items
     end
   end
 

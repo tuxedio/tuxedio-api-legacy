@@ -1,4 +1,4 @@
-.col-sm-6.col-md-4
+.col-6.col-sm-6.col-lg-4
   .well.explore-activity
     .thumbnail
       =image_tag "https://www.ocoos.com/images/product/509414141eaa4_skydive01.jpg"
@@ -12,7 +12,7 @@
         - if current_customer.trips.count == 0
           - path = new_trips_path
         -else
-          - path = new_trips_itinerary_items_path(activity_id: id) 
+          - path = new_trips_itinerary_items_path(activity_id: id)
       - else
         - path = customer_session_path
       %center=link_to 'Add to trip', path, class: 'btn btn-primary'

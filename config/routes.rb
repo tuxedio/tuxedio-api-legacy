@@ -14,14 +14,14 @@ TuxedoProto::Application.routes.draw do
   # Routes for Yelp information
   resource :vendors do
     collection do
-      get 'confirm_details'
-      get 'update_details'
+      get :confirm_details
+      get :update_details
     end
   end
 
   resource :activities do
-    collection do
-      get 'explore'
+    member do
+      get :explore
     end
   end
 
@@ -30,7 +30,11 @@ TuxedoProto::Application.routes.draw do
   end
 
   resource :trips do
-    resource :itinerary_items
+    resource :itinerary_items do
+      member do
+        post :change
+      end
+    end
   end
 
   resource :vendors do
