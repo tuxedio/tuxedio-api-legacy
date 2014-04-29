@@ -36,6 +36,9 @@
   .row-offcanvas-right
   .sidebar-offcanvas {
     right: -50%; /* 6 columns */
+    position: absolute;
+    top: 0;
+    width: 50%;
   }
 
   .row-offcanvas-left
@@ -49,11 +52,5 @@
 
   .row-offcanvas-left.active {
     left: 50%; /* 6 columns */
-  }
-
-  .sidebar-offcanvas {
-    position: absolute;
-    top: 0;
-    width: 50%; /* 6 columns */
   }
 }
