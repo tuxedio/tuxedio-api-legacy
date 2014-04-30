@@ -15,17 +15,7 @@ class Activity < ActiveRecord::Base
   #ASSOCIATIONS
   belongs_to :vendor
 
-  def Activity.post_image_url
-    random = rand(5)
-    "sample_act_pic/#{ random }.jpg"
-  end
-
-  if Rails.env == 'production'
-    has_attached_file :picture, :styles => { medium: "300x300#", thumb: "100x100#" }, default_url: 'missing_activity_pic.jpg'
-  else
-    has_attached_file :picture, :styles => { medium: "300x300#", thumb: "100x100#" },
-    :default_url => post_image_url
-  end
+  has_attached_file :picture, :styles => { medium: "300x300!", thumb: "100x100!" }
 
   validates_attachment_content_type :picture, content_type: /\Aimage\/.*\Z/
   has_many  :itinerary_items
