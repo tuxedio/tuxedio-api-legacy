@@ -3,7 +3,7 @@
   .col-sm-12.well.form-box.sign-in-box
     .row
       %h1
-        .text-center Sign in
+        .text-center Vendor sign in
         .small.text-center
 
     .row.top-buffer.sign-in-input
@@ -17,4 +17,4 @@
           %div= f.submit "Sign in", class: "btn btn-lg btn-success btn-block"
   .col-sm-12
     = render "devise/shared/links"
-    = link_to "Looking for the Business sign in?", new_vendor_session_path
+    = link_to "Looking for the regular (non-vendor) sign in?", new_customer_session_path

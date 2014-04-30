@@ -1,52 +1,45 @@
 - provide(:title, current_customer.name)
-.container
-  .row
-    .col-md-4.col-md-offset-4
-      .page-header
-        %h1
-          = current_customer.name
-          .small
-            %span.glyphicon.glyphicon-user
-            Personal Profile
-
-  .row
-    .col-sm-12
-      .row
-        .col-sm-4
-          .customer-image
-            =image_tag current_customer.picture.url(:medium)
-          .itinerary-link
-            = link_to "View my upcoming trips", customers_trips_path, {:class => "btn btn-success btn-md"}
-        .col-sm-8
-          .panel.panel-primary
-            .panel-heading
-              %h5 Information
-            .panel-body
-              .p= current_customer.bio
-            %ul.list-group
-              %li.list-group-item= current_customer.name
-              %li.list-group-item= current_customer.email
-              %li.list-group-item= current_customer.location
+.row
+  .col-md-4
+    %section.center
+      .customer-picture
+        =image_tag current_customer.picture.url(:medium)
+      .customer-profile-links
+        = link_to "View my upcoming trips", customers_trips_path, {:class => "btn btn-default btn-md btn-success"}
+        =link_to "Edit profile", edit_customers_path, class: "btn btn-default btn-md btn-primary"
+  .col-md-8
+    %section
+      .customer-name.well
+        %h1= current_customer.name
+        .small
+          %span.glyphicon.glyphicon-user
+          Personal Profile
+      .customer-info.well
+        .customer-location
+          = "Based in "+current_customer.location
+        .customer-email
+          %span= "Email: "
+          = current_customer.email
+        .customer-bio
+          %span My bio:
+          %p.well= current_customer.bio
 
   /top_choices object, needs serious DRY and redesign, only functional for testing
-  .row
-    .top_three.col-sm-8.col-sm-offset-4
-      .row
-        .top_three_key.col-sm-3
-          %h5 Pick Uno
-        .top_three_hash.col-sm-9
-          %h6=current_customer.top_choices[0]
-      .row
-        .top_three_key.col-sm-3
-          %h5 Pick Dos
-        .top_three_hash.col-sm-9
-          %h6=current_customer.top_choices[1]
-      .row
-        .top_three_key.col-sm-3
-          %h5 Pick Tres
-        .top_three_hash.col-sm-9
-          %h6= current_customer.top_choices[2]
+  / .row
+  /   .top_three.col-sm-8.col-sm-offset-4
+  /     .row
+  /       .top_three_key.col-sm-3
+  /         %h5 Pick Uno
+  /       .top_three_hash.col-sm-9
+  /         %h6=current_customer.top_choices[0]
+  /     .row
+  /       .top_three_key.col-sm-3
+  /         %h5 Pick Dos
+  /       .top_three_hash.col-sm-9
+  /         %h6=current_customer.top_choices[1]
+  /     .row
+  /       .top_three_key.col-sm-3
+  /         %h5 Pick Tres
+  /       .top_three_hash.col-sm-9
+  /         %h6= current_customer.top_choices[2]
 
-  .row
-    .pull-right
-      =link_to "Edit profile", edit_customers_path, class: "btn btn-success btn-sm"

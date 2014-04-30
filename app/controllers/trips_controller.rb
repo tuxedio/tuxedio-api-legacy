@@ -10,21 +10,13 @@ class TripsController < ApplicationController
       return
     end
 
-    #this should be moved to its own method. It sets the current trip off the session variable.
-    @selected_trip = params[:trip_selection]
-    @selected_trip ||= session[:trip_selection]
 
-    if @selected_trip && !@selected_trip.empty?
-      session[:trip_selection] = @selected_trip
-    else
-      @selected_trip = session[:trip_selection]
-    end
-
-    unless (@selected_trip = @trips.find_by_id(@selected_trip))
-      @selected_trip = @trips.first.id
-    end
-
-    @current_trip = @trips.find_by_id(@selected_trip)
+    @current_trip = current_trip
+    @itinerary_items = current_trip.itinerary_items.find(
+                      :all,
+                      :include => :activity_time,
+                      :order => 'activity_times.start_time')
+    #Set make sure current trip and session var are same
     @activities   = @current_trip.activities
   end
 
@@ -47,4 +39,23 @@ class TripsController < ApplicationController
       params.require(:trip).permit(:trip_name, :location, :start_date, :number_of_days)
     end
 
+    # Eventually this method should be in customer model
+    # so we can use customer.current_trip
+    def current_trip
+      #grab params from the website
+
+      if !params[:trip_selection].nil? && !params[:trip_selection].empty?
+        @current_trip_id = params[:trip_selection]
+      end
+
+      if Trip.exists?(session[:current_trip_id])
+        @current_trip_id ||= session[:current_trip_id]
+        session[:current_trip_id] = @current_trip_id
+      else
+        @current_trip_id = @trips.last.id
+      end
+
+      @current_trip = @trips.find_by_id(@current_trip_id)
+
+    end
 end

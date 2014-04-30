@@ -1,0 +1,20 @@
+.container
+  .row.row-offcanvas.row-offcanvas-right
+    / Cart
+    .col-xs-12.col-sm-9
+      %p.pull-right.visible-xs
+        %button.btn.btn-primary.btn-xs{"data-toggle" => "offcanvas", type: "button"} Toggle cart
+
+      .jumbotron
+        %h1 What sounds good?
+        %p Use this area to navigate our activities, explore, and mess around until you create the perfect trip. We'll take care of the hard stuff.
+      .row
+        - if @act_count >= 9
+          - 9.times do |i|
+            =render "activities/explore_activity", name: @act_arr[i].name, desc: @act_arr[i].description, price: @act_arr[i].price, id:  @act_arr[i].id, activity: @act_arr[i]
+        - else
+          -@act_count.times do |i|
+            =render "activities/explore_activity", name: @act_arr[i].name, desc: @act_arr[i].description, price: @act_arr[i].price, id:  @act_arr[i].id, activity: @act_arr[i]
+    - if customer_signed_in?
+      #sidebar.col-xs-6.col-sm-3.sidebar-offcanvas{role: "navigation"}
+        = render 'layouts/explore_shopping_cart', itinerary: @itinerary

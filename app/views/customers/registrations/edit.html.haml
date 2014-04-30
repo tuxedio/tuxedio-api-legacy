@@ -1,5 +1,5 @@
 - provide(:title, "Update profile for #{current_customer.name}")
-.col-sm-6.col-sm-offset-3.well.form-box
+.col-sm-8.col-sm-offset-2.well.form-box
   .col-sm-12
     .row
       %h1
@@ -14,7 +14,7 @@
         = f.email_field :email, :autofocus => true
         = f.text_field :location
         = f.file_field :picture
-        = f.text_area :bio
+        = f.text_area :bio, size: "10x10"
         - if devise_mapping.confirmable? && resource.pending_reconfirmation?
           %div
             Currently waiting confirmation for: #{resource.unconfirmed_email}
@@ -26,10 +26,12 @@
         %i (confirm your changes)
         %br/
         = f.password_field :current_password
-        = f.submit "Update"
-.col-sm-6.col-sm-offset-3.well.form-box
+        = f.submit "Update Profile", class: "btn btn-md btn-success"
+        = link_to "Cancel", customers_path, class: "btn btn-md btn-danger"
+.col-sm-8.col-sm-offset-2.well.form-box
   .col-sm-12
     .row
       %h3 Cancel my account
       %p
-        Unhappy with your account? #{button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete}
+        Unhappy with your account?
+      = button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete, class: "btn btn-sm btn-danger"

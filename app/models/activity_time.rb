@@ -9,4 +9,5 @@ class ActivityTime < ActiveRecord::Base
   validates_datetime :end_time,   :after => :start_time
 
   belongs_to :activity
+  has_many :itinerary_items
 end
