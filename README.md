@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/tuxedio/tuxedo-proto.svg?branch=development)](https://travis-ci.org/tuxedo/tuxedio-proto)
+[![Build Status](https://travis-ci.org/tuxedio/tuxedo-proto.svg?branch=development)](https://travis-ci.org/tuxedio/tuxedo-proto)
 
 #tuxedio Prototype
 ###An app that connects allows people to connect with a local city or town, giving the user a true taste of what a city has to offer.
