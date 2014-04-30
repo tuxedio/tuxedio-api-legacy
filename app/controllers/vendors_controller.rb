@@ -26,20 +26,22 @@ class VendorsController < ApplicationController
 
     @data ||= get_vendor_data
 
-    current_vendor.update!(
-      name:         @data[:vendor_name],
-      zip_code:     @data[:vendor_postal],
-      address:      @data[:vendor_address],
-      phone_number: @data[:vendor_phone],
-      country:      @data[:vendor_country],
-      coordinates:  @data[:vendor_coordinates],
-      sample_image: @data[:vendor_image],
-      state:        @data[:vendor_state],
-      confirmed: true
-    )
+    if params[:vendor_accepted] == "true"
+      current_vendor.update!(
+        name:         @data[:vendor_name],
+        zip_code:     @data[:vendor_postal],
+        address:      @data[:vendor_address],
+        phone_number: @data[:vendor_phone],
+        country:      @data[:vendor_country],
+        coordinates:  @data[:vendor_coordinates],
+        sample_image: @data[:vendor_image],
+        state:        @data[:vendor_state]
+      )
 
-    flash[:success] = "Success! Your information was updated."
+       flash[:success] = "Success! Your information was updated."
+    end
 
+    current_vendor.update!(confirmed: true)
     redirect_to vendor_profile_path
 
   end
