@@ -56,6 +56,8 @@ class ActivitiesController < ApplicationController
       end
       @itinerary = @trip.itinerary_items
     end
+
+    @act_arr.shuffle!
   end
 
 

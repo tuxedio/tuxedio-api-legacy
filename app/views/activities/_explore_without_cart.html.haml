@@ -3,7 +3,7 @@
     .col-sm-12
       - if @act_count >= 9
         - 9.times do |i|
-          =render "activities/explore_activity", name: @act_arr[i].name, desc: @act_arr[i].description, price: @act_arr[i].price, id:  @act_arr[i].id
+          =render "activities/explore_activity", name: @act_arr[i].name, desc: @act_arr[i].description, price: @act_arr[i].price, id:  @act_arr[i].id, activity: @act_arr[i]
       - else
         -@act_count.times do |i|
-          =render "activities/explore_activity", name: @act_arr[i].name, desc: @act_arr[i].description, price: @act_arr[i].price, id:  @act_arr[i].id
+          =render "activities/explore_activity", name: @act_arr[i].name, desc: @act_arr[i].description, price: @act_arr[i].price, id:  @act_arr[i].id, activity: @act_arr[i]

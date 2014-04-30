@@ -33,9 +33,9 @@ namespace :db do
 
 
     40.times do |n|
-      name  = Faker::Name.name
+      name  = Faker::Company.name
       email = Faker::Internet.safe_email
-      password  = "password"
+      password = "password"
       location = "Boulder"
       zip_code = Faker::Address.zip
       vendors = Vendor.new(name: name,
@@ -51,16 +51,21 @@ namespace :db do
     vendors = Vendor.all(limit: 10)
     vendors.each { |vendor|
       20.times do |n|
-        activity_name = vendor.name + " Activity #" + n.to_s
+        activity_name = Faker::Address.city + " Activity"
         activity_description = Faker::Lorem.sentence(5)
         activity_location = Faker::Address.city
         activity_price = Faker::Number.number(2)
-        vendor.activities.create!(name: activity_name, description: activity_description, location: activity_location, price: activity_price)
+        vendor.activities.create!(
+          name: activity_name,
+          description: activity_description,
+          location: activity_location,
+          price: activity_price,
+          )
       end
     }
 
     activities = Activity.all
-    activities.each { |activity|
+    activities.each do |activity|
       10.times do |n|
         random_month = rand(1..12)
         random_day = rand(1..28)
@@ -68,7 +73,7 @@ namespace :db do
         activity_end = Time.new(2015, random_month, random_day, 3, 3, 3, "+03:00")
         activity.activity_times.create!(start_time: activity_start, end_time: activity_end, activity_id: activity.id)
       end
-    }
+    end
 
 
   end
