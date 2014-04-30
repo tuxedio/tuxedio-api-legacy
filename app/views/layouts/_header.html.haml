@@ -7,7 +7,7 @@
       %span.icon-bar
     = link_to "tuxedio", root_path, class: "navbar-brand", id: "logo"
 
-    #tuxedio-navbar-collapse.collapse.navbar-collapse
+    #tuxedio-navbar-collapse.collapse.navbar-collapse.navbar-responsive-collapse
       .nav.navbar-nav.navbar-right
         %li{ class: ( (current_page? explore_path) and 'active') }= link_to "Explore", explore_path
         /%li= link_to "Local's Pick", "#"
