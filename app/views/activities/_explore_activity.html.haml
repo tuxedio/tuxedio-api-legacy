@@ -4,7 +4,7 @@
       - if activity.picture?
         = image_tag activity.picture.url(:medium), class: "img-responsive"
       - else
-        = image_tag "/assets/sample_act_pic/#{rand(5)}.jpg"
+        = image_tag "/assets/sample_act_pic/#{rand(9)}.jpg"
     .caption
       %h4.explore-name= name
       .explore-description
