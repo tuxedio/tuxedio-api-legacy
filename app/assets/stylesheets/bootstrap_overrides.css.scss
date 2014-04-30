@@ -1,5 +1,12 @@
 @import "bootstrap";
 
+$theme-red: #FF534E;
+$theme-yellow: #FFDCAC;
+$theme-puke: #BED194;
+$theme-green: #499989;
+$theme-blue: #176785;
+
+
 body {
   background-color:#EEE !important;
 }
@@ -9,5 +16,5 @@ body {
   @include box-shadow(0 8px 8px rgba(55,55,55,.25));
 }
 .navbar-default{
-  background-color:#234
+  background-color:$theme-green !important;
 }
