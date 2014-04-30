@@ -1,0 +1,13 @@
+@import "bootstrap";
+
+body {
+  background-color:#EEE !important;
+}
+
+.main-container{
+  background-color:#fff;
+  @include box-shadow(0 8px 8px rgba(55,55,55,.25));
+}
+.navbar-default{
+  background-color:#234
+}
