@@ -1,20 +1,36 @@
+$theme-primary: #fcf8ee;
+$theme-secondary: #f3ede1;
+$theme-dark: #797A7A;
+$theme-highlight: #fd1c15;
+$theme-light: #F7F2F0;
+$theme-red: #fd1c15;
+
+
+
+$brand-primary: #B8AABB;
+//NAVBAR
+$navbar-height: 80px;
+$navbar-default-bg: $theme-primary;
+
+
+//Wells
+$well-bg: white;
+
 @import "bootstrap";
 
-$theme-red: #FF534E;
-$theme-yellow: #FFDCAC;
-$theme-puke: #BED194;
-$theme-green: #499989;
-$theme-blue: #176785;
 
 
 body {
-  background-color:#EEE !important;
+  background-color: lighten($theme-primary,2%) !important;
 }
 
-.main-container{
-  background-color:#fff;
-  @include box-shadow(0 8px 8px rgba(55,55,55,.25));
+.well{
+  border-radius:0px !important;
+  @include box-shadow(0 3px 3px rgba(55,55,55,.25) !important);
 }
-.navbar-default{
-  background-color:$theme-green !important;
+.list-group-item.active, .list-group-item.active:hover, .list-group-item.active:focus {
+z-index: 2;
+color: black !important;
+background-color: $theme-primary !important;
+border-color: darken($theme-primary, 20%) !important;
 }
