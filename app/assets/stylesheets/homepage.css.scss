@@ -8,7 +8,7 @@ html{
 body.home-page {
   height: 100%;
   background-color: #333;
-  background: url(background_wine.jpg) no-repeat center center fixed;
+  background: url(background_city.jpg) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -54,7 +54,7 @@ body.home-page {
   padding: 0 20px 120px;
   color: #fff;
   text-align: center;
-  text-shadow: 0 1px 3px rgba(0,0,0,.5);
+  text-shadow: 0 2px 3px rgba(0,0,0,.75);
 
 }
 .cover-heading{
@@ -74,7 +74,7 @@ body.home-page {
 @media (min-width: 768px) {
   /* Start the vertical centering */
   .site-wrapper-inner {
-    vertical-align: middle;
+    vertical-align: top;
   }
 }
 
