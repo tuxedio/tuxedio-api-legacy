@@ -36,4 +36,6 @@
               = item.activity.description
           .col-md-2
             .activity-price
-              = item.activity.price
+              = '$' + item.activity.price.to_s + "0"
+            .activity-remove
+              = link_to "Remove", trips_itinerary_items_path(item.id), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-lg btn-danger"
