@@ -33,6 +33,19 @@ class TripsController < ApplicationController
     end
   end
 
+  def edit
+    @trip = current_customer.trips.find(session[:current_trip_id])
+  end
+
+  def update
+    @trip = current_customer.trips.find(session[:current_trip_id])
+    if @trip.update(trips_params)
+      redirect_to customers_trips_path
+    else
+      render 'edit'
+    end
+  end
+
   private
 
     def trips_params

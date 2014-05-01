@@ -1,5 +1,5 @@
-@import "bootstrap";
-
+@import "bootstrap/variables";
+@import "bootstrap/mixins";
 /* mixins, variables, etc. */
 
 $grayMediumLight: #eaeaea;
@@ -18,7 +18,7 @@ html {
 }
 
 body {
-  padding-top: 60px;
+  padding-top: 80px;
 }
 
 section {
@@ -65,16 +65,20 @@ p {
 #logo {
   float: left;
   margin-right: 10px;
-  font-size: 1.7em;
+  font-size: 3em;
   color: #000;
   padding-top: 9px;
+  padding-left:80px;
+  background: url('tuxedo-logo-small.png');
+  background-repeat: no-repeat;
+  background-position: 5px 15px;
   font-weight: bold;
-  line-height: 1;
+  line-height: 1.5;
   font-family: 'Paytone One', 'sans-serif';
 }
 
 #logo:hover {
-  color: #323232;
+  color: #fd1c15;
   text-decoration: none;
 }
 
@@ -107,4 +111,7 @@ p {
 
 .top-buffer {
   padding-top: 10px;
+}
+div.registration-options {
+  padding-top: 30px;
 }
