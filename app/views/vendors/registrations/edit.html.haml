@@ -14,6 +14,7 @@
         = f.email_field :email, :autofocus => true
         = f.select :location, options_for_select(Vendor.allowed_locations, params[:location])
         = f.file_field :picture
+        = f.text_area :description, size: "10x10"
         - if devise_mapping.confirmable? && resource.pending_reconfirmation?
           %div
             Currently waiting confirmation for: #{resource.unconfirmed_email}
