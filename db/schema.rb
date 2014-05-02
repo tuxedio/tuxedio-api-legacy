@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140424043033) do
+ActiveRecord::Schema.define(version: 20140502004939) do
 
   create_table "activities", force: true do |t|
     t.string   "name"
@@ -115,6 +115,7 @@ ActiveRecord::Schema.define(version: 20140424043033) do
     t.string   "picture_content_type"
     t.integer  "picture_file_size"
     t.datetime "picture_updated_at"
+    t.text     "description"
   end
 
   add_index "vendors", ["email"], name: "index_vendors_on_email", unique: true
