@@ -31,9 +31,9 @@ class Vendor < ActiveRecord::Base
   end
 
   if Rails.env == 'production'
-    has_attached_file :picture, :styles => { medium: "300x300#", thumb: "100x100#" }, default_url: 'missing_avatar.jpg'
+    has_attached_file :picture, :styles => { medium: "300x300#", thumb: "100x100#" }, default_url: 'Tuxedo-proto.svg'
   else
-    has_attached_file :picture, :styles => { medium: "300x300#", thumb: "100x100#" }, default_url: ActionController::Base.helpers.asset_path('missing_avatar.jpg')
+    has_attached_file :picture, :styles => { medium: "300x300#", thumb: "100x100#" }, default_url: ActionController::Base.helpers.asset_path('Tuxedo-proto.svg')
   end
 
   validates_attachment_content_type :picture, content_type: /\Aimage\/.*\Z/
