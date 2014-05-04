@@ -8,12 +8,12 @@
       %h1 What sounds good?
       %p Use this area to navigate our activities, explore, and mess around until you create the perfect trip. We'll take care of the hard stuff.
     .row
-      - if @act_count >= 9
+      - if @activities.count >= 9
         - 9.times do |i|
-          =render "activities/explore_activity", name: @act_arr[i].name, desc: @act_arr[i].description, price: @act_arr[i].price, id:  @act_arr[i].id, activity: @act_arr[i]
+          =render "activities/explore_activity", name: @activities[i].name, desc: @activities[i].description, price: @activities[i].price, id:  @activities[i].id, activity: @activities[i]
       - else
-        -@act_count.times do |i|
-          =render "activities/explore_activity", name: @act_arr[i].name, desc: @act_arr[i].description, price: @act_arr[i].price, id:  @act_arr[i].id, activity: @act_arr[i]
+        -@activities.count.times do |i|
+          =render "activities/explore_activity", name: @activities[i].name, desc: @activities[i].description, price: @activities[i].price, id:  @activities[i].id, activity: @activities[i]
   - if customer_signed_in?
     #sidebar.col-xs-6.col-sm-3.sidebar-offcanvas{role: "navigation"}
       = render 'layouts/explore_shopping_cart', itinerary: @itinerary
