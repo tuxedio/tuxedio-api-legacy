@@ -1,8 +1,8 @@
 .row
   .col-sm-12
     - if @activities.count >= 9
-      - 9.times do |i|
-        =render "activities/explore_activity", name: @activities[i].name, desc: @activities[i].description, price: @activities[i].price, id:  @activities[i].id, activity: @activities[i]
+      - activities.first(9) do |activity|
+        =render "activities/explore_activity", activity: activity
     - else
-      -@activities.count.times do |i|
-        =render "activities/explore_activity", name: @activities[i].name, desc: @activities[i].description, price: @activities[i].price, id:  @activities[i].id, activity: @activities[i]
+      - @activities.each do |activity|
+        =render "activities/explore_activity", activity: activity
