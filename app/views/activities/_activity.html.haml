@@ -2,7 +2,10 @@
   .activity.clearfix
     .col-md-2
       .activity-picture
-        = image_tag activity.picture.url(:medium), class: "img-responsive"
+        - if activity.picture?
+          = image_tag activity.picture.url(:thumb), class: "img-responsive"
+        - else
+          = image_tag "/assets/sample_act_pic/#{rand(9)}.jpg", class: "img-responsive"
     .col-md-8
       .activity-name
         = activity.name
