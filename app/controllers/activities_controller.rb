@@ -47,15 +47,21 @@ class ActivitiesController < ApplicationController
       @trip_count = 0
     end
 
-    # later refactor to implement session var for :current_trip
-    if customer_signed_in? and @trip_count > 0
-      if Trip.exists?(session[:current_trip_id])
-        @trip = Trip.find(session[:current_trip_id])
-      else
-        @trip = current_customer.trips.last
-      end
-      @itinerary = @trip.itinerary_items
+    # # later refactor to implement session var for :current_trip
+    # if customer_signed_in? and @trip_count > 0
+    #   if Trip.exists?(session[:current_trip_id])
+    #     @trip = Trip.find(session[:current_trip_id])
+    #   else
+    #     @trip = current_customer.trips.last
+    #   end
+    #   @itinerary = @trip.itinerary_items
+    # end
+
+    if customer_signed_in?
+      @trip = current_customer.current_trip(session[:current_trip_id])
+      @itinerary = @trip.itinerary_items unless @trip.nil?
     end
+
 
     @act_arr.shuffle!
   end

@@ -10,7 +10,9 @@ class Customer < ActiveRecord::Base
          :validatable, :confirmable
 
   attr_accessible :name, :email, :location, :password,
-                  :password_confirmation, :bio, :top_choices, :picture_file_size, :picture
+                  :password_confirmation, :bio,
+                  :top_choices, :picture_file_size, :picture,
+                  :current_trip
 
   validates :name,         presence: true, length: { maximum: 50 }
   validates :location,     presence: true, length: { maximum: 30 }
@@ -31,5 +33,13 @@ class Customer < ActiveRecord::Base
   #ASSOCIATIONS
   has_many :trips
 
-
+  def current_trip(trip_id)
+    if self.trips.count > 0
+      if Trip.exists?(trip_id)
+        Trip.find(trip_id)
+      else
+        self.trips.last
+      end
+    end
+  end
 end
