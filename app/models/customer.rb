@@ -1,13 +1,6 @@
 class Customer < ActiveRecord::Base
 
   #--------------------------------------------------------
-  # Other Macros
-
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable,
-         :validatable, :confirmable
-
-  #--------------------------------------------------------
   # Attributes
 
   attr_accessible :name, :email, :location, :password,
@@ -53,6 +46,12 @@ class Customer < ActiveRecord::Base
 
   before_save{ email.downcase! }
 
+  #--------------------------------------------------------
+  # Other Macros
+
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable,
+         :validatable, :confirmable
 
 
   #--------------------------------------------------------
