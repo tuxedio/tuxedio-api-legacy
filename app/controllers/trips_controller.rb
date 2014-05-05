@@ -12,10 +12,7 @@ class TripsController < ApplicationController
 
 
     @current_trip = current_trip
-    @itinerary_items = current_trip.itinerary_items.find(
-                      :all,
-                      :include => :activity_time,
-                      :order => 'activity_times.start_time')
+    @itinerary_items = current_trip.itinerary_items.includes(:activity_time).order('activity_times.start_time')
     #Set make sure current trip and session var are same
     @activities   = @current_trip.activities
   end
