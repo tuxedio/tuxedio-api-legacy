@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 ruby '2.1.1'
-gem 'rails', '4.0.3'
+gem  'rails', '4.0.3'
 
 group :development, :test do
   gem 'sqlite3', '1.3.8'
@@ -13,6 +13,10 @@ group :development, :test do
   gem 'guard-cucumber'
   gem 'childprocess', '0.3.6'
   gem 'debugger'
+  gem 'capistrano', '~> 3.1.0'
+  gem 'capistrano-bundler', '~> 1.1.2'
+  gem 'capistrano-rails', '~> 1.1.1'
+  gem 'capistrano-rvm', github: "capistrano/rvm"
 end
 
 group :test do
@@ -40,17 +44,13 @@ gem 'validates_timeliness', '~> 3.0'
 gem 'sass-rails', "~> 4.0.2"
 gem 'uglifier', '2.1.1'
 gem 'coffee-rails', '4.0.1'
-gem 'jquery-rails', '3.0.4'
+gem 'jquery-rails', '3.1.0'
 gem 'turbolinks', '1.1.1'
 gem 'jbuilder', '1.0.2'
 gem 'bootstrap-sass'
 gem 'bootstrap_form'
 gem 'bcrypt-ruby', '3.1.2'
 gem 'haml'
-gem 'capistrano', '~> 3.1.0'
-gem 'capistrano-bundler', '~> 1.1.2'
-gem 'capistrano-rails', '~> 1.1.1'
-gem 'capistrano-rvm', github: "capistrano/rvm"
 gem 'devise', '3.1'
 gem 'protected_attributes', '1.0.7'
 gem 'will_paginate', '3.0.5'

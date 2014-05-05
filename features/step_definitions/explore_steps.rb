@@ -7,7 +7,7 @@ When(/^the customer clicks an Add to trip link$/) do
 end
 
 Then(/^they should see the "(.*?)" page$/) do |title|
-  expect(page).to have_title("Tuxedo | " + title)
+  expect(page).to have_title("tuxedio | " + title)
 end
 
 Then(/^the customer should see their item in intinerary cart$/) do
@@ -30,3 +30,16 @@ end
 Then(/^they should see "(.*?)" flash$/) do |flizzash|
   expect(page).to have_selector('div.alert.alert-' + flizzash)
 end
+
+Then(/^the intinerary cart should(.*?) be empty$/) do |i|
+		if i == " not"
+    expect(page).to_not have_content('Your trip is empty!')
+  else
+    expect(page).to have_content('Your trip is empty!')
+  end
+end
+
+When(/^(?:|I )check "(.*?)" field$/) do |field|
+  check(field)
+end
+

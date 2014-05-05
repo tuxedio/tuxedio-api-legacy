@@ -1,10 +1,10 @@
 [![Build Status](https://travis-ci.org/tuxedio/tuxedo-proto.svg?branch=development)](https://travis-ci.org/tuxedio/tuxedo-proto)
 
-#Tuxedo Prototype
+#tuxedio Prototype
 ###An app that connects allows people to connect with a local city or town, giving the user a true taste of what a city has to offer.
 ####Team Members: Austin Wood, Brandon Mikulka, Ian Ker-Seymer
 
-[Link to description of Models, Views, and Controllers](https://github.com/tuxedio/tuxedo-proto/blob/development/MODEL_README.md)
+[Link to description of Models, Views, and Controllers](https://github.com/tuxedio/tuxedio-proto/blob/development/MODEL_README.md)
 
 ***
 
@@ -63,4 +63,4 @@
     *  ```cap production deploy branch=my_branch```
   4. If neccesary, run migrations:
     *  ```cap production db:migrate```
-  5. Visit the [Tuxedo webpage](http://107.170.226.89)
+  5. Visit the [tuxedio webpage](http://107.170.226.89)

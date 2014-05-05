@@ -83,7 +83,7 @@ TuxedoProto::Application.configure do
     :address              => "smtp.gmail.com",
     :port                 => 465,
     :domain               => 'baci.lindsaar.net',
-    :user_name            => 'tuxedoapp',
+    :user_name            => 'tuxedioapp',
     :password             => 'nifookamot',
     :authentication       => 'plain',
     :enable_starttls_auto => true  }

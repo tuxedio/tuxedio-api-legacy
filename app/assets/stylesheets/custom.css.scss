@@ -1,5 +1,5 @@
-@import "bootstrap";
-
+@import "bootstrap/variables";
+@import "bootstrap/mixins";
 /* mixins, variables, etc. */
 
 $grayMediumLight: #eaeaea;
@@ -18,7 +18,7 @@ html {
 }
 
 body {
-  padding-top: 60px;
+  padding-top: 80px;
 }
 
 section {
@@ -45,13 +45,11 @@ h1, h2, h3, h4, h5, h6 {
 
 h1 {
   font-size: 3em;
-  letter-spacing: -2px;
   margin-bottom: 30px;
 }
 
 h2 {
   font-size: 1.2em;
-  letter-spacing: -1px;
   margin-bottom: 30px;
   font-weight: normal;
   color: #999;
@@ -67,16 +65,20 @@ p {
 #logo {
   float: left;
   margin-right: 10px;
-  font-size: 1.7em;
+  font-size: 3em;
   color: #000;
-  letter-spacing: -1px;
   padding-top: 9px;
+  padding-left:80px;
+  background: url('tuxedo-logo-small.png');
+  background-repeat: no-repeat;
+  background-position: 5px 15px;
   font-weight: bold;
-  line-height: 1;
+  line-height: 1.5;
+  font-family: 'Paytone One', 'sans-serif';
 }
 
 #logo:hover {
-  color: #323232;
+  color: #fd1c15;
   text-decoration: none;
 }
 
@@ -88,15 +90,6 @@ p {
   width: 100%;
   margin-top: 45px;
   @include box_sizing;
-}
-
-.form-group{
-  margin-bottom: 15px;
-
-}
-.dropdown-menu {
-  padding: 10px;
-  padding-top: 20px;
 }
 
 .top_three {
@@ -114,4 +107,11 @@ p {
 .top_three_hash {
   border-top: 1px solid;
   border-color: #428bca;
+}
+
+.top-buffer {
+  padding-top: 10px;
+}
+div.registration-options {
+  padding-top: 30px;
 }

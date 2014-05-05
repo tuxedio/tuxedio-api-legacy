@@ -1,0 +1,17 @@
+- provide(:title, 'Reset Password - Vendor')
+.col-sm-6.col-md-4.col-sm-offset-3.col-md-offset-4
+  .col-sm-12.well.form-box.sign-in-box
+    .row
+      %h2
+        .text-center Forgot your password?
+        .small.text-center
+          Change your password via email!
+    .row.top-buffer
+      = form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f|
+        = devise_error_messages!
+        .form-signin
+          = f.email_field :email, placeholder: "Enter email address", :autofocus => true, class: 'form-control'
+          %br
+
+          = f.submit "Send password reset instructions", class: "btn btn-md btn-success btn-block"
+      .center= render "devise/shared/links"

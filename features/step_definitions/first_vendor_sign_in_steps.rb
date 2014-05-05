@@ -13,7 +13,7 @@ Given /^the vendor has an invalid Yelp information, yet hasn't logged in$/ do
 end
 
 Then /^the vendor should see the confirm details page$/ do
-  expect(page).to have_title("Tuxedo | Confirm details")
+  expect(page).to have_title("tuxedio | Confirm details")
 end
 
 Then /^the vendor should(.*?) see success message$/ do |u|

@@ -24,7 +24,7 @@ production:
   database: production-tux
   host: localhost
   user: postgres
-  password: tuxedo
+  password: tuxedio
   pool: 5
   timeout: 5000
 
