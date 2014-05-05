@@ -1,10 +1,11 @@
 class ActivitiesController < ApplicationController
   before_action :authenticate_vendor!, only: [:new, :create, :edit, :destroy]
   def show
-    if params[:activity_id].empty?
+    if params[:activity_id]
+      @activity = Activity.find(params[:activity_id])
+    else
       redirect_to explore_path
     end
-    @activity = Activity.find(params[:activity_id])
   end
 
   def new
