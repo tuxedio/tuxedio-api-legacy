@@ -16,6 +16,8 @@ namespace :db do
     vendor.save
     vendor.confirm!
 
+    #-------------------------
+    # Customers
     20.times do |n|
       name  = Faker::Name.name
       email = Faker::Internet.safe_email
@@ -27,11 +29,12 @@ namespace :db do
                        password: password,
                        password_confirmation: password)
       customers.skip_confirmation!
-      customers.save
+      customers.save!
       customers.confirm!
     end
 
-
+    #-------------------------
+    # Vendors
     40.times do |n|
       name  = Faker::Company.name
       email = Faker::Internet.safe_email
@@ -48,6 +51,9 @@ namespace :db do
       vendors.save
       vendors.confirm!
     end
+
+    #-------------------------
+    # Activities
     vendors = Vendor.all(limit: 10)
     vendors.each { |vendor|
       20.times do |n|
@@ -64,6 +70,8 @@ namespace :db do
       end
     }
 
+    #-------------------------
+    # Activity Times
     activities = Activity.all
     activities.each do |activity|
       10.times do |n|

@@ -6,16 +6,16 @@
       - else
         = image_tag "/assets/sample_act_pic/#{rand(9)}.jpg"
     .caption
-      %h4.explore-name= name
+      %h4.explore-name= activity.name
       .explore-description
-        %p= desc
-      %p=  '$' + price.to_s + '0'
+        %p= activity.description
+      %p=  '$' + activity.price.to_s + '0'
       / if customer doesn't have trip, make new trip
       - if customer_signed_in?
         - if current_customer.trips.count == 0
           - path = new_trips_path
         -else
-          - path = new_trips_itinerary_items_path(activity_id: id)
+          - path = new_trips_itinerary_items_path(activity_id: activity.id)
       - else
         - path = customer_session_path
       %center=link_to 'Add to trip', path, class: 'btn btn-primary'
