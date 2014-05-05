@@ -1,8 +1,4 @@
 .row
   .col-sm-12
-    - if @activities.count >= 9
-      - @activities.first(9) do |activity|
-        =render "activities/explore_activity", activity: activity
-    - else
-      - @activities.each do |activity|
-        =render "activities/explore_activity", activity: activity
+    - @activities.first(9).each do |activity|
+      =render "activities/explore_activity", activity: activity

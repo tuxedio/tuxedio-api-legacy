@@ -12,14 +12,9 @@
 
     /Activity wells
     .row
-      - if @activities.count >= 9
-        - @activities.first(9) do |activity|
-          =render "activities/explore_activity", activity: activity
-      - else
-        - @activities.each do |activity|
-          =render "activities/explore_activity", activity: activity
+      - @activities.first(9).each do |activity|
+        =render "activities/explore_activity", activity: activity
 
   /Activity cart
-  - if customer_signed_in?
-    #sidebar.col-xs-6.col-sm-3.sidebar-offcanvas{role: "navigation"}
-      =render 'layouts/explore_shopping_cart', itinerary: @itinerary
+  #sidebar.col-xs-6.col-sm-3.sidebar-offcanvas{role: "navigation"}
+    =render 'layouts/explore_shopping_cart', itinerary: @itinerary
