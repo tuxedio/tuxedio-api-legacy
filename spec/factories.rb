@@ -77,8 +77,8 @@ FactoryGirl.define do
 
   factory :activity_time, class: ActivityTime do
     activity
-    start_time Time.now
-    end_time   Time.now + (2 * 60 * 60)
+    start_time Time.now.tomorrow
+    end_time   Time.now.tomorrow + (2 * 60 * 60)
   end
 
   factory :itinerary_item, class: ItineraryItem do
