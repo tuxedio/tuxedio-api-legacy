@@ -7,7 +7,8 @@ class VendorsController < ApplicationController
   end
 
   def confirm_details
-    #Vendor info pulled from Yelp
+    # Vendor info pulled from Yelp
+    # Eventually make this a form
     @data ||= get_vendor_data
 
     if @data == false
