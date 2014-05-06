@@ -19,6 +19,6 @@
               = f.text_field key, hide_label: :true, value: value
           .center
             =f.submit "Update", class: "btn btn-success btn-md"
-            =link_to "Don't Update",  update_details_vendors_path(:params => {vendor_accepted: false}), class: "btn btn-danger btn-md"
+            =link_to "Don't update",  vendor_profile_path, class: "btn btn-danger btn-md"
 
 
