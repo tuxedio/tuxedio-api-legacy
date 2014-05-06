@@ -8,20 +8,17 @@
           =current_vendor.name
           .small
             %span.glyphicon.glyphicon-list
-            Confirm details
+              Confirm details
 
     .row.top-buffer
       .col-md-8.col-md-offset-2
-        .panel.panel-default
-          .panel-heading
-            %h5 Are these details correct?
-          %ul.list-group
-            / Loop through Yelp vendor hash, put them in table
-            - @data.each do |key, value|
-              - unless key == :vendor_coordinates or key == :vendor_image
-                %li.list-group-item= value
+        %h5 Are these details correct?
+        =bootstrap_form_for @vendor, :url => update_details_vendors_path, method: :put do |f|
+          - @data.each do |key, value|
+            - unless key == :vendor_coordinates or key == :vendor_image
+              = f.text_field key, hide_label: :true, value: value
+          .center
+            =f.submit "Update", class: "btn btn-success btn-md"
+            =link_to "Don't Update",  update_details_vendors_path(:params => {vendor_accepted: false}), class: "btn btn-danger btn-md"
 
-    .row
-      .center
-        =link_to "Yes", update_details_vendors_path(:params => {vendor_accepted: true}),  class: "btn btn-success btn-md"
-        =link_to "No",  update_details_vendors_path(:params => {vendor_accepted: false}), class: "btn btn-danger btn-md"
+

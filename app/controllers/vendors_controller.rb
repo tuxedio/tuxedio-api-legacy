@@ -6,10 +6,14 @@ class VendorsController < ApplicationController
     @activities = current_vendor.activities.paginate(page: params[:page], :per_page => 10)
   end
 
+  def update
+  end
+
   def confirm_details
     # Vendor info pulled from Yelp
     # Eventually make this a form
     @data ||= get_vendor_data
+    @vendor = current_vendor
 
     if @data == false
       current_vendor.update(confirmed: true)
