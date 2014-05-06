@@ -10,8 +10,8 @@ class ItineraryItem < ActiveRecord::Base
 
   ##### This should be validated later, but we need to implement selectors first.
 
-  validates_presence_of :trip
-  validates_presence_of :activity
+  validates :trip,              presence: true
+  validates :activity,          presence: true
 
   #ASSOCIATIONS
   belongs_to :trip

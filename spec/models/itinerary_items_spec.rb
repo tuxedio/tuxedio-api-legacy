@@ -3,55 +3,16 @@ require 'date'
 
 describe "Itinerary Item".upcase.colorize(:light_blue) do
 
-  before { @customer =  Customer.create(
-    name: "John Smith",
-    email: "JohnSmith@example.com",
-    location: "Boulder",
-    password: "mypassword",
-    password_confirmation: "mypassword"
-  )
-  }
-
-  before { @vendor = Vendor.create(
-    name: "Larkburger",
-    email: "Vendor1@example.com",
-    location: "Boulder",
-    password: "mypassword1",
-    password_confirmation: "mypassword1",
-    zip_code: 80302
-  )
-  }
-
-  before { @activity =  @vendor.activities.create(
-    name: "Skydiving",
-    price: 150.00,
-    location: "Boulder",
-    description: "Ipsum splitsum",
-    vendor_id: 1
-  )
-  }
-
-  before { @trip = @customer.trips.create(
-    trip_name: "My Trip",
-    location: "Boulder",
-    start_date: Time.now,
-    number_of_days: 2
-  )
-  }
-
-  before { @activity_time  = @activity.activity_times.create(
-    start_time: Time.new(2002, 10, 31, 2, 2, 2, "+02:00"),
-    end_time:   Time.new(2002, 10, 31, 2, 2, 2, "+03:00"),
-    activity_id: 1
-  )
-  }
-
-  before { @itinerary_item = @trip.itinerary_items.create(
-    activity_id: 1,
-    trip_id: 1,
-    activity_time_id: 1
-  )
-  }
+  before do
+    @trip = FactoryGirl.create(:trip)
+    @activity_time = FactoryGirl.create(:activity_time)
+    # Needs to be refactored to one Factory Girl Call.
+    @itinerary_item = @trip.itinerary_items.create(
+      activity_id: 1,
+      trip_id: @trip.id,
+      activity_time_id: @activity_time.id
+      )
+  end
 
 
   subject { @itinerary_item }
@@ -63,7 +24,7 @@ describe "Itinerary Item".upcase.colorize(:light_blue) do
   it { should be_valid }
 
 #----------------------------------
-  
+
   describe "Invalid IDs" do
 
     describe "invalid trip ID" do
