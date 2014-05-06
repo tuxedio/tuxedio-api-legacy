@@ -1,8 +1,6 @@
-require 'json'
-
 class VendorsController < ApplicationController
-  before_action :authenticate_vendor!
   include Yelp
+  before_action :authenticate_vendor!
 
   def show
     @activities = current_vendor.activities.paginate(page: params[:page], :per_page => 10)
@@ -25,20 +23,9 @@ class VendorsController < ApplicationController
   def update_details
 
     @data ||= get_vendor_data
-
     if params[:vendor_accepted] == "true"
-      current_vendor.update!(
-        name:         @data[:vendor_name],
-        zip_code:     @data[:vendor_postal],
-        address:      @data[:vendor_address],
-        phone_number: @data[:vendor_phone],
-        country:      @data[:vendor_country],
-        coordinates:  @data[:vendor_coordinates],
-        sample_image: @data[:vendor_image],
-        state:        @data[:vendor_state]
-      )
-
-       flash[:success] = "Success! Your information was updated."
+      current_vendor.update_with_yelp_details(@data) 
+      flash[:success] = "Success! Your information was updated."
     end
 
     current_vendor.update!(confirmed: true)
