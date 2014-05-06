@@ -45,11 +45,11 @@ module Yelp
     lat_long = JSON.parse(get_raw_data)['region']['center']
 
 
-    parsed_data = { vendor_name:   name,   vendor_address: add,
-                    vendor_city:   city,   vendor_state:   state,
-                    vendor_postal: postal, vendor_country: country,
-                    vendor_phone:  phone,  vendor_coordinates: lat_long,
-                    vendor_image:  image }
+    parsed_data = { name:         name,   address: add,
+                    location:     city,   state:   state,
+                    zip_code:     postal, country: country,
+                    phone_number: phone,  coordinates: lat_long,
+                    sample_image: image }
   end
 
   def get_raw_data

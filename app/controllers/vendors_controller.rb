@@ -10,30 +10,23 @@ class VendorsController < ApplicationController
   end
 
   def confirm_details
+
     # Vendor info pulled from Yelp
-    # Eventually make this a form
-    @data ||= get_vendor_data
+    @data   = get_vendor_data
     @vendor = current_vendor
+    @vendor.update!(confirmed: true)
 
     if @data == false
-      current_vendor.update(confirmed: true)
       redirect_to vendor_profile_path
     end
 
   end
 
-  # If customer confirms details are correct,
-  # this controller will update database with
-  # information from Yelp.
+  # Update info with information from Yelp.
   def update_details
 
-    @data ||= get_vendor_data
-    if params[:vendor_accepted] == "true"
-      current_vendor.update_with_yelp_details(@data) 
-      flash[:success] = "Success! Your information was updated."
-    end
-
-    current_vendor.update!(confirmed: true)
+    current_vendor.update!(params[:vendor])
+    flash[:success] = "Success! Your information was updated."
     redirect_to vendor_profile_path
 
   end

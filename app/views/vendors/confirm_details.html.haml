@@ -15,7 +15,7 @@
         %h5 Are these details correct?
         =bootstrap_form_for @vendor, :url => update_details_vendors_path, method: :put do |f|
           - @data.each do |key, value|
-            - unless key == :vendor_coordinates or key == :vendor_image
+            - unless key == :coordinates or key == :sample_image
               = f.text_field key, hide_label: :true, value: value
           .center
             =f.submit "Update", class: "btn btn-success btn-md"
