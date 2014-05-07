@@ -6,17 +6,19 @@ gem  'rails', '4.0.5'
 group :development, :test do
   gem 'sqlite3', '1.3.8'
   gem 'rspec-rails', '2.13.1'
-  gem 'guard-rspec', '2.5.0'
-  gem 'guard-livereload', require: false
   gem 'spork-rails', '4.0.0'
-  gem 'guard-spork', '1.5.0'
   gem 'guard-cucumber'
+  gem 'guard-rspec', require: false
+  gem 'guard-livereload', require: false
   gem 'childprocess', '0.3.6'
   gem 'debugger'
   gem 'capistrano', '~> 3.1.0'
   gem 'capistrano-bundler', '~> 1.1.2'
   gem 'capistrano-rails', '~> 1.1.1'
   gem 'capistrano-rvm', github: "capistrano/rvm"
+  gem 'spring'
+  gem "spring-commands-cucumber"
+  gem "spring-commands-rspec"
 end
 
 group :test do
