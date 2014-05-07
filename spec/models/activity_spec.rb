@@ -3,24 +3,7 @@ require 'spec_helper'
 describe "Activity".upcase.colorize(:light_blue) do
 
   ## Dummy Vendors
-  before { @vendor = Vendor.create(
-      name: "Boulder Skydiving",
-      email: "Vendor1@example.com",
-      location: "Boulder",
-      zip_code: 80301,
-      password: "mypassword1",
-      password_confirmation: "mypassword1"
-    )
-  }
-
-  before { @activity =  Activity.new(
-      name: "Skydiving",
-      price: 150.00,
-      location: "Boulder",
-      description: "Ipsum splitsum",
-      vendor_id: 1
-    )
-  }
+  before { @activity = FactoryGirl.create(:activity) }
 
   subject { @activity }
 

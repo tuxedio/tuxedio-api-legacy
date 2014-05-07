@@ -1,19 +1,12 @@
 require 'spec_helper'
 
 describe "Trips".upcase.colorize(:light_blue) do
-  let(:customer) { FactoryGirl.create(:customer) }
-  before { customer.confirm! }
 
-  before {  @trip = customer.trips.create(
-    trip_name: "Trip1",
-    location: "Boulder",
-    start_date: Date.today,
-    number_of_days: 1
-    )
-  }
+  before do
+    @trip = FactoryGirl.create(:trip)
+  end
 
   subject{ @trip }
-
   it { should respond_to(:trip_name) }
   it { should respond_to(:location) }
   it { should respond_to(:start_date) }
@@ -53,9 +46,14 @@ describe "Trips".upcase.colorize(:light_blue) do
         before { @trip.location = "Albania" }
         it { should_not be_valid }
       end
+
+      describe "when start date is before the current date" do
+        before { @trip.location = Date.yesterday }
+        it { should_not be_valid }
+      end
     end
 
-    describe "Unacceptable input".upcase.colorize(:light_blue) do
+    describe "Acceptable input".upcase.colorize(:light_blue) do
       describe "when trip name is present" do
         before { @trip.trip_name = "Test " }
         it { should be_valid }
@@ -71,10 +69,6 @@ describe "Trips".upcase.colorize(:light_blue) do
         it { should be_valid }
       end
 
-      describe "when start date is before the current date" do
-        before { @trip.location = Date.yesterday }
-        it { should_not be_valid }
-      end
     end
   end
 end

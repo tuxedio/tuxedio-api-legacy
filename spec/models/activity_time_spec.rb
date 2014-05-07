@@ -2,31 +2,7 @@ require 'spec_helper'
 
 describe "Activity time".upcase.colorize(:light_blue) do
 
-  before { @vendor = Vendor.create(
-    name: "Boulder Skydiving",
-    email: "Vendor1@example.com",
-    location: "Boulder",
-    zip_code: 80301,
-    password: "mypassword1",
-    password_confirmation: "mypassword1"
-  )
-  }
-
-  before { @activity =  Activity.new(
-    name: "Skydiving",
-    price: 150.00,
-    location: "Boulder",
-    description: "Ipsum splitsum",
-    vendor_id: 1
-  )
-  }
-
-  before { @activity_time = ActivityTime.new(
-    start_time: Time.now.tomorrow,
-    end_time: Time.now.tomorrow.tomorrow,
-    activity_id: 1
-  )
-  }
+  before { @activity_time = FactoryGirl.create(:activity_time)}
 
   subject { @activity_time }
 
@@ -61,11 +37,6 @@ describe "Activity time".upcase.colorize(:light_blue) do
   end
 
   describe "association with actitivty" do
-
-    describe "with valid association" do
-      before { @activity_time.activity_id = 1 }
-      it { should be_valid }
-    end
 
     describe "with invalid association" do
       before { @activity_time.activity_id = nil }
