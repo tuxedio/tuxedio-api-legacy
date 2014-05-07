@@ -4,25 +4,13 @@ describe "Customer".upcase.colorize(:light_blue) do
 
 
 
-  before { @customer =  Customer.new(
-    name: "John Smith",
-    email: "JohnSmith@example.com",
-    location: "Boulder",
-    password: "mypassword",
-    password_confirmation: "mypassword"
-    )
-  }
+  before { @customer = FactoryGirl.build(:customer) }
 
   ## Dummy Vendors
   before do
-    Vendor.create(name: "Larkburger", email: "Vendor1@example.com", location: "Boulder",
-                  password: "mypassword1", password_confirmation: "mypassword1", zip_code: 80301)
-
-    Vendor.create(name: "Sushi Tora", email: "Vendor2@example.com", location: "Boulder",
-                  password: "mypassword1", password_confirmation: "mypassword1", zip_code: 80301)
-
-    Vendor.create(name: "Illegal Pete's", email: "Vendor3@example.com", location: "Boulder",
-                  password: "mypassword1", password_confirmation: "mypassword1", zip_code: 80301)
+    FactoryGirl.create(:vendor1)
+    FactoryGirl.create(:vendor2)
+    FactoryGirl.create(:vendor3)
   end
 
   subject { @customer }
@@ -103,8 +91,8 @@ describe "Customer".upcase.colorize(:light_blue) do
 
     describe "when password is not present" do
       before do
-        @customer = Customer.new(name: "John Smith", email: "JohnSmith@example.com", location: "Boulder",
-                                 password: "", password_confirmation: "")
+        @customer.password = ""
+        @customer.password_confirmation = ""
       end
 
       it { should_not be_valid }
