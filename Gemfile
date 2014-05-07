@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 ruby '2.1.1'
-gem  'rails', '4.0.3'
+gem  'rails', '4.0.5'
 
 group :development, :test do
   gem 'sqlite3', '1.3.8'
@@ -40,21 +40,25 @@ group :production do
   gem 'rails_12factor', '0.0.2'
 end
 
+group :assets do
+  gem 'jquery-rails', '3.1.0'
+  gem 'bootstrap-sass'
+  gem 'uglifier', '2.1.1'
+  gem 'coffee-rails', '4.0.1'
+  gem 'sass-rails', "~> 4.0.2"
+end
+
+
+gem 'will_paginate', '3.0.5'
+gem 'will_paginate-bootstrap', '1.0.0'
+gem 'bootstrap_form'
 gem 'validates_timeliness', '~> 3.0'
-gem 'sass-rails', "~> 4.0.2"
-gem 'uglifier', '2.1.1'
-gem 'coffee-rails', '4.0.1'
-gem 'jquery-rails', '3.1.0'
 gem 'turbolinks', '1.1.1'
 gem 'jbuilder', '1.0.2'
-gem 'bootstrap-sass'
-gem 'bootstrap_form'
 gem 'bcrypt-ruby', '3.1.2'
 gem 'haml'
 gem 'devise', '3.1'
 gem 'protected_attributes', '1.0.7'
-gem 'will_paginate', '3.0.5'
-gem 'will_paginate-bootstrap', '1.0.0'
 gem 'faker', '1.3.0'
 gem 'paperclip', github: "thoughtbot/paperclip"
 gem 'oauth-plugin'
