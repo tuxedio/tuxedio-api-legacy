@@ -1,4 +1,7 @@
 Feature: Customer signing in
+    As a Customer
+    So I can sunbathe
+    I want to see the sun
 
   Scenario: Unsuccessful signin
     Given a customer visits the signin page

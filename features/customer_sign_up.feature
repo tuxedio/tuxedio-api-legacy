@@ -1,11 +1,26 @@
-Feature: As a customer, in order to create an account I should be able to sign up using the register page
+Feature: Customer Sign-up
+  As a customer
+  So I can create an account
+  I want to be able to sign up using the register page
 
-Scenario:
-  Given a customer visits the sign up page
-  When the customer submits valid signup information
+Background:
+  Given I visit the customer registration page
+
+Scenario: Valid Sign-up
+  When I fill in the following:
+    | field        | value            |
+    | Name         | Example User     |
+    | Email        | user@example.com |
+    | Location     | Boulder          |
+    | Password     | foobarfoobar     |
+    | Confirmation | foobarfoobar     |
+  And I click the button "Create my account"
   Then the customer should see email confirmation notice
 
-Scenario:
-  Given a customer visits the sign up page
-  When the customer submits invalid signup information
-  Then the customer should be redirected to the the sign up page
+Scenario: Invalid Sign-up
+  When I fill in the following:
+    | field        | value           |
+    | Name         | Example User    |
+    | Email        | userexample.com |
+  And I click the button "Create my account"
+  Then I should see a warning
