@@ -5,6 +5,8 @@ gem  'rails', '4.0.5'
 
 group :development, :test do
   gem 'sqlite3', '1.3.8'
+  gem 'childprocess', '0.3.6'
+  gem 'sprockets', '<= 2.11.0'
 end
 
 group :development do
@@ -12,7 +14,6 @@ group :development do
   gem 'capistrano-bundler', '~> 1.1.2'
   gem 'capistrano-rails', '~> 1.1.1'
   gem 'capistrano-rvm', github: "capistrano/rvm"
-  gem 'childprocess', '0.3.6'
   gem 'debugger'
   gem 'guard-cucumber', require: false
   gem 'guard-livereload', require: false
