@@ -14,9 +14,10 @@ group :development do
   gem 'capistrano-rvm', github: "capistrano/rvm"
   gem 'childprocess', '0.3.6'
   gem 'debugger'
-  gem 'guard-cucumber'
+  gem 'guard-cucumber', require: false
   gem 'guard-livereload', require: false
   gem 'guard-rspec', require: false
+  gem 'pry-rails'
   gem 'spring'
   gem 'spring-commands-cucumber'
   gem 'spring-commands-rspec'
