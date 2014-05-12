@@ -21,6 +21,13 @@ Then(/^I should see an? (.*?)$/) do |message|
   expect(page).to have_selector(selector)
 end
 
+Then(/^I should recieve an email to "(.*?)"$/) do |email|
+  mail = ActionMailer::Base.deliveries.last
+  mail.to.should include(email)
+end
+
+#----------------------
+
 Given(/^a customer is logged in$/) do
   steps %{
     Given a customer visits the signin page
@@ -30,6 +37,8 @@ Given(/^a customer is logged in$/) do
     Given a customer visits the home page
   }
 end
+
+
 
 Given(/^a customer is logged out$/) do
   visit root_path
@@ -63,10 +72,6 @@ Then /^the customer should see the home page$/ do
   expect(page).to have_title('tuxedio | Home')
 end
 
-Then(/^the customer should see email confirmation notice$/) do
-  expect(page).to have_content("A message with a confirmation link has been sent to your email address. Please open the link to activate your account.")
-end
-
 Then(/^the customer should see the "(.*?)" link$/) do |link_name|
   page.should have_link(link_name)
 end
@@ -75,9 +80,6 @@ Then(/^the customer should not see the "(.*?)" link$/) do |link_name|
   page.should_not have_link(link_name)
 end
 
-Then(/^the customer should be redirected to the the sign up page$/) do
-  expect(page).to have_title("Sign up")
-end
 
 #-----------------------
 # Clicks

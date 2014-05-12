@@ -5,10 +5,6 @@ module NavigationHelpers
 
       #---------------------
       # Customer Paths
-      when /^the customer (.*?) page/
-        route = "new_customer_registration_path"
-        send(route)
-
 
 
       #---------------------
@@ -18,13 +14,26 @@ module NavigationHelpers
       # --------------------
       #Generic Paths
 
-      when /^the (.*?) page/
-        model_prose = $1
-        route = "root_path"
-        send(route)
+      when /^the home page/
+        send("root_path")
 
+      else
+        if path = match_rails_path_for(page_name)
+          path
+        else
+          raise "Can't find mapping from \"#{page_name}\" to a path.\n" +
+          "Now, go and add a mapping in features/support/paths.rb"
+        end
     end
   end
+
+  private
+
+    def match_rails_path_for(page_name)
+      if page_name.match(/the (.*) page/)
+        return send "#{$1.gsub(" ", "_")}_path" rescue nil
+      end
+    end
 
 end
 

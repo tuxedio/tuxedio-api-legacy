@@ -4,7 +4,7 @@ Feature: Customer Sign-up
   I want to be able to sign up using the register page
 
 Background:
-  Given I visit the customer registration page
+  Given I visit the new customer registration page
 
 Scenario: Valid Sign-up
   When I fill in the following:
@@ -15,7 +15,7 @@ Scenario: Valid Sign-up
     | Password     | foobarfoobar     |
     | Confirmation | foobarfoobar     |
   And I click the button "Create my account"
-  Then the customer should see email confirmation notice
+  Then I should recieve an email to "user@example.com"
 
 Scenario: Invalid Sign-up
   When I fill in the following:
