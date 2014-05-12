@@ -5,8 +5,9 @@ gem  'rails', '4.0.5'
 
 group :development, :test do
   gem 'sqlite3', '1.3.8'
-  gem 'rspec-rails', '2.13.1'
-  gem 'spork-rails', '4.0.0'
+end
+
+group :development do
   gem 'guard-cucumber'
   gem 'guard-rspec', require: false
   gem 'guard-livereload', require: false
@@ -21,10 +22,14 @@ group :development, :test do
   gem "spring-commands-rspec"
 end
 
+
 group :test do
+  gem 'spork-rails'
   gem 'rake'
+  gem 'rspec-rails'
+  gem 'rspec-mocks'
   gem 'selenium-webdriver', '2.35.1'
-  gem 'capybara', '2.1.0'
+  gem 'capybara'
   gem 'growl', '1.0.3'
   gem 'factory_girl_rails', '4.2.1'
   gem 'cucumber-rails', '1.4.0', :require => false
