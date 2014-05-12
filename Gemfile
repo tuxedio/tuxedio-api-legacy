@@ -4,9 +4,10 @@ ruby '2.1.1'
 gem  'rails', '4.0.5'
 
 group :development, :test do
-  gem 'sqlite3', '1.3.8'
   gem 'childprocess', '0.3.6'
-  gem 'sprockets', '<= 2.11.0'
+  gem 'sprockets'
+  gem 'sprockets-rails', :require => 'sprockets/railtie'
+  gem 'sqlite3', '1.3.8'
 end
 
 group :development do
