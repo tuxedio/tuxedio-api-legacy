@@ -14,7 +14,7 @@ TuxedoProto::Application.routes.draw do
   resource :vendors do
     collection do
       get :confirm_details
-      get :update_details
+      put :update_details
     end
   end
 

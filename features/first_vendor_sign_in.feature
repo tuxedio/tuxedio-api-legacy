@@ -16,7 +16,7 @@ Feature: Vendor signing in, first time
     And the vendor has an account, yet hasn't logged in
     When the vendor submits valid signin information
     Then the vendor should see the confirm details page
-    When the vendor clicks the "Yes" link
+    When the vendor clicks the "Update" button
     Then the vendor should see success message
 
   Scenario: Doesn't confirm yelp info
@@ -24,7 +24,7 @@ Feature: Vendor signing in, first time
     And the vendor has an account, yet hasn't logged in
     When the vendor submits valid signin information
     Then the vendor should see the confirm details page
-    When the vendor clicks the "No" link
+    When the vendor clicks the "Don't update" button
     Then the vendor should not see success message
 
   Scenario: Invalid Yelp info
