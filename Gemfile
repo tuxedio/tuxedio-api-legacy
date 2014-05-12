@@ -58,7 +58,7 @@ end
 
 gem 'bcrypt-ruby', '3.1.2'
 gem 'bootstrap_form'
-gem 'devise', '3.1'
+gem 'devise'
 gem 'faker', '1.3.0'
 gem 'haml'
 gem 'jbuilder', '1.0.2'
