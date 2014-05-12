@@ -23,5 +23,8 @@ module TuxedoProto
     config.autoload_paths += %W(#{config.root}/lib/utility)
     config.i18n.enforce_available_locales = false
     config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
+
+    # Assets in development and test
+    Bundler.require *Rails.groups(:assets => %w(development test))
   end
 end
