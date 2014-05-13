@@ -1,16 +1,20 @@
-
-Feature: As a customer, so that I can see my picture, I want to be able to go to my profile page and see my picture.
-
-Scenario: A logged in customer can see their picture
-  Given a customer has signed up with a profile picture
-  And the customer with profile picture signs in
-  When the customer clicks the "View Profile" link
-  Then the customer should see their profile picture
+Feature: Image Upload via Paperclip
+  As a customer
+  So I can see my picture
+  I want to be able to upload my picture
 
 @paperclip
+Scenario: An image is chosen
+  Given I visit the new customer registration page
+  And I sign up as a customer with an image
+  And that customer signs in
+  When I click the link "View Profile"
+  Then I should see my profile picture
 
-Scenario: If the customer did not choose a picture, display the default image
-  Given a customer is logged in
-  And the customer has not chosen a profile picture
-  Then the customer clicks the "View Profile" link
-  Then the customer should see the default image for their profile picture
+
+
+Scenario: No image is chosen
+  Given a customer exists
+  And I sign in as that customer
+  When I click the link "View Profile"
+  Then I should see the default image

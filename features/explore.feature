@@ -1,8 +1,10 @@
 @explore
 Feature: As a user, I should be able to view activities with the explore page.
 
+Background:
+    Given I am signed in as a customer
+
   Scenario: Signed in customer adds item to trip
-    Given a customer is logged in
     And the customer has a trip
     When the customer clicks the "Explore" link
     Then the customer should see the "/explore" page
@@ -16,7 +18,6 @@ Feature: As a user, I should be able to view activities with the explore page.
     Then the intinerary cart should not be empty
 
   Scenario: Signed in customer removes item from trip
-    Given a customer is logged in
     And the customer has a trip
     When the customer clicks the "Explore" link
     Then the customer should see the "/explore" page
@@ -33,8 +34,7 @@ Feature: As a user, I should be able to view activities with the explore page.
     Then the intinerary cart should be empty
     And the customer should see the "/explore" page
 
-  Scenario: Signed in customer updates with no trip selected 
-    Given a customer is logged in
+  Scenario: Signed in customer updates with no trip selected
     And the customer has a trip
     When the customer clicks the "Explore" link
     Then the customer should see the "/explore" page
@@ -51,7 +51,6 @@ Feature: As a user, I should be able to view activities with the explore page.
     And the customer should see the "/explore" page
 
   Scenario: Customer (signed in)
-    Given a customer is logged in
     When the customer clicks the "Explore" link
     Then the customer should see the "/explore" page
     Then the customer should see activities displayed
@@ -59,7 +58,7 @@ Feature: As a user, I should be able to view activities with the explore page.
     Then they should see the "Create a trip" page
 
   Scenario: Customer (not signed in)
-    Given a customer visits the home page
+    Given I sign out as a customer
     When the customer clicks the "Explore" link
     Then the customer should see the "/explore" page
     Then the customer should see activities displayed

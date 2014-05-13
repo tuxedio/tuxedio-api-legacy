@@ -1,7 +1,7 @@
 Feature: As a customer, so that I can create itineraries of my activities, I want to make a trip
 
 Background:
-  Given a customer is logged in
+  Given I am signed in as a customer
 
 Scenario: If a customer does not have any trips, they should be redirected to add a trip
   Given a customer visits the "customer_profile" page
