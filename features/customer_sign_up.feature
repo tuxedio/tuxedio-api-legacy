@@ -8,19 +8,19 @@ Background:
 
 Scenario: Valid Sign-up
   When I fill in the following:
-    | field        | value            |
-    | Name         | Example User     |
-    | Email        | user@example.com |
-    | Location     | Boulder          |
-    | Password     | foobarfoobar     |
-    | Confirmation | foobarfoobar     |
+  | field        | value            |
+  | Name         | Example User     |
+  | Email        | user@example.com |
+  | Location     | Boulder          |
+  | Password     | foobarfoobar     |
+  | Confirmation | foobarfoobar     |
   And I click the button "Create my account"
   Then I should recieve an email to "user@example.com"
 
 Scenario: Invalid Sign-up
   When I fill in the following:
-    | field        | value           |
-    | Name         | Example User    |
-    | Email        | userexample.com |
+  | field        | value           |
+  | Name         | Example User    |
+  | Email        | userexample.com |
   And I click the button "Create my account"
   Then I should see a warning message
