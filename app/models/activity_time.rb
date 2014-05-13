@@ -10,4 +10,5 @@ class ActivityTime < ActiveRecord::Base
 
   belongs_to :activity
   has_many :itinerary_items
+  has_one :vendor, through: :activity
 end

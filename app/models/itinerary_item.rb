@@ -1,21 +1,13 @@
 class ItineraryItem < ActiveRecord::Base
 
-  #ACCESSORS
-  attr_accessible :activity_id, :trip_id, :activity_time_id
+  attr_accessible :activity_time, :activity
 
-  #VALIDATION
-  validates :trip_id,           presence: true
-  validates :activity_id,       presence: true
-  validates :activity_time_id,  presence: true
+  has_one :activity, through: :activity_time
+  has_one :customer, through: :trip
+  has_one :vendor,   through: :activity_time
 
-  ##### This should be validated later, but we need to implement selectors first.
-
-  validates :trip,              presence: true
-  validates :activity,          presence: true
-
-  #ASSOCIATIONS
-  belongs_to :trip
-  belongs_to :activity
   belongs_to :activity_time
+  belongs_to :itemable, polymorphic: true
+  belongs_to :trip
 
 end
