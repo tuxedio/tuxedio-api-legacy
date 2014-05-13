@@ -71,18 +71,11 @@ Then(/^I should recieve an email to "(.*?)"$/) do |email|
   mail.to.should include(email)
 end
 
-#----------------------
-
-
 
 
 # #################################
 # # Customer Specific Steps
 # #################################
-
-Given /^a customer visits the home page$/ do
-  visit path_to("the home page")
-end
 
 
 When(/^the customer clicks the "(.*?)" link$/) do |link_name|

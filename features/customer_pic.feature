@@ -11,8 +11,6 @@ Scenario: An image is chosen
   When I click the link "View Profile"
   Then I should see my profile picture
 
-
-
 Scenario: No image is chosen
   Given a customer exists
   And I sign in as that customer
