@@ -1,11 +1,14 @@
-Feature: As a customer, so that I can view my profile, I want to click a button on in the navigation that will take me to my profile.
+Feature: Customer Profile
+  As a customer
+  So that I can view my profile
+  I want to access my profile from the nav
 
-Scenario: A logged in customer can see their profile
-  Given a customer is logged in
-  When the customer clicks the "View Profile" link
-  Then the customer should see their profile page
+Scenario: Logged In Customer
+  Given I am signed in as a customer
+  When I click the link "View Profile"
+  Then I should be on the customer profile page
 
-Scenario: If logged out, there is no link to customer account
-  Given a customer is logged out
-  Then the customer should see the "Sign in" link
-  And the customer should not see the "View Profile" link
+Scenario: Logged-out Customer
+  Given I visit the home page
+  Then I should see the "Sign in" link
+  And I should not see the "View Profile" link

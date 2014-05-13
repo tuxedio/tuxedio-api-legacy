@@ -17,6 +17,9 @@ module NavigationHelpers
       when /^the home page/
         send("root_path")
 
+      when /the show page for (.+)/
+        polymorphic_path(model($1))
+
       else
         if path = match_rails_path_for(page_name)
           path

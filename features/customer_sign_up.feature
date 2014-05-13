@@ -23,4 +23,4 @@ Scenario: Invalid Sign-up
     | Name         | Example User    |
     | Email        | userexample.com |
   And I click the button "Create my account"
-  Then I should see a warning
+  Then I should see a warning message

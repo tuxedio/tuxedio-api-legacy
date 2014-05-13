@@ -29,6 +29,8 @@ group :test do
   gem 'database_cleaner', github: 'bmabey/database_cleaner'
   gem 'colorize'
   gem 'simplecov', '~> 0.7.1', :require => false
+  gem 'pickle'
+  gem 'launchy'
 end
 
 group :doc do

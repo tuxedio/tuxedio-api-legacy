@@ -1,36 +1,28 @@
-Feature: Customer signing in
+Feature: Customer Sign-in Process
     As a Customer
-    So I can sunbathe
-    I want to see the sun
+    So I can use the site
+    I want to sign-in
 
-  Scenario: Unsuccessful signin
-    Given a customer visits the signin page
-    When the customer submits invalid signin information
-    Then the customer should see an error message
+  Background:
+    Given a customer exists
+    And that customer is confirmed
 
-  Scenario: Successful signin
-    Given a customer visits the signin page
-    And the customer has an account
-    When the customer submits valid signin information
-    Then the customer should see the "/explore" page
-    And the customer should see a signout link
-    When the customer clicks the signout link
-    Then the customer should see the home page
+  Scenario: Unsuccessful sign-in
+    Given I visit the new customer session page
+    When I fill in the following:
+    | field    | value               |
+    | Email    | invalid@invalid.com |
+    | Password |                     |
+    And I click the button "Sign in"
+    Then I should see a warning message
 
-  Scenario: Valid Dropdown signin
-    Given a customer visits the home page
-    And the customer has an account
-    When the customer submits valid signin information
-    Then the customer should see the "/explore" page
-    And the customer should see a signout link
-    When the customer clicks the signout link
-    Then the customer should see the home page
-
-  Scenario: Invalid Dropdown signin
-    Given a customer visits the home page
-    When the customer submits invalid signin information
-    Then the customer should see an error message
-
-
-
-
+  Scenario: Successful sign-in/sign-out
+    Given I visit the new customer session page
+    When I fill in the following:
+    | field    | value                |
+    | Email    | customer@example.com |
+    | Password | foobar1234           |
+    And I click the button "Sign in"
+    Then I should be on the explore page
+    When I click the link "Sign out"
+    Then I should be on the home page
