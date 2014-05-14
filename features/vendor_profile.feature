@@ -1,4 +1,7 @@
-Feature: As a vendor, so that I can view my profile, I want to click a button on in the navigation that will take me to my profile.
+Feature: Vendor Profile
+  As a vendor
+  So that I can view my profile
+  I want to click a button on in the navigation that will take me to my profile.
 
 Scenario: A logged in vendor can see their profile
   Given a vendor is logged in

@@ -11,25 +11,9 @@ When(/^I sign up as a customer with an image$/) do
   @customer.confirm!
 end
 
-Given(/^that customer signs in$/) do
-  visit new_customer_session_path
-  fill_in "Email",        with: @customer.email
-  fill_in "Password",     with: @customer.password
-  click_button "Sign in"
-end
-
 Then(/^I should see my profile picture$/) do
   img_src = @customer.picture.url(:medium)
   page.should have_xpath("//img[@src='#{img_src}']")
-end
-
-Given(/^I sign in as (.*?)$/) do |user|
-  @customer = model(user)
-  @customer.confirm!
-  visit new_customer_session_path
-  fill_in "Email",        with: @customer.email
-  fill_in "Password",     with: "foobar1234"
-  click_button "Sign in"
 end
 
 Then(/^I should see the default image$/) do
