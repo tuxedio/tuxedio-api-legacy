@@ -32,6 +32,10 @@ When /^I fill in the following:?$/ do |table|
   end
 end
 
+When(/^(?:|I )check "(.*?)" field$/) do |field|
+  check(field)
+end
+
 When(/^I click the button "(.*?)"$/) do |button|
   click_button button
 end

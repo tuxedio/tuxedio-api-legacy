@@ -1,8 +1,8 @@
 require 'spec_helper'
 
 describe "Vendor Create".upcase.colorize(:light_blue) do
-  before { @vendor =
-           Vendor.new(name: "Larkburger", email: "Vendor@example.com", location: "Boulder", password: "mypassword", password_confirmation: "mypassword", zip_code: 80301)  }
+
+  before { @vendor = FactoryGirl.build(:vendor1) }
   subject { @vendor }
 
   it { should respond_to(:name) }
@@ -42,6 +42,16 @@ describe "Vendor Create".upcase.colorize(:light_blue) do
       before { @vendor.zip_code = nil  }
       it { should_not be_valid }
     end
+
+    describe "when password is not present" do
+      before do
+        @vendor.password = ""
+        @vendor.password_confirmation = ""
+      end
+
+      it { should_not be_valid }
+    end
+
   end
 
   describe "\nVendor Validation".upcase.colorize(:light_blue) do
@@ -53,21 +63,6 @@ describe "Vendor Create".upcase.colorize(:light_blue) do
 
     describe "when zip_code is too long" do
       before { @vendor.location = 803011 }
-      it { should_not be_valid }
-    end
-
-    describe "when location is too long" do
-      before { @vendor.location = "z" * 31 }
-      it { should_not be_valid }
-    end
-
-    describe "when location is too long" do
-      before { @vendor.location = "z" * 31 }
-      it { should_not be_valid }
-    end
-
-    describe "when location is too long" do
-      before { @vendor.location = "z" * 31 }
       it { should_not be_valid }
     end
 
@@ -106,16 +101,6 @@ describe "Vendor Create".upcase.colorize(:light_blue) do
       it { should_not be_valid }
     end
 
-    describe "when password is not present" do
-      let(:vendor) { FactoryGirl.create(:vendor) }
-      before do
-        @vendor.password = ""
-        @vendor.password_confirmation = ""
-      end
-
-      it { should_not be_valid }
-    end
-
     describe "when password doesn't match confirmation" do
       before { @vendor.password_confirmation = "mismatch" }
       it { should_not be_valid }
@@ -131,13 +116,7 @@ describe "Vendor Create".upcase.colorize(:light_blue) do
 
     describe "when vendor confirms details from Yelp" do
       before do
-       @vendor.update(
-          name: "Tangerine", location: "Boulder",
-          zip_code: "80304", address: "123 Elm St.",
-          phone_number: "555-555-5555", country: "US",
-          coordinates: {:latitude => "100", :longitude => "100"}, state: "CO",
-          confirmed: true, sample_image: "test"
-        )
+       @vendor.update( FactoryGirl.attributes_for(:yelp) )
      end
       it { should be_valid }
     end

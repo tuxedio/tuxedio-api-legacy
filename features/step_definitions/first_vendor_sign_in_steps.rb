@@ -23,3 +23,7 @@ Then /^the vendor should(.*?) see success message$/ do |u|
     expect(page).to have_selector('div.alert.alert-success')
   end
 end
+
+When(/^the vendor clicks the "(.*?)" button$/) do |button|
+  click_link_or_button button
+end
