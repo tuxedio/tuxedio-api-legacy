@@ -112,14 +112,11 @@ describe "Vendor Create".upcase.colorize(:light_blue) do
     end
   end
 
-  describe "vendor confirms details with Yelp" do
-
-    describe "when vendor confirms details from Yelp" do
-      before do
-       @vendor.update( FactoryGirl.attributes_for(:yelp) )
-     end
-      it { should be_valid }
-    end
+  describe "when vendor confirms details from Yelp" do
+    before do
+     @vendor.update( FactoryGirl.attributes_for(:yelp) )
+   end
+    it { should be_valid }
   end
 end
 

@@ -4,9 +4,9 @@ class Vendor < ActiveRecord::Base
   # Attributes
 
   attr_accessible :name, :email, :location, :zip_code, :password,
-                  :password_confirmation, :vendor_id, :description,
+                  :password_confirmation, :description, :picture,
                   :confirmed, :address, :phone_number, :country,
-                  :coordinates, :state, :sample_image, :picture
+                  :coordinates, :state, :sample_image, :id
 
 
   #--------------------------------------------------------
@@ -22,6 +22,13 @@ class Vendor < ActiveRecord::Base
   validates :location,     presence: true, length: { maximum: 30 }
   validates :email,        presence: true, email: true, uniqueness: true
   validates :zip_code,     presence: true, length: { maximum: 5 }
+  # validates :id,           presence: true, uniqueness: true, on: :create
+
+  # validates :address,      presence: true, on: :update
+  # validates :state,        presence: true, on: :update
+  # validates :country,      presence: true, on: :update
+  # validates :coordiantes,  presence: true, on: :update
+
   validates_with LocationValidator
 
   serialize :coordinates, Hash

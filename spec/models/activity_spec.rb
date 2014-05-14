@@ -2,7 +2,6 @@ require 'spec_helper'
 
 describe "Activity".upcase.colorize(:light_blue) do
 
-  ## Dummy Vendors
   before { @activity = FactoryGirl.create(:activity) }
 
   subject { @activity }
@@ -55,8 +54,8 @@ describe "Activity".upcase.colorize(:light_blue) do
       end
     end
 
-    describe "when vendor ID does not exist" do
-      before { @activity.vendor_id = 3473498572345896 }
+    describe "when vendor does not exist" do
+      before { @activity.vendor = nil }
       it { should_not be_valid }
     end
   end

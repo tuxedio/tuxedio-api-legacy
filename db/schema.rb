@@ -70,8 +70,6 @@ ActiveRecord::Schema.define(version: 20140502004939) do
   add_index "customers", ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
 
   create_table "itinerary_items", force: true do |t|
-    t.integer "itemable_id"
-    t.string  "itemable_type"
     t.integer "activity_time_id"
     t.integer "trip_id"
   end

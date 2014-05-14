@@ -8,7 +8,7 @@ describe "Activity time".upcase.colorize(:light_blue) do
 
   it { should respond_to(:start_time) }
   it { should respond_to(:end_time) }
-  it { should respond_to(:activity_id) }
+  it { should respond_to(:activity) }
 
   it { should be_valid }
 
@@ -39,7 +39,7 @@ describe "Activity time".upcase.colorize(:light_blue) do
   describe "association with actitivty" do
 
     describe "with invalid association" do
-      before { @activity_time.activity_id = nil }
+      before { @activity_time.activity = nil }
       it { should_not be_valid }
     end
   end

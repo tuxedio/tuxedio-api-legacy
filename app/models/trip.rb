@@ -8,8 +8,7 @@ class Trip < ActiveRecord::Base
   validates :customer_id,    presence: true
   validates :start_date,     presence: true
   validates :number_of_days, presence: true, numericality: { greater_than: 0 }
-
-  validates_presence_of :customer
+  validates :customer,       presence: true
 
   validates_with LocationValidator
   validates_with FutureDateValidator
