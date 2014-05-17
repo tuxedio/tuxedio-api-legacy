@@ -22,12 +22,6 @@ class Vendor < ActiveRecord::Base
   validates :location,     presence: true, length: { maximum: 30 }
   validates :email,        presence: true, email: true, uniqueness: true
   validates :zip_code,     presence: true, length: { maximum: 5 }
-  # validates :id,           presence: true, uniqueness: true, on: :create
-
-  # validates :address,      presence: true, on: :update
-  # validates :state,        presence: true, on: :update
-  # validates :country,      presence: true, on: :update
-  # validates :coordiantes,  presence: true, on: :update
 
   validates_with LocationValidator
 
