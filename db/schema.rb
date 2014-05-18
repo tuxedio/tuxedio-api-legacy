@@ -70,14 +70,13 @@ ActiveRecord::Schema.define(version: 20140502004939) do
   add_index "customers", ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
 
   create_table "itinerary_items", force: true do |t|
-    t.integer "trip_id"
-    t.integer "activity_id"
     t.integer "activity_time_id"
+    t.integer "trip_id"
   end
 
   create_table "trips", force: true do |t|
-    t.integer "customer_id"
     t.string  "trip_name"
+    t.integer "customer_id"
     t.string  "location"
     t.date    "start_date"
     t.integer "number_of_days"

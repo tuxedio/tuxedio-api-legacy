@@ -82,9 +82,8 @@ FactoryGirl.define do
   end
 
   factory :itinerary_item, class: ItineraryItem do
+    trip
     activity_time
-    activity_id 1
-    trip_id 1
   end
 
 end
