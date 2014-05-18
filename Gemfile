@@ -5,6 +5,8 @@ gem  'rails', '4.0.5'
 
 group :development, :test do
   gem 'childprocess', '0.3.6'
+  gem 'factory_girl_rails', '4.2.1'
+  gem 'debugger'
   gem 'sprockets'
   gem 'sprockets-rails', :require => 'sprockets/railtie'
   gem 'sqlite3', '1.3.8'
@@ -15,7 +17,6 @@ group :development do
   gem 'capistrano-bundler', '~> 1.1.2'
   gem 'capistrano-rails', '~> 1.1.1'
   gem 'capistrano-rvm', github: "capistrano/rvm"
-  gem 'debugger'
   gem 'guard-cucumber', require: false
   gem 'guard-livereload', require: false
   gem 'guard-rspec', require: false
@@ -31,7 +32,6 @@ group :test do
   gem 'colorize'
   gem 'cucumber-rails', '1.4.0', :require => false
   gem 'database_cleaner', github: 'bmabey/database_cleaner'
-  gem 'factory_girl_rails', '4.2.1'
   gem 'growl', '1.0.3'
   gem 'rake'
   gem 'rspec-mocks'

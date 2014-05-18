@@ -4,9 +4,7 @@ class Activity < ActiveRecord::Base
   #ASSOCIATIONS
   belongs_to :vendor
 
-  attr_accessible   :name, :location, :price, :description, :vendor, :picture
-
-  attr_reader :id
+  attr_accessible   :name, :location, :price, :description, :vendor, :picture, :id
 
   validates  :name,        presence: true, length: { maximum: 100  }
   validates  :location,    presence: true, length: { maximum: 30  }
