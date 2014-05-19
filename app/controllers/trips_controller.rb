@@ -5,7 +5,7 @@ class TripsController < ApplicationController
     @trips = current_customer.trips
 
     if(@trips.load.empty?)
-      flash[:notice] = "You currently have no trips created. Please create a trip to get started."
+      flash["notice"] = "You currently have no trips created. Please create a trip to get started."
       redirect_to new_customers_trips_path
       return
     end

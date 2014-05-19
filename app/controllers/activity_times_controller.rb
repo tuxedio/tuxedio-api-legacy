@@ -11,7 +11,7 @@ class ActivityTimesController < ApplicationController
     @activity_time = @activity.activity_times.build(activity_time_params)
 
     if @activity_time.save
-      flash[:success] = "Activity time successfully added!"
+      flash["success"] = "Activity time successfully added!"
       redirect_to vendor_profile_path
     else
       render 'new'

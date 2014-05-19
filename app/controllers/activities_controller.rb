@@ -19,7 +19,7 @@ class ActivitiesController < ApplicationController
   def update
     @activity = Activity.find(params[:id])
     if @activity.update_attributes(activities_params)
-      flash[:success] = "Activity Updated"
+      flash["success"] = "Activity Updated"
       redirect_to vendor_profile_path
     else
       render 'edit'
@@ -42,7 +42,7 @@ class ActivitiesController < ApplicationController
   end
 
   def explore
-    @activities = Activity.all.shuffle!
+    @activities = Activity.all.shuffle
 
     if customer_signed_in?
       @trip = current_customer.current_trip(session[:current_trip_id])

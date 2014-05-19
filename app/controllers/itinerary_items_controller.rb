@@ -23,7 +23,7 @@ class ItineraryItemsController < ApplicationController
 
     if @itinerary_item.save
       session[:current_trip_id] = params[:trip_id]
-      flash[:success] = "#{@activity.name} added to trip!"
+      flash["success"] = "#{@activity.name} added to trip!"
       redirect_to explore_path
     else
       # new relies on activity_id so we must send in params
@@ -40,7 +40,7 @@ class ItineraryItemsController < ApplicationController
           ItineraryItem.find(i).destroy
         end
       end
-      flash[:notice] = "Items successfully removed from trip!"
+      flash["notice"] = "Items successfully removed from trip!"
     end
 
     redirect_to explore_path
@@ -49,7 +49,7 @@ class ItineraryItemsController < ApplicationController
   def destroy
     debugger
     ItineraryItem.find(params[:format]).destroy
-    flash[:success] = "Item deleted from your itinerary"
+    flash["success"] = "Item deleted from your itinerary"
     redirect_to customers_trips_path
   end
 

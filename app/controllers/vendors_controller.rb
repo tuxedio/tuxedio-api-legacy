@@ -23,7 +23,7 @@ class VendorsController < ApplicationController
   def update_details
 
     current_vendor.update!(params[:vendor])
-    flash[:success] = "Success! Your information was updated."
+    flash["success"] = "Success! Your information was updated."
     redirect_to vendor_profile_path
 
   end
