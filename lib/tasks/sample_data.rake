@@ -79,10 +79,9 @@ namespace :db do
         random_day = rand(1..28)
         activity_start = Time.new(2015, random_month, random_day, 2, 2, 2, "+02:00")
         activity_end = Time.new(2015, random_month, random_day, 3, 3, 3, "+03:00")
-        activity.activity_times.create!(start_time: activity_start, end_time: activity_end, activity_id: activity.id)
+        activity.activity_times.create!(start_time: activity_start, end_time: activity_end, activity: activity)
       end
     end
-
 
   end
 end
