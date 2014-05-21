@@ -28,7 +28,7 @@ describe "Customer".upcase.colorize(:light_blue) do
 
   it { should be_valid }
 
-#------------------------------------
+  #------------------------------------
   describe "\nCheck parameters for blankness".upcase.colorize(:light_blue) do
     describe "when name is not present" do
       before { @customer.name = " " }
@@ -60,7 +60,7 @@ describe "Customer".upcase.colorize(:light_blue) do
 
     describe "when email format is invalid" do
       it "it should be invalid" do
-      addresses = %w[user@foo,com user_at_foo.org example.user@foo.
+        addresses = %w[user@foo,com user_at_foo.org example.user@foo.
                        foo@bar_baz.com foo@bar+baz.com]
         addresses.each do |invalid|
           @customer.email = invalid
@@ -108,8 +108,8 @@ describe "Customer".upcase.colorize(:light_blue) do
       it { should be_invalid }
     end
   end
-#------------------------------------
-# Bio
+  #------------------------------------
+  # Bio
   describe "\nbio".upcase.colorize(:light_blue) do
     describe "when customer has a bio" do
       before { @customer.bio = "Ipsum schplitsum" }
@@ -146,8 +146,8 @@ describe "Customer".upcase.colorize(:light_blue) do
     end
   end
 
- #------------------------------------
- # Profile/Activity Picture
+  #------------------------------------
+  # Profile/Activity Picture
   describe "\npictures".upcase.colorize(:light_blue) do
     describe "when a customer has a profile picture" do
       before { @customer.picture_file_name = "FishShapes.jpg" }
@@ -167,6 +167,35 @@ describe "Customer".upcase.colorize(:light_blue) do
     describe "when a customer's picture is the default image" do
       before { @customer.picture_file_name = nil }
       it { should be_valid }
+    end
+  end
+
+  #------------------------------------
+  # Current Trip
+  describe "\ncurrent trip".upcase.colorize(:light_blue) do
+    describe "when a invalid trip_id is passed" do
+      before { @trip = FactoryGirl.create(:trip, customer: @customer) }
+      it { expect(@customer.current_trip(3214451324)).to eq(@trip) }
+    end
+
+    describe "when a valid trip_id is passed" do
+      before { @trip = FactoryGirl.create(:trip, customer: @customer) }
+      it { expect(@customer.current_trip(@trip)).to eq(@trip) }
+    end
+
+    describe "with multiple trips" do
+      describe "with invalid trip_id" do 
+        before { @trip1 = FactoryGirl.create(:trip, customer: @customer) }
+        before { @trip2 = FactoryGirl.create(:trip, customer: @customer) }
+        # Should be trips.last
+        it { expect(@customer.current_trip(12345)).to eq(@trip2) }
+      end
+
+      describe "with valid trip_id" do 
+        before { @trip1 = FactoryGirl.create(:trip, customer: @customer) }
+        before { @trip2 = FactoryGirl.create(:trip, customer: @customer) }
+        it { expect(@customer.current_trip(@trip1)).to eq(@trip1) }
+      end
     end
   end
 end

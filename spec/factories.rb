@@ -1,7 +1,6 @@
 FactoryGirl.define do
 
   factory :customer, class: Customer do
-
     name     "New Customer"
     email    "customer@example.com"
     location "Boulder"
