@@ -19,7 +19,6 @@ ActiveRecord::Schema.define(version: 20140424043033) do
     t.string   "location"
     t.decimal  "price",                precision: 8, scale: 2
     t.integer  "vendor_id"
-    t.integer  "activity_id"
     t.datetime "start_time"
     t.datetime "end_time"
     t.datetime "created_at"
@@ -57,7 +56,6 @@ ActiveRecord::Schema.define(version: 20140424043033) do
     t.string   "location"
     t.text     "bio"
     t.text     "top_choices"
-    t.integer  "customer_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "picture_file_name"
@@ -99,7 +97,6 @@ ActiveRecord::Schema.define(version: 20140424043033) do
     t.string   "unconfirmed_email"
     t.string   "name"
     t.string   "location"
-    t.integer  "vendor_id"
     t.integer  "zip_code"
     t.text     "description"
     t.datetime "created_at"

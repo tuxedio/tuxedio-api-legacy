@@ -32,10 +32,8 @@ class DeviseCreateVendors < ActiveRecord::Migration
 
       t.string :name
       t.string :location
-      t.integer :vendor_id
       t.integer :zip_code
       t.text :description
-
 
       t.timestamps
     end

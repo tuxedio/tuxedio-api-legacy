@@ -34,8 +34,6 @@ class DeviseCreateCustomers < ActiveRecord::Migration
       t.string :name
       t.text :bio
       t.text :top_choices
-      t.integer :customer_id
-
 
       t.timestamps
     end
