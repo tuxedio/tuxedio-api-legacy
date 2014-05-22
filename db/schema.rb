@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140502004939) do
+ActiveRecord::Schema.define(version: 20140424043033) do
 
   create_table "activities", force: true do |t|
     t.string   "name"
@@ -19,15 +19,15 @@ ActiveRecord::Schema.define(version: 20140502004939) do
     t.string   "location"
     t.decimal  "price",                precision: 8, scale: 2
     t.integer  "vendor_id"
+    t.integer  "activity_id"
+    t.datetime "start_time"
+    t.datetime "end_time"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "activity_id"
     t.string   "picture_file_name"
     t.string   "picture_content_type"
     t.integer  "picture_file_size"
     t.datetime "picture_updated_at"
-    t.datetime "start_time"
-    t.datetime "end_time"
   end
 
   create_table "activity_times", force: true do |t|
@@ -53,13 +53,13 @@ ActiveRecord::Schema.define(version: 20140502004939) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
-    t.datetime "created_at"
-    t.datetime "updated_at"
     t.string   "name"
     t.string   "location"
     t.text     "bio"
     t.text     "top_choices"
     t.integer  "customer_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "picture_file_name"
     t.string   "picture_content_type"
     t.integer  "picture_file_size"
@@ -97,12 +97,13 @@ ActiveRecord::Schema.define(version: 20140502004939) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
-    t.datetime "created_at"
-    t.datetime "updated_at"
     t.string   "name"
     t.string   "location"
     t.integer  "vendor_id"
     t.integer  "zip_code"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "phone_number"
     t.string   "sample_image"
     t.string   "state"
@@ -114,7 +115,6 @@ ActiveRecord::Schema.define(version: 20140502004939) do
     t.string   "picture_content_type"
     t.integer  "picture_file_size"
     t.datetime "picture_updated_at"
-    t.text     "description"
   end
 
   add_index "vendors", ["email"], name: "index_vendors_on_email", unique: true
