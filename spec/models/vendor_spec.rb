@@ -9,7 +9,6 @@ describe "Vendor Create".upcase.colorize(:light_blue) do
   it { should respond_to(:email) }
   it { should respond_to(:location) }
   it { should respond_to(:password) }
-  it { should respond_to(:vendor_id) }
   it { should respond_to(:password_confirmation) }
   it { should respond_to(:zip_code) }
   it { should respond_to(:address) }

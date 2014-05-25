@@ -7,6 +7,9 @@ class CreateActivities < ActiveRecord::Migration
       t.decimal :price, :precision => 8, :scale => 2
       t.belongs_to :vendor
 
+      t.datetime :start_time
+      t.datetime :end_time
+
       t.timestamps
     end
   end
