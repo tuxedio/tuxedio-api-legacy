@@ -4,17 +4,16 @@ class TripsController < ApplicationController
   def show
     @trips = current_customer.trips
 
-    if(@trips.load.empty?)
+    if (@trips.load.empty?)
       flash[:notice] = "You currently have no trips created. Please create a trip to get started."
       redirect_to new_customers_trips_path
       return
     end
 
-
-    @current_trip = current_trip
-    @itinerary_items = current_trip.itinerary_items.includes(:activity_time).order('activity_times.start_time')
+    @current_trip = current_customer.current_trip(current_trip_id)
+    @itinerary_items = @current_trip.itinerary_items.includes(:activity_time).order('activity_times.start_time')
     #Set make sure current trip and session var are same
-    @activities   = @current_trip.activities
+    @activities = @current_trip.activities
   end
 
   def new
@@ -31,11 +30,11 @@ class TripsController < ApplicationController
   end
 
   def edit
-    @trip = current_customer.trips.find(session[:current_trip_id])
+    @trip = current_customer.current_trip(current_trip_id)
   end
 
   def update
-    @trip = current_customer.trips.find(session[:current_trip_id])
+    @trip = current_customer.current_trip(current_trip_id)
     if @trip.update(trips_params)
       redirect_to customers_trips_path
     else
@@ -49,23 +48,8 @@ class TripsController < ApplicationController
       params.require(:trip).permit(:trip_name, :location, :start_date, :number_of_days)
     end
 
-    # Eventually this method should be in customer model
-    # so we can use customer.current_trip
-    def current_trip
-      #grab params from the website
-
-      if !params[:trip_selection].nil? && !params[:trip_selection].empty?
-        @current_trip_id = params[:trip_selection]
-      end
-
-      if Trip.exists?(session[:current_trip_id])
-        @current_trip_id ||= session[:current_trip_id]
-        session[:current_trip_id] = @current_trip_id
-      else
-        @current_trip_id = @trips.last.id
-      end
-
-      @current_trip = @trips.find_by_id(@current_trip_id)
-
+    def current_trip_id
+      session[:current_trip_id] ||= params[:trip_selection]
     end
+
 end

@@ -47,7 +47,6 @@ class ItineraryItemsController < ApplicationController
   end
 
   def destroy
-    debugger
     ItineraryItem.find(params[:format]).destroy
     flash[:success] = "Item deleted from your itinerary"
     redirect_to customers_trips_path

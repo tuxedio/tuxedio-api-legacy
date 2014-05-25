@@ -5,8 +5,9 @@ gem  'rails', '4.0.5'
 
 group :development, :test do
   gem 'childprocess', '0.3.6'
-  gem 'factory_girl_rails', '4.2.1'
   gem 'debugger'
+  gem 'factory_girl_rails', '4.2.1'
+  gem 'pry-rails'
   gem 'sprockets'
   gem 'sprockets-rails', :require => 'sprockets/railtie'
   gem 'sqlite3', '1.3.8'
@@ -20,7 +21,6 @@ group :development do
   gem 'guard-cucumber', require: false
   gem 'guard-livereload', require: false
   gem 'guard-rspec', require: false
-  gem 'pry-rails'
   gem 'spring'
   gem 'spring-commands-cucumber'
   gem 'spring-commands-rspec'
