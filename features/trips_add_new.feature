@@ -1,4 +1,7 @@
-Feature: As a customer, so that I can create itineraries of my activities, I want to make a trip
+Feature: Create a new trip
+  As a customer
+  So I can create itineraries of my activities
+  I want to make a trip
 
 Background:
   Given I am signed in as a customer
