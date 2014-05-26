@@ -16,9 +16,9 @@ class ItineraryItemsController < ApplicationController
     @activity = Activity.find(params[:activity_id])
 
     @itinerary_item = @trip.itinerary_items.build(
-      trip_id:          params[:trip_id],
-      activity_id:      params[:activity_id],
-      activity_time_id: params[:activity_time_id]
+      trip:          Trip.find(params[:trip_id]),
+      activity:      Activity.find(params[:activity_id]),
+      activity_time: ActivityTime.find(params[:activity_time_id])
     )
 
     if @itinerary_item.save
@@ -47,7 +47,6 @@ class ItineraryItemsController < ApplicationController
   end
 
   def destroy
-    debugger
     ItineraryItem.find(params[:format]).destroy
     flash[:success] = "Item deleted from your itinerary"
     redirect_to customers_trips_path

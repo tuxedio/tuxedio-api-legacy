@@ -5,7 +5,10 @@ class CreateActivities < ActiveRecord::Migration
       t.text :description
       t.string :location
       t.decimal :price, :precision => 8, :scale => 2
-      t.integer :vendor_id
+      t.belongs_to :vendor
+
+      t.datetime :start_time
+      t.datetime :end_time
 
       t.timestamps
     end

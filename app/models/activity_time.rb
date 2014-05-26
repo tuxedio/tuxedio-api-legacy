@@ -3,11 +3,12 @@ class ActivityTime < ActiveRecord::Base
 
   validates :start_time,  presence: true
   validates :end_time,    presence: true
-  validates :activity_id, presence: true
+  validates :activity,    presence: true
 
   validates_datetime :start_time, :after => Time.now
   validates_datetime :end_time,   :after => :start_time
 
   belongs_to :activity
   has_many :itinerary_items
+  has_one :vendor, through: :activity
 end

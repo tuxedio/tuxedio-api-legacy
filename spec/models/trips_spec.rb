@@ -12,27 +12,28 @@ describe "Trips".upcase.colorize(:light_blue) do
   it { should respond_to(:start_date) }
   it { should respond_to(:number_of_days) }
   it { should respond_to(:customer) }
+
   it { should be_valid }
 
   describe "Check parameters for blankness".upcase.colorize(:light_blue) do
 
-    describe "when customer_id is not present" do
-      before { @trip.customer_id = nil }
+    describe "when customer is not present" do
+      before { @trip.customer= nil }
       it { should_not be_valid }
     end
 
     describe "when trip name is not present" do
-      before { @trip.trip_name = " " }
+      before { @trip.trip_name = nil }
       it { should_not be_valid }
     end
 
     describe "when location is not present" do
-      before { @trip.location = " " }
+      before { @trip.location = nil }
       it { should_not be_valid }
     end
 
     describe "when number of days is not present" do
-      before { @trip.number_of_days = " " }
+      before { @trip.number_of_days = nil }
       it { should_not be_valid }
     end
 

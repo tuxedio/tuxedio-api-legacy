@@ -5,10 +5,12 @@ gem  'rails', '4.0.5'
 
 group :development, :test do
   gem 'childprocess', '0.3.6'
+  gem 'debugger'
+  gem 'factory_girl_rails', '4.2.1'
+  gem 'pry-rails'
   gem 'sprockets'
   gem 'sprockets-rails', :require => 'sprockets/railtie'
   gem 'sqlite3', '1.3.8'
-  gem 'debugger'
 end
 
 group :development do
@@ -19,7 +21,6 @@ group :development do
   gem 'guard-cucumber', require: false
   gem 'guard-livereload', require: false
   gem 'guard-rspec', require: false
-  gem 'pry-rails'
   gem 'spring'
   gem 'spring-commands-cucumber'
   gem 'spring-commands-rspec'
@@ -31,7 +32,6 @@ group :test do
   gem 'colorize'
   gem 'cucumber-rails', '1.4.0', :require => false
   gem 'database_cleaner', github: 'bmabey/database_cleaner'
-  gem 'factory_girl_rails', '4.2.1'
   gem 'growl', '1.0.3'
   gem 'rake'
   gem 'rspec-mocks'
@@ -69,7 +69,7 @@ gem 'haml'
 gem 'haml-rails'
 gem 'jbuilder', '1.0.2'
 gem 'oauth-plugin'
-gem 'paperclip', github: 'thoughtbot/paperclip'
+gem 'paperclip', '~> 4.1'
 gem 'protected_attributes', '1.0.7'
 gem 'turbolinks', '1.1.1'
 gem 'validates_timeliness', '~> 3.0'

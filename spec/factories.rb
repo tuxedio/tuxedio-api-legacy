@@ -1,7 +1,6 @@
 FactoryGirl.define do
 
   factory :customer, class: Customer do
-
     name     "New Customer"
     email    "customer@example.com"
     location "Boulder"
@@ -82,9 +81,8 @@ FactoryGirl.define do
   end
 
   factory :itinerary_item, class: ItineraryItem do
+    trip
     activity_time
-    activity_id 1
-    trip_id 1
   end
 
 end

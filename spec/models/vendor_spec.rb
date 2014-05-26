@@ -9,7 +9,6 @@ describe "Vendor Create".upcase.colorize(:light_blue) do
   it { should respond_to(:email) }
   it { should respond_to(:location) }
   it { should respond_to(:password) }
-  it { should respond_to(:vendor_id) }
   it { should respond_to(:password_confirmation) }
   it { should respond_to(:zip_code) }
   it { should respond_to(:address) }
@@ -112,14 +111,11 @@ describe "Vendor Create".upcase.colorize(:light_blue) do
     end
   end
 
-  describe "vendor confirms details with Yelp" do
-
-    describe "when vendor confirms details from Yelp" do
-      before do
-       @vendor.update( FactoryGirl.attributes_for(:yelp) )
-     end
-      it { should be_valid }
-    end
+  describe "when vendor confirms details from Yelp" do
+    before do
+     @vendor.update( FactoryGirl.attributes_for(:yelp) )
+   end
+    it { should be_valid }
   end
 end
 
