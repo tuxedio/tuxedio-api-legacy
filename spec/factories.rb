@@ -17,6 +17,14 @@ FactoryGirl.define do
     password "foobar1234"
     password_confirmation "foobar1234"
   end
+  factory :boulder_vendor, class: Vendor do
+    name     "Illegal Pete's"
+    email    "test3@vend.com"
+    location "Boulder"
+    zip_code "80301"
+    password "foobar1234"
+    password_confirmation "foobar1234"
+  end
 
   factory :vendor1, class: Vendor do
     name     "Larkburger"

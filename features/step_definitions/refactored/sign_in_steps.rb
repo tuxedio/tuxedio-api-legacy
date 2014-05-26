@@ -45,7 +45,13 @@ Given(/^I am signed in as a vendor$/) do
     And I sign in as that vendor
   }
 end
-
+Given(/^I am signed in as a boulder_vendor$/) do
+  steps %q{
+    Given a boulder_vendor exists
+    And that boulder_vendor is confirmed
+    And I sign in as that boulder_vendor
+  }
+end
 
 
 ######################################
