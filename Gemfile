@@ -8,6 +8,7 @@ group :development, :test do
   gem 'sprockets'
   gem 'sprockets-rails', :require => 'sprockets/railtie'
   gem 'sqlite3', '1.3.8'
+  gem 'debugger'
 end
 
 group :development do
@@ -15,7 +16,6 @@ group :development do
   gem 'capistrano-bundler', '~> 1.1.2'
   gem 'capistrano-rails', '~> 1.1.1'
   gem 'capistrano-rvm', github: "capistrano/rvm"
-  gem 'debugger'
   gem 'guard-cucumber', require: false
   gem 'guard-livereload', require: false
   gem 'guard-rspec', require: false
@@ -27,7 +27,6 @@ end
 
 
 group :test do
-  gem 'debugger'
   gem 'capybara'
   gem 'colorize'
   gem 'cucumber-rails', '1.4.0', :require => false
@@ -40,7 +39,7 @@ group :test do
   gem 'selenium-webdriver', '2.35.1'
   gem 'simplecov', '~> 0.7.1', :require => false
   gem 'spork-rails'
-  gem 'pickle'
+  gem 'pickle', github: "tuxedio/pickle"
   gem 'launchy'
 end
 

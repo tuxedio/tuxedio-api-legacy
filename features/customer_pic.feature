@@ -7,7 +7,7 @@ Feature: Image Upload via Paperclip
 Scenario: An image is chosen
   Given I visit the new customer registration page
   And I sign up as a customer with an image
-  And that customer signs in
+  And I sign in as that customer
   When I click the link "View Profile"
   Then I should see my profile picture
 

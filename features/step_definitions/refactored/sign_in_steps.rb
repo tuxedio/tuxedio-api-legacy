@@ -11,12 +11,19 @@ Given(/^I am signed in as a customer$/) do
 end
 
 Given(/^I sign in as (.*?)$/) do |user|
-  @customer = model(user)
-  @customer.confirm!
-  visit new_customer_session_path
-  fill_in "Email",        with: @customer.email
-  fill_in "Password",     with: "foobar1234"
-  click_button "Sign in"
+  @user = model(user)
+  if @user.nil?
+    @user = find_model(user)
+  end
+  @user.confirm!
+  if @user.class.name == "Customer"
+    visit new_customer_session_path
+  elsif @user.class.name == "Vendor"
+    visit new_vendor_session_path
+  end
+    fill_in "Email",        with: @user.email
+    fill_in "Password",     with: "foobar1234"
+    click_button "Sign in"
 end
 
 Given(/^that customer signs in$/) do

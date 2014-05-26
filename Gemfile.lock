@@ -22,6 +22,14 @@ GIT
       cocaine (~> 0.5.3)
       mime-types
 
+GIT
+  remote: git://github.com/tuxedio/pickle.git
+  revision: e19f4d20afc830f2a91c8940e180d75b25fd8aa9
+  specs:
+    pickle (0.4.11)
+      cucumber (>= 0.8)
+      rake
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -211,9 +219,6 @@ GEM
       rack (~> 1.2)
     orm_adapter (0.5.0)
     pg (0.15.1)
-    pickle (0.4.11)
-      cucumber (>= 0.8)
-      rake
     polyglot (0.3.4)
     protected_attributes (1.0.7)
       activemodel (>= 4.0.1, < 5.0)
@@ -370,7 +375,7 @@ DEPENDENCIES
   oauth-plugin
   paperclip!
   pg (= 0.15.1)
-  pickle
+  pickle!
   protected_attributes (= 1.0.7)
   pry-rails
   rails (= 4.0.5)
