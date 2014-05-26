@@ -65,6 +65,13 @@ Then(/^I should( not)? see the "(.*?)" link$/) do |should_not, link|
   end
 end
 
+Then(/^I should( not)? see the text "(.*?)"$/) do |should_not, text|
+  if (should_not)
+    page.should_not have_content(text)
+  else
+    page.should have_content(text)
+  end
+end
 
 #-----------------------
 # Action Mailer
