@@ -1,7 +1,7 @@
 class Trip < ActiveRecord::Base
 
   #ACCESSORS
-  attr_accessible :trip_name, :customer, :location, :start_date, :number_of_days, :id
+  attr_accessible :trip_name, :customer, :location, :start_date, :number_of_days, :id, :activity
 
   #VALIDATION
   validates :trip_name,      presence: true

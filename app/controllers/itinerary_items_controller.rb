@@ -2,7 +2,7 @@ class ItineraryItemsController < ApplicationController
 
   def new
 
-    @activity = Activity.find(params[:activity_id])
+    @activity = Activity.find(params[:activity])
     @itinerary_item = ItineraryItem.new
     @trips = current_customer.trips
     @activity_times = @activity.activity_times
@@ -11,14 +11,15 @@ class ItineraryItemsController < ApplicationController
 
   def create
 
+
     # find customer's trips
-    @trip = current_customer.trips.find(itinerary_items_params[:trip_id])
-    @activity = Activity.find(params[:activity_id])
+    @trip = current_customer.trips.find(params[:trip])
+    @activity = Activity.find(params[:activity])
 
     @itinerary_item = @trip.itinerary_items.build(
-      trip:          Trip.find(params[:trip_id]),
-      activity:      Activity.find(params[:activity_id]),
-      activity_time: ActivityTime.find(params[:activity_time_id])
+      trip:          @trip,
+      activity:      @activity,
+      activity_time: ActivityTime.find(params[:activity_time])
     )
 
     if @itinerary_item.save
@@ -27,7 +28,7 @@ class ItineraryItemsController < ApplicationController
       redirect_to explore_path
     else
       # new relies on activity_id so we must send in params
-      render :action => "new", :activity_id => params[:activity_id]
+      render :action => "new", :activity => params[:activity]
     end
 
   end
@@ -56,9 +57,10 @@ class ItineraryItemsController < ApplicationController
 
     def itinerary_items_params
       params.permit(
-        :trip_id,
-        :activity_time_id,
-        :time_id
+        :trip,
+        :activity,
+        :activity_time,
+        :time
       )
     end
 

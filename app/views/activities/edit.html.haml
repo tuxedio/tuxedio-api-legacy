@@ -17,4 +17,4 @@
         = f.text_field :description
         = f.number_field :price
         = f.submit "Save activity", class: "btn btn-large btn-primary"
-        =link_to "Add activity time", new_activities_activity_times_path(:activity_id => @activity.id), class: "btn btn-large btn-primary"
+        = link_to "Add activity time", new_activities_activity_times_path(:activity => @activity), class: "btn btn-large btn-primary"
