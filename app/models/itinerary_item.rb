@@ -1,8 +1,8 @@
 class ItineraryItem < ActiveRecord::Base
-
   #--------------------------------------------------------
   # Attributes
   attr_accessible :activity, :activity_time, :customer, :vendor
+
 
   #--------------------------------------------------------
   # Associations
@@ -12,6 +12,7 @@ class ItineraryItem < ActiveRecord::Base
 
   belongs_to :activity_time
   belongs_to :trip
+
 
   #--------------------------------------------------------
   # Validations

@@ -51,4 +51,5 @@ describe "Itinerary Item".upcase.colorize(:light_blue) do
       it { should be_valid }
     end
   end
+
 end

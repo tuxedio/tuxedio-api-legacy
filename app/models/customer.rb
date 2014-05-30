@@ -15,6 +15,7 @@ class Customer < ActiveRecord::Base
   # Associations
 
   has_many :trips
+  has_many :itinerary_items, through: :trips
 
 
   #--------------------------------------------------------
@@ -66,6 +67,5 @@ class Customer < ActiveRecord::Base
       end
     end
   end
-
 
 end
