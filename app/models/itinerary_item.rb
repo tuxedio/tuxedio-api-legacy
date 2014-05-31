@@ -18,5 +18,7 @@ class ItineraryItem < ActiveRecord::Base
   # Validations
   validates :activity_time, presence: true
   validates :trip,          presence: true
+  validates :customer,      presence: true
+  validates :vendor,        presence: true
 
 end
