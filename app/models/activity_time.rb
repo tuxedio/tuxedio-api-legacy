@@ -9,7 +9,7 @@ class ActivityTime < ActiveRecord::Base
   validates_datetime :end_time,   :after => :start_time
 
   belongs_to :activity
-  has_many :itinerary_items
+  has_many :itinerary_items, dependent: :destroy
   has_one :vendor, through: :activity
   has_one :trip, through: :activity end
 

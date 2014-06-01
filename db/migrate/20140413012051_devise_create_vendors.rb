@@ -30,9 +30,9 @@ class DeviseCreateVendors < ActiveRecord::Migration
       # t.string   :unlock_token # Only if unlock strategy is :email or :both
       # t.datetime :locked_at
 
-      t.string :name
-      t.string :location
-      t.integer :zip_code
+      t.string :name, null: false
+      t.string :location, null: false
+      t.integer :zip_code, null: false
       t.text :description
 
       t.timestamps

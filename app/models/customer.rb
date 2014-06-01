@@ -14,7 +14,7 @@ class Customer < ActiveRecord::Base
   #--------------------------------------------------------
   # Associations
 
-  has_many :trips
+  has_many :trips, dependent: :destroy
   has_many :itinerary_items, through: :trips
 
 
