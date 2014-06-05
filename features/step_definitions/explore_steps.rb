@@ -19,7 +19,7 @@ Then(/^the customer clicks the "(.*?)" button$/) do |button|
 end
 
 Given(/^the customer has a trip$/) do
-  @customer.trips.create!(trip_name: "My Trip", location: "Boulder", start_date: Time.now, number_of_days: 2)
+  @customer.trips.create!(name: "My Trip", location: "Boulder", start_date: Time.now, number_of_days: 2)
 end
 
 Given(/^the customer selects trip and activity time$/) do

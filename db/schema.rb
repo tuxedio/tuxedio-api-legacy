@@ -71,7 +71,7 @@ ActiveRecord::Schema.define(version: 20140424043033) do
   end
 
   create_table "trips", force: true do |t|
-    t.string  "trip_name"
+    t.string  "name"
     t.integer "customer_id",    null: false
     t.string  "location"
     t.date    "start_date"

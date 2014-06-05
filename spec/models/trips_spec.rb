@@ -12,19 +12,19 @@ describe Trip do
     end
   end
 
-  describe "trip_name" do
-    it "should respond to trip_name" do
-      expect(trip).to respond_to(:trip_name)
+  describe "name" do
+    it "should respond to name" do
+      expect(trip).to respond_to(:name)
     end
 
-    describe "when trip_name is not present" do
-      before { trip.trip_name = nil }
+    describe "when name is not present" do
+      before { trip.name = nil }
       it "should not be valid" do
         expect(trip).to_not be_valid
       end
     end
     describe "when trip name is too long" do
-      before { trip.trip_name = 'a' * 21 }
+      before { trip.name = 'a' * 21 }
       it "should not be valid" do
         expect(trip).to_not be_valid
       end

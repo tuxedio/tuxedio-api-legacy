@@ -3,7 +3,7 @@ class Trip < ActiveRecord::Base
   #--------------------------------------------------------
   # Attributes
 
-  attr_accessible :trip_name, :customer, :location, :start_date, :number_of_days, :id, :activity
+  attr_accessible :name, :customer, :location, :start_date, :number_of_days, :id, :activity
 
   #--------------------------------------------------------
   # Associations
@@ -15,7 +15,7 @@ class Trip < ActiveRecord::Base
   #--------------------------------------------------------
   # Validations
 
-  validates :trip_name,       presence: true, length: { maximum: 20 }
+  validates :name,            presence: true, length: { maximum: 20 }
   validates :customer,        presence: true
   validates :start_date,      presence: true
   validates :number_of_days,  presence: true, numericality: { greater_than: 0 }

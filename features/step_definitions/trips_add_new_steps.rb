@@ -4,18 +4,18 @@ end
 
 When(/^the customer submits (in)*valid trip information$/) do|invalid|
   if (invalid)
-    fill_in "trip_trip_name",         with: " "
+    fill_in "trip_name",         with: " "
     fill_in "trip_number_of_days",    with: "asdf"
     click_button "Create trip"
   else
-    fill_in "trip_trip_name",         with: "Trip Name"
+    fill_in "trip_name",         with: "Trip Name"
     select "Boulder",                 from: "trip_location"
     fill_in "trip_number_of_days",    with: 1
     click_button "Create trip"
   end
 end
 When(/^the customer submits valid trip information for the second time$/) do
-  fill_in "trip_trip_name",         with: "Trip Name 2"
+  fill_in "trip_name",         with: "Trip Name 2"
   select "Boulder",                 from: "trip_location"
   fill_in "trip_number_of_days",    with: 1
   click_button "Create trip"

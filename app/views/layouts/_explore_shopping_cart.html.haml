@@ -5,7 +5,7 @@
         %span.glyphicon.glyphicon-shopping-cart
         Trip items
         %br
-      .center=itinerary[0].trip.trip_name unless itinerary.empty?
+      .center=itinerary[0].trip.name unless itinerary.empty?
     -if itinerary.empty?
       .list-group-item
         %h5.list-group-item-header

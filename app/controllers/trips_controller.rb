@@ -46,7 +46,7 @@ class TripsController < ApplicationController
   private
 
     def trip_params
-      params.require(:trip).permit(:trip_name, :location, :start_date, :number_of_days)
+      params.require(:trip).permit(:name, :location, :start_date, :number_of_days)
     end
 
     def current_trip_id
