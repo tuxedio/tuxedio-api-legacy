@@ -21,8 +21,9 @@ class TripsController < ApplicationController
   end
 
   def create
-    @trip = current_customer.trips.build(trips_params)
+    @trip = current_customer.trips.build(trip_params)
     if @trip.save
+      flash[:notice] = "New trip created!"
       redirect_to customers_trips_path
     else
       render 'new'
@@ -35,7 +36,7 @@ class TripsController < ApplicationController
 
   def update
     @trip = current_customer.current_trip(current_trip_id)
-    if @trip.update(trips_params)
+    if @trip.update(trip_params)
       redirect_to customers_trips_path
     else
       render 'edit'
@@ -44,7 +45,7 @@ class TripsController < ApplicationController
 
   private
 
-    def trips_params
+    def trip_params
       params.require(:trip).permit(:trip_name, :location, :start_date, :number_of_days)
     end
 
