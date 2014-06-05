@@ -37,6 +37,18 @@ describe "Itinerary Item".upcase.colorize(:light_blue) do
       before { @itinerary_item.activity_time = nil }
       it { should_not be_valid }
     end
+
+  end
+
+  describe "can access association for  " do
+
+    describe "customer" do
+      it { expect(@itinerary_item.trip.customer.id).to equal(1) }
+    end
+
+    describe "vendor" do
+      it { expect(@itinerary_item.activity_time.vendor.id).to equal(1) }
+    end
   end
 
   describe "Valid IDs" do
@@ -51,4 +63,5 @@ describe "Itinerary Item".upcase.colorize(:light_blue) do
       it { should be_valid }
     end
   end
+
 end

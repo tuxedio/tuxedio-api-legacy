@@ -15,6 +15,7 @@ class Customer < ActiveRecord::Base
   # Associations
 
   has_many :trips
+  has_many :itinerary_items, through: :trips
 
 
   #--------------------------------------------------------
@@ -22,7 +23,7 @@ class Customer < ActiveRecord::Base
 
   validates :name,         presence: true, length: { maximum: 50 }
   validates :location,     presence: true, length: { maximum: 30 }
-  validates :email,        presence: true, email: true, uniqueness: {case_sensitive: false }
+  validates :email,        presence: true, email: true, uniqueness: { case_sensitive: false }
   validates :top_choices,  choice: true, on: :update
 
   # Eventually refactor this and move this logic to production.rb
@@ -66,6 +67,5 @@ class Customer < ActiveRecord::Base
       end
     end
   end
-
 
 end
