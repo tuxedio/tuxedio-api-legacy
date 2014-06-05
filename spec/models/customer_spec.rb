@@ -184,14 +184,14 @@ describe "Customer".upcase.colorize(:light_blue) do
     end
 
     describe "with multiple trips" do
-      describe "with invalid trip_id" do 
+      describe "with invalid trip_id" do
         before { @trip1 = FactoryGirl.create(:trip, customer: @customer) }
         before { @trip2 = FactoryGirl.create(:trip, customer: @customer) }
         # Should be trips.last
         it { expect(@customer.current_trip(12345)).to eq(@trip2) }
       end
 
-      describe "with valid trip_id" do 
+      describe "with valid trip_id" do
         before { @trip1 = FactoryGirl.create(:trip, customer: @customer) }
         before { @trip2 = FactoryGirl.create(:trip, customer: @customer) }
         it { expect(@customer.current_trip(@trip1)).to eq(@trip1) }
