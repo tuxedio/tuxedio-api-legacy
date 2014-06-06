@@ -14,13 +14,11 @@
 ActiveRecord::Schema.define(version: 20140424043033) do
 
   create_table "activities", force: true do |t|
-    t.string   "name"
+    t.string   "name",                                         null: false
     t.text     "description"
-    t.string   "location"
-    t.decimal  "price",                precision: 8, scale: 2
-    t.integer  "vendor_id"
-    t.datetime "start_time"
-    t.datetime "end_time"
+    t.string   "location",                                     null: false
+    t.decimal  "price",                precision: 8, scale: 2, null: false
+    t.integer  "vendor_id",                                    null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "picture_file_name"
@@ -52,8 +50,8 @@ ActiveRecord::Schema.define(version: 20140424043033) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
-    t.string   "location"
-    t.string   "name"
+    t.string   "location",                            null: false
+    t.string   "name",                                null: false
     t.text     "bio"
     t.text     "top_choices"
     t.datetime "created_at"
@@ -68,13 +66,13 @@ ActiveRecord::Schema.define(version: 20140424043033) do
   add_index "customers", ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
 
   create_table "itinerary_items", force: true do |t|
-    t.integer "activity_time_id"
-    t.integer "trip_id"
+    t.integer "activity_time_id", null: false
+    t.integer "trip_id",          null: false
   end
 
   create_table "trips", force: true do |t|
     t.string  "trip_name"
-    t.integer "customer_id"
+    t.integer "customer_id",    null: false
     t.string  "location"
     t.date    "start_date"
     t.integer "number_of_days"
@@ -95,9 +93,9 @@ ActiveRecord::Schema.define(version: 20140424043033) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
-    t.string   "name"
-    t.string   "location"
-    t.integer  "zip_code"
+    t.string   "name",                                   null: false
+    t.string   "location",                               null: false
+    t.integer  "zip_code",                               null: false
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
