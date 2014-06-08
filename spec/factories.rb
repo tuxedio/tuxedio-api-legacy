@@ -1,7 +1,7 @@
 FactoryGirl.define do
 
   factory :customer, class: Customer do
-    name     "New Customer"
+    name     "Example Customer"
     email    "customer@example.com"
     location "Boulder"
     password "foobar1234"
@@ -19,8 +19,16 @@ FactoryGirl.define do
   end
 
   factory :vendor, class: Vendor do
-    name     "MyVendor"
+    name     "Example Vendor"
     email    "vendor@example.com"
+    location "Boulder"
+    zip_code "80301"
+    password "foobar1234"
+    password_confirmation "foobar1234"
+  end
+  factory :boulder_vendor, class: Vendor do
+    name     "Illegal Pete's"
+    email    "test3@vend.com"
     location "Boulder"
     zip_code "80301"
     password "foobar1234"

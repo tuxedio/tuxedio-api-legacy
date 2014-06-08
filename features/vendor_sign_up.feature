@@ -1,11 +1,28 @@
-Feature: As a Vendor, in order to create an account I should be able to sign up using the register page
+Feature: Vendor sign in
+  As a Vendor
+  So that I can to create an account
+  I want to sign up using the register page
 
 Scenario:
-  Given a vendor visits the sign up page
-  When the vendor submits valid signup information
-  Then the vendor should see email confirmation notice
+  Given I visit the new vendor registration page
+  When I fill in the following:
+  | field        | value              |
+  | Name         | Example Vendor     |
+  | Email        | vendor@example.com |
+  | Zip          | 80301              |
+  | Password     | foobarfoobar       |
+  | Confirmation | foobarfoobar       |
+  And I click the button "Create my account"
+  Then I should recieve an email to "vendor@example.com"
 
 Scenario:
-  Given a vendor visits the sign up page
-  When the vendor submits invalid signup information
-  Then vendor should be redirected to the the sign up page
+  Given I visit the new vendor registration page
+  When I fill in the following:
+  | field        | value              |
+  | Name         | Example Vendor     |
+  | Email        | vendor@example.com |
+  | Zip          |                    |
+  | Password     |                    |
+  | Confirmation | foobarfoobar       |
+  And I click the button "Create my account"
+  And I should see a warning message
