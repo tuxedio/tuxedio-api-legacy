@@ -39,7 +39,5 @@ Then(/^the intinerary cart should(.*?) be empty$/) do |i|
   end
 end
 
-When(/^(?:|I )check "(.*?)" field$/) do |field|
-  check(field)
-end
+
 

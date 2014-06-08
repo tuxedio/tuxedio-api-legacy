@@ -1,22 +1,18 @@
-Feature: As a vendor, so that I can view my profile, I want to click a button on in the navigation that will take me to my profile.
+Feature: Vendor Profile
+  As a vendor
+  So that I can view my profile
+  I want to click a button on in the navigation that will take me to my profile.
 
 Scenario: A logged in vendor can see their profile
-  Given a vendor is logged in
-  When the vendor clicks the "View My Account" link
-  Then the vendor should see their profile page
+  Given I am signed in as a vendor
+  When I click the link "View My Account"
+  Then I should be on the vendor profile page
+  And I should see the "Edit Profile" link
+  And I should see the "Add an activity" link
+  And I should see the text "Example Vendor"
+  And I should see the text "Boulder"
 
 Scenario: If logged out, there is no link to vendor account
-  Given a vendor is logged out
-  Then the vendor should see the "Sign in" link
-  And the vendor should not see the "View My Account" link
-
-Scenario: If on the vendor profile, I should see profile elements.
-  Given a vendor is logged in
-  When the vendor clicks the "View My Account" link
-  Then the vendor should see their profile picture
-  And the vendor should see the "Edit Profile" link
-  And the vendor should see the "Add an activity" link
-  And the vendor should see their name
-  And the vendor should see their location
-  When then vendor has activities
-  Then the vendor should see their offered activities
+  Given I visit the home page
+  Then I should see the "Sign in" link
+  And I should not see the "View My Account" link

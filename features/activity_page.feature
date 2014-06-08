@@ -2,7 +2,7 @@ Feature: As a customer, so that I can learn more about an activity, I want to vi
 
 		@explore
   Scenario: Customer navigates to activity page
-    Given a customer is logged in
+    Given I am signed in as a customer
     When the customer clicks the "Explore" link
     Then the customer should see the "/explore" page
     Then the customer should see activities displayed

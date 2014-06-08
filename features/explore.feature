@@ -1,67 +1,38 @@
 @explore
-Feature: As a user, I should be able to view activities with the explore page.
+Feature: Explore Activities
+    As a user
+    So I can browse the available activities
+    I want a list of activities.
 
-  Scenario: Signed in customer adds item to trip
-    Given a customer is logged in
-    And the customer has a trip
-    When the customer clicks the "Explore" link
-    Then the customer should see the "/explore" page
-    Then the customer should see activities displayed
-    When the customer clicks an Add to trip link
-    Then they should see the "Add an activity" page
-    When the customer selects trip and activity time
-    When the customer clicks the "Add to my trip" button
-    Then the customer should see the "/explore" page
-    And they should see "success" flash
-    Then the intinerary cart should not be empty
+Background:
+    Given I am signed in as a customer
+    Given I have created a trip
+    When I visit the explore page
+    Then I should see activities displayed
 
-  Scenario: Signed in customer removes item from trip
-    Given a customer is logged in
-    And the customer has a trip
-    When the customer clicks the "Explore" link
-    Then the customer should see the "/explore" page
-    Then the customer should see activities displayed
-    When the customer clicks an Add to trip link
-    Then they should see the "Add an activity" page
-    When the customer selects trip and activity time
-    When the customer clicks the "Add to my trip" button
-    Then the customer should see the "/explore" page
-    And they should see "success" flash
-    Then the intinerary cart should not be empty
+  Scenario: Customer adds and removes itinerary item
+    When I click the link "Add to trip"
+    Then I should be on the new trips itinerary items page
+    When I select a trip and activity time
+    And I click the button "Add to my trip"
+    Then I should be on the explore page
+    And I should see a success message
+    And My intinerary cart should not be empty
+    When I click the button "Update trip"
+    Then My intinerary cart should not be empty
     When I check "delete_" field
-    And the customer clicks the "Update trip" button
+    And I click the button "Update trip"
     Then the intinerary cart should be empty
-    And the customer should see the "/explore" page
 
-  Scenario: Signed in customer updates with no trip selected 
-    Given a customer is logged in
-    And the customer has a trip
-    When the customer clicks the "Explore" link
-    Then the customer should see the "/explore" page
-    Then the customer should see activities displayed
-    When the customer clicks an Add to trip link
-    Then they should see the "Add an activity" page
-    When the customer selects trip and activity time
-    When the customer clicks the "Add to my trip" button
-    Then the customer should see the "/explore" page
-    And they should see "success" flash
-    Then the intinerary cart should not be empty
-    And the customer clicks the "Update trip" button
-    Then the intinerary cart should not be empty
-    And the customer should see the "/explore" page
+  Scenario: Customer has no trip
+    Given I have no trips
+    And I visit the explore page
+    When I click the link "Add to trip"
+    Then I should be on the new trips page
 
-  Scenario: Customer (signed in)
-    Given a customer is logged in
-    When the customer clicks the "Explore" link
-    Then the customer should see the "/explore" page
-    Then the customer should see activities displayed
-    When the customer clicks an Add to trip link
-    Then they should see the "Create a trip" page
-
-  Scenario: Customer (not signed in)
-    Given a customer visits the home page
-    When the customer clicks the "Explore" link
-    Then the customer should see the "/explore" page
-    Then the customer should see activities displayed
-    When the customer clicks an Add to trip link
-    Then they should see the "Customer sign in" page
+  Scenario: Add to trip when not signed in
+    Given I sign out as a customer
+    When I visit the explore page
+    Then I should see activities displayed
+    When I click the link "Add to trip"
+    Then I should be on the new customer session page
