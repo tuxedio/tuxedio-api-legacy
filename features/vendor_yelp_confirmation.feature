@@ -11,7 +11,6 @@ Feature: Vendor signing in, first time
     Given I am signed in as a vendor
     Then I should be on the confirm details vendors page
     When I click the button "Update"
-    Then show me the page
     Then I should see a warning message
 
   Scenario: Invalid Yelp info

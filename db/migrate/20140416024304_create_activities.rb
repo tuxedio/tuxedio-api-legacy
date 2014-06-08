@@ -1,14 +1,11 @@
 class CreateActivities < ActiveRecord::Migration
   def change
     create_table :activities do |t|
-      t.string :name
+      t.string :name, null: false
       t.text :description
-      t.string :location
-      t.decimal :price, :precision => 8, :scale => 2
-      t.belongs_to :vendor
-
-      t.datetime :start_time
-      t.datetime :end_time
+      t.string :location, null: false
+      t.decimal :price, null: false, :precision => 8, :scale => 2
+      t.belongs_to :vendor, null: false
 
       t.timestamps
     end

@@ -12,7 +12,7 @@ Then(/^I should see activities displayed$/) do
 end
 
 Given(/^I select a trip and activity time$/) do
-  select 'My Trip',   from: '_trip_id'
+  select 'My Trip',   from: '_trip'
   find("option[value='3']").click
 end
 

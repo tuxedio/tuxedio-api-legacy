@@ -2,12 +2,12 @@ class ActivityTimesController < ApplicationController
   before_action :authenticate_vendor!, only: [:new, :create, :edit, :destroy]
 
   def new
-    @activity = Activity.find(params[:activity_id])
+    @activity = Activity.find(params[:activity])
     @activity_time = @activity.activity_times.new
   end
 
   def create
-    @activity = Activity.find(params[:activity_id])
+    @activity = Activity.find(params[:activity])
     @activity_time = @activity.activity_times.build(activity_time_params)
 
     if @activity_time.save
@@ -23,7 +23,7 @@ class ActivityTimesController < ApplicationController
 
   def activity_time_params
     params.require(:activity_time).permit(
-      :activity_id,
+      :activity,
       :start_time,
       :end_time
     )

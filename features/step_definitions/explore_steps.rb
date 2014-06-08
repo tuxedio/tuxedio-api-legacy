@@ -23,7 +23,7 @@ Given(/^the customer has a trip$/) do
 end
 
 Given(/^the customer selects trip and activity time$/) do
-  select 'My Trip',   from: '_trip_id'
+  select 'My Trip',   from: '_trip'
   find("option[value='3']").click
 end
 

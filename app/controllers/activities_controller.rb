@@ -1,8 +1,8 @@
 class ActivitiesController < ApplicationController
   before_action :authenticate_vendor!, only: [:new, :create, :edit, :destroy]
   def show
-    if params[:activity_id]
-      @activity = Activity.find(params[:activity_id])
+    if params[:activity]
+      @activity = Activity.find(params[:activity])
     else
       redirect_to explore_path
     end
@@ -35,7 +35,7 @@ class ActivitiesController < ApplicationController
     @activity = current_vendor.activities.build(activities_params)
 
     if @activity.save
-      redirect_to new_activities_activity_times_path(:activity_id => @activity.id)
+      redirect_to new_activities_activity_times_path(activity: @activity)
     else
       render 'new'
     end

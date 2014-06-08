@@ -6,6 +6,6 @@ class AddDetailsToVendor < ActiveRecord::Migration
     add_column :vendors, :address, :string
     add_column :vendors, :country, :string
     add_column :vendors, :coordinates, :text
-    add_column :vendors, :confirmed, :boolean, :default => false
+    add_column :vendors, :confirmed, :boolean, default: false
   end
 end
