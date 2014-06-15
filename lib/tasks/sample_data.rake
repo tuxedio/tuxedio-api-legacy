@@ -8,7 +8,7 @@ namespace :db do
     customer.skip_confirmation!
     customer.save
     customer.confirm!
-    customer.trips.create(trip_name: "My Trip", location: "Boulder", start_date: Time.now, number_of_days: 2)
+    customer.trips.create(name: "My Trip", location: "Boulder", start_date: Time.now, number_of_days: 2)
 
     vendor = Vendor.new(name: "Tangerine", email: "vendor@vendor.com", location: "Boulder",
              password: "mypassword1", password_confirmation: "mypassword1", zip_code: 80304)

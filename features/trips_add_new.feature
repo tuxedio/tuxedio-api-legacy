@@ -12,7 +12,7 @@ Background:
 Scenario: A customer can adds a trips successfully
   When I fill in the following:
   | field               | value  |
-  | trip_trip_name      | Trip 1 |
+  | trip_name      | Trip 1 |
   | trip_number_of_days | 1      |
   And I click the button "Create trip"
   Then I should be on the customers trips page
@@ -20,7 +20,7 @@ Scenario: A customer can adds a trips successfully
   When the customer clicks the "Create a new Trip" link
   And I fill in the following:
   | field               | value  |
-  | trip_trip_name      | Trip 2 |
+  | trip_name      | Trip 2 |
   | trip_number_of_days | 1      |
   And I click the button "Create trip"
   Then I should see the text "Trip 1"
@@ -29,7 +29,7 @@ Scenario: A customer can adds a trips successfully
 Scenario: A customer gives invalid input when creating a trip
   When I fill in the following:
   | field               | value  |
-  | trip_trip_name      |        |
+  | trip_name      |        |
   | trip_number_of_days | 0      |
   And I click the button "Create trip"
   Then I should see a warning message

@@ -11,7 +11,7 @@
 
     .row.top-buffer
       = bootstrap_form_tag url: trips_itinerary_items_path do |f|
-        = f.select :trip, options_from_collection_for_select(@trips, 'id', 'trip_name')
+        = f.select :trip, options_from_collection_for_select(@trips, 'id', 'name')
         = f.select :activity_time, options_from_collection_for_select(@activity_times, 'id', 'format_time')
         = hidden_field_tag :activity, @activity.id
         .center= f.submit "Add to my trip", class: "btn btn-large btn-primary"

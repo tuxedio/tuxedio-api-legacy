@@ -1,5 +1,5 @@
 Given(/^I have created a trip$/) do
-  @trip = @user.trips.create!(trip_name: "My Trip", location: "Boulder", start_date: Time.now, number_of_days: 2)
+  @trip = @user.trips.create!(name: "My Trip", location: "Boulder", start_date: Time.now, number_of_days: 2)
 end
 
 Given(/^I have no trips$/) do
