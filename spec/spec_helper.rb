@@ -12,7 +12,7 @@ Spork.prefork do
 
   require File.expand_path("../../config/environment", __FILE__)
   require 'rspec/rails'
-  require 'rspec/autorun'
+  #require 'rspec/autorun'
   require 'capybara/rspec'
 
 
@@ -54,9 +54,6 @@ Spork.prefork do
     config.include Capybara::DSL
 
     # Color Config
-    config.color_enabled = true
-    config.tty = true
-    config.formatter = :documentation
     config.include Devise::TestHelpers, type: :controller
 
     #Add Factory Girl
