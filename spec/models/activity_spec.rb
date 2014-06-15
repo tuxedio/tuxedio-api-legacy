@@ -2,9 +2,7 @@ require 'spec_helper'
 
 describe "Activity".upcase.colorize(:light_blue) do
 
-  before { @activity = FactoryGirl.create(:activity) }
-
-  subject { @activity }
+  subject (:activity) { FactoryGirl.create(:activity) }
 
   it { should respond_to(:name) }
   it { should respond_to(:location) }
@@ -14,7 +12,13 @@ describe "Activity".upcase.colorize(:light_blue) do
 
   it { should be_valid }
 
-#------------------------------------
+  describe "instantiation" do
+    it { is_expected.to be_an(Activity) }
+    it "should be valid" do
+      expect(activity).to be_valid
+    end
+  end
+
   describe "\nCheck parameters for blankness".upcase.colorize(:light_blue) do
     describe "when name is not present" do
       before { @activity.name = " " }
