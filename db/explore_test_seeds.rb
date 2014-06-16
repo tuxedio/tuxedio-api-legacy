@@ -12,7 +12,7 @@ vend1.confirm!
 
 activity_name = vend1.name + " Activity"
 activity_description = Faker::Lorem.sentence(5)
-activity_location = Faker::Address.city
+activity_location = "Boulder"
 activity_price = Faker::Number.number(2)
 vend1.activities.create!(
   name: activity_name,

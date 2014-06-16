@@ -26,6 +26,7 @@ class Activity < ActiveRecord::Base
                            numericality:   { greater_than_or_equal_to: 0 },
                            format: { :with => PRICE_REGEX }
 
+  validates_with LocationValidator
   has_attached_file :picture, :styles => { medium: "300x300#", thumb: "100x100#" }
   validates_attachment_content_type :picture, content_type: /\Aimage\/.*\Z/
 

@@ -1,5 +1,5 @@
 Given(/^a vendor has an activity$/) do
-  Vendor.find(1).activities.create(name: "Activity1", description: "Description", location: "location", price: 10 )
+  Vendor.find(1).activities.create(name: "Activity1", description: "Description", location: "Boulder", price: 10 )
 end
 
 Then(/^the vendor should see the edit activity page$/) do
