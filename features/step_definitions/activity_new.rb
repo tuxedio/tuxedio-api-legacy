@@ -18,7 +18,7 @@ When(/^the vendor submits (in)*valid activity information$/) do |invalid|
     click_button "Create activity"
   else
     fill_in "Name",         with: "Example Activity"
-    fill_in "Location",     with: "Location"
+    fill_in "Location",     with: "Boulder"
     fill_in "Description",  with: "New Description"
     fill_in "Price",        with: 12.00
     click_button "Create activity"

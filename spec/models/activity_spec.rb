@@ -1,80 +1,86 @@
 require 'spec_helper'
 
-describe "Activity".upcase.colorize(:light_blue) do
+describe Activity do
 
-  before { @activity = FactoryGirl.create(:activity) }
+  subject (:activity) { FactoryGirl.build(:activity) }
 
-  subject { @activity }
-
-  it { should respond_to(:name) }
-  it { should respond_to(:location) }
-  it { should respond_to(:description) }
-  it { should respond_to(:price) }
-  it { should respond_to(:vendor) }
-
-  it { should be_valid }
-
-#------------------------------------
-  describe "\nCheck parameters for blankness".upcase.colorize(:light_blue) do
-    describe "when name is not present" do
-      before { @activity.name = " " }
-      it { should_not be_valid }
-    end
-
-    describe "when location is not present" do
-      before { @activity.location = " " }
-      it { should_not be_valid }
-    end
-
-    describe "when price is not present" do
-      before { @activity.price = nil }
-      it { should_not be_valid }
+  describe "instantiation" do
+    it do
+      is_expected.to be_valid
+      is_expected.to be_an(Activity)
     end
   end
 
-  describe "\nactivity Validation".upcase.colorize(:light_blue) do
-
-    describe "when name is too long" do
-      before { @activity.name = "z" * 101 }
-      it { should_not be_valid }
+  describe "name" do
+    it "should respond to name" do
+      expect(activity).to respond_to(:name)
     end
+    describe "when name is not present" do
+      before { activity.name = nil }
+      it { is_expected.to_not be_valid }
+    end
+    describe "when activity name is too long" do
+      before { activity.name = 'a' * 101 }
+      it { is_expected.to_not be_valid }
+    end
+  end
 
+  describe "location" do
+    it "should respond to location" do
+      expect(activity).to respond_to(:location)
+    end
+    describe "when it is in an unacceptable location" do
+      before { activity.location = "Some unacceptable location" }
+      it { is_expected.to_not be_valid }
+    end
     describe "when location is too long" do
-      before { @activity.location = "z" * 31 }
-      it { should_not be_valid }
+      before { activity.location = 'a' * 31 }
+      it { is_expected.to_not be_valid }
     end
+  end
 
-    describe "when price format is valid" do
-      it "it should be valid" do
-        prices = [10.00, 150.00, 600.00, 0]
-        prices.each do |valid|
-          @activity.price = valid
-          expect(@activity).to be_valid
-        end
+  describe "price" do
+    it "should respond to price" do
+      expect(activity).to respond_to(:price)
+    end
+    describe "when it is in an invalid price" do
+      before { activity.price = -4.0 }
+      it { is_expected.to_not be_valid }
+    end
+    it "it should be valid with acceptable prices" do
+      prices = [10.00, 150.00, 600.00, 0]
+      prices.each do |valid|
+        activity.price = valid
+        expect(activity).to be_valid
       end
     end
+  end
 
+  describe "vendor" do
+    it "should respond to vendor" do
+      expect(activity).to respond_to(:vendor)
+    end
     describe "when vendor does not exist" do
-      before { @activity.vendor = nil }
-      it { should_not be_valid }
+      before { activity.vendor = nil }
+      it { is_expected.to_not be_valid }
     end
   end
-#------------------------------------
-# Description
-  describe "\ndescription".upcase.colorize(:light_blue) do
-    describe "when activity has a valid description" do
-      before { @activity.description = "Ipsum schplitsum" }
-      it { should be_valid }
-    end
 
+  describe "description" do
     describe "when activity does not have description" do
-      before { @activity.description = "" }
-      it { should_not be_valid }
+      before { activity.description = "" }
+      it { is_expected.to_not be_valid }
     end
 
     describe "when activity description is too long" do
-      before { @activity.description = "a" * 161 }
-      it { should_not be_valid }
+      before { activity.description = "a" * 161 }
+      it { is_expected.to_not be_valid }
+    end
+  end
+
+  describe "picture" do
+    describe "when image is invalid format" do
+      it { expect { activity.update(picture: 'virus.exe') }.to raise_error }
     end
   end
 end

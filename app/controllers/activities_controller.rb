@@ -1,5 +1,6 @@
 class ActivitiesController < ApplicationController
   before_action :authenticate_vendor!, only: [:new, :create, :edit, :destroy]
+
   def show
     if params[:activity]
       @activity = Activity.find(params[:activity])
@@ -9,7 +10,7 @@ class ActivitiesController < ApplicationController
   end
 
   def new
-      @activity = current_vendor.activities.new
+    @activity = current_vendor.activities.new
   end
 
   def edit
@@ -18,20 +19,16 @@ class ActivitiesController < ApplicationController
 
   def update
     @activity = Activity.find(params[:id])
+
     if @activity.update_attributes(activities_params)
-      flash[:success] = "Activity Updated"
+      flash[:success] = "Activity updated"
       redirect_to vendor_profile_path
     else
       render 'edit'
     end
   end
 
-  def destroy
-  end
-
   def create
-    params_hash = params[:activity]
-
     @activity = current_vendor.activities.build(activities_params)
 
     if @activity.save
@@ -42,15 +39,13 @@ class ActivitiesController < ApplicationController
   end
 
   def explore
-    @activities = Activity.all.shuffle!
+    @activities = Activity.take(9).shuffle!
 
     if customer_signed_in?
       @trip = current_customer.current_trip(session[:current_trip_id])
       @itinerary = @trip.itinerary_items unless @trip.nil?
     end
-
   end
-
 
   private
 
