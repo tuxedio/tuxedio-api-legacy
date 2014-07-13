@@ -1,4 +1,4 @@
-class Trip < ActiveRecord::Base
+class Adventure < ActiveRecord::Base
 
   #--------------------------------------------------------
   # Attributes

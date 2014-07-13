@@ -1,0 +1,21 @@
+- provide(:title, "Create a adventure")
+
+.col-sm-6.col-sm-offset-3.well.form-box
+  .col-sm-12
+    .row
+      %h1
+        .text-center Create a new adventure.
+        .small.text-center
+          %span.glyphicon.glyphicon-plane
+          Let's get started planning your adventure.
+
+    .row.top-buffer
+      = bootstrap_form_for(@adventure, url: customers_adventures_path) do |f|
+        = render 'shared/error_messages', object: f.object
+
+        = f.text_field :name, label: "What would you like to call this adventure?"
+        = f.select :location, options_for_select(Vendor.allowed_locations, params[:location]), label: "Where will you be going?"
+        = f.date_select :start_date, { :label => "What is the start date for your adventure?", :start_year => Time.new.year }
+        = f.number_field :number_of_days, value: 1, in: 1...90,  label: "How many days will you be going for?"
+
+        .center= f.submit "Create adventure", class: "btn btn-large btn-primary"

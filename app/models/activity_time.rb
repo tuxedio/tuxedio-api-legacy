@@ -1,5 +1,5 @@
 class ActivityTime < ActiveRecord::Base
-  attr_accessible :start_time, :end_time, :activity_id, :trip
+  attr_accessible :start_time, :end_time, :activity_id, :adventure
 
   validates :start_time,  presence: true
   validates :end_time,    presence: true
@@ -11,7 +11,7 @@ class ActivityTime < ActiveRecord::Base
   belongs_to :activity
   has_many :itinerary_items, dependent: :destroy
   has_one :vendor, through: :activity
-  has_one :trip, through: :activity end
+  has_one :adventure, through: :activity end
 
   def format_time
     start_time.to_s(:short)

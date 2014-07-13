@@ -3,25 +3,25 @@ class ItineraryItemsController < ApplicationController
   def new
     @activity = Activity.find(itinerary_items_params[:activity])
     @activity_times = @activity.activity_times
-    @trips = current_customer.trips
+    @adventures = current_customer.adventures
     @itinerary_item = ItineraryItem.new
   end
 
   def create
-    # find customer's trips
-    @trip = current_customer.trips.find(itinerary_items_params[:trip])
+    # find customer's adventures
+    @adventure = current_customer.adventures.find(itinerary_items_params[:adventure])
     @activity = Activity.find(itinerary_items_params[:activity])
     @activity_time = @activity.activity_times.find(itinerary_items_params[:activity_time])
 
-    @itinerary_item = @trip.itinerary_items.build(
-      trip:          @trip,
+    @itinerary_item = @adventure.itinerary_items.build(
+      adventure:          @adventure,
       activity:      @activity,
       activity_time: @activity_time
     )
 
     if @itinerary_item.save
-      session[:current_trip_id] = itinerary_items_params[:trip]
-      flash[:success] = "#{@activity.name} added to trip!"
+      session[:current_adventure_id] = itinerary_items_params[:adventure]
+      flash[:success] = "#{@activity.name} added to adventure!"
       redirect_to explore_path
     else
       # new relies on activity_id so we must send in itinerary_items_params
@@ -33,10 +33,10 @@ class ItineraryItemsController < ApplicationController
   # Why? Because destroy will be asynchronously called so no redirects are neccesary.
   # For now it makes Cucumber happy.
   def change
-    @trip = current_customer.trips.find(session[:current_trip_id])
+    @adventure = current_customer.adventures.find(session[:current_adventure_id])
 
     (params[:delete] || []).each do |index|
-      @trip.itinerary_items.destroy(index)
+      @adventure.itinerary_items.destroy(index)
     end
 
     flash[:notice] = "Itinerary successfully updated!"
@@ -46,14 +46,14 @@ class ItineraryItemsController < ApplicationController
   def destroy
     ItineraryItem.destroy(itinerary_items_params[:format])
     flash[:success] = "Item deleted from your itinerary"
-    redirect_to customers_trips_path
+    redirect_to customers_adventures_path
   end
 
   private
 
     def itinerary_items_params
       params.permit(
-        :trip,
+        :adventure,
         :activity,
         :activity_time,
         :time

@@ -171,30 +171,30 @@ describe "Customer".upcase.colorize(:light_blue) do
   end
 
   #------------------------------------
-  # Current Trip
-  describe "\ncurrent trip".upcase.colorize(:light_blue) do
-    describe "when a invalid trip_id is passed" do
-      before { @trip = FactoryGirl.create(:trip, customer: @customer) }
-      it { expect(@customer.current_trip(3214451324)).to eq(@trip) }
+  # Current Adventure
+  describe "\ncurrent adventure".upcase.colorize(:light_blue) do
+    describe "when a invalid adventure_id is passed" do
+      before { @adventure = FactoryGirl.create(:adventure, customer: @customer) }
+      it { expect(@customer.current_adventure(3214451324)).to eq(@adventure) }
     end
 
-    describe "when a valid trip_id is passed" do
-      before { @trip = FactoryGirl.create(:trip, customer: @customer) }
-      it { expect(@customer.current_trip(@trip)).to eq(@trip) }
+    describe "when a valid adventure_id is passed" do
+      before { @adventure = FactoryGirl.create(:adventure, customer: @customer) }
+      it { expect(@customer.current_adventure(@adventure)).to eq(@adventure) }
     end
 
-    describe "with multiple trips" do
-      describe "with invalid trip_id" do
-        before { @trip1 = FactoryGirl.create(:trip, customer: @customer) }
-        before { @trip2 = FactoryGirl.create(:trip, customer: @customer) }
-        # Should be trips.last
-        it { expect(@customer.current_trip(12345)).to eq(@trip2) }
+    describe "with multiple adventures" do
+      describe "with invalid adventure_id" do
+        before { @adventure1 = FactoryGirl.create(:adventure, customer: @customer) }
+        before { @adventure2 = FactoryGirl.create(:adventure, customer: @customer) }
+        # Should be adventures.last
+        it { expect(@customer.current_adventure(12345)).to eq(@adventure2) }
       end
 
-      describe "with valid trip_id" do
-        before { @trip1 = FactoryGirl.create(:trip, customer: @customer) }
-        before { @trip2 = FactoryGirl.create(:trip, customer: @customer) }
-        it { expect(@customer.current_trip(@trip1)).to eq(@trip1) }
+      describe "with valid adventure_id" do
+        before { @adventure1 = FactoryGirl.create(:adventure, customer: @customer) }
+        before { @adventure2 = FactoryGirl.create(:adventure, customer: @customer) }
+        it { expect(@customer.current_adventure(@adventure1)).to eq(@adventure1) }
       end
     end
   end

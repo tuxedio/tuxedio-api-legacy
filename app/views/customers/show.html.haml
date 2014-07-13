@@ -5,7 +5,7 @@
       .customer-picture
         =image_tag current_customer.picture.url(:medium)
       .customer-profile-links
-        = link_to "View my upcoming trips", customers_trips_path, {:class => "btn btn-default btn-md btn-success"}
+        = link_to "View my upcoming adventures", customers_adventures_path, {:class => "btn btn-default btn-md btn-success"}
         =link_to "Edit profile", edit_customers_path, class: "btn btn-default btn-md btn-primary"
   .col-md-8
     %section

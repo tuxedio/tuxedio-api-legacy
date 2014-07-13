@@ -1,16 +1,16 @@
 require 'spec_helper'
 
-describe "Trips controller".upcase.colorize(:light_blue) do
+describe "Adventures controller".upcase.colorize(:light_blue) do
 
   before do
-    @trip = FactoryGirl.create(:trip)
+    @adventure = FactoryGirl.create(:adventure)
   end
 
-  subject{ @trip }
+  subject{ @adventure }
 
-  describe "current trip id".upcase.colorize(:light_blue) do
+  describe "current adventure id".upcase.colorize(:light_blue) do
 
-    describe "when current_trip_id is called" do
+    describe "when current_adventure_id is called" do
 
       describe "when session variable is nil" do
       # mock here for params

@@ -42,8 +42,8 @@ class ActivitiesController < ApplicationController
     @activities = Activity.take(9).shuffle!
 
     if customer_signed_in?
-      @trip = current_customer.current_trip(session[:current_trip_id])
-      @itinerary = @trip.itinerary_items unless @trip.nil?
+      @adventure = current_customer.current_adventure(session[:current_adventure_id])
+      @itinerary = @adventure.itinerary_items unless @adventure.nil?
     end
   end
 

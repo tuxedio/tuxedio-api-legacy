@@ -67,10 +67,10 @@ ActiveRecord::Schema.define(version: 20140424043033) do
 
   create_table "itinerary_items", force: true do |t|
     t.integer "activity_time_id", null: false
-    t.integer "trip_id",          null: false
+    t.integer "adventure_id",          null: false
   end
 
-  create_table "trips", force: true do |t|
+  create_table "adventures", force: true do |t|
     t.string  "name"
     t.integer "customer_id",    null: false
     t.string  "location"

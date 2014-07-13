@@ -9,7 +9,7 @@ App!
 4. Blogger - Validates the basic blogger attributes
 6. Activities - Validates all aspects of an activity created by vendor
 7. TimeSlots - Validates accepted times in which an activity can be created
-8. Trips - Validates a list of different itineraries
+8. Adventures - Validates a list of different itineraries
 9. Itinerary - Validates model for organizing users activities
 10. Blog_Posts - Validates model for bloggers to post their stories
 
@@ -20,7 +20,7 @@ App!
 4. blogger_controller - Extends user controller with ability to create blog posts
 5. activities_controller - Extends vendor controller to create, edit, and destroy their activities
 6. timeslots_controller - Manages timeslots for activities so that multiple activities can have different or the same timeslots.
-7. trips_controller - Allows users to create, edit, and destroy collections of itineraries.
+7. adventures_controller - Allows users to create, edit, and destroy collections of itineraries.
 8. Itinerary_controller - Adds ability to create, sort, edit, and destroy itinerary items
 9. blogpost_controller - Adds ability to create, edit, and destroy blog posts.
 

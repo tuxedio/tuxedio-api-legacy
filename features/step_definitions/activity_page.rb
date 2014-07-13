@@ -4,5 +4,5 @@ end
 
 Then(/^the customer should see the activity's page$/) do
   expect(page).to have_content('Vendor information')
-  expect(page).to have_link('Add to trip')
+  expect(page).to have_link('Add to adventure')
 end

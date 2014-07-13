@@ -1,0 +1,41 @@
+- provide(:title, current_customer.name + "s Adventures")
+
+%h1 My Adventure Itinerary
+.row
+  .col-md-7
+    -if (@adventures.load.count > 1)
+      .adventure-selector
+        = bootstrap_form_tag(url: '/customers/adventures', method: 'get', layout: :inline) do |f|
+          = f.collection_select(:adventure_selection, @adventures.load, :id, :name, options = {:hide_label => true, :prompt => "-- Select another adventure to View --"})
+          = f.submit "View Adventure"
+  .col-med-5.center
+    = link_to "Create a new Adventure", new_customers_adventures_path, {:class => "btn btn-lg btn-success"}
+    = link_to "Edit current adventure", edit_customers_adventures_path, {:class => "btn btn-lg btn-primary"}
+.row
+  .itinerary
+    %h2
+      = @current_adventure.name + " to " + @current_adventure.location + " starting on " + @current_adventure.start_date.strftime('%A, %B %e, %Y')
+    %br
+    -if @itinerary_items.empty?
+      %h3.center.well= "There are currently no activities in your itinerary."
+    - @itinerary_items.each do |item|
+      .row
+        .activity.clearfix
+          .col-md-2
+            .activity-picture
+              - if item.activity.picture?
+                = image_tag item.activity.picture.url(:medium), class: "img-responsive"
+              - else
+                = image_tag "/assets/sample_act_pic/#{rand(9)}.jpg"
+          .col-md-8
+            .activity-name
+              = item.activity.name
+              = " - "
+              = item.activity_time.start_time.strftime("%A %B %d, %Y at  %l%P")
+            .activity-description
+              = item.activity.description
+          .col-md-2
+            .activity-price
+              = '$' + item.activity.price.to_s + "0"
+            .activity-remove
+              = link_to "Remove", adventures_itinerary_items_path(item.id), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-lg btn-danger"

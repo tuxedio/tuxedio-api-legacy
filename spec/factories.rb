@@ -75,9 +75,9 @@ FactoryGirl.define do
     sample_image "test"
   end
 
-  factory :trip, class: Trip do
+  factory :adventure, class: Adventure do
     customer
-    name "Trip1"
+    name "Adventure1"
     location "Boulder"
     start_date Date.today
     number_of_days 1
@@ -98,7 +98,7 @@ FactoryGirl.define do
   end
 
   factory :itinerary_item, class: ItineraryItem do
-    trip
+    adventure
     activity_time
   end
 

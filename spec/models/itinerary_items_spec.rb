@@ -4,11 +4,11 @@ require 'date'
 describe "Itinerary Item".upcase.colorize(:light_blue) do
 
   before do
-    @trip = FactoryGirl.create(:trip)
+    @adventure = FactoryGirl.create(:adventure)
     @activity_time = FactoryGirl.create(:activity_time)
     # Needs to be refactored to one Factory Girl Call.
-    @itinerary_item = @trip.itinerary_items.create(
-      trip: @trip,
+    @itinerary_item = @adventure.itinerary_items.create(
+      adventure: @adventure,
       activity_time: @activity_time
       )
   end
@@ -18,7 +18,7 @@ describe "Itinerary Item".upcase.colorize(:light_blue) do
 
   it { should respond_to(:activity) }
   it { should respond_to(:activity_time) }
-  it { should respond_to(:trip) }
+  it { should respond_to(:adventure) }
   it { should respond_to(:customer) }
   it { should respond_to(:vendor) }
 
@@ -28,8 +28,8 @@ describe "Itinerary Item".upcase.colorize(:light_blue) do
 
   describe "when association is nil for " do
 
-    describe "trip" do
-      before { @itinerary_item.trip = nil }
+    describe "adventure" do
+      before { @itinerary_item.adventure = nil }
       it { should_not be_valid }
     end
 
@@ -43,7 +43,7 @@ describe "Itinerary Item".upcase.colorize(:light_blue) do
   describe "can access association for  " do
 
     describe "customer" do
-      it { expect(@itinerary_item.trip.customer.id).to equal(1) }
+      it { expect(@itinerary_item.adventure.customer.id).to equal(1) }
     end
 
     describe "vendor" do
@@ -53,13 +53,13 @@ describe "Itinerary Item".upcase.colorize(:light_blue) do
 
   describe "Valid IDs" do
 
-    describe "valid trip ID" do
-      before { @itinerary_item.trip = @trip }
+    describe "valid adventure ID" do
+      before { @itinerary_item.adventure = @adventure }
       it { should be_valid }
     end
 
     describe "valid activity ID" do
-      before { @itinerary_item.activity = @trip }
+      before { @itinerary_item.activity = @adventure }
       it { should be_valid }
     end
   end

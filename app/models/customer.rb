@@ -6,7 +6,7 @@ class Customer < ActiveRecord::Base
   attr_accessible :name, :email, :location, :password,
                   :password_confirmation, :bio,
                   :top_choices, :picture_file_size, :picture,
-                  :current_trip, :top_choices
+                  :current_adventure, :top_choices
 
   serialize :top_choices, Array
 
@@ -14,8 +14,8 @@ class Customer < ActiveRecord::Base
   #--------------------------------------------------------
   # Associations
 
-  has_many :trips, dependent: :destroy
-  has_many :itinerary_items, through: :trips
+  has_many :adventures, dependent: :destroy
+  has_many :itinerary_items, through: :adventures
 
 
   #--------------------------------------------------------
@@ -58,12 +58,12 @@ class Customer < ActiveRecord::Base
   #--------------------------------------------------------
   # Instance Methods
 
-  def current_trip(trip_id)
-    if self.trips.count > 0
-      if Trip.exists?(trip_id)
-        Trip.find(trip_id)
+  def current_adventure(adventure_id)
+    if self.adventures.count > 0
+      if Adventure.exists?(adventure_id)
+        Adventure.find(adventure_id)
       else
-        self.trips.last
+        self.adventures.last
       end
     end
   end

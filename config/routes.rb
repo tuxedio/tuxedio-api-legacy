@@ -25,10 +25,10 @@ TuxedoProto::Application.routes.draw do
   end
 
   resource :customers do
-	 resource :trips
+	 resource :adventures
   end
 
-  resource :trips do
+  resource :adventures do
     resource :itinerary_items do
       member do
         post :change
