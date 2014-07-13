@@ -13,12 +13,12 @@
           = activity.description
           = activity.vendor.name
       %p=  '$' + activity.price.to_s + '0'
-      / if customer doesn't have adventure, make new adventure
-      - if customer_signed_in?
-        - if current_customer.adventures.count == 0
+      / if person doesn't have adventure, make new adventure
+      - if person_signed_in?
+        - if current_person.adventures.count == 0
           - path = new_adventures_path
         -else
           - path = new_adventures_itinerary_items_path(activity: activity)
       - else
-        - path = customer_session_path
+        - path = person_session_path
       %center=link_to 'Add to adventure', path, class: 'btn btn-primary'

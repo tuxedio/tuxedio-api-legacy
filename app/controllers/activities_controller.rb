@@ -41,8 +41,8 @@ class ActivitiesController < ApplicationController
   def explore
     @activities = Activity.take(9).shuffle!
 
-    if customer_signed_in?
-      @adventure = current_customer.current_adventure(session[:current_adventure_id])
+    if person_signed_in?
+      @adventure = current_person.current_adventure(session[:current_adventure_id])
       @itinerary = @adventure.itinerary_items unless @adventure.nil?
     end
   end

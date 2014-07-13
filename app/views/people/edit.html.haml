@@ -1,4 +1,4 @@
-- provide(:title, "Edit Profile for #{current_customer.name}")
+- provide(:title, "Edit Profile for #{current_person.name}")
 .col-sm-6.col-sm-offset-3.well.form-box
   .col-sm-12
     .row
@@ -9,7 +9,7 @@
 
 
     .row.top-buffer
-      = bootstrap_form_for(@customer, url: customer_profile_edit_path, html: {:method => :put}) do |f|
+      = bootstrap_form_for(@person, url: person_profile_edit_path, html: {:method => :put}) do |f|
         = render 'shared/error_messages', object: f.object
         = f.text_field :name
         = f.email_field :email, autofocus: true

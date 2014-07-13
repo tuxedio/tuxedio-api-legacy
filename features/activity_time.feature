@@ -1,4 +1,4 @@
-Feature: As a business, so that I can list my specific activities and services to my customers, I want to add an activity time an activity
+Feature: As a business, so that I can list my specific activities and services to my people, I want to add an activity time an activity
 
 Background: A user is logged in
   Given a vendor is logged in

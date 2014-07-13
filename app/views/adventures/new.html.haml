@@ -10,7 +10,7 @@
           Let's get started planning your adventure.
 
     .row.top-buffer
-      = bootstrap_form_for(@adventure, url: customers_adventures_path) do |f|
+      = bootstrap_form_for(@adventure, url: people_adventures_path) do |f|
         = render 'shared/error_messages', object: f.object
 
         = f.text_field :name, label: "What would you like to call this adventure?"

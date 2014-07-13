@@ -10,7 +10,7 @@
           Update the details of your adventure.
 
     .row.top-buffer
-      = bootstrap_form_for(@adventure, url: customers_adventures_path) do |f|
+      = bootstrap_form_for(@adventure, url: people_adventures_path) do |f|
         = render 'shared/error_messages', object: f.object
 
         = f.text_field :name, label: "What would you like to call this adventure?"
@@ -20,4 +20,4 @@
 
         .center
           = f.submit "Update adventure", class: "btn btn-lg btn-success"
-          = link_to "Cancel", customers_adventures_path, class: "btn btn-lg btn-danger"
+          = link_to "Cancel", people_adventures_path, class: "btn btn-lg btn-danger"

@@ -1,4 +1,4 @@
-class Customer < ActiveRecord::Base
+class Person < ActiveRecord::Base
 
   #--------------------------------------------------------
   # Attributes

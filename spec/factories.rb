@@ -1,17 +1,17 @@
 FactoryGirl.define do
 
-  factory :customer, class: Customer do
-    name     "Example Customer"
-    email    "customer@example.com"
+  factory :person, class: Person do
+    name     "Example Person"
+    email    "person@example.com"
     location "Boulder"
     password "foobar1234"
     password_confirmation "foobar1234"
     top_choices ["Larkburger", "Sushi Tora", "Illegal Pete's"]
   end
 
-  factory :customer1, class: Customer do
-    name     "New Customer"
-    email    "customer1@example.com"
+  factory :person1, class: Person do
+    name     "New Person"
+    email    "person1@example.com"
     location "Boulder"
     password "foobar1234"
     password_confirmation "foobar1234"
@@ -76,7 +76,7 @@ FactoryGirl.define do
   end
 
   factory :adventure, class: Adventure do
-    customer
+    person
     name "Adventure1"
     location "Boulder"
     start_date Date.today

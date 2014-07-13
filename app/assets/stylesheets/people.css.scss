@@ -1,7 +1,7 @@
 @import "bootstrap/variables";
 @import "bootstrap/mixins";
 $theme-red: #fd1c15;
-.customer-picture {
+.person-picture {
   padding:20px 0;
   img {
     border:4px solid #FFF;
@@ -9,7 +9,7 @@ $theme-red: #fd1c15;
   }
 }
 
-.customer-name{
+.person-name{
   text-align:center;
   width:100%;
   border-top: 2px solid $theme-red;
@@ -21,22 +21,22 @@ $theme-red: #fd1c15;
   }
 }
 
-.customer-info{
+.person-info{
   padding:20px;
   background-color: #fff !important;
   span{
     font-size:120%;
     font-weight:bold;
   }
-  .customer-location{
+  .person-location{
     margin-bottom:5px;
     font-size:120%;
     font-weight:bold;
   }
-  .customer-email{
+  .person-email{
     margin-bottom:5px;
   }
-  .customer-bio {
+  .person-bio {
     p{
       min-height:150px;
       border-radius:5px !important;

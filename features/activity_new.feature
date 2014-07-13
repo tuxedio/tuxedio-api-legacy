@@ -1,4 +1,4 @@
-Feature: As a business, so that I can list my activities and services to my customers, I want to add an activity through the "Add an activity" link on my profile page
+Feature: As a business, so that I can list my activities and services to my people, I want to add an activity through the "Add an activity" link on my profile page
 
 Background: A user is logged in
   Given a vendor is logged in

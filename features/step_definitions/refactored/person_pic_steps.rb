@@ -1,4 +1,4 @@
-When(/^I sign up as a customer with an image$/) do
+When(/^I sign up as a person with an image$/) do
   fill_in "Name",         with: "Example User"
   fill_in "Email",        with: "user@example.com"
   fill_in "Location",     with: "Boulder"
@@ -6,13 +6,13 @@ When(/^I sign up as a customer with an image$/) do
   fill_in "Password",     with: "foobar1234"
   fill_in "Confirmation", with: "foobar1234"
   click_button "Create my account"
-  @customer = Customer.find_by_email("user@example.com")
-  @customer.password = "foobar1234"
-  @customer.confirm!
+  @person = Person.find_by_email("user@example.com")
+  @person.password = "foobar1234"
+  @person.confirm!
 end
 
 Then(/^I should see my profile picture$/) do
-  img_src = @customer.picture.url(:medium)
+  img_src = @person.picture.url(:medium)
   page.should have_xpath("//img[@src='#{img_src}']")
 end
 

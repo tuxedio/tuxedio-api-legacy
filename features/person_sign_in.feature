@@ -1,14 +1,14 @@
-Feature: Customer Sign-in Process
-  As a Customer
+Feature: Person Sign-in Process
+  As a Person
   So I can use the site
   I want to sign-in
 
 Background:
-  Given a customer exists
-  And that customer is confirmed
+  Given a person exists
+  And that person is confirmed
 
 Scenario: Unsuccessful sign-in
-  Given I visit the new customer session page
+  Given I visit the new person session page
   When I fill in the following:
   | field    | value               |
   | Email    | invalid@invalid.com |
@@ -17,10 +17,10 @@ Scenario: Unsuccessful sign-in
   Then I should see a warning message
 
 Scenario: Successful sign-in/sign-out
-  Given I visit the new customer session page
+  Given I visit the new person session page
   When I fill in the following:
   | field    | value                |
-  | Email    | customer@example.com |
+  | Email    | person@example.com |
   | Password | foobar1234           |
   And I click the button "Sign in"
   Then I should be on the explore page

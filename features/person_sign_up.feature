@@ -1,10 +1,10 @@
-Feature: Customer Sign-up
-  As a customer
+Feature: Person Sign-up
+  As a person
   So I can create an account
   I want to be able to sign up using the register page
 
 Background:
-  Given I visit the new customer registration page
+  Given I visit the new person registration page
 
 Scenario: Valid Sign-up
   When I fill in the following:

@@ -1,10 +1,10 @@
 require 'spec_helper'
 
-describe "Customer".upcase.colorize(:light_blue) do
+describe "Person".upcase.colorize(:light_blue) do
 
 
 
-  before { @customer = FactoryGirl.build(:customer) }
+  before { @person = FactoryGirl.build(:person) }
 
   ## Dummy Vendors
   before do
@@ -13,7 +13,7 @@ describe "Customer".upcase.colorize(:light_blue) do
     FactoryGirl.create(:vendor3)
   end
 
-  subject { @customer }
+  subject { @person }
 
   it { should respond_to(:name) }
   it { should respond_to(:email) }
@@ -31,30 +31,30 @@ describe "Customer".upcase.colorize(:light_blue) do
   #------------------------------------
   describe "\nCheck parameters for blankness".upcase.colorize(:light_blue) do
     describe "when name is not present" do
-      before { @customer.name = " " }
+      before { @person.name = " " }
       it { should_not be_valid }
     end
 
     describe "when email is not present" do
-      before { @customer.email = " " }
+      before { @person.email = " " }
       it { should_not be_valid }
     end
 
     describe "when location is not present" do
-      before { @customer.location = " " }
+      before { @person.location = " " }
       it { should_not be_valid }
     end
   end
 
-  describe "\nCustomer Validation".upcase.colorize(:light_blue) do
+  describe "\nPerson Validation".upcase.colorize(:light_blue) do
 
     describe "when name is too long" do
-      before { @customer.name = "z" * 51 }
+      before { @person.name = "z" * 51 }
       it { should_not be_valid }
     end
 
     describe "when location is too long" do
-      before { @customer.location = "z" * 31 }
+      before { @person.location = "z" * 31 }
       it { should_not be_valid }
     end
 
@@ -63,8 +63,8 @@ describe "Customer".upcase.colorize(:light_blue) do
         addresses = %w[user@foo,com user_at_foo.org example.user@foo.
                        foo@bar_baz.com foo@bar+baz.com]
         addresses.each do |invalid|
-          @customer.email = invalid
-          expect(@customer).not_to be_valid
+          @person.email = invalid
+          expect(@person).not_to be_valid
         end
       end
     end
@@ -73,16 +73,16 @@ describe "Customer".upcase.colorize(:light_blue) do
       it "it should be valid" do
         addresses = %w[user@foo.COM A_US-ER@f.b.org frst.lst@foo.jp a+b@baz.cn]
         addresses.each do |valid|
-          @customer.email = valid
-          expect(@customer).to be_valid
+          @person.email = valid
+          expect(@person).to be_valid
         end
       end
     end
 
     describe "when email adresss is taken" do
       before do
-        user_email_duplicate = @customer.dup
-        user_email_duplicate.email = @customer.email.upcase
+        user_email_duplicate = @person.dup
+        user_email_duplicate.email = @person.email.upcase
         user_email_duplicate.save
       end
 
@@ -91,33 +91,33 @@ describe "Customer".upcase.colorize(:light_blue) do
 
     describe "when password is not present" do
       before do
-        @customer.password = ""
-        @customer.password_confirmation = ""
+        @person.password = ""
+        @person.password_confirmation = ""
       end
 
       it { should_not be_valid }
     end
 
     describe "when password doesn't match confirmation" do
-      before { @customer.password_confirmation = "mismatch" }
+      before { @person.password_confirmation = "mismatch" }
       it { should_not be_valid }
     end
 
     describe "with a password that's too short" do
-      before { @customer.password = @customer.password_confirmation = "a" * 5 }
+      before { @person.password = @person.password_confirmation = "a" * 5 }
       it { should be_invalid }
     end
   end
   #------------------------------------
   # Bio
   describe "\nbio".upcase.colorize(:light_blue) do
-    describe "when customer has a bio" do
-      before { @customer.bio = "Ipsum schplitsum" }
+    describe "when person has a bio" do
+      before { @person.bio = "Ipsum schplitsum" }
       it { should be_valid }
     end
 
-    describe "when customer does not have bio" do
-      before { @customer.bio = "" }
+    describe "when person does not have bio" do
+      before { @person.bio = "" }
       it { should be_valid }
     end
   end
@@ -126,46 +126,46 @@ describe "Customer".upcase.colorize(:light_blue) do
   ## Top 3
   describe "\ntop 3".upcase.colorize(:light_blue) do
 
-    describe "when customer has valid top 3" do
-      before { @customer.update(top_choices: ["Larkburger", "Sushi Tora", "Illegal Pete's"]) }
+    describe "when person has valid top 3" do
+      before { @person.update(top_choices: ["Larkburger", "Sushi Tora", "Illegal Pete's"]) }
       it { should be_valid }
     end
 
-    describe "when a customer has invalid top 3" do
-      before { @customer.update(top_choices: ["Larkburger", "Sushi Tora", "Blah"]) }
+    describe "when a person has invalid top 3" do
+      before { @person.update(top_choices: ["Larkburger", "Sushi Tora", "Blah"]) }
       it { should_not be_valid }
     end
   end
   #------------------------------------
   # Itinerary
   describe "\nitinerary".upcase.colorize(:light_blue) do
-    describe "when a customer has a valid itinerary" do
+    describe "when a person has a valid itinerary" do
     end
 
-    describe "when a customer has a invalid itinerary" do
+    describe "when a person has a invalid itinerary" do
     end
   end
 
   #------------------------------------
   # Profile/Activity Picture
   describe "\npictures".upcase.colorize(:light_blue) do
-    describe "when a customer has a profile picture" do
-      before { @customer.picture_file_name = "FishShapes.jpg" }
+    describe "when a person has a profile picture" do
+      before { @person.picture_file_name = "FishShapes.jpg" }
       it { should be_valid }
     end
 
-    describe "when a customer's picture is too large" do
-      before { @customer.picture_file_size = 63067000 }
+    describe "when a person's picture is too large" do
+      before { @person.picture_file_size = 63067000 }
       it { should_not be_valid }
     end
 
-    describe "when a customer's picture is an okay size" do
-      before { @customer.picture_file_size = 630670 }
+    describe "when a person's picture is an okay size" do
+      before { @person.picture_file_size = 630670 }
       it { should be_valid }
     end
 
-    describe "when a customer's picture is the default image" do
-      before { @customer.picture_file_name = nil }
+    describe "when a person's picture is the default image" do
+      before { @person.picture_file_name = nil }
       it { should be_valid }
     end
   end
@@ -174,27 +174,27 @@ describe "Customer".upcase.colorize(:light_blue) do
   # Current Adventure
   describe "\ncurrent adventure".upcase.colorize(:light_blue) do
     describe "when a invalid adventure_id is passed" do
-      before { @adventure = FactoryGirl.create(:adventure, customer: @customer) }
-      it { expect(@customer.current_adventure(3214451324)).to eq(@adventure) }
+      before { @adventure = FactoryGirl.create(:adventure, person: @person) }
+      it { expect(@person.current_adventure(3214451324)).to eq(@adventure) }
     end
 
     describe "when a valid adventure_id is passed" do
-      before { @adventure = FactoryGirl.create(:adventure, customer: @customer) }
-      it { expect(@customer.current_adventure(@adventure)).to eq(@adventure) }
+      before { @adventure = FactoryGirl.create(:adventure, person: @person) }
+      it { expect(@person.current_adventure(@adventure)).to eq(@adventure) }
     end
 
     describe "with multiple adventures" do
       describe "with invalid adventure_id" do
-        before { @adventure1 = FactoryGirl.create(:adventure, customer: @customer) }
-        before { @adventure2 = FactoryGirl.create(:adventure, customer: @customer) }
+        before { @adventure1 = FactoryGirl.create(:adventure, person: @person) }
+        before { @adventure2 = FactoryGirl.create(:adventure, person: @person) }
         # Should be adventures.last
-        it { expect(@customer.current_adventure(12345)).to eq(@adventure2) }
+        it { expect(@person.current_adventure(12345)).to eq(@adventure2) }
       end
 
       describe "with valid adventure_id" do
-        before { @adventure1 = FactoryGirl.create(:adventure, customer: @customer) }
-        before { @adventure2 = FactoryGirl.create(:adventure, customer: @customer) }
-        it { expect(@customer.current_adventure(@adventure1)).to eq(@adventure1) }
+        before { @adventure1 = FactoryGirl.create(:adventure, person: @person) }
+        before { @adventure2 = FactoryGirl.create(:adventure, person: @person) }
+        it { expect(@person.current_adventure(@adventure1)).to eq(@adventure1) }
       end
     end
   end

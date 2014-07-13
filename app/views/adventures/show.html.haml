@@ -1,16 +1,16 @@
-- provide(:title, current_customer.name + "s Adventures")
+- provide(:title, current_person.name + "s Adventures")
 
 %h1 My Adventure Itinerary
 .row
   .col-md-7
     -if (@adventures.load.count > 1)
       .adventure-selector
-        = bootstrap_form_tag(url: '/customers/adventures', method: 'get', layout: :inline) do |f|
+        = bootstrap_form_tag(url: '/people/adventures', method: 'get', layout: :inline) do |f|
           = f.collection_select(:adventure_selection, @adventures.load, :id, :name, options = {:hide_label => true, :prompt => "-- Select another adventure to View --"})
           = f.submit "View Adventure"
   .col-med-5.center
-    = link_to "Create a new Adventure", new_customers_adventures_path, {:class => "btn btn-lg btn-success"}
-    = link_to "Edit current adventure", edit_customers_adventures_path, {:class => "btn btn-lg btn-primary"}
+    = link_to "Create a new Adventure", new_people_adventures_path, {:class => "btn btn-lg btn-success"}
+    = link_to "Edit current adventure", edit_people_adventures_path, {:class => "btn btn-lg btn-primary"}
 .row
   .itinerary
     %h2

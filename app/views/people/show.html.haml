@@ -1,0 +1,45 @@
+- provide(:title, current_person.name)
+.row
+  .col-md-4
+    %section.center
+      .person-picture
+        =image_tag current_person.picture.url(:medium)
+      .person-profile-links
+        = link_to "View my upcoming adventures", people_adventures_path, {:class => "btn btn-default btn-md btn-success"}
+        =link_to "Edit profile", edit_people_path, class: "btn btn-default btn-md btn-primary"
+  .col-md-8
+    %section
+      .person-name.well
+        %h1= current_person.name
+        .small
+          %span.glyphicon.glyphicon-user
+          Personal Profile
+      .person-info.well
+        .person-location
+          = "Based in "+current_person.location
+        .person-email
+          %span= "Email: "
+          = current_person.email
+        .person-bio
+          %span My bio:
+          %p.well= current_person.bio
+
+  /top_choices object, needs serious DRY and redesign, only functional for testing
+  / .row
+  /   .top_three.col-sm-8.col-sm-offset-4
+  /     .row
+  /       .top_three_key.col-sm-3
+  /         %h5 Pick Uno
+  /       .top_three_hash.col-sm-9
+  /         %h6=current_person.top_choices[0]
+  /     .row
+  /       .top_three_key.col-sm-3
+  /         %h5 Pick Dos
+  /       .top_three_hash.col-sm-9
+  /         %h6=current_person.top_choices[1]
+  /     .row
+  /       .top_three_key.col-sm-3
+  /         %h5 Pick Tres
+  /       .top_three_hash.col-sm-9
+  /         %h6= current_person.top_choices[2]
+

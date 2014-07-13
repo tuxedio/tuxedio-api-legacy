@@ -3,13 +3,13 @@ class ItineraryItemsController < ApplicationController
   def new
     @activity = Activity.find(itinerary_items_params[:activity])
     @activity_times = @activity.activity_times
-    @adventures = current_customer.adventures
+    @adventures = current_person.adventures
     @itinerary_item = ItineraryItem.new
   end
 
   def create
-    # find customer's adventures
-    @adventure = current_customer.adventures.find(itinerary_items_params[:adventure])
+    # find person's adventures
+    @adventure = current_person.adventures.find(itinerary_items_params[:adventure])
     @activity = Activity.find(itinerary_items_params[:activity])
     @activity_time = @activity.activity_times.find(itinerary_items_params[:activity_time])
 
@@ -33,7 +33,7 @@ class ItineraryItemsController < ApplicationController
   # Why? Because destroy will be asynchronously called so no redirects are neccesary.
   # For now it makes Cucumber happy.
   def change
-    @adventure = current_customer.adventures.find(session[:current_adventure_id])
+    @adventure = current_person.adventures.find(session[:current_adventure_id])
 
     (params[:delete] || []).each do |index|
       @adventure.itinerary_items.destroy(index)
@@ -46,7 +46,7 @@ class ItineraryItemsController < ApplicationController
   def destroy
     ItineraryItem.destroy(itinerary_items_params[:format])
     flash[:success] = "Item deleted from your itinerary"
-    redirect_to customers_adventures_path
+    redirect_to people_adventures_path
   end
 
   private

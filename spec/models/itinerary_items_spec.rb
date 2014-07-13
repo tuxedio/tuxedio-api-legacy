@@ -19,7 +19,7 @@ describe "Itinerary Item".upcase.colorize(:light_blue) do
   it { should respond_to(:activity) }
   it { should respond_to(:activity_time) }
   it { should respond_to(:adventure) }
-  it { should respond_to(:customer) }
+  it { should respond_to(:person) }
   it { should respond_to(:vendor) }
 
   it { should be_valid }
@@ -42,8 +42,8 @@ describe "Itinerary Item".upcase.colorize(:light_blue) do
 
   describe "can access association for  " do
 
-    describe "customer" do
-      it { expect(@itinerary_item.adventure.customer.id).to equal(1) }
+    describe "person" do
+      it { expect(@itinerary_item.adventure.person.id).to equal(1) }
     end
 
     describe "vendor" do

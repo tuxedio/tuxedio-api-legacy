@@ -21,13 +21,13 @@
           = "Price: $" + @activity.price.to_s + "0"
         .action-buttons.pull-right
           =link_to "Back to explore", explore_path, class: "btn btn-md btn-danger"
-          - if customer_signed_in?
-            - if current_customer.adventures.count == 0
+          - if person_signed_in?
+            - if current_person.adventures.count == 0
               - path = new_adventures_path
             -else
               - path = new_adventures_itinerary_items_path(activity: activity)
           - else
-            - path = customer_session_path
+            - path = person_session_path
           =link_to 'Add to adventure', path, class: 'btn btn-primary'
       //associated vendor information
       .vendor-offer-info.well

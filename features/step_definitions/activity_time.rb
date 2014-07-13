@@ -30,6 +30,6 @@ Given(/^the vendor submits (in)*valid time information$/) do |invalid|
   click_button "Add time"
 end
 
-When(/^the customer clicks an "(.*?)" link$/) do |arg1|
+When(/^the person clicks an "(.*?)" link$/) do |arg1|
   pending # express the regexp above with the code you wish you had
 end

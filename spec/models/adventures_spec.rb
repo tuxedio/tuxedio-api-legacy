@@ -43,12 +43,12 @@ describe Adventure do
     end
   end
 
-  describe "customer" do
-    it "should respond to customer" do
-      expect(adventure).to respond_to(:customer)
+  describe "person" do
+    it "should respond to person" do
+      expect(adventure).to respond_to(:person)
     end
-    describe "when customer is destroyed" do
-      before { adventure.customer.destroy }
+    describe "when person is destroyed" do
+      before { adventure.person.destroy }
       it "should also destroy associated adventures" do
         expect(Adventure.count).to equal(0)
       end

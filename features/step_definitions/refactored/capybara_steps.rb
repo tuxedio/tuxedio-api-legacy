@@ -85,10 +85,10 @@ end
 
 
 # #################################
-# # Customer Specific Steps
+# # Person Specific Steps
 # #################################
 
 
-When(/^the customer clicks the "(.*?)" link$/) do |link_name|
+When(/^the person clicks the "(.*?)" link$/) do |link_name|
   click_link(link_name.to_s)
 end

@@ -4,7 +4,7 @@ App!
 
 ##MODELS:
 1. Users - Validates the basic user attributes
-2. Customer - Validates the basic customer attributes
+2. Person - Validates the basic person attributes
 3. Vendor - Validates the basic vendor attributes
 4. Blogger - Validates the basic blogger attributes
 6. Activities - Validates all aspects of an activity created by vendor
@@ -15,7 +15,7 @@ App!
 
 ##CONTROLLERS
 1. user_controller - Add ability to create and edit user profile
-2. customer_controller - Extends user controller with top 3 picks and itinerary
+2. person_controller - Extends user controller with top 3 picks and itinerary
 3. vendor_controller - Extends user controller with ability to list activities and have name/logo
 4. blogger_controller - Extends user controller with ability to create blog posts
 5. activities_controller - Extends vendor controller to create, edit, and destroy their activities
@@ -27,7 +27,7 @@ App!
 ##VIEWS
 1. Explore Page - This page will allow users to select activities of things to do around Boulder (or eventually any given town), giving them the option to add these activities to their personal itinerary. It populates activities based on a city the user has chosen, giving a simple user interface to get a high level view of things to do.
 2. Add an Activity Page - Users can choose what day and time they would like to add the event to their itinerary.
-3. User/Vendor Sign-up Page - Users can sign up as either a vendor or a customer, and will have various options based on their user type.
+3. User/Vendor Sign-up Page - Users can sign up as either a vendor or a person, and will have various options based on their user type.
 4. User Profile Settings - This page will allow users to update profile preferences. They can also make their own top 3 local picks from the available activities.
 5. User Itinerary - This page will list the activities that have been added to a user’s itinerary and allow for the option of printing this list.
 6. Local’s Picks - Shows top local places to visit (all rankings here are based solely off users that live in the area)

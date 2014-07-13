@@ -1,4 +1,4 @@
-- provide(:title, "Update profile for #{current_customer.name}")
+- provide(:title, "Update profile for #{current_person.name}")
 .col-sm-8.col-sm-offset-2.well.form-box
   .col-sm-12
     .row
@@ -27,7 +27,7 @@
         %br/
         = f.password_field :current_password
         = f.submit "Update Profile", class: "btn btn-md btn-success"
-        = link_to "Cancel", customers_path, class: "btn btn-md btn-danger"
+        = link_to "Cancel", people_path, class: "btn btn-md btn-danger"
 .col-sm-8.col-sm-offset-2.well.form-box
   .col-sm-12
     .row
