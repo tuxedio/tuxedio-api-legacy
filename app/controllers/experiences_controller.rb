@@ -1,27 +1,27 @@
-class ActivitiesController < ApplicationController
+class ExperiencesController < ApplicationController
   before_action :authenticate_vendor!, only: [:new, :create, :edit, :destroy]
 
   def show
-    if params[:activity]
-      @activity = Activity.find(params[:activity])
+    if params[:experience]
+      @experience = Experience.find(params[:experience])
     else
       redirect_to explore_path
     end
   end
 
   def new
-    @activity = current_vendor.activities.new
+    @experience = current_vendor.experiences.new
   end
 
   def edit
-    @activity = Activity.find(params[:id])
+    @experience = Experience.find(params[:id])
   end
 
   def update
-    @activity = Activity.find(params[:id])
+    @experience = Experience.find(params[:id])
 
-    if @activity.update_attributes(activities_params)
-      flash[:success] = "Activity updated"
+    if @experience.update_attributes(experiences_params)
+      flash[:success] = "Experience updated"
       redirect_to vendor_profile_path
     else
       render 'edit'
@@ -29,17 +29,17 @@ class ActivitiesController < ApplicationController
   end
 
   def create
-    @activity = current_vendor.activities.build(activities_params)
+    @experience = current_vendor.experiences.build(experiences_params)
 
-    if @activity.save
-      redirect_to new_activities_activity_times_path(activity: @activity)
+    if @experience.save
+      redirect_to new_experiences_experience_times_path(experience: @experience)
     else
       render 'new'
     end
   end
 
   def explore
-    @activities = Activity.take(9).shuffle!
+    @experiences = Experience.take(9).shuffle!
 
     if person_signed_in?
       @adventure = current_person.current_adventure(session[:current_adventure_id])
@@ -49,8 +49,8 @@ class ActivitiesController < ApplicationController
 
   private
 
-  def activities_params
-    params.require(:activity).permit(
+  def experiences_params
+    params.require(:experience).permit(
       :name,
       :location,
       :picture,

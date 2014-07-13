@@ -1,19 +1,19 @@
 @explore
-Feature: Explore Activities
+Feature: Explore Experiences
     As a user
-    So I can browse the available activities
-    I want a list of activities.
+    So I can browse the available experiences
+    I want a list of experiences.
 
 Background:
     Given I am signed in as a person
     Given I have created a adventure
     When I visit the explore page
-    Then I should see activities displayed
+    Then I should see experiences displayed
 
   Scenario: Person adds and removes itinerary item
     When I click the link "Add to adventure"
     Then I should be on the new adventures itinerary items page
-    When I select a adventure and activity time
+    When I select a adventure and experience time
     And I click the button "Add to my adventure"
     Then I should be on the explore page
     And I should see a success message
@@ -33,6 +33,6 @@ Background:
   Scenario: Add to adventure when not signed in
     Given I sign out as a person
     When I visit the explore page
-    Then I should see activities displayed
+    Then I should see experiences displayed
     When I click the link "Add to adventure"
     Then I should be on the new person session page

@@ -2,16 +2,16 @@
 @import "bootstrap/mixins";
 
 
-.activities{
+.experiences{
   margin-top:20px;
 }
 
-.activity{
+.experience{
   background-color:#EEE;
   padding:20px;
   margin: 20px 0;
 }
-.activity-picture {
+.experience-picture {
   padding:20px 0;
   img {
     border:4px solid #FFF;
@@ -19,41 +19,41 @@
   }
 }
 
-.activity-name{
+.experience-name{
   font-size:20px;
   font-weight:bold;
   margin-bottom:10px;
 }
-.activity-description{
+.experience-description{
   min-height:100px;
   background-color:#FFF;
 }
-.activity-price{
+.experience-price{
   text-align:center;
   font-weight:bold;
   font-size:1.5em;
   margin-bottom:20px;
 }
-.activity-edit{
+.experience-edit{
   text-align: center;
 }
-.activity-info{
+.experience-info{
   margin-top:20px;
-  .activity-name{
+  .experience-name{
     font-size:30px;
     font-weight:bold;
     margin-bottom:10px;
   }
-  .activity-description{
+  .experience-description{
     min-height:200px;
   }
-  .activity-price{
+  .experience-price{
     text-align:left;
     font-weight:bold;
     font-size:1.5em;
     margin-bottom:20px;
   }
-  .activity-edit{
+  .experience-edit{
     text-align: center;
   }
 }

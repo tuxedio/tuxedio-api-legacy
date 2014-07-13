@@ -1,19 +1,19 @@
-- provide(:title, "Add an activity")
+- provide(:title, "Add an experience")
 
 .col-sm-6.col-sm-offset-3.well.form-box
   .col-sm-12
     .row
       %h1
-        .text-center Add an activity.
+        .text-center Add an experience.
         .small.text-center
           %span.glyphicon.glyphicon-info-sign
-          Tell us about your activity.
+          Tell us about your experience.
     .row.top-buffer
-      = bootstrap_form_for @activity, url: vendors_activities_path do |f|
+      = bootstrap_form_for @experience, url: vendors_experiences_path do |f|
         = render 'shared/error_messages', object: f.object
         = f.text_field :name
         = f.text_field :location
         = f.file_field :picture
         = f.text_field :description
         = f.number_field :price
-        = f.submit "Create activity", class: "btn btn-large btn-primary"
+        = f.submit "Create experience", class: "btn btn-large btn-primary"

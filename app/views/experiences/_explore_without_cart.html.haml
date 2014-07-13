@@ -1,0 +1,4 @@
+.row
+  .col-sm-12
+    - @experiences.first(9).each do |experience|
+      =render "experiences/explore_experience", experience: experience

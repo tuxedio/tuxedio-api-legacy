@@ -1,6 +1,6 @@
-class CreateActivities < ActiveRecord::Migration
+class CreateExperiences < ActiveRecord::Migration
   def change
-    create_table :activities do |t|
+    create_table :experiences do |t|
       t.string :name, null: false
       t.text :description
       t.string :location, null: false

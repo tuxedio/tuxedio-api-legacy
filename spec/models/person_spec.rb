@@ -147,7 +147,7 @@ describe "Person".upcase.colorize(:light_blue) do
   end
 
   #------------------------------------
-  # Profile/Activity Picture
+  # Profile/Experience Picture
   describe "\npictures".upcase.colorize(:light_blue) do
     describe "when a person has a profile picture" do
       before { @person.picture_file_name = "FishShapes.jpg" }

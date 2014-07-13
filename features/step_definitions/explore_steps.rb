@@ -1,5 +1,5 @@
-Then(/^the person should see activities displayed$/) do
-  expect(page).to have_selector('div.well.explore-activity')
+Then(/^the person should see experiences displayed$/) do
+  expect(page).to have_selector('div.well.explore-experience')
 end
 
 When(/^the person clicks an Add to adventure link$/) do
@@ -22,7 +22,7 @@ Given(/^the person has a adventure$/) do
   @person.adventures.create!(name: "My Adventure", location: "Boulder", start_date: Time.now, number_of_days: 2)
 end
 
-Given(/^the person selects adventure and activity time$/) do
+Given(/^the person selects adventure and experience time$/) do
   select 'My Adventure',   from: '_adventure'
   find("option[value='3']").click
 end

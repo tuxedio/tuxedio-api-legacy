@@ -1,24 +1,24 @@
 .col-6.col-sm-6.col-lg-4
-  .well.explore-activity
-    %a.thumbnail{href: activities_path(activity: activity)}
-      - if activity.picture?
-        = image_tag activity.picture.url(:medium), class: "img-responsive"
+  .well.explore-experience
+    %a.thumbnail{href: experiences_path(experience: experience)}
+      - if experience.picture?
+        = image_tag experience.picture.url(:medium), class: "img-responsive"
       - else
         = image_tag "/assets/sample_act_pic/#{rand(9)}.jpg"
     .caption
       %h4.explore-name
-        =link_to activity.name, activities_path(activity: activity)
+        =link_to experience.name, experiences_path(experience: experience)
       .explore-description
         %p
-          = activity.description
-          = activity.vendor.name
-      %p=  '$' + activity.price.to_s + '0'
+          = experience.description
+          = experience.vendor.name
+      %p=  '$' + experience.price.to_s + '0'
       / if person doesn't have adventure, make new adventure
       - if person_signed_in?
         - if current_person.adventures.count == 0
           - path = new_adventures_path
         -else
-          - path = new_adventures_itinerary_items_path(activity: activity)
+          - path = new_adventures_itinerary_items_path(experience: experience)
       - else
         - path = person_session_path
       %center=link_to 'Add to adventure', path, class: 'btn btn-primary'

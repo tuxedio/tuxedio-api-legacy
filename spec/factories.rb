@@ -83,7 +83,7 @@ FactoryGirl.define do
     number_of_days 1
   end
 
-  factory :activity, class: Activity do
+  factory :experience, class: Experience do
     vendor
     name "Skydiving"
     price 150.00
@@ -91,15 +91,15 @@ FactoryGirl.define do
     description "Ipsum splitsum"
   end
 
-  factory :activity_time, class: ActivityTime do
-    activity
+  factory :experience_time, class: ExperienceTime do
+    experience
     start_time Time.now.tomorrow
     end_time   Time.now.tomorrow + (2 * 60 * 60)
   end
 
   factory :itinerary_item, class: ItineraryItem do
     adventure
-    activity_time
+    experience_time
   end
 
 end

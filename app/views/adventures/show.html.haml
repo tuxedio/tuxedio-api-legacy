@@ -17,25 +17,25 @@
       = @current_adventure.name + " to " + @current_adventure.location + " starting on " + @current_adventure.start_date.strftime('%A, %B %e, %Y')
     %br
     -if @itinerary_items.empty?
-      %h3.center.well= "There are currently no activities in your itinerary."
+      %h3.center.well= "There are currently no experiences in your itinerary."
     - @itinerary_items.each do |item|
       .row
-        .activity.clearfix
+        .experience.clearfix
           .col-md-2
-            .activity-picture
-              - if item.activity.picture?
-                = image_tag item.activity.picture.url(:medium), class: "img-responsive"
+            .experience-picture
+              - if item.experience.picture?
+                = image_tag item.experience.picture.url(:medium), class: "img-responsive"
               - else
                 = image_tag "/assets/sample_act_pic/#{rand(9)}.jpg"
           .col-md-8
-            .activity-name
-              = item.activity.name
+            .experience-name
+              = item.experience.name
               = " - "
-              = item.activity_time.start_time.strftime("%A %B %d, %Y at  %l%P")
-            .activity-description
-              = item.activity.description
+              = item.experience_time.start_time.strftime("%A %B %d, %Y at  %l%P")
+            .experience-description
+              = item.experience.description
           .col-md-2
-            .activity-price
-              = '$' + item.activity.price.to_s + "0"
-            .activity-remove
+            .experience-price
+              = '$' + item.experience.price.to_s + "0"
+            .experience-remove
               = link_to "Remove", adventures_itinerary_items_path(item.id), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-lg btn-danger"

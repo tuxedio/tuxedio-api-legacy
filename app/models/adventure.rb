@@ -3,14 +3,14 @@ class Adventure < ActiveRecord::Base
   #--------------------------------------------------------
   # Attributes
 
-  attr_accessible :name, :person, :location, :start_date, :number_of_days, :id, :activity
+  attr_accessible :name, :person, :location, :start_date, :number_of_days, :id, :experience
 
   #--------------------------------------------------------
   # Associations
 
   belongs_to :person
   has_many :itinerary_items, dependent: :destroy
-  has_many :activities, through: :itinerary_items
+  has_many :experiences, through: :itinerary_items
 
   #--------------------------------------------------------
   # Validations

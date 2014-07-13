@@ -11,9 +11,9 @@ class AdventuresController < ApplicationController
     end
 
     @current_adventure = current_person.current_adventure(current_adventure_id)
-    @itinerary_items = @current_adventure.itinerary_items.includes(:activity_time).order('activity_times.start_time')
+    @itinerary_items = @current_adventure.itinerary_items.includes(:experience_time).order('experience_times.start_time')
     #Set make sure current adventure and session var are same
-    @activities = @current_adventure.activities
+    @experiences = @current_adventure.experiences
   end
 
   def new

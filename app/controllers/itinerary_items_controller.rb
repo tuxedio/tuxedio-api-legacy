@@ -1,8 +1,8 @@
 class ItineraryItemsController < ApplicationController
 
   def new
-    @activity = Activity.find(itinerary_items_params[:activity])
-    @activity_times = @activity.activity_times
+    @experience = Experience.find(itinerary_items_params[:experience])
+    @experience_times = @experience.experience_times
     @adventures = current_person.adventures
     @itinerary_item = ItineraryItem.new
   end
@@ -10,22 +10,22 @@ class ItineraryItemsController < ApplicationController
   def create
     # find person's adventures
     @adventure = current_person.adventures.find(itinerary_items_params[:adventure])
-    @activity = Activity.find(itinerary_items_params[:activity])
-    @activity_time = @activity.activity_times.find(itinerary_items_params[:activity_time])
+    @experience = Experience.find(itinerary_items_params[:experience])
+    @experience_time = @experience.experience_times.find(itinerary_items_params[:experience_time])
 
     @itinerary_item = @adventure.itinerary_items.build(
       adventure:          @adventure,
-      activity:      @activity,
-      activity_time: @activity_time
+      experience:      @experience,
+      experience_time: @experience_time
     )
 
     if @itinerary_item.save
       session[:current_adventure_id] = itinerary_items_params[:adventure]
-      flash[:success] = "#{@activity.name} added to adventure!"
+      flash[:success] = "#{@experience.name} added to adventure!"
       redirect_to explore_path
     else
-      # new relies on activity_id so we must send in itinerary_items_params
-      render :action => "new", :activity => itinerary_items_params[:activity]
+      # new relies on experience_id so we must send in itinerary_items_params
+      render :action => "new", :experience => itinerary_items_params[:experience]
     end
   end
 
@@ -54,8 +54,8 @@ class ItineraryItemsController < ApplicationController
     def itinerary_items_params
       params.permit(
         :adventure,
-        :activity,
-        :activity_time,
+        :experience,
+        :experience_time,
         :time
       )
     end

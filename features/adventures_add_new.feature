@@ -1,6 +1,6 @@
 Feature: Create a new adventure
   As a person
-  So I can create itineraries of my activities
+  So I can create itineraries of my experiences
   I want to make a adventure
 
 Background:

@@ -1,31 +1,31 @@
-- provide(:title, @activity.name)
+- provide(:title, @experience.name)
 .row
   //left column
   .col-md-4
     %section.center
-      .activity-picture
-        - if @activity.picture?
-          = image_tag @activity.picture.url(:thumb), class: "img-responsive"
+      .experience-picture
+        - if @experience.picture?
+          = image_tag @experience.picture.url(:thumb), class: "img-responsive"
         - else
           = image_tag "/assets/sample_act_pic/#{rand(9)}.jpg", class: "img-responsive"
   //right-column
   .col-md-8
     %section
-      //activity information
-      .activity-info.well.clearfix
-        .activity-name
-          = @activity.name
-        .activity-description
-          = @activity.description
-        .activity-price.pull-left
-          = "Price: $" + @activity.price.to_s + "0"
+      //experience information
+      .experience-info.well.clearfix
+        .experience-name
+          = @experience.name
+        .experience-description
+          = @experience.description
+        .experience-price.pull-left
+          = "Price: $" + @experience.price.to_s + "0"
         .action-buttons.pull-right
           =link_to "Back to explore", explore_path, class: "btn btn-md btn-danger"
           - if person_signed_in?
             - if current_person.adventures.count == 0
               - path = new_adventures_path
             -else
-              - path = new_adventures_itinerary_items_path(activity: activity)
+              - path = new_adventures_itinerary_items_path(experience: experience)
           - else
             - path = person_session_path
           =link_to 'Add to adventure', path, class: 'btn btn-primary'
@@ -36,11 +36,11 @@
             .vendor-offer-title
               = "Vendor information:"
             .vendor-offer-name
-              = @activity.vendor.name
+              = @experience.vendor.name
             .vendor-offer-location
-              = "Located in " + @activity.vendor.location
+              = "Located in " + @experience.vendor.location
             .vendor-offer-desc
-              = @activity.vendor.description
+              = @experience.vendor.description
           .col-md-2
             .vendor-offer-picture
-              = image_tag @activity.vendor.picture.url(:medium)
+              = image_tag @experience.vendor.picture.url(:medium)

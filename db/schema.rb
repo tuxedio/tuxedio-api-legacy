@@ -13,7 +13,7 @@
 
 ActiveRecord::Schema.define(version: 20140424043033) do
 
-  create_table "activities", force: true do |t|
+  create_table "experiences", force: true do |t|
     t.string   "name",                                         null: false
     t.text     "description"
     t.string   "location",                                     null: false
@@ -27,10 +27,10 @@ ActiveRecord::Schema.define(version: 20140424043033) do
     t.datetime "picture_updated_at"
   end
 
-  create_table "activity_times", force: true do |t|
+  create_table "experience_times", force: true do |t|
     t.datetime "start_time"
     t.datetime "end_time"
-    t.integer  "activity_id"
+    t.integer  "experience_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -66,7 +66,7 @@ ActiveRecord::Schema.define(version: 20140424043033) do
   add_index "people", ["reset_password_token"], name: "index_people_on_reset_password_token", unique: true
 
   create_table "itinerary_items", force: true do |t|
-    t.integer "activity_time_id", null: false
+    t.integer "experience_time_id", null: false
     t.integer "adventure_id",          null: false
   end
 

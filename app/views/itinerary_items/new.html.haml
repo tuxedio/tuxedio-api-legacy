@@ -1,17 +1,17 @@
-- provide(:title, "Add an activity")
+- provide(:title, "Add an experience")
 
 .col-sm-6.col-sm-offset-3.well.form-box
   .col-sm-12
     .row
       %h1
-        .text-center= @activity.name
+        .text-center= @experience.name
         .small.text-center
           %span.glyphicon.glyphicon-globe
-          Book this activity?
+          Book this experience?
 
     .row.top-buffer
       = bootstrap_form_tag url: adventures_itinerary_items_path do |f|
         = f.select :adventure, options_from_collection_for_select(@adventures, 'id', 'name')
-        = f.select :activity_time, options_from_collection_for_select(@activity_times, 'id', 'format_time')
-        = hidden_field_tag :activity, @activity.id
+        = f.select :experience_time, options_from_collection_for_select(@experience_times, 'id', 'format_time')
+        = hidden_field_tag :experience, @experience.id
         .center= f.submit "Add to my adventure", class: "btn btn-large btn-primary"

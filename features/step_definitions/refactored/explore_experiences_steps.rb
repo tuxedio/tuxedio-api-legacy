@@ -7,11 +7,11 @@ Given(/^I have no adventures$/) do
 end
 
 
-Then(/^I should see activities displayed$/) do
-  expect(page).to have_selector('.explore-activity')
+Then(/^I should see experiences displayed$/) do
+  expect(page).to have_selector('.explore-experience')
 end
 
-Given(/^I select a adventure and activity time$/) do
+Given(/^I select a adventure and experience time$/) do
   select 'My Adventure',   from: '_adventure'
   find("option[value='3']").click
 end

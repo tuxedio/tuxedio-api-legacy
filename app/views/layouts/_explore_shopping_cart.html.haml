@@ -16,9 +16,9 @@
       -itinerary.each do |item|
         .list-group-item.item
           %h5.list-group-item-header
-            = item.activity.name
+            = item.experience.name
           %p.list-group-item-header-text
-            - time = item.activity_time.start_time
+            - time = item.experience_time.start_time
             .small= time.to_formatted_s(:long)
 
           = check_box_tag 'delete[]', item.id

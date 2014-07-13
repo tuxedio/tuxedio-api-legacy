@@ -1,4 +1,4 @@
-class Activity < ActiveRecord::Base
+class Experience < ActiveRecord::Base
   #--------------------------------------------------------
   # Constants
 
@@ -12,7 +12,7 @@ class Activity < ActiveRecord::Base
   #--------------------------------------------------------
   # Associations
 
-  has_many  :activity_times
+  has_many  :experience_times
   belongs_to :vendor
 
   #--------------------------------------------------------
