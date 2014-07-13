@@ -1,20 +1,20 @@
 require 'spec_helper'
 require 'date'
 
-describe "Itinerary Item".upcase.colorize(:light_blue) do
+describe "Journey Item".upcase.colorize(:light_blue) do
 
   before do
     @adventure = FactoryGirl.create(:adventure)
     @experience_time = FactoryGirl.create(:experience_time)
     # Needs to be refactored to one Factory Girl Call.
-    @itinerary_item = @adventure.itinerary_items.create(
+    @journey_item = @adventure.journey_items.create(
       adventure: @adventure,
       experience_time: @experience_time
       )
   end
 
 
-  subject { @itinerary_item }
+  subject { @journey_item }
 
   it { should respond_to(:experience) }
   it { should respond_to(:experience_time) }
@@ -29,12 +29,12 @@ describe "Itinerary Item".upcase.colorize(:light_blue) do
   describe "when association is nil for " do
 
     describe "adventure" do
-      before { @itinerary_item.adventure = nil }
+      before { @journey_item.adventure = nil }
       it { should_not be_valid }
     end
 
     describe "experience" do
-      before { @itinerary_item.experience_time = nil }
+      before { @journey_item.experience_time = nil }
       it { should_not be_valid }
     end
 
@@ -43,23 +43,23 @@ describe "Itinerary Item".upcase.colorize(:light_blue) do
   describe "can access association for  " do
 
     describe "person" do
-      it { expect(@itinerary_item.adventure.person.id).to equal(1) }
+      it { expect(@journey_item.adventure.person.id).to equal(1) }
     end
 
     describe "vendor" do
-      it { expect(@itinerary_item.experience_time.vendor.id).to equal(1) }
+      it { expect(@journey_item.experience_time.vendor.id).to equal(1) }
     end
   end
 
   describe "Valid IDs" do
 
     describe "valid adventure ID" do
-      before { @itinerary_item.adventure = @adventure }
+      before { @journey_item.adventure = @adventure }
       it { should be_valid }
     end
 
     describe "valid experience ID" do
-      before { @itinerary_item.experience = @adventure }
+      before { @journey_item.experience = @adventure }
       it { should be_valid }
     end
   end

@@ -97,7 +97,7 @@ FactoryGirl.define do
     end_time   Time.now.tomorrow + (2 * 60 * 60)
   end
 
-  factory :itinerary_item, class: ItineraryItem do
+  factory :journey_item, class: JourneyItem do
     adventure
     experience_time
   end

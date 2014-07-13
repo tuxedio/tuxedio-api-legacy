@@ -9,8 +9,8 @@ class Adventure < ActiveRecord::Base
   # Associations
 
   belongs_to :person
-  has_many :itinerary_items, dependent: :destroy
-  has_many :experiences, through: :itinerary_items
+  has_many :journey_items, dependent: :destroy
+  has_many :experiences, through: :journey_items
 
   #--------------------------------------------------------
   # Validations

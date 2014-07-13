@@ -1,19 +1,19 @@
-=form_tag change_adventures_itinerary_items_path do
+=form_tag change_adventures_journey_items_path do
   #cart.list-group{"data-offset-top" => "145", "data-spy" => "affix"}
     .list-group-item.active
       %h4.center
         %span.glyphicon.glyphicon-shopping-cart
         Adventure items
         %br
-      .center=itinerary[0].adventure.name unless itinerary.empty?
-    -if itinerary.empty?
+      .center=journey[0].adventure.name unless journey.empty?
+    -if journey.empty?
       .list-group-item
         %h5.list-group-item-header
           Your adventure is empty!
         %p.list-group-item-header-text
           Don't be shy, add something.
     -else
-      -itinerary.each do |item|
+      -journey.each do |item|
         .list-group-item.item
           %h5.list-group-item-header
             = item.experience.name

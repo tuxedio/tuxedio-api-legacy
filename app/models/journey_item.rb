@@ -1,4 +1,4 @@
-class ItineraryItem < ActiveRecord::Base
+class JourneyItem < ActiveRecord::Base
   #--------------------------------------------------------
   # Attributes
   attr_accessible :experience, :experience_time, :person, :vendor

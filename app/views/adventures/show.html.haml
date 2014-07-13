@@ -1,6 +1,6 @@
 - provide(:title, current_person.name + "s Adventures")
 
-%h1 My Adventure Itinerary
+%h1 My Adventure Journey
 .row
   .col-md-7
     -if (@adventures.load.count > 1)
@@ -12,13 +12,13 @@
     = link_to "Create a new Adventure", new_people_adventures_path, {:class => "btn btn-lg btn-success"}
     = link_to "Edit current adventure", edit_people_adventures_path, {:class => "btn btn-lg btn-primary"}
 .row
-  .itinerary
+  .journey
     %h2
       = @current_adventure.name + " to " + @current_adventure.location + " starting on " + @current_adventure.start_date.strftime('%A, %B %e, %Y')
     %br
-    -if @itinerary_items.empty?
-      %h3.center.well= "There are currently no experiences in your itinerary."
-    - @itinerary_items.each do |item|
+    -if @journey_items.empty?
+      %h3.center.well= "There are currently no experiences in your journey."
+    - @journey_items.each do |item|
       .row
         .experience.clearfix
           .col-md-2
@@ -38,4 +38,4 @@
             .experience-price
               = '$' + item.experience.price.to_s + "0"
             .experience-remove
-              = link_to "Remove", adventures_itinerary_items_path(item.id), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-lg btn-danger"
+              = link_to "Remove", adventures_journey_items_path(item.id), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-lg btn-danger"

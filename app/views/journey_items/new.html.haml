@@ -10,7 +10,7 @@
           Book this experience?
 
     .row.top-buffer
-      = bootstrap_form_tag url: adventures_itinerary_items_path do |f|
+      = bootstrap_form_tag url: adventures_journey_items_path do |f|
         = f.select :adventure, options_from_collection_for_select(@adventures, 'id', 'name')
         = f.select :experience_time, options_from_collection_for_select(@experience_times, 'id', 'format_time')
         = hidden_field_tag :experience, @experience.id

@@ -65,7 +65,7 @@ ActiveRecord::Schema.define(version: 20140424043033) do
   add_index "people", ["email"], name: "index_people_on_email", unique: true
   add_index "people", ["reset_password_token"], name: "index_people_on_reset_password_token", unique: true
 
-  create_table "itinerary_items", force: true do |t|
+  create_table "journey_items", force: true do |t|
     t.integer "experience_time_id", null: false
     t.integer "adventure_id",          null: false
   end

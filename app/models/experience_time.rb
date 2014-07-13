@@ -9,7 +9,7 @@ class ExperienceTime < ActiveRecord::Base
   validates_datetime :end_time,   :after => :start_time
 
   belongs_to :experience
-  has_many :itinerary_items, dependent: :destroy
+  has_many :journey_items, dependent: :destroy
   has_one :vendor, through: :experience
   has_one :adventure, through: :experience end
 

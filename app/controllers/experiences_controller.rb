@@ -43,7 +43,7 @@ class ExperiencesController < ApplicationController
 
     if person_signed_in?
       @adventure = current_person.current_adventure(session[:current_adventure_id])
-      @itinerary = @adventure.itinerary_items unless @adventure.nil?
+      @journey = @adventure.journey_items unless @adventure.nil?
     end
   end
 

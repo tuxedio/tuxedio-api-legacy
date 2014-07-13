@@ -29,7 +29,7 @@ TuxedoProto::Application.routes.draw do
   end
 
   resource :adventures do
-    resource :itinerary_items do
+    resource :journey_items do
       member do
         post :change
       end

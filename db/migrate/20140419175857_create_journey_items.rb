@@ -1,6 +1,6 @@
-class CreateItineraryItems < ActiveRecord::Migration
+class CreateJourneyItems < ActiveRecord::Migration
   def change
-    create_table :itinerary_items do |t|
+    create_table :journey_items do |t|
       t.belongs_to :experience_time, null: false
       t.belongs_to :adventure, null: false
     end

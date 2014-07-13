@@ -25,7 +25,7 @@
             - if current_person.adventures.count == 0
               - path = new_adventures_path
             -else
-              - path = new_adventures_itinerary_items_path(experience: experience)
+              - path = new_adventures_journey_items_path(experience: experience)
           - else
             - path = person_session_path
           =link_to 'Add to adventure', path, class: 'btn btn-primary'

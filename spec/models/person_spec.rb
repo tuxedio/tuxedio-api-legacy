@@ -137,12 +137,12 @@ describe "Person".upcase.colorize(:light_blue) do
     end
   end
   #------------------------------------
-  # Itinerary
-  describe "\nitinerary".upcase.colorize(:light_blue) do
-    describe "when a person has a valid itinerary" do
+  # Journey
+  describe "\njourney".upcase.colorize(:light_blue) do
+    describe "when a person has a valid journey" do
     end
 
-    describe "when a person has a invalid itinerary" do
+    describe "when a person has a invalid journey" do
     end
   end
 

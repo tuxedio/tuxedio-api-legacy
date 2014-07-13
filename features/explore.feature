@@ -10,9 +10,9 @@ Background:
     When I visit the explore page
     Then I should see experiences displayed
 
-  Scenario: Person adds and removes itinerary item
+  Scenario: Person adds and removes journey item
     When I click the link "Add to adventure"
-    Then I should be on the new adventures itinerary items page
+    Then I should be on the new adventures journey items page
     When I select a adventure and experience time
     And I click the button "Add to my adventure"
     Then I should be on the explore page

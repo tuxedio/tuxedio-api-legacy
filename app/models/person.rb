@@ -15,7 +15,7 @@ class Person < ActiveRecord::Base
   # Associations
 
   has_many :adventures, dependent: :destroy
-  has_many :itinerary_items, through: :adventures
+  has_many :journey_items, through: :adventures
 
 
   #--------------------------------------------------------
