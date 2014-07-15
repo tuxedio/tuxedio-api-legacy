@@ -1,23 +1,4 @@
 FactoryGirl.define do
-
-  factory :person, class: Person do
-    name     "Example Person"
-    email    "person@example.com"
-    location "Boulder"
-    password "foobar1234"
-    password_confirmation "foobar1234"
-    top_choices ["Larkburger", "Sushi Tora", "Illegal Pete's"]
-  end
-
-  factory :person1, class: Person do
-    name     "New Person"
-    email    "person1@example.com"
-    location "Boulder"
-    password "foobar1234"
-    password_confirmation "foobar1234"
-    top_choices ["Larkburger", "Sushi Tora", "Illegal Pete's"]
-  end
-
   factory :vendor, class: Vendor do
     name     "Example Vendor"
     email    "vendor@example.com"
@@ -26,6 +7,7 @@ FactoryGirl.define do
     password "foobar1234"
     password_confirmation "foobar1234"
   end
+
   factory :boulder_vendor, class: Vendor do
     name     "Illegal Pete's"
     email    "test3@vend.com"
@@ -74,32 +56,4 @@ FactoryGirl.define do
     confirmed true
     sample_image "test"
   end
-
-  factory :adventure, class: Adventure do
-    person
-    name "Adventure1"
-    location "Boulder"
-    start_date Date.today
-    number_of_days 1
-  end
-
-  factory :experience, class: Experience do
-    vendor
-    name "Skydiving"
-    price 150.00
-    location "Boulder"
-    description "Ipsum splitsum"
-  end
-
-  factory :experience_time, class: ExperienceTime do
-    experience
-    start_time Time.now.tomorrow
-    end_time   Time.now.tomorrow + (2 * 60 * 60)
-  end
-
-  factory :journey_item, class: JourneyItem do
-    adventure
-    experience_time
-  end
-
 end
