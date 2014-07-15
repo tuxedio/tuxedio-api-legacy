@@ -22,10 +22,10 @@ class VendorsController < ApplicationController
   # Update info with information from Yelp.
   def update_details
     if current_vendor.update(params[:vendor])
-      flash[:success] = "Success! Your information was updated."
+      flash['success'] = "Success! Your information was updated."
       redirect_to vendor_profile_path
     else
-      flash[:warning] = "Something went wrong, your data could not be imported"
+      flash['warning'] = "Something went wrong, your data could not be imported"
       redirect_to vendor_profile_path
     end
   end
