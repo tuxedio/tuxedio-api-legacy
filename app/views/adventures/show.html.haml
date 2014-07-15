@@ -1,0 +1,41 @@
+- provide(:title, current_person.name + "s Adventures")
+
+%h1 My Adventure Journey
+.row
+  .col-md-7
+    -if (@adventures.load.count > 1)
+      .adventure-selector
+        = bootstrap_form_tag(url: '/people/adventures', method: 'get', layout: :inline) do |f|
+          = f.collection_select(:adventure_selection, @adventures.load, :id, :name, options = {:hide_label => true, :prompt => "-- Select another adventure to View --"})
+          = f.submit "View Adventure"
+  .col-med-5.center
+    = link_to "Create a new Adventure", new_people_adventures_path, {:class => "btn btn-lg btn-success"}
+    = link_to "Edit current adventure", edit_people_adventures_path, {:class => "btn btn-lg btn-primary"}
+.row
+  .journey
+    %h2
+      = @current_adventure.name + " to " + @current_adventure.location + " starting on " + @current_adventure.start_date.strftime('%A, %B %e, %Y')
+    %br
+    -if @journey_items.empty?
+      %h3.center.well= "There are currently no experiences in your journey."
+    - @journey_items.each do |item|
+      .row
+        .experience.clearfix
+          .col-md-2
+            .experience-picture
+              - if item.experience.picture?
+                = image_tag item.experience.picture.url(:medium), class: "img-responsive"
+              - else
+                = image_tag "/assets/sample_act_pic/#{rand(9)}.jpg"
+          .col-md-8
+            .experience-name
+              = item.experience.name
+              = " - "
+              = item.experience_time.start_time.strftime("%A %B %d, %Y at  %l%P")
+            .experience-description
+              = item.experience.description
+          .col-md-2
+            .experience-price
+              = '$' + item.experience.price.to_s + "0"
+            .experience-remove
+              = link_to "Remove", adventures_journey_items_path(item.id), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-lg btn-danger"

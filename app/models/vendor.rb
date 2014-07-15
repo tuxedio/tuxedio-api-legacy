@@ -12,7 +12,7 @@ class Vendor < ActiveRecord::Base
   #--------------------------------------------------------
   # Associations
 
-  has_many :activities, dependent: :destroy
+  has_many :experiences, dependent: :destroy
 
 
   #--------------------------------------------------------

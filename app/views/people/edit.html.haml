@@ -1,0 +1,19 @@
+- provide(:title, "Edit Profile for #{current_person.name}")
+.col-sm-6.col-sm-offset-3.well.form-box
+  .col-sm-12
+    .row
+      %h1
+        .text-center Edit my profile.
+        .small.text-center
+          %span.glyphicon.glyphicon-thumbs-up
+
+
+    .row.top-buffer
+      = bootstrap_form_for(@person, url: person_profile_edit_path, html: {:method => :put}) do |f|
+        = render 'shared/error_messages', object: f.object
+        = f.text_field :name
+        = f.email_field :email, autofocus: true
+        = f.text_field :location
+        = f.file_field :picture
+        = f.form_group do
+          = f.submit "Save changes", class: "btn btn-large btn-success"

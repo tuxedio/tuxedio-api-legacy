@@ -2,11 +2,11 @@
 # CUSTOMER SIGN IN
 ######################################
 
-Given(/^I am signed in as a customer$/) do
+Given(/^I am signed in as a person$/) do
   steps %q{
-    Given a customer exists
-    And that customer is confirmed
-    And I sign in as that customer
+    Given a person exists
+    And that person is confirmed
+    And I sign in as that person
   }
 end
 
@@ -16,8 +16,8 @@ Given(/^I sign in as (.*?)$/) do |user|
     @user = find_model(user)
   end
   @user.confirm!
-  if @user.class.name == "Customer"
-    visit new_customer_session_path
+  if @user.class.name == "Person"
+    visit new_person_session_path
   elsif @user.class.name == "Vendor"
     visit new_vendor_session_path
   end
@@ -26,10 +26,10 @@ Given(/^I sign in as (.*?)$/) do |user|
     click_button "Sign in"
 end
 
-Given(/^that customer signs in$/) do
-  visit new_customer_session_path
-  fill_in "Email",        with: @customer.email
-  fill_in "Password",     with: @customer.password
+Given(/^that person signs in$/) do
+  visit new_person_session_path
+  fill_in "Email",        with: @person.email
+  fill_in "Password",     with: @person.password
   click_button "Sign in"
 end
 
@@ -63,5 +63,5 @@ Given(/^(.+) is confirmed$/) do |user|
 end
 
 Given(/^I sign out as a (.*?)$/) do |user|
-  page.driver.submit :delete, "/#{user}s/sign_out", {}
+  page.driver.submit :delete, "/#{user.pluralize}/sign_out", {}
 end

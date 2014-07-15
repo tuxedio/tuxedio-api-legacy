@@ -2,14 +2,14 @@ TuxedoProto::Application.routes.draw do
 
   #DEVISE
   devise_for :vendors
-  devise_for :customers
+  devise_for :people
 
   #ROUTES
   root to: 'static_pages#home'
   match '/registration_choice', to: 'static_pages#registration_choice', via: 'get'
-  match '/customer_profile',    to: 'customers#show',                   via: 'get'
+  match '/person_profile',    to: 'people#show',                   via: 'get'
   match '/vendor_profile',      to: 'vendors#show',                     via: 'get'
-  match '/explore',             to: 'activities#explore',               via: 'get'
+  match '/explore',             to: 'experiences#explore',               via: 'get'
   # Routes for Yelp information
   resource :vendors do
     collection do
@@ -18,18 +18,18 @@ TuxedoProto::Application.routes.draw do
     end
   end
 
-  resource :activities do
+  resource :experiences do
     member do
       get :explore
     end
   end
 
-  resource :customers do
-	 resource :trips
+  resource :people do
+	 resource :adventures
   end
 
-  resource :trips do
-    resource :itinerary_items do
+  resource :adventures do
+    resource :journey_items do
       member do
         post :change
       end
@@ -37,10 +37,10 @@ TuxedoProto::Application.routes.draw do
   end
 
   resource :vendors do
-    resource :activities
+    resource :experiences
   end
 
-  resource :activities do
-    resource :activity_times
+  resource :experiences do
+    resource :experience_times
   end
 end

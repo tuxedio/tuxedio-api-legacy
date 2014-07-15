@@ -32,22 +32,22 @@ vend5.confirm!
 
 
 
-cust1 = Customer.create!(name: "John", email: "customer1@example.com", location: "Boulder",
+cust1 = Person.create!(name: "John", email: "person1@example.com", location: "Boulder",
              password: "mypassword1", password_confirmation: "mypassword1", bio: ipsum)
 cust1.confirm!
 cust1.update!(top_choices: choices)
 
-cust2 = Customer.create!(name: "Adam", email: "customer2@example.com", location: "Boulder",
+cust2 = Person.create!(name: "Adam", email: "person2@example.com", location: "Boulder",
              password: "mypassword1", password_confirmation: "mypassword1", bio: ipsum)
 cust2.confirm!
 cust2.update!(top_choices: choices)
 
-cust3 = Customer.create!(name: "Eve", email: "customer3@example.com", location: "Boulder",
+cust3 = Person.create!(name: "Eve", email: "person3@example.com", location: "Boulder",
              password: "mypassword1", password_confirmation: "mypassword1", bio: ipsum)
 cust3.confirm!
 cust3.update!(top_choices: choices)
 
-customer = Customer.create!(name: "Eve", email: "customer@customer.com", location: "Boulder",
+person = Person.create!(name: "Eve", email: "person@person.com", location: "Boulder",
              password: "mypassword1", password_confirmation: "mypassword1", bio: samuelipsum)
-customer.confirm!
-customer.update!(top_choices: choices)
+person.confirm!
+person.update!(top_choices: choices)

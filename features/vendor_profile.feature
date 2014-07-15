@@ -8,7 +8,7 @@ Scenario: A logged in vendor can see their profile
   When I click the link "View My Account"
   Then I should be on the vendor profile page
   And I should see the "Edit Profile" link
-  And I should see the "Add an activity" link
+  And I should see the "Add an experience" link
   And I should see the text "Example Vendor"
   And I should see the text "Boulder"
 

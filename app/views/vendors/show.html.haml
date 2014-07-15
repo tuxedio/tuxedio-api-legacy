@@ -6,7 +6,7 @@
         = image_tag current_vendor.picture.url(:medium)
       .vendor-profile-links
         = link_to "Edit Profile", edit_vendor_registration_path, {:class => 'btn btn-sm btn-primary'}
-        = link_to 'Add an activity', new_vendors_activities_path, {:class => 'btn btn-sm btn-primary'}
+        = link_to 'Add an experience', new_vendors_experiences_path, {:class => 'btn btn-sm btn-primary'}
         = unless current_vendor.confirmed?
           = link_to 'Import data from Yelp', confirm_details_vendors_path, {:class => 'btn btn-sm btn-primary'}
   .col-md-8
@@ -24,14 +24,14 @@
           %span Vendor description:
           %p.well= current_vendor.description
 %hr
-  %h3= "Offered activities:"
-  .activity-list
-    -if current_vendor.activities.any?
-      = will_paginate @activities, renderer: BootstrapPagination::Rails
-      = render @activities
-      = will_paginate @activities, renderer: BootstrapPagination::Rails
+  %h3= "Offered experiences:"
+  .experience-list
+    -if current_vendor.experiences.any?
+      = will_paginate @experiences, renderer: BootstrapPagination::Rails
+      = render @experiences
+      = will_paginate @experiences, renderer: BootstrapPagination::Rails
     -else
-      = "No Activities"
+      = "No Experiences"
 
 
 

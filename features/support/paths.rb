@@ -4,7 +4,7 @@ module NavigationHelpers
     case page_name
 
       #---------------------
-      # Customer Paths
+      # Person Paths
 
 
       #---------------------

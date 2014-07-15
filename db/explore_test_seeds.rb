@@ -10,22 +10,22 @@ vend1 = Vendor.create!(
 vend1.confirm!
 
 
-activity_name = vend1.name + " Activity"
-activity_description = Faker::Lorem.sentence(5)
-activity_location = "Boulder"
-activity_price = Faker::Number.number(2)
-vend1.activities.create!(
-  name: activity_name,
-  description: activity_description,
-  location: activity_location,
-  price: activity_price
+experience_name = vend1.name + " Experience"
+experience_description = Faker::Lorem.sentence(5)
+experience_location = "Boulder"
+experience_price = Faker::Number.number(2)
+vend1.experiences.create!(
+  name: experience_name,
+  description: experience_description,
+  location: experience_location,
+  price: experience_price
 )
 
-activities = Activity.all
-activities.each do |activity|
+experiences = Experience.all
+experiences.each do |experience|
   3.times do
-    activity_start = Time.new(2020, 1, 1, 2, 2, 2, "+02:00")
-    activity_end   = Time.new(2020, 1, 1, 3, 3, 3, "+03:00")
-    activity.activity_times.create!(start_time: activity_start, end_time: activity_end, activity: activity)
+    experience_start = Time.new(2020, 1, 1, 2, 2, 2, "+02:00")
+    experience_end   = Time.new(2020, 1, 1, 3, 3, 3, "+03:00")
+    experience.experience_times.create!(start_time: experience_start, end_time: experience_end, experience: experience)
   end
 end
