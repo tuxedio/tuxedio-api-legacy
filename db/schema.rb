@@ -13,6 +13,22 @@
 
 ActiveRecord::Schema.define(version: 20140424043033) do
 
+  create_table "adventures", force: true do |t|
+    t.string  "name"
+    t.integer "person_id",      null: false
+    t.string  "location"
+    t.date    "start_date"
+    t.integer "number_of_days"
+  end
+
+  create_table "experience_times", force: true do |t|
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.integer  "experience_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "experiences", force: true do |t|
     t.string   "name",                                         null: false
     t.text     "description"
@@ -27,12 +43,9 @@ ActiveRecord::Schema.define(version: 20140424043033) do
     t.datetime "picture_updated_at"
   end
 
-  create_table "experience_times", force: true do |t|
-    t.datetime "start_time"
-    t.datetime "end_time"
-    t.integer  "experience_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+  create_table "journey_items", force: true do |t|
+    t.integer "experience_time_id", null: false
+    t.integer "adventure_id",       null: false
   end
 
   create_table "people", force: true do |t|
@@ -64,19 +77,6 @@ ActiveRecord::Schema.define(version: 20140424043033) do
 
   add_index "people", ["email"], name: "index_people_on_email", unique: true
   add_index "people", ["reset_password_token"], name: "index_people_on_reset_password_token", unique: true
-
-  create_table "journey_items", force: true do |t|
-    t.integer "experience_time_id", null: false
-    t.integer "adventure_id",          null: false
-  end
-
-  create_table "adventures", force: true do |t|
-    t.string  "name"
-    t.integer "person_id",    null: false
-    t.string  "location"
-    t.date    "start_date"
-    t.integer "number_of_days"
-  end
 
   create_table "vendors", force: true do |t|
     t.string   "email",                  default: "",    null: false
