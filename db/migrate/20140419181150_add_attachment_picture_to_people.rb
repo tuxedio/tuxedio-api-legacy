@@ -1,4 +1,4 @@
-class AddAttachmentPictureToPersons < ActiveRecord::Migration
+class AddAttachmentPictureToPeople < ActiveRecord::Migration
   def self.up
     add_attachment :people, :picture
   end
