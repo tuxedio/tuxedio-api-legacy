@@ -23,7 +23,6 @@ config/environments/production.rb
 Gemfile.lock
 
 # Ignore bundler config.
-/.bundle
 /vendor/bundle
 .versions.conf
 
