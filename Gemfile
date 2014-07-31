@@ -1,16 +1,30 @@
 source 'https://rubygems.org'
+source 'http://torquebox.org/4x/builds/gem-repo/'
+TORQUEBOX_VERSION = '4.x.incremental.173'
 
-ruby '2.1.1'
+ruby '2.0.0'
+
 gem  'rails', '4.1.4'
+
+platform :jruby do
+  gem 'activerecord-jdbcsqlite3-adapter'
+  gem 'jruby-openssl'
+  gem 'jdbc-postgres', '~> 9.3.1101', group: :production
+  gem 'torquebox', TORQUEBOX_VERSION
+  gem 'spork', '~> 1.0rc'
+end
+
+platform :ruby do
+  gem 'sqlite3', '1.3.8'
+  gem 'pg', '0.15.1'
+end
+
 
 group :development, :test do
   gem 'childprocess', '0.3.6'
-  gem 'debugger'
   gem 'factory_girl_rails', '4.2.1'
-  gem 'pry-rails'
   gem 'sprockets'
   gem 'sprockets-rails', :require => 'sprockets/railtie'
-  gem 'sqlite3', '1.3.8'
 end
 
 group :development do
@@ -21,6 +35,7 @@ group :development do
   gem 'guard-cucumber', require: false
   gem 'guard-livereload', require: false
   gem 'guard-rspec', require: false
+  gem 'pry-rails'
   gem 'spring'
   gem 'spring-commands-cucumber'
   gem 'spring-commands-rspec'
@@ -34,8 +49,7 @@ group :test do
   gem 'database_cleaner', github: 'bmabey/database_cleaner'
   gem 'growl', '1.0.3'
   gem 'rake'
-  gem 'rspec-mocks'
-  gem 'rspec-rails'
+  gem 'rspec-rails', '~> 2.99'
   gem 'selenium-webdriver', '2.35.1'
   gem 'simplecov', '~> 0.7.1', :require => false
   gem 'spork-rails'
@@ -48,7 +62,6 @@ group :doc do
 end
 
 group :production do
-  gem 'pg', '0.15.1'
   gem 'rails_12factor', '0.0.2'
 end
 

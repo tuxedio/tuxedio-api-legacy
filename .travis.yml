@@ -1,6 +1,7 @@
 language: ruby
+script: bundle exec rspec
 rvm:
-  - 2.1.1
+  - 2.0.0
+  - jruby-19mode
+env: JRUBY_OPTS="--2.0"
 bundler_args: --without development
-cache: bundler
-
