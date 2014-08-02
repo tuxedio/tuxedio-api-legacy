@@ -7,14 +7,11 @@ namespace :db do
              password: "mypassword1", password_confirmation: "mypassword1", bio: samuelipsum)
     person.skip_confirmation!
     person.save
-    person.confirm!
     person.adventures.create(name: "My Adventure", location: "Boulder", start_date: Time.now, number_of_days: 2)
-
     vendor = Vendor.new(name: "Tangerine", email: "vendor@vendor.com", location: "Boulder",
              password: "mypassword1", password_confirmation: "mypassword1", zip_code: 80304)
     vendor.skip_confirmation!
     vendor.save
-    vendor.confirm!
 
     #-------------------------
     # Persons
@@ -30,7 +27,6 @@ namespace :db do
                        password_confirmation: password)
       people.skip_confirmation!
       people.save!
-      people.confirm!
     end
 
     #-------------------------
@@ -49,17 +45,16 @@ namespace :db do
                        password_confirmation: password)
       vendors.skip_confirmation!
       vendors.save
-      vendors.confirm!
     end
 
     #-------------------------
     # Experiences
-    vendors = Vendor.all(limit: 10)
+    vendors = Vendor.last(10)
     vendors.each { |vendor|
       20.times do |n|
         experience_name = Faker::Address.city + " Experience"
         experience_description = Faker::Lorem.sentence(5)
-        experience_location = Faker::Address.city
+        experience_location = "Boulder"
         experience_price = Faker::Number.number(2)
         vendor.experiences.create!(
           name: experience_name,
