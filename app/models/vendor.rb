@@ -3,8 +3,7 @@ class Vendor < ActiveRecord::Base
   #--------------------------------------------------------
   # Attributes
 
-  attr_accessible :name, :email, :location, :zip_code, :password,
-                  :password_confirmation, :description, :picture,
+  attr_accessible :name, :email, :location, :zip_code, :description, :picture,
                   :confirmed, :address, :phone_number, :country,
                   :coordinates, :state, :sample_image, :id
 
@@ -13,6 +12,7 @@ class Vendor < ActiveRecord::Base
   # Associations
 
   has_many :experiences, dependent: :destroy
+  has_one :user, :as => :rolable
 
 
   #--------------------------------------------------------
@@ -20,7 +20,6 @@ class Vendor < ActiveRecord::Base
 
   validates :name,         presence: true, length: { maximum: 50 }
   validates :location,     presence: true, length: { maximum: 30 }
-  validates :email,        presence: true, email: true, uniqueness: true
   validates :zip_code,     presence: true, length: { maximum: 5 }
 
   validates_with LocationValidator
@@ -42,27 +41,12 @@ class Vendor < ActiveRecord::Base
     :less_than => 10.megabytes,
     :message => "Picture too large."
 
-
-  #--------------------------------------------------------
-  # Callbacks
-
-  before_save{ email.downcase! }
-
-  #--------------------------------------------------------
-  # Other Macros
-
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable,
-         :confirmable
-
-
   #--------------------------------------------------------
   # Class Methods
 
   def self.allowed_locations
     ['Boulder', 'Longmont', 'Broomfield']
   end
-
 
   #--------------------------------------------------------
   # Instance Methods

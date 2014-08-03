@@ -1,8 +1,10 @@
 TuxedoProto::Application.routes.draw do
 
+
   #DEVISE
-  devise_for :vendors
-  devise_for :people
+  # devise_for :vendors
+  # devise_for :people
+  devise_for :users, controllers: { :registrations => 'user_registrations' }
 
   #ROUTES
   root to: 'static_pages#home'
@@ -10,6 +12,12 @@ TuxedoProto::Application.routes.draw do
   match '/person_profile',    to: 'people#show',                   via: 'get'
   match '/vendor_profile',      to: 'vendors#show',                     via: 'get'
   match '/explore',             to: 'experiences#explore',               via: 'get'
+
+  devise_scope :user do
+    get 'vendor/sign_up' => 'user_registrations#new', :user => { :user_type => 'vendor' }
+    get 'person/sign_up' => 'user_registrations#new', :user => { :user_type => 'person' }
+  end
+
   # Routes for Yelp information
   resource :vendors do
     collection do

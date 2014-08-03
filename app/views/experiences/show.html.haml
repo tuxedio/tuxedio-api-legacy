@@ -21,13 +21,13 @@
           = "Price: $" + @experience.price.to_s + "0"
         .action-buttons.pull-right
           =link_to "Back to explore", explore_path, class: "btn btn-md btn-danger"
-          - if person_signed_in?
-            - if current_person.adventures.count == 0
+          - if user_signed_in? and current_user.person?
+            - if current_user.rollable.adventures.count == 0
               - path = new_adventures_path
             -else
               - path = new_adventures_journey_items_path(experience: experience)
           - else
-            - path = person_session_path
+            - path = user_session_path
           =link_to 'Add to adventure', path, class: 'btn btn-primary'
       //associated vendor information
       .vendor-offer-info.well

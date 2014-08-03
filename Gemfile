@@ -25,6 +25,7 @@ group :development, :test do
   gem 'factory_girl_rails', '4.2.1'
   gem 'sprockets'
   gem 'sprockets-rails', :require => 'sprockets/railtie'
+  gem 'debugger'
 end
 
 group :development do

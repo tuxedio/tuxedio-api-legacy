@@ -3,8 +3,7 @@ class Person < ActiveRecord::Base
   #--------------------------------------------------------
   # Attributes
 
-  attr_accessible :name, :email, :location, :password,
-                  :password_confirmation, :bio,
+  attr_accessible :name, :location, :bio,
                   :top_choices, :picture_file_size, :picture,
                   :current_adventure, :top_choices
 
@@ -16,14 +15,13 @@ class Person < ActiveRecord::Base
 
   has_many :adventures, dependent: :destroy
   has_many :journey_items, through: :adventures
-
+  has_one :user, :as => :rolable
 
   #--------------------------------------------------------
   # Validations
 
   validates :name,         presence: true, length: { maximum: 50 }
   validates :location,     presence: true, length: { maximum: 30 }
-  validates :email,        presence: true, email: true, uniqueness: { case_sensitive: false }
   validates :top_choices,  choice: true, on: :update
 
   # Eventually refactor this and move this logic to production.rb
@@ -40,20 +38,6 @@ class Person < ActiveRecord::Base
   validates_attachment_size :picture,
     :less_than => 10.megabytes,
     :message => "Picture too large."
-
-
-  #--------------------------------------------------------
-  # Callbacks
-
-  before_save{ email.downcase! }
-
-  #--------------------------------------------------------
-  # Other Macros
-
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable,
-         :validatable, :confirmable
-
 
   #--------------------------------------------------------
   # Instance Methods

@@ -12,7 +12,7 @@
         %li{ class: ( (current_page? explore_path) and 'active') }= link_to "Explore", explore_path
         /%li= link_to "Local's Pick", "#"
         /%li= link_to "Blog", "#"
-        - if person_signed_in?
+        - if user_signed_in? and current_user.person?
           %li{ class: ( (current_page? people_adventures_path) and 'active') }= link_to "My Adventures", people_adventures_path
           / %li= link_to "Users", '#'
           %li.dropdown
@@ -21,11 +21,11 @@
               %b.caret
             %ul.dropdown-menu.dropdown-menu-right
               %li= link_to "View Profile", person_profile_path
-              %li= link_to "Account Settings", edit_person_registration_path
+              %li= link_to "Account Settings", edit_user_registration_path
               %li.divider
               %li
-                =link_to "Sign out", destroy_person_session_path, method: "delete"
-        - elsif vendor_signed_in?
+                =link_to "Sign out", destroy_user_session_path, method: "delete"
+        - elsif user_signed_in? and current_user.vendor?
           / %li= link_to "Businesses", '#'
           %li.dropdown
             %a.dropdown-toggle{"data-toggle" => "dropdown", href: vendor_profile_path}
@@ -36,11 +36,11 @@
               %li= link_to "Account Settings", edit_vendor_registration_path
               %li.divider
               %li
-                = link_to "Sign out", destroy_vendor_session_path, method: "delete"
+                = link_to "Sign out", destroy_user_session_path, method: "delete"
         - else
           - unless controller.controller_name == "sessions" or controller.controller_name == "registrations"
             %li.dropdown
-              %a.dropdown-toggle{"data-toggle" => "dropdown", href: new_person_session_path}
+              %a.dropdown-toggle{"data-toggle" => "dropdown", href: new_user_session_path}
                 Sign in
                 %span.glyphicon.glyphicon-log-in
               %ul.dropdown-login.dropdown-menu
