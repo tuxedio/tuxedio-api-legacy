@@ -22,10 +22,10 @@ class ApplicationController < ActionController::Base
 
     #REDIRECT DEVISE AFTER SIGN IN
     def after_sign_in_path_for(resource)
-      if resource.class.name == "Person"
+      if resource.rolable.class.name == "Person"
         return root_path
-      elsif resource.class.name == "Vendor"
-        if current_vendor.confirmed == false
+      elsif resource.rolable.class.name == "Vendor"
+        if current_user.rolable.confirmed == false
           return confirm_details_vendors_path
         else
           return root_path

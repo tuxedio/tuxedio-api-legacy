@@ -1,32 +1,32 @@
-- provide(:title, current_vendor.name)
+- provide(:title, current_user.rolable.name)
 .row
   .col-md-4
     %section.center
       .vendor-picture
-        = image_tag current_vendor.picture.url(:medium)
+        = image_tag current_user.rolable.picture.url(:medium)
       .vendor-profile-links
         = link_to "Edit Profile", edit_vendor_registration_path, {:class => 'btn btn-sm btn-primary'}
         = link_to 'Add an experience', new_vendors_experiences_path, {:class => 'btn btn-sm btn-primary'}
-        = unless current_vendor.confirmed?
+        = unless current_user.rolable.confirmed?
           = link_to 'Import data from Yelp', confirm_details_vendors_path, {:class => 'btn btn-sm btn-primary'}
   .col-md-8
     %section
       .vendor-name.well
-        %h1= current_vendor.name
+        %h1= current_user.rolable.name
       .vendor-info.well
         .vendor-location
           = "Located in "
-          = current_vendor.location
+          = current_user.rolable.location
         .vendor-email
           %span= "Email: "
-          = current_vendor.email
+          = current_user.email
         .vendor-description
           %span Vendor description:
-          %p.well= current_vendor.description
+          %p.well= current_user.rolable.description
 %hr
   %h3= "Offered experiences:"
   .experience-list
-    -if current_vendor.experiences.any?
+    -if current_user.rolable.experiences.any?
       = will_paginate @experiences, renderer: BootstrapPagination::Rails
       = render @experiences
       = will_paginate @experiences, renderer: BootstrapPagination::Rails

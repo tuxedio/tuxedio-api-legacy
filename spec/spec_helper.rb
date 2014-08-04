@@ -59,6 +59,10 @@ Spork.prefork do
 
     #Add Factory Girl
     config.include FactoryGirl::Syntax::Methods
+
+    #Remove Deprication Warning
+    config.infer_spec_type_from_file_location!
+
   end
 end
 

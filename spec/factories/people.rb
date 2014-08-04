@@ -1,19 +1,22 @@
 FactoryGirl.define do
-  factory :person, class: Person do
-    name     "Example Person"
-    email    "person@example.com"
+
+  factory :person_user, class: Person do
+    sequence(:name) {|n| "Person_#{n}"}
     location "Boulder"
-    password "foobar1234"
-    password_confirmation "foobar1234"
     top_choices ["Larkburger", "Sushi Tora", "Illegal Pete's"]
   end
 
-  factory :person1, class: Person do
-    name     "New Person"
-    email    "person1@example.com"
-    location "Boulder"
+  factory :person, class: User do
+    sequence(:email) {|n| "person#{n}@exmaple.com"}
     password "foobar1234"
     password_confirmation "foobar1234"
-    top_choices ["Larkburger", "Sushi Tora", "Illegal Pete's"]
+    association :rolable, factory: :person_user
+  end
+
+  factory :person1, class: User do
+    sequence(:email) {|n| "personone#{n}@exmaple.com"}
+    password "foobar1234"
+    password_confirmation "foobar1234"
+    association :rolable, factory: :person_user
   end
 end
