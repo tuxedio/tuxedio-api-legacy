@@ -4,7 +4,7 @@ Feature: Person Sign-up
   I want to be able to sign up using the register page
 
 Background:
-  Given I visit the new person registration page
+  Given I visit the person sign up page
 
 Scenario: Valid Sign-up
   When I fill in the following:

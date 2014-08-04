@@ -4,11 +4,11 @@ Feature: Person Sign-in Process
   I want to sign-in
 
 Background:
-  Given a person exists
+  Given a person exists with email: "person@example.com"
   And that person is confirmed
 
 Scenario: Unsuccessful sign-in
-  Given I visit the new person session page
+  Given I visit the new user session page
   When I fill in the following:
   | field    | value               |
   | Email    | invalid@invalid.com |
@@ -17,7 +17,7 @@ Scenario: Unsuccessful sign-in
   Then I should see a warning message
 
 Scenario: Successful sign-in/sign-out
-  Given I visit the new person session page
+  Given I visit the new user session page
   When I fill in the following:
   | field    | value                |
   | Email    | person@example.com |
