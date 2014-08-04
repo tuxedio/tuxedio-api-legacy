@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20140424043033) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "adventures", force: true do |t|
     t.string  "name"
     t.integer "person_id",      null: false
@@ -75,8 +78,8 @@ ActiveRecord::Schema.define(version: 20140424043033) do
     t.datetime "picture_updated_at"
   end
 
-  add_index "people", ["email"], name: "index_people_on_email", unique: true
-  add_index "people", ["reset_password_token"], name: "index_people_on_reset_password_token", unique: true
+  add_index "people", ["email"], name: "index_people_on_email", unique: true, using: :btree
+  add_index "people", ["reset_password_token"], name: "index_people_on_reset_password_token", unique: true, using: :btree
 
   create_table "vendors", force: true do |t|
     t.string   "email",                  default: "",    null: false
@@ -112,7 +115,7 @@ ActiveRecord::Schema.define(version: 20140424043033) do
     t.datetime "picture_updated_at"
   end
 
-  add_index "vendors", ["email"], name: "index_vendors_on_email", unique: true
-  add_index "vendors", ["reset_password_token"], name: "index_vendors_on_reset_password_token", unique: true
+  add_index "vendors", ["email"], name: "index_vendors_on_email", unique: true, using: :btree
+  add_index "vendors", ["reset_password_token"], name: "index_vendors_on_reset_password_token", unique: true, using: :btree
 
 end
