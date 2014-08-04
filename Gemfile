@@ -7,22 +7,21 @@ ruby '2.0.0'
 gem  'rails', '4.1.4'
 
 platform :jruby do
-  gem 'activerecord-jdbcsqlite3-adapter'
   gem 'jruby-openssl'
-  gem 'jdbc-postgres', '~> 9.3.1101', group: :production
+  gem 'activerecord-jdbcpostgresql-adapter'
   gem 'torquebox', TORQUEBOX_VERSION
   gem 'spork', '~> 1.0rc'
 end
 
 platform :ruby do
-  gem 'sqlite3', '1.3.8'
-  gem 'pg', '0.15.1'
+  gem 'pg'
 end
 
 
 group :development, :test do
   gem 'childprocess', '0.3.6'
   gem 'factory_girl_rails', '4.2.1'
+  gem 'pry-rails'
   gem 'sprockets'
   gem 'sprockets-rails', :require => 'sprockets/railtie'
 end
@@ -35,7 +34,6 @@ group :development do
   gem 'guard-cucumber', require: false
   gem 'guard-livereload', require: false
   gem 'guard-rspec', require: false
-  gem 'pry-rails'
   gem 'spring'
   gem 'spring-commands-cucumber'
   gem 'spring-commands-rspec'
