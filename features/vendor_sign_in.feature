@@ -4,9 +4,9 @@ Feature: Vendor signing in
   I want to be able to sign in
 
   Background:
-    Given a vendor exists
+    Given a vendor exists with email: "vendor@example.com"
     And that vendor is confirmed
-    Given I visit the new vendor session page
+    Given I visit the new user session page
 
   Scenario: Unsuccessful signin
     When I fill in the following:
