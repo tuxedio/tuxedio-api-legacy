@@ -39,14 +39,14 @@ Given(/^I am signed in as a vendor$/) do
   steps %q{
     Given a vendor exists
     And that vendor is confirmed
-    And I sign in as that vendor
+    And I sign in as that user
   }
 end
 Given(/^I am signed in as a boulder_vendor$/) do
   steps %q{
     Given a boulder_vendor exists
     And that boulder_vendor is confirmed
-    And I sign in as that boulder_vendor
+    And I sign in as that user
   }
 end
 
