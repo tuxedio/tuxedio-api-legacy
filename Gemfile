@@ -15,6 +15,7 @@ end
 
 platform :ruby do
   gem 'pg'
+  gem 'debugger'
 end
 
 
@@ -24,7 +25,6 @@ group :development, :test do
   gem 'pry-rails'
   gem 'sprockets'
   gem 'sprockets-rails', :require => 'sprockets/railtie'
-  gem 'debugger'
 end
 
 group :development do

@@ -30,16 +30,11 @@ class User < ActiveRecord::Base
   # Class Methods
 
   def person?
-    if self.rolable_type == "Person"
-      return true
-    end
-    return false
+    self.rolable_type == "Person"
   end
+
   def vendor?
-    if self.rolable_type == "Vendor"
-      return true
-    end
-    return false
+    self.rolable_type == "Vendor"
   end
 
 end

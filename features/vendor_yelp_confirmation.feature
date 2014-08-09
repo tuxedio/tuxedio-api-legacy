@@ -19,5 +19,3 @@ Feature: Vendor signing in, first time
     When I sign in as that user
     Then I should be on the vendor profile page
     And I should see the text "hfgjfsfdtgdf"
-
-

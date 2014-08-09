@@ -27,4 +27,3 @@ end
 Then /^the vendor should see their profile page$/ do
   expect(page).to have_title("tuxedio | " + @vendor.name)
 end
-
