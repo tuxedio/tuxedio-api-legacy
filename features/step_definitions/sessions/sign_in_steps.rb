@@ -60,5 +60,5 @@ Given(/^(.+) is confirmed$/) do |user|
 end
 
 Given(/^I sign out as a (.*?)$/) do |user|
-  page.driver.submit :delete, "/#{user.pluralize}/sign_out", {}
+  page.driver.submit :delete, "/users/sign_out", {}
 end
