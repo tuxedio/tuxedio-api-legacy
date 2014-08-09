@@ -1,5 +1,7 @@
 language: ruby
 script: bundle exec rspec
+before_script:
+  - bundle exec rake db:create
 rvm:
   - 2.0.0
   - jruby-19mode

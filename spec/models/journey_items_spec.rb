@@ -42,11 +42,11 @@ describe "Journey Item".upcase.colorize(:light_blue) do
 
   describe "can access association for  " do
     describe "person" do
-      it { expect(@journey_item.adventure.person.id).to be_a_kind_of(Fixnum) }
+      it { expect(@journey_item.adventure.person).to be_a Person }
     end
 
     describe "vendor" do
-      it { expect(@journey_item.experience_time.vendor.id).to be_a_kind_of(Fixnum) }
+      it { expect(@journey_item.experience_time.vendor).to be_a Vendor }
     end
   end
 
