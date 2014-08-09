@@ -11,7 +11,7 @@ Background:
     Then I should see experiences displayed
 
   Scenario: Person adds and removes journey item
-    When I click the link "Add to adventure"
+    When the person clicks an Add to adventure link
     Then I should be on the new adventures journey items page
     When I select a adventure and experience time
     And I click the button "Add to my adventure"
@@ -27,12 +27,12 @@ Background:
   Scenario: Person has no adventure
     Given I have no adventures
     And I visit the explore page
-    When I click the link "Add to adventure"
+    When the person clicks an Add to adventure link
     Then I should be on the new adventures page
 
   Scenario: Add to adventure when not signed in
     Given I sign out as a person
     When I visit the explore page
     Then I should see experiences displayed
-    When I click the link "Add to adventure"
-    Then I should be on the new person session page
+    When the person clicks an Add to adventure link
+    Then I should be on the new user session page

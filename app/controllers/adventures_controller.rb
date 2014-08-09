@@ -1,8 +1,8 @@
 class AdventuresController < ApplicationController
-  before_action :authenticate_person!
+  before_action :authenticate_user!
 
   def show
-    @adventures = current_person.adventures
+    @adventures = current_user.rolable.adventures
 
     if (@adventures.load.empty?)
       flash[:notice] = "You currently have no adventures created. Please create a adventure to get started."
@@ -10,18 +10,18 @@ class AdventuresController < ApplicationController
       return
     end
 
-    @current_adventure = current_person.current_adventure(current_adventure_id)
+    @current_adventure = current_user.rolable.current_adventure(current_adventure_id)
     @journey_items = @current_adventure.journey_items.includes(:experience_time).order('experience_times.start_time')
     #Set make sure current adventure and session var are same
     @experiences = @current_adventure.experiences
   end
 
   def new
-    @adventure = current_person.adventures.new
+    @adventure = current_user.rolable.adventures.new
   end
 
   def create
-    @adventure = current_person.adventures.build(adventure_params)
+    @adventure = current_user.rolable.adventures.build(adventure_params)
     if @adventure.save
       flash[:notice] = "New adventure created!"
       redirect_to people_adventures_path
@@ -31,11 +31,11 @@ class AdventuresController < ApplicationController
   end
 
   def edit
-    @adventure = current_person.current_adventure(current_adventure_id)
+    @adventure = current_user.rolable.current_adventure(current_adventure_id)
   end
 
   def update
-    @adventure = current_person.current_adventure(current_adventure_id)
+    @adventure = current_user.rolable.current_adventure(current_adventure_id)
     if @adventure.update(adventure_params)
       redirect_to people_adventures_path
     else

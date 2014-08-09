@@ -52,6 +52,19 @@ ActiveRecord::Schema.define(version: 20140424043033) do
   end
 
   create_table "people", force: true do |t|
+    t.string   "location",             null: false
+    t.string   "name",                 null: false
+    t.text     "bio"
+    t.text     "top_choices"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "picture_file_name"
+    t.string   "picture_content_type"
+    t.integer  "picture_file_size"
+    t.datetime "picture_updated_at"
+  end
+
+  create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
@@ -66,39 +79,19 @@ ActiveRecord::Schema.define(version: 20140424043033) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
-    t.string   "location",                            null: false
-    t.string   "name",                                null: false
-    t.text     "bio"
-    t.text     "top_choices"
+    t.integer  "rolable_id"
+    t.string   "rolable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "picture_file_name"
-    t.string   "picture_content_type"
-    t.integer  "picture_file_size"
-    t.datetime "picture_updated_at"
   end
 
-  add_index "people", ["email"], name: "index_people_on_email", unique: true, using: :btree
-  add_index "people", ["reset_password_token"], name: "index_people_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "vendors", force: true do |t|
-    t.string   "email",                  default: "",    null: false
-    t.string   "encrypted_password",     default: "",    null: false
-    t.string   "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,     null: false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
-    t.string   "confirmation_token"
-    t.datetime "confirmed_at"
-    t.datetime "confirmation_sent_at"
-    t.string   "unconfirmed_email"
-    t.string   "name",                                   null: false
-    t.string   "location",                               null: false
-    t.integer  "zip_code",                               null: false
+    t.string   "name",                                 null: false
+    t.string   "location",                             null: false
+    t.integer  "zip_code",                             null: false
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -108,14 +101,11 @@ ActiveRecord::Schema.define(version: 20140424043033) do
     t.string   "address"
     t.string   "country"
     t.text     "coordinates"
-    t.boolean  "confirmed",              default: false
+    t.boolean  "confirmed",            default: false
     t.string   "picture_file_name"
     t.string   "picture_content_type"
     t.integer  "picture_file_size"
     t.datetime "picture_updated_at"
   end
-
-  add_index "vendors", ["email"], name: "index_vendors_on_email", unique: true, using: :btree
-  add_index "vendors", ["reset_password_token"], name: "index_vendors_on_reset_password_token", unique: true, using: :btree
 
 end

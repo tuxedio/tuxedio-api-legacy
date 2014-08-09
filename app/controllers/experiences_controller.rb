@@ -1,5 +1,5 @@
 class ExperiencesController < ApplicationController
-  before_action :authenticate_vendor!, only: [:new, :create, :edit, :destroy]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :destroy]
 
   def show
     if params[:experience]
@@ -10,7 +10,7 @@ class ExperiencesController < ApplicationController
   end
 
   def new
-    @experience = current_vendor.experiences.new
+    @experience = current_user.rolable.experiences.new
   end
 
   def edit
@@ -29,7 +29,7 @@ class ExperiencesController < ApplicationController
   end
 
   def create
-    @experience = current_vendor.experiences.build(experiences_params)
+    @experience = current_user.rolable.experiences.build(experiences_params)
 
     if @experience.save
       redirect_to new_experiences_experience_times_path(experience: @experience)
@@ -41,8 +41,8 @@ class ExperiencesController < ApplicationController
   def explore
     @experiences = Experience.take(9).shuffle!
 
-    if person_signed_in?
-      @adventure = current_person.current_adventure(session[:current_adventure_id])
+    if user_signed_in? and current_user.person?
+      @adventure = current_user.rolable.current_adventure(session[:current_adventure_id])
       @journey = @adventure.journey_items unless @adventure.nil?
     end
   end

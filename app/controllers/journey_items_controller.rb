@@ -3,13 +3,13 @@ class JourneyItemsController < ApplicationController
   def new
     @experience = Experience.find(journey_items_params[:experience])
     @experience_times = @experience.experience_times
-    @adventures = current_person.adventures
+    @adventures = current_user.rolable.adventures
     @journey_item = JourneyItem.new
   end
 
   def create
     # find person's adventures
-    @adventure = current_person.adventures.find(journey_items_params[:adventure])
+    @adventure = current_user.rolable.adventures.find(journey_items_params[:adventure])
     @experience = Experience.find(journey_items_params[:experience])
     @experience_time = @experience.experience_times.find(journey_items_params[:experience_time])
 
@@ -33,7 +33,7 @@ class JourneyItemsController < ApplicationController
   # Why? Because destroy will be asynchronously called so no redirects are neccesary.
   # For now it makes Cucumber happy.
   def change
-    @adventure = current_person.adventures.find(session[:current_adventure_id])
+    @adventure = current_user.rolable.adventures.find(session[:current_adventure_id])
 
     (params[:delete] || []).each do |index|
       @adventure.journey_items.destroy(index)

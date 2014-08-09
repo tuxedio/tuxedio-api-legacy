@@ -54,8 +54,8 @@ module Yelp
 
   def get_raw_data
     access_token = get_access_token
-    search_name  = URI.encode_www_form_component(current_vendor.name)
-    search_zip   = current_vendor.zip_code
+    search_name  = URI.encode_www_form_component(current_user.rolable.name)
+    search_zip   = current_user.rolable.zip_code
 
 
     if access_token.nil?

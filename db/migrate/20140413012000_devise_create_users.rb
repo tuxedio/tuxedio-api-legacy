@@ -1,8 +1,8 @@
-class DeviseCreatePeople < ActiveRecord::Migration
+class DeviseCreateUsers < ActiveRecord::Migration
   def change
-    create_table(:people) do |t|
+    create_table(:users) do |t|
       ## Database authenticatable
-      t.string :email,              null: false, default: "", unique: true
+      t.string :email,              null: false, default: "", unique:true
       t.string :encrypted_password, null: false, default: ""
 
       ## Recoverable
@@ -19,7 +19,7 @@ class DeviseCreatePeople < ActiveRecord::Migration
       t.string   :current_sign_in_ip
       t.string   :last_sign_in_ip
 
-      # Confirmable
+      ## Confirmable
       t.string   :confirmation_token
       t.datetime :confirmed_at
       t.datetime :confirmation_sent_at
@@ -30,17 +30,13 @@ class DeviseCreatePeople < ActiveRecord::Migration
       # t.string   :unlock_token # Only if unlock strategy is :email or :both
       # t.datetime :locked_at
 
-      t.string :location, null: false
-      t.string :name, null: false
-      t.text :bio
-      t.text :top_choices
-
+      t.references :rolable, polymorphic: true
       t.timestamps
     end
 
-    add_index :people, :email,                unique: true
-    add_index :people, :reset_password_token, unique: true
-    # add_index :people, :confirmation_token,   unique: true
-    # add_index :people, :unlock_token,         unique: true
+    add_index :users, :email,                unique: true
+    add_index :users, :reset_password_token, unique: true
+    # add_index :users, :confirmation_token,   unique: true
+    # add_index :users, :unlock_token,         unique: true
   end
 end

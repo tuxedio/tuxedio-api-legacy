@@ -4,7 +4,7 @@ Feature: Vendor sign in
   I want to sign up using the register page
 
 Scenario:
-  Given I visit the new vendor registration page
+  Given I visit the vendor sign up page
   When I fill in the following:
   | field        | value              |
   | Name         | Example Vendor     |
@@ -16,7 +16,7 @@ Scenario:
   Then I should recieve an email to "vendor@example.com"
 
 Scenario:
-  Given I visit the new vendor registration page
+  Given I visit the vendor sign up page
   When I fill in the following:
   | field        | value              |
   | Name         | Example Vendor     |

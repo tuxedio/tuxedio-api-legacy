@@ -25,6 +25,7 @@ group :development, :test do
   gem 'pry-rails'
   gem 'sprockets'
   gem 'sprockets-rails', :require => 'sprockets/railtie'
+  gem 'debugger'
 end
 
 group :development do

@@ -1,20 +1,24 @@
-vend1 = Vendor.create!(
-  name: "Larkburger123",
+vend1 = User.create(
   email: "larkburger123@example.com",
-  location: "Boulder",
   password: "mypassword1",
-  password_confirmation: "mypassword1",
-  zip_code: 80302
+  password_confirmation: "mypassword1"
 )
 
+
+vend1.rolable = Vendor.create(
+  name: "Larkburger123",
+  location: "Boulder",
+  zip_code: 80302
+)
+vend1.save
 vend1.confirm!
 
 
-experience_name = vend1.name + " Experience"
+experience_name = vend1.rolable.name + " Experience"
 experience_description = Faker::Lorem.sentence(5)
 experience_location = "Boulder"
 experience_price = Faker::Number.number(2)
-vend1.experiences.create!(
+vend1.rolable.experiences.create!(
   name: experience_name,
   description: experience_description,
   location: experience_location,

@@ -34,7 +34,7 @@ When(/^a user visits the "Add an experience" page$/) do
 end
 
 Then(/^they should see the vendor sign in page$/) do
-  expect(current_path).to eq(new_vendor_session_path)
+  expect(current_path).to eq(new_user_session_path)
 end
 
 

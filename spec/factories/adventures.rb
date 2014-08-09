@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :adventure, class: Adventure do
-    person
-    name "Adventure1"
+    association :person, factory: :person_user
+    sequence(:name) {|n| "Adventure_#{n}"}
     location "Boulder"
     start_date Date.today
     number_of_days 1

@@ -1,16 +1,16 @@
 class VendorsController < ApplicationController
   include Yelp
-  before_action :authenticate_vendor!
+  before_action :authenticate_user!
 
   def show
-    @experiences = current_vendor.experiences.paginate(page: params[:page], :per_page => 10)
+    @experiences = current_user.rolable.experiences.paginate(page: params[:page], :per_page => 10)
   end
 
   def confirm_details
 
     # Vendor info pulled from Yelp
     @data   = get_vendor_data
-    @vendor = current_vendor
+    @vendor = current_user.rolable
     @vendor.update!(confirmed: true)
 
     if @data == false
@@ -21,7 +21,7 @@ class VendorsController < ApplicationController
 
   # Update info with information from Yelp.
   def update_details
-    if current_vendor.update(params[:vendor])
+    if current_user.rolable.update(params[:vendor])
       flash['success'] = "Success! Your information was updated."
       redirect_to vendor_profile_path
     else

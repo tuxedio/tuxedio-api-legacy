@@ -24,4 +24,4 @@ Scenario: The vendor should not be able to submit an invalid experience
 Scenario: A user is logged out
   When the vendor clicks the "Sign out" link
   And a user visits the "Add an experience" page
-  Then they should see the vendor sign in page
+  Then I should be on the new user session page

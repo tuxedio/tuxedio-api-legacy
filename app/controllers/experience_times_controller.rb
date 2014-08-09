@@ -1,5 +1,5 @@
 class ExperienceTimesController < ApplicationController
-  before_action :authenticate_vendor!, only: [:new, :create, :edit, :destroy]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :destroy]
 
   def new
     @experience = Experience.find(params[:experience])

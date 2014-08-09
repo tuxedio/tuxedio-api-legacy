@@ -1,47 +1,50 @@
 FactoryGirl.define do
-  factory :vendor, class: Vendor do
-    name     "Example Vendor"
-    email    "vendor@example.com"
+  factory :vendor_user, class: Vendor do
+    sequence(:name) {|n| "Vendor_#{n}"}
     location "Boulder"
     zip_code "80301"
-    password "foobar1234"
-    password_confirmation "foobar1234"
   end
 
-  factory :boulder_vendor, class: Vendor do
-    name     "Illegal Pete's"
-    email    "test3@vend.com"
-    location "Boulder"
-    zip_code "80301"
+  factory :boulder_vendor, class: User do
+    sequence(:email) {|n| "boulder_vendor#{n}@vend.com"}
     password "foobar1234"
     password_confirmation "foobar1234"
+    association :rolable, factory: :vendor_user, name: "Illegal Pete's"
   end
 
-  factory :vendor1, class: Vendor do
-    name     "Larkburger"
-    email    "test1@vend.com"
-    location "Boulder"
-    zip_code "80301"
+  factory :vendor, class: User do
+    sequence(:email) {|n| "vendor.#{n}3@vend.com"}
     password "foobar1234"
     password_confirmation "foobar1234"
+    association :rolable, factory: :vendor_user, name: "Example Vendor"
   end
 
-  factory :vendor2, class: Vendor do
-    name     "Illegal Pete's"
-    email    "test3@vend.com"
-    location "Boulder"
-    zip_code "80301"
+  factory :vendor1, class: User do
+    sequence(:email) {|n| "vendor1.#{n}3@vend.com"}
     password "foobar1234"
     password_confirmation "foobar1234"
+    association :rolable, factory: :vendor_user, name: "Larkburger"
   end
 
-  factory :vendor3, class: Vendor do
-    name     "Sushi Tora"
-    email    "test2@vend.com"
-    location "Boulder"
-    zip_code "80301"
+  factory :vendor2, class: User do
+    sequence(:email) {|n| "vendor2.#{n}3@vend.com"}
     password "foobar1234"
     password_confirmation "foobar1234"
+    association :rolable, factory: :vendor_user, name: "Illegal Pete's"
+  end
+
+  factory :vendor3, class: User do
+    sequence(:email) {|n| "vendor3.#{n}3@vend.com"}
+    password "foobar1234"
+    password_confirmation "foobar1234"
+    association :rolable, factory: :vendor_user, name: "Sushi Tora"
+  end
+
+  factory :vendor_with_strange_name, class: User do
+    sequence(:email) {|n| "vendor3.#{n}3@vend.com"}
+    password "foobar1234"
+    password_confirmation "foobar1234"
+    association :rolable, factory: :vendor_user, name: "hfgjfsfdtgdf", zip_code: 11111
   end
 
   factory :yelp do
