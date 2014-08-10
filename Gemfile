@@ -16,6 +16,7 @@ end
 platform :ruby do
   gem 'pg'
   gem 'debugger'
+  gem 'thin', group: :development
 end
 
 
