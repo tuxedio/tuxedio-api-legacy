@@ -40,11 +40,7 @@ class ExperiencesController < ApplicationController
 
   def explore
     @experiences = Experience.take(9).shuffle!
-
-    if person_signed_in?
-      @adventure = current_user.rolable.current_adventure(session[:current_adventure_id])
-      @journey = @adventure.journey_items unless @adventure.nil?
-    end
+    @dashboard = Dashboard.new(current_user.rolable, session) if person_signed_in?
   end
 
   private
