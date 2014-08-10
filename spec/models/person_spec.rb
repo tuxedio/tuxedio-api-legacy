@@ -67,6 +67,11 @@ describe "Person".upcase.colorize(:light_blue) do
       before { @person.bio = "" }
       it { should be_valid }
     end
+
+    describe "when person has invalid gender" do
+      before { @person.gender = "Mail" }
+      it { should_not be_valid }
+    end
   end
 
   #------------------------------------
