@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 20140424043033) do
   create_table "people", force: true do |t|
     t.string   "location",             null: false
     t.string   "name",                 null: false
+    t.string   "gender"
     t.text     "bio"
     t.text     "top_choices"
     t.datetime "created_at"

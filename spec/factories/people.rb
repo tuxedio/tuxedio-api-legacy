@@ -3,6 +3,7 @@ FactoryGirl.define do
   factory :person_user, class: Person do
     sequence(:name) {|n| "Person_#{n}"}
     location "Boulder"
+    gender "male"
     top_choices ["Larkburger", "Sushi Tora", "Illegal Pete's"]
   end
 

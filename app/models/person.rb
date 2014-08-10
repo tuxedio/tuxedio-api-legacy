@@ -22,6 +22,7 @@ class Person < ActiveRecord::Base
 
   validates :name,         presence: true, length: { maximum: 50 }
   validates :location,     presence: true, length: { maximum: 30 }
+  validates :gender,       inclusion: { in: ['male', 'female'] }
   validates :top_choices,  choice: true, on: :update
 
   # Eventually refactor this and move this logic to production.rb
