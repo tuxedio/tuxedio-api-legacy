@@ -15,5 +15,5 @@
       .experience-price
         = experience.price
       .experience-edit
-        - if user_signed_in? and current_user.vendor?
+        - if vendor_signed_in?
           = link_to "Edit Experience", edit_vendors_experiences_path(@experience, :id => experience.id), {:class => 'btn btn-lg btn-primary'}

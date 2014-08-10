@@ -6,6 +6,17 @@ class ApplicationController < ActionController::Base
   #REQUIRED TO USE DEVISE WITH CUSTOM FIELD INPUT
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+  #Helper Methods for user authentification
+  helper_method :person_signed_in?, :vendor_signed_in?
+
+  def vendor_signed_in?
+    user_signed_in? and current_user.vendor?
+  end
+
+  def person_signed_in?
+    user_signed_in? and current_user.person?
+  end
+
   protected
 
     #SPECIFY PARAMS FOR DEVISE TO USE

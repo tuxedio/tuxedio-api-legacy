@@ -21,7 +21,7 @@
           = "Price: $" + @experience.price.to_s + "0"
         .action-buttons.pull-right
           =link_to "Back to explore", explore_path, class: "btn btn-md btn-danger"
-          - if user_signed_in? and current_user.person?
+          - if person_signed_in?
             - if current_user.rolable.adventures.count == 0
               - path = new_adventures_path
             -else

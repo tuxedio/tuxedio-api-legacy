@@ -9,7 +9,7 @@
           %span.glyphicon.glyphicon-glass
           See what's happening around town.
 
-- if user_signed_in? and current_user.person? and current_user.rolable.adventures.count > 0
+- if person_signed_in? and current_user.rolable.adventures.count > 0
   = render 'explore_with_cart'
 
 -else
