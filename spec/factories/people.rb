@@ -4,6 +4,7 @@ FactoryGirl.define do
     sequence(:name) {|n| "Person_#{n}"}
     location "Boulder"
     gender "male"
+    date_of_birth 26.years.ago.to_date
     top_choices ["Larkburger", "Sushi Tora", "Illegal Pete's"]
   end
 

@@ -19,6 +19,7 @@ describe "Person".upcase.colorize(:light_blue) do
 
   it { should respond_to(:name) }
   it { should respond_to(:gender) }
+  it { should respond_to(:date_of_birth) }
 
   it { should respond_to(:location) }
 
@@ -71,6 +72,11 @@ describe "Person".upcase.colorize(:light_blue) do
 
     describe "when person has invalid gender" do
       before { @person.gender = "Mail" }
+      it { should_not be_valid }
+    end
+
+    describe "when person has invalid date_of_birth" do
+      before { @person.date_of_birth = "A few years ago" }
       it { should_not be_valid }
     end
   end

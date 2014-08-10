@@ -7,6 +7,7 @@ class CreatePeople < ActiveRecord::Migration
       t.string :gender
       t.text :bio
       t.text :top_choices
+      t.datetime :date_of_birth
 
       t.timestamps
     end
