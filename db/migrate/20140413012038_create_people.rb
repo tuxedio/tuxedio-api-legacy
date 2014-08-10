@@ -5,6 +5,7 @@ class CreatePeople < ActiveRecord::Migration
       t.string :location, null: false
       t.string :name, null: false
       t.string :gender
+      t.string :hometown
       t.text :bio
       t.text :top_choices
       t.datetime :date_of_birth

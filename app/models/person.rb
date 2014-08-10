@@ -24,6 +24,8 @@ class Person < ActiveRecord::Base
   validates :location,      presence: true, length: { maximum: 30 }
   validates :gender,        inclusion: { in: ['male', 'female'] }
   validates :top_choices,   choice: true, on: :update
+  validates :hometown,      length: { maximum: 30 }
+
 
   validates_date :date_of_birth
 

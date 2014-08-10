@@ -22,6 +22,7 @@ describe "Person".upcase.colorize(:light_blue) do
   it { should respond_to(:date_of_birth) }
 
   it { should respond_to(:location) }
+  it { should respond_to(:hometown) }
 
   it { should respond_to(:bio) }
   it { should respond_to(:top_choices) }
