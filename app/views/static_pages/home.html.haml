@@ -1,9 +1,9 @@
 - provide(:title, 'Home')
 .navbar-right
-- unless person_signed_in?
+- unless user_signed_in?
   - unless controller.controller_name == "sessions" or controller.controller_name == "registrations"
     .dropdown.pull-right.sign-in-link
-      %a.btn.btn-large.btn-default.dropdown-toggle{"data-toggle" => "dropdown", href: new_person_session_path}
+      %a.btn.btn-large.btn-default.dropdown-toggle{"data-toggle" => "dropdown", href: new_user_session_path}
         Sign in
         %span.glyphicon.glyphicon-log-in
       %ul.dropdown-login.dropdown-menu.dropdown-menu-right
@@ -20,6 +20,9 @@
         %h1.cover-heading tuxedio
         %h2.lead
           We help you plan and book awesome adventures while <br/> you get to focus on the fun part, traveling.
-        - if ( !person_signed_in? and !vendor_signed_in? )
+        - if ( !user_signed_in? )
           = link_to "Sign up now!", registration_choice_path, class: "btn btn-large btn-primary"
           = link_to "Explore the site", explore_path, class: "btn btn-large btn-success"
+        -else
+          = link_to "Sign Out", destroy_user_session_path, class: "btn btn-large btn-primary", method: "delete"
+

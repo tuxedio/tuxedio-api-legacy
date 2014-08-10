@@ -37,4 +37,4 @@ Scenario: A person gives invalid input when creating a adventure
 Scenario: A person is not logged in and trys to access the create a adventure page
   When I click the link "Sign out"
   And I visit the people adventures page
-  Then I should be on the new person session page
+  Then I should be on the new user session page

@@ -7,4 +7,4 @@ Feature: As a person, so that I can learn more about an experience, I want to vi
     Then the person should see the "/explore" page
     Then the person should see experiences displayed
     When the person clicks an image
-    Then the person should see the experience's page
+    Then the person should see the experiences page

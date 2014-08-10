@@ -1,7 +1,8 @@
 Given(/^a vendor is logged in$/) do
   steps %{
-    Given a vendor visits the signin page
-    And the vendor has an account
+    Given a vendor exists
+    And that vendor is confirmed
+    Given I visit the new user session page
     When the vendor submits valid signin information
   }
 end

@@ -14,10 +14,8 @@ Feature: Vendor signing in, first time
     Then I should see a warning message
 
   Scenario: Invalid Yelp info
-    Given a vendor exists with name: "hfgjfsfdtgdf", zip_code: 11111
-    And that vendor is confirmed
-    When I sign in as that vendor
+    Given a vendor_with_strange_name exists
+    And that user is confirmed
+    When I sign in as that user
     Then I should be on the vendor profile page
     And I should see the text "hfgjfsfdtgdf"
-
-

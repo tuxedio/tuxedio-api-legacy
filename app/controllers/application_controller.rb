@@ -6,6 +6,17 @@ class ApplicationController < ActionController::Base
   #REQUIRED TO USE DEVISE WITH CUSTOM FIELD INPUT
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+  #Helper Methods for user authentification
+  helper_method :person_signed_in?, :vendor_signed_in?
+
+  def vendor_signed_in?
+    user_signed_in? and current_user.vendor?
+  end
+
+  def person_signed_in?
+    user_signed_in? and current_user.person?
+  end
+
   protected
 
     #SPECIFY PARAMS FOR DEVISE TO USE
@@ -22,10 +33,10 @@ class ApplicationController < ActionController::Base
 
     #REDIRECT DEVISE AFTER SIGN IN
     def after_sign_in_path_for(resource)
-      if resource.class.name == "Person"
+      if resource.rolable.class.name == "Person"
         return root_path
-      elsif resource.class.name == "Vendor"
-        if current_vendor.confirmed == false
+      elsif resource.rolable.class.name == "Vendor"
+        if current_user.rolable.confirmed == false
           return confirm_details_vendors_path
         else
           return root_path

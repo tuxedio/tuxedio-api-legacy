@@ -4,7 +4,7 @@ describe "Person".upcase.colorize(:light_blue) do
 
 
 
-  before { @person = FactoryGirl.build(:person) }
+  before { @person = FactoryGirl.build(:person).rolable }
 
   ## Dummy Vendors
   before do
@@ -13,13 +13,14 @@ describe "Person".upcase.colorize(:light_blue) do
     FactoryGirl.create(:vendor3)
   end
 
+
+
   subject { @person }
 
   it { should respond_to(:name) }
-  it { should respond_to(:email) }
+
   it { should respond_to(:location) }
-  it { should respond_to(:password) }
-  it { should respond_to(:password_confirmation) }
+
   it { should respond_to(:bio) }
   it { should respond_to(:top_choices) }
   it { should respond_to(:picture_file_name) }
@@ -32,11 +33,6 @@ describe "Person".upcase.colorize(:light_blue) do
   describe "\nCheck parameters for blankness".upcase.colorize(:light_blue) do
     describe "when name is not present" do
       before { @person.name = " " }
-      it { should_not be_valid }
-    end
-
-    describe "when email is not present" do
-      before { @person.email = " " }
       it { should_not be_valid }
     end
 
@@ -57,57 +53,8 @@ describe "Person".upcase.colorize(:light_blue) do
       before { @person.location = "z" * 31 }
       it { should_not be_valid }
     end
-
-    describe "when email format is invalid" do
-      it "it should be invalid" do
-        addresses = %w[user@foo,com user_at_foo.org example.user@foo.
-                       foo@bar_baz.com foo@bar+baz.com]
-        addresses.each do |invalid|
-          @person.email = invalid
-          expect(@person).not_to be_valid
-        end
-      end
-    end
-
-    describe "when email format is valid" do
-      it "it should be valid" do
-        addresses = %w[user@foo.COM A_US-ER@f.b.org frst.lst@foo.jp a+b@baz.cn]
-        addresses.each do |valid|
-          @person.email = valid
-          expect(@person).to be_valid
-        end
-      end
-    end
-
-    describe "when email adresss is taken" do
-      before do
-        user_email_duplicate = @person.dup
-        user_email_duplicate.email = @person.email.upcase
-        user_email_duplicate.save
-      end
-
-      it { should_not be_valid }
-    end
-
-    describe "when password is not present" do
-      before do
-        @person.password = ""
-        @person.password_confirmation = ""
-      end
-
-      it { should_not be_valid }
-    end
-
-    describe "when password doesn't match confirmation" do
-      before { @person.password_confirmation = "mismatch" }
-      it { should_not be_valid }
-    end
-
-    describe "with a password that's too short" do
-      before { @person.password = @person.password_confirmation = "a" * 5 }
-      it { should be_invalid }
-    end
   end
+
   #------------------------------------
   # Bio
   describe "\nbio".upcase.colorize(:light_blue) do

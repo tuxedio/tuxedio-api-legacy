@@ -48,7 +48,7 @@ describe Adventure do
       expect(adventure).to respond_to(:person)
     end
     describe "when person is destroyed" do
-      before { adventure.person.destroy }
+      before { adventure.person.destroy! }
       it "should also destroy associated adventures" do
         expect(Adventure.count).to equal(0)
       end

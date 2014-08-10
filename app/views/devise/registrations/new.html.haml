@@ -1,0 +1,33 @@
+- params[:user][:user_type] ||= 'person'
+
+- if ["person", "vendor"].include? params[:user][:user_type].downcase
+  - child_class_name = params[:user][:user_type].downcase.camelize
+  - user_type = params[:user][:user_type].downcase
+- else
+  - child_class_name = "Person"
+  - user_type = "person"
+
+- resource.rolable = child_class_name.constantize.new if resource.rolable.nil?
+
+- provide(:title, 'Sign up')
+.col-sm-6.col-sm-offset-3.well.form-box
+  .col-sm-12
+    .row
+      %h1
+        .text-center Sign up.
+        .small.text-center
+          %span.glyphicon.glyphicon-thumbs-up
+          Prepare for a grand time!
+
+    .row.top-buffer
+      = bootstrap_form_for(resource, as: resource_name, url: registration_path(resource_name), :html => { :multipart => true }) do |f|
+        = render 'shared/error_messages', object: f.object
+        = f.email_field :email, autofocus: true
+        = fields_for resource.rolable do |rf|
+          = render :partial => "#{child_class_name.underscore}_fields", :locals => { :f => rf }
+        = hidden_field :user, :user_type, :value => user_type
+        = f.password_field :password, autocomplete: "off"
+        = f.password_field :password_confirmation, :label => "Confirmation", autocomplete: "off"
+        = f.form_group do
+          = f.submit "Create my account", class: "btn btn-large btn-success"
+      = render "devise/shared/links"

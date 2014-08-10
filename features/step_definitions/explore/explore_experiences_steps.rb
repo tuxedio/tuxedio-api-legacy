@@ -1,5 +1,5 @@
 Given(/^I have created a adventure$/) do
-  @adventure = @user.adventures.create!(name: "My Adventure", location: "Boulder", start_date: Time.now, number_of_days: 2)
+  @adventure = @user.rolable.adventures.create!(name: "My Adventure", location: "Boulder", start_date: Time.now, number_of_days: 2)
 end
 
 Given(/^I have no adventures$/) do
@@ -13,7 +13,7 @@ end
 
 Given(/^I select a adventure and experience time$/) do
   select 'My Adventure',   from: '_adventure'
-  find("option[value='3']").click
+  find("option[2]").select_option
 end
 
 Then(/^My intinerary cart should(.*?) be empty$/) do |i|

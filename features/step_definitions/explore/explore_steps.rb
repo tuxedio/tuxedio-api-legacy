@@ -38,6 +38,3 @@ Then(/^the intinerary cart should(.*?) be empty$/) do |i|
     expect(page).to have_content('Your adventure is empty!')
   end
 end
-
-
-

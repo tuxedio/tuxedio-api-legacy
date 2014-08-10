@@ -15,6 +15,7 @@ end
 
 platform :ruby do
   gem 'pg'
+  gem 'debugger'
 end
 
 

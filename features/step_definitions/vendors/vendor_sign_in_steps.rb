@@ -19,12 +19,11 @@ Given /^the vendor has an account$/ do
 end
 
 When /^the vendor submits valid signin information$/ do
-  fill_in "vendor_email",    with: @vendor.email
-  fill_in "Password", with: @vendor.password
+  fill_in "Email",    with: User.last.email
+  fill_in "Password", with: "foobar1234"
   click_button "Sign in"
 end
 
 Then /^the vendor should see their profile page$/ do
   expect(page).to have_title("tuxedio | " + @vendor.name)
 end
-
