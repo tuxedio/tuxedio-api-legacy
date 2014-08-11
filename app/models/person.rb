@@ -22,12 +22,12 @@ class Person < ActiveRecord::Base
 
   validates :name,          presence: true, length: { maximum: 50 }
   validates :location,      presence: true, length: { maximum: 30 }
-  validates :gender,        inclusion: { in: ['male', 'female'] }
+  validates :gender,        inclusion: { in: ['male', 'female'] }, allow_nil: true
   validates :top_choices,   choice: true, on: :update
-  validates :hometown,      length: { maximum: 30 }
+  validates :hometown,      presence: false, length: { maximum: 30 }
 
 
-  validates_date :date_of_birth
+  validates_date :date_of_birth, allow_nil: true
 
   # Eventually refactor this and move this logic to production.rb
   if Rails.env == 'production'
