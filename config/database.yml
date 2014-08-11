@@ -1,18 +1,20 @@
 defaults: &defaults
   adapter: <%= RUBY_ENGINE == 'ruby' ? 'postgresql' : 'jdbcpostgresql' %>
-  database: tuxedo_<%= Rails.env %>
   encoding: unicode
   pool: 5
   timeout: 5000
   host: localhost
 
 development:
+  database: tuxedo_development
   <<: *defaults
 
 test:
+  database: tuxedo_test
   <<: *defaults
 
 production:
+  database: tuxedo_production
   <<: *defaults
 
 cucumber:
