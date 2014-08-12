@@ -1,7 +1,6 @@
 FactoryGirl.define do
-
   factory :person_user, class: Person do
-    sequence(:name) {|n| "Person_#{n}"}
+    sequence(:name)  {Faker::Name.name}
     location "Boulder"
     top_choices ["Larkburger", "Sushi Tora", "Illegal Pete's"]
   end
