@@ -12,14 +12,6 @@ GIT
     validates_timeliness (3.0.14)
       timeliness (~> 0.3.7)
 
-GIT
-  remote: git://github.com/tuxedio/pickle.git
-  revision: e19f4d20afc830f2a91c8940e180d75b25fd8aa9
-  specs:
-    pickle (0.4.11)
-      cucumber (>= 0.8)
-      rake
-
 GEM
   remote: https://rubygems.org/
   remote: http://torquebox.org/4x/builds/gem-repo/
@@ -218,6 +210,9 @@ GEM
       cocaine (~> 0.5.3)
       mime-types
     pg (0.17.1)
+    pickle (0.4.11)
+      cucumber (>= 0.8)
+      rake
     polyglot (0.3.5)
     protected_attributes (1.0.7)
       activemodel (>= 4.0.1, < 5.0)
@@ -391,7 +386,7 @@ DEPENDENCIES
   oauth-plugin
   paperclip (~> 4.1)
   pg
-  pickle!
+  pickle
   protected_attributes (= 1.0.7)
   pry-rails
   rails (= 4.1.4)

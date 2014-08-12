@@ -49,7 +49,7 @@ group :test do
   gem 'selenium-webdriver', '2.35.1'
   gem 'simplecov', '~> 0.7.1', :require => false
   gem 'spork-rails'
-  gem 'pickle', github: "tuxedio/pickle"
+  gem 'pickle'
   gem 'launchy'
 end
 
