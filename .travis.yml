@@ -1,5 +1,5 @@
 language: ruby
-script: bundle exec rspec
+script: bundle exec rake
 before_script:
   - bundle exec rake db:create
 rvm:

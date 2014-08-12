@@ -20,9 +20,14 @@ class Person < ActiveRecord::Base
   #--------------------------------------------------------
   # Validations
 
-  validates :name,         presence: true, length: { maximum: 50 }
-  validates :location,     presence: true, length: { maximum: 30 }
-  validates :top_choices,  choice: true, on: :update
+  validates :name,          presence: true, length: { maximum: 50 }
+  validates :location,      presence: true, length: { maximum: 30 }
+  validates :gender,        inclusion: { in: ['male', 'female'] }, allow_nil: true
+  validates :top_choices,   choice: true, on: :update
+  validates :hometown,      presence: false, length: { maximum: 30 }
+
+
+  validates_date :date_of_birth, allow_nil: true
 
   # Eventually refactor this and move this logic to production.rb
   if Rails.env == 'production'

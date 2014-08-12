@@ -2,6 +2,9 @@ FactoryGirl.define do
   factory :person_user, class: Person do
     sequence(:name)  {Faker::Name.name}
     location "Boulder"
+    hometown Faker::Address.city
+    gender "male"
+    date_of_birth 26.years.ago.to_date
     top_choices ["Larkburger", "Sushi Tora", "Illegal Pete's"]
   end
 
