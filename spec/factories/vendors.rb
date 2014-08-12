@@ -1,12 +1,12 @@
 FactoryGirl.define do
   factory :vendor_user, class: Vendor do
-    sequence(:name) {|n| "Vendor_#{n}"}
+    sequence(:name)  {Faker::Company.name}
     location "Boulder"
     zip_code "80301"
   end
 
   factory :boulder_vendor, class: User do
-    sequence(:email) {|n| "boulder_vendor#{n}@vend.com"}
+    sequence(:email) {|n| "vendor#{n}@example.com"} 
     password "foobar1234"
     password_confirmation "foobar1234"
     association :rolable, factory: :vendor_user, name: "Illegal Pete's"

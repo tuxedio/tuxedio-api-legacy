@@ -1,9 +1,9 @@
 FactoryGirl.define do
   factory :experience, class: Experience do
     association :vendor, factory: :vendor_user
-    name "Skydiving"
-    price 150.00
+    sequence(:name)  {Faker::Company.name}
+    sequence(:price) {Faker::Number.number(2)}
     location "Boulder"
-    description "Ipsum splitsum"
+    sequence(:description) {Faker::Lorem.sentence(5)}
   end
 end
