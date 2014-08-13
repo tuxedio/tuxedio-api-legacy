@@ -69,8 +69,10 @@ end
 
 
 gem 'bcrypt-ruby', '3.1.2'
+gem 'open_uri_redirections'
 gem 'bootstrap_form'
 gem 'devise'
+gem 'omniauth-facebook'
 gem 'faker', '1.3.0'
 gem 'haml'
 gem 'haml-rails'

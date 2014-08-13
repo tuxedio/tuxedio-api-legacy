@@ -4,7 +4,7 @@ TuxedoProto::Application.routes.draw do
   #DEVISE
   # devise_for :vendors
   # devise_for :people
-  devise_for :users, controllers: { :registrations => 'user_registrations' }
+  devise_for :users, controllers: {registrations: 'user_registrations', omniauth_callbacks: 'users/omniauth_callbacks'}
 
   #ROUTES
   root to: 'static_pages#home'
