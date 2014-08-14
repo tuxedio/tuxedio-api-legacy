@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe "User".upcase.colorize(:light_blue) do
 
-  before { @user = FactoryGirl.build(:person) }
+  before { @user = FactoryGirl.build(:person_user) }
 
   subject{ @user }
 
@@ -43,10 +43,11 @@ describe "User".upcase.colorize(:light_blue) do
 
     describe "when email adresss is taken" do
       before do
-        user_email_duplicate = @user.dup
-        user_email_duplicate.email = @user.email.upcase
-        user_email_duplicate.save
+        @user_email_duplicate = @user.dup
+        @user_email_duplicate.email = @user.email.upcase
+        @user_email_duplicate.save
       end
+      subject{ @user_email_duplicate }
 
       it { should_not be_valid }
     end
