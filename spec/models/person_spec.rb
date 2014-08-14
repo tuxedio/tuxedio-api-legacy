@@ -4,7 +4,7 @@ describe "Person".upcase.colorize(:light_blue) do
 
 
 
-  before { @person = FactoryGirl.build(:person).rolable }
+  before { @person = FactoryGirl.build(:person) }
 
   ## Dummy Vendors
   before do

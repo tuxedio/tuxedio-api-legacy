@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe "Vendor Create".upcase.colorize(:light_blue) do
 
-  before { @vendor = FactoryGirl.build(:vendor1).rolable }
+  before { @vendor = FactoryGirl.build(:vendor1) }
   subject { @vendor }
 
   it { should respond_to(:name) }
