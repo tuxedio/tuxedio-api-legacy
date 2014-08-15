@@ -14,10 +14,7 @@ FactoryGirl.define do
     location "Boulder"
     zip_code "80301"
     after(:build) do |vendor|
-      vendor.user = build(:vendor_user, rolable: vendor)
-    end
-    after(:build) do |vendor|
-      vendor.user.save!
+      vendor.user = create(:vendor_user, rolable: vendor)
     end
   end
 
@@ -26,10 +23,7 @@ FactoryGirl.define do
     location "Boulder"
     zip_code "80301"
     after(:build) do |vendor|
-      vendor.user = build(:vendor_user, rolable: vendor)
-    end
-    after(:build) do |vendor|
-      vendor.user.save!
+      vendor.user = create(:vendor_user, rolable: vendor)
     end
   end
 
@@ -38,10 +32,7 @@ FactoryGirl.define do
     location "Boulder"
     zip_code "80301"
     after(:build) do |vendor|
-      vendor.user = build(:vendor_user, rolable: vendor)
-    end
-    after(:build) do |vendor|
-      vendor.user.save!
+      vendor.user = create(:vendor_user, rolable: vendor)
     end
   end
 
@@ -50,10 +41,7 @@ FactoryGirl.define do
     location "Boulder"
     zip_code "80301"
     after(:build) do |vendor|
-      vendor.user = build(:vendor_user, rolable: vendor)
-    end
-    after(:build) do |vendor|
-      vendor.user.save!
+      vendor.user = create(:vendor_user, rolable: vendor)
     end
   end
 
@@ -62,10 +50,7 @@ FactoryGirl.define do
     location "Boulder"
     zip_code "80301"
     after(:build) do |vendor|
-      vendor.user = build(:vendor_user, rolable: vendor)
-    end
-    after(:build) do |vendor|
-      vendor.user.save!
+      vendor.user = create(:vendor_user, rolable: vendor)
     end
   end
 
@@ -74,10 +59,16 @@ FactoryGirl.define do
     location "Boulder"
     zip_code "11111"
     after(:build) do |vendor|
-      vendor.user = build(:vendor_user, rolable: vendor)
+      vendor.user = create(:vendor_user, rolable: vendor)
     end
+  end
+
+  factory :vendor_with_invalid_city, class: Vendor do
+    name  "Starbucks"
+    location "Boulder"
+    zip_code "95403"
     after(:build) do |vendor|
-      vendor.user.save!
+      vendor.user = create(:vendor_user, rolable: vendor)
     end
   end
 

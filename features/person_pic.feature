@@ -12,7 +12,7 @@ Scenario: An image is chosen
   Then I should see my profile picture
 
 Scenario: No image is chosen
-  Given a person exists with email: "person@example.com"
+  Given a person exists
   And I sign in as that user
   When I click the link "View Profile"
   Then I should see the default image

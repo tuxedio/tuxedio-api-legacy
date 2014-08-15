@@ -4,8 +4,7 @@
 
 Given(/^I am signed in as a person$/) do
   steps %q{
-    Given a person exists with email: "bob@example.com"
-    And that person is confirmed
+    Given a person exists
     And I sign in as that user
   }
 end
@@ -38,14 +37,12 @@ end
 Given(/^I am signed in as a vendor$/) do
   steps %q{
     Given a vendor exists
-    And that vendor is confirmed
     And I sign in as that user
   }
 end
 Given(/^I am signed in as a boulder_vendor$/) do
   steps %q{
     Given a boulder_vendor exists
-    And that boulder_vendor is confirmed
     And I sign in as that user
   }
 end

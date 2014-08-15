@@ -4,8 +4,7 @@ Feature: Vendor signing in
   I want to be able to sign in
 
   Background:
-    Given a vendor exists with email: "vendor@example.com"
-    And that vendor is confirmed
+    Given a vendor exists
     Given I visit the new user session page
 
   Scenario: Unsuccessful signin
@@ -19,7 +18,7 @@ Feature: Vendor signing in
   Scenario: Successful signin
     When I fill in the following:
     | field    | value              |
-    | Email    | vendor@example.com |
+    | Email    | vendor1@example.com |
     | Password | foobar1234         |
     And I click the button "Sign in"
     Then I should be on the confirm details vendors page

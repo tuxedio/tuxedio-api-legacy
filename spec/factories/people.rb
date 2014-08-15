@@ -16,10 +16,7 @@ FactoryGirl.define do
     gender "male"
     date_of_birth 26.years.ago.to_date
     after(:build) do |person|
-      person.user = build(:person_user, rolable: person)
-    end
-    after(:build) do |person|
-      person.user.save!
+      person.user = create(:person_user, rolable: person)
     end
   end
 
@@ -32,10 +29,7 @@ FactoryGirl.define do
     date_of_birth 26.years.ago.to_date
     top_choices ["Larkburger", "Sushi Tora", "Illegal Pete's"]
     after(:build) do |person|
-      person.user = build(:person_user, rolable: person)
-    end
-    after(:build) do |person|
-      person.user.save!
+      person.user = create(:person_user, rolable: person)
     end
   end
 end
