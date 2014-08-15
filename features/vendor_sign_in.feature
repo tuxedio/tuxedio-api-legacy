@@ -4,7 +4,7 @@ Feature: Vendor signing in
   I want to be able to sign in
 
   Background:
-    Given a vendor exists
+    Given a boulder_vendor exists
     Given I visit the new user session page
 
   Scenario: Unsuccessful signin

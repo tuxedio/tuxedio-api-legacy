@@ -1,7 +1,8 @@
 Feature: As a vendor, so that I can change attributes within my listed experiences, I want to edit my experiences
 
 Background: A user is logged in
-  Given a vendor is logged in
+  Given a vendor exists
+  And I sign in as that user
   And a vendor has an experience
 
 Scenario: Do a valid edit from the profile page
