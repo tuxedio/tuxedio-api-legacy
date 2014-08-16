@@ -3,7 +3,7 @@ Feature: As a vendor, so that I can change attributes within my listed experienc
 Background: A user is logged in
   Given a vendor exists
   And I sign in as that user
-  And a vendor has an experience
+  And that vendor has an experience
 
 Scenario: Do a valid edit from the profile page
   When the vendor clicks the "View My Account" link
