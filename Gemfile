@@ -1,6 +1,4 @@
 source 'https://rubygems.org'
-source 'http://torquebox.org/4x/builds/gem-repo/'
-TORQUEBOX_VERSION = '4.x.incremental.173'
 
 ruby '2.0.0'
 
@@ -9,7 +7,7 @@ gem  'rails', '4.1.4'
 platform :jruby do
   gem 'jruby-openssl'
   gem 'activerecord-jdbcpostgresql-adapter'
-  gem 'torquebox', TORQUEBOX_VERSION
+  gem 'torqbox'
   gem 'spork', '~> 1.0rc'
 end
 
