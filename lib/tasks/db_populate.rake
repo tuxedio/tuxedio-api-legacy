@@ -8,12 +8,12 @@ namespace :db do
     40.times { @person = FactoryGirl.build(:person) }
 
     puts "Building Vendors/Experiences..."
-    40.times {
+    40.times do
       @experience = FactoryGirl.create(:experience)
-      4.times {
+      4.times do
         FactoryGirl.create(:experience_time, experience: @experience)
-      }
-    }
+      end
+    end
 
   end
 end
