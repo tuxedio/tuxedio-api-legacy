@@ -1,21 +1,25 @@
 defaults: &defaults
   adapter: <%= RUBY_ENGINE == 'ruby' ? 'postgresql' : 'jdbcpostgresql' %>
-  encoding: unicode
   pool: 5
   timeout: 5000
-  host: localhost
 
 development:
+  host: localhost
   database: tuxedo_development
   <<: *defaults
 
-test:
+test: &test
+  host: localhost
   database: tuxedo_test
   <<: *defaults
 
 production:
+  user: postgres
+  host: <%= ENV['DB_TUXEDO_PORT_5432_TCP_ADDR'] %>
+  port: <%= ENV['DB_TUXEDO_PORT_5432_TCP_PORT'] %>
+  template: template0
   database: tuxedo_production
   <<: *defaults
 
 cucumber:
-  <<: *defaults
+  <<: *test
