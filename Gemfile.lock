@@ -6,7 +6,6 @@ GIT
 
 GEM
   remote: https://rubygems.org/
-  remote: http://torquebox.org/4x/builds/gem-repo/
   specs:
     actionmailer (4.1.4)
       actionpack (= 4.1.4)
@@ -91,7 +90,7 @@ GEM
       debugger-ruby_core_source (~> 1.3.5)
     debugger-linecache (1.2.0)
     debugger-ruby_core_source (1.3.5)
-    devise (3.2.4)
+    devise (3.3.0)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
       railties (>= 3.2.6, < 5)
@@ -319,16 +318,8 @@ GEM
     tilt (1.4.1)
     timeliness (0.3.7)
     timers (1.1.0)
-    torquebox (4.x.incremental.173-java)
-      torquebox-core (= 4.x.incremental.173)
-      torquebox-scheduling (= 4.x.incremental.173)
-      torquebox-web (= 4.x.incremental.173)
-    torquebox-core (4.x.incremental.173-java)
-    torquebox-scheduling (4.x.incremental.173-java)
-      torquebox-core (= 4.x.incremental.173)
-    torquebox-web (4.x.incremental.173-java)
+    torqbox (0.1.7-java)
       rack (>= 1.4.0, < 2.0)
-      torquebox-core (= 4.x.incremental.173)
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
@@ -400,7 +391,7 @@ DEPENDENCIES
   sprockets
   sprockets-rails
   thin
-  torquebox (= 4.x.incremental.173)
+  torqbox
   turbolinks (= 1.1.1)
   uglifier
   will_paginate (= 3.0.5)
