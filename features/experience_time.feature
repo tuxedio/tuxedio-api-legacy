@@ -1,7 +1,8 @@
 Feature: As a business, so that I can list my specific experiences and services to my people, I want to add an experience time an experience
 
 Background: A user is logged in
-  Given a vendor is logged in
+  Given a vendor exists
+  And I sign in as that user
 
 Scenario: The vendor should be able to add a new experience time
   Given the vendor visits the "Add an experience" page

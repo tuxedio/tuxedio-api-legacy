@@ -1,7 +1,8 @@
 Feature: As a business, so that I can list my experiences and services to my people, I want to add an experience through the "Add an experience" link on my profile page
 
 Background: A user is logged in
-  Given a vendor is logged in
+  Given a vendor exists
+  And I sign in as that user
 
 Scenario: The vendor should be able to click add an experience
   When the vendor clicks the "View My Account" link

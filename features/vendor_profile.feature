@@ -4,7 +4,8 @@ Feature: Vendor Profile
   I want to click a button on in the navigation that will take me to my profile.
 
 Scenario: A logged in vendor can see their profile
-  Given I am signed in as a vendor
+  Given a vendor exists with name: "Example Vendor"
+  And I sign in as that user
   When I click the link "View My Account"
   Then I should be on the vendor profile page
   And I should see the "Edit Profile" link

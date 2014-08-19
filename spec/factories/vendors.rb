@@ -1,50 +1,75 @@
 FactoryGirl.define do
-  factory :vendor_user, class: Vendor do
+
+  factory :vendor_user, class: User do
+    sequence(:email) {|n| "vendor#{n}@example.com"}
+    password "foobar1234"
+    password_confirmation "foobar1234"
+    after(:build) do |user|
+      user.confirm!
+    end
+  end
+
+  factory :boulder_vendor, class: Vendor do
+    name  "Illegal Pete's"
+    location "Boulder"
+    zip_code "80301"
+    after(:build) do |vendor|
+      vendor.user = create(:vendor_user, rolable: vendor)
+    end
+  end
+
+  factory :vendor, class: Vendor do
     sequence(:name)  {Faker::Company.name}
     location "Boulder"
     zip_code "80301"
+    after(:build) do |vendor|
+      vendor.user = create(:vendor_user, rolable: vendor)
+    end
   end
 
-  factory :boulder_vendor, class: User do
-    sequence(:email) {|n| "vendor#{n}@example.com"} 
-    password "foobar1234"
-    password_confirmation "foobar1234"
-    association :rolable, factory: :vendor_user, name: "Illegal Pete's"
+  factory :vendor1, class: Vendor do
+    name  "Larkburger"
+    location "Boulder"
+    zip_code "80301"
+    after(:build) do |vendor|
+      vendor.user = create(:vendor_user, rolable: vendor)
+    end
   end
 
-  factory :vendor, class: User do
-    sequence(:email) {|n| "vendor.#{n}3@vend.com"}
-    password "foobar1234"
-    password_confirmation "foobar1234"
-    association :rolable, factory: :vendor_user, name: "Example Vendor"
+  factory :vendor2, class: Vendor do
+    name  "Illegal Pete's"
+    location "Boulder"
+    zip_code "80301"
+    after(:build) do |vendor|
+      vendor.user = create(:vendor_user, rolable: vendor)
+    end
   end
 
-  factory :vendor1, class: User do
-    sequence(:email) {|n| "vendor1.#{n}3@vend.com"}
-    password "foobar1234"
-    password_confirmation "foobar1234"
-    association :rolable, factory: :vendor_user, name: "Larkburger"
+  factory :vendor3, class: Vendor do
+    name  "Sushi Tora"
+    location "Boulder"
+    zip_code "80301"
+    after(:build) do |vendor|
+      vendor.user = create(:vendor_user, rolable: vendor)
+    end
   end
 
-  factory :vendor2, class: User do
-    sequence(:email) {|n| "vendor2.#{n}3@vend.com"}
-    password "foobar1234"
-    password_confirmation "foobar1234"
-    association :rolable, factory: :vendor_user, name: "Illegal Pete's"
+  factory :vendor_with_strange_name, class: Vendor do
+    name  "hfgjfsfdtgdf"
+    location "Boulder"
+    zip_code "11111"
+    after(:build) do |vendor|
+      vendor.user = create(:vendor_user, rolable: vendor)
+    end
   end
 
-  factory :vendor3, class: User do
-    sequence(:email) {|n| "vendor3.#{n}3@vend.com"}
-    password "foobar1234"
-    password_confirmation "foobar1234"
-    association :rolable, factory: :vendor_user, name: "Sushi Tora"
-  end
-
-  factory :vendor_with_strange_name, class: User do
-    sequence(:email) {|n| "vendor3.#{n}3@vend.com"}
-    password "foobar1234"
-    password_confirmation "foobar1234"
-    association :rolable, factory: :vendor_user, name: "hfgjfsfdtgdf", zip_code: 11111
+  factory :vendor_with_invalid_city, class: Vendor do
+    name  "Starbucks"
+    location "Boulder"
+    zip_code "95403"
+    after(:build) do |vendor|
+      vendor.user = create(:vendor_user, rolable: vendor)
+    end
   end
 
   factory :yelp do
