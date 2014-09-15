@@ -7,6 +7,12 @@ Given(/^a vendor has an experience$/) do
     Then the vendor should see their new experience
   }
 end
+Given(/^that vendor has an experience$/) do
+  if @vendor.nil?
+    @vendor = Vendor.last
+  end
+  FactoryGirl.create(:experience, vendor: @vendor )
+end
 
 Then(/^the vendor should see the edit experience page$/) do
   expect(current_path).to eq(edit_vendors_experiences_path)
