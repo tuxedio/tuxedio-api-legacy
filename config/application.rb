@@ -19,9 +19,31 @@ module TuxedoProto
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
+
+    config.generators do |config|
+      config.test_framework :rspec
+    end
+
+    if RUBY_PLATFORM == 'java'
+      java.lang.Class.for_name('javax.crypto.JceSecurity').get_declared_field('isRestricted').tap{|f| f.accessible = true; f.set nil, false}
+    end
+
     config.autoload_paths += %W(#{config.root}/lib)
     config.autoload_paths += %W(#{config.root}/lib/utility)
     config.i18n.enforce_available_locales = false
     config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
+
+    # Assets in development and test
+    Bundler.require *Rails.groups(:assets => %w(development production test))
+
+    ActionDispatch::Callbacks.after do
+      if ['development', 'test'].include? Rails.env
+        unless FactoryGirl.factories.blank? # first init will load factories, this should only run on
+          FactoryGirl.factories.clear
+          FactoryGirl.find_definitions
+        end
+      end
+    end
   end
 end
+

@@ -1,31 +1,35 @@
-vend1 = Vendor.create!(
-  name: "Larkburger123",
+vend1 = User.create(
   email: "larkburger123@example.com",
-  location: "Boulder",
   password: "mypassword1",
-  password_confirmation: "mypassword1",
-  zip_code: 80302
+  password_confirmation: "mypassword1"
 )
 
+
+vend1.rolable = Vendor.create(
+  name: "Larkburger123",
+  location: "Boulder",
+  zip_code: 80302
+)
+vend1.save
 vend1.confirm!
 
 
-activity_name = vend1.name + " Activity"
-activity_description = Faker::Lorem.sentence(5)
-activity_location = Faker::Address.city
-activity_price = Faker::Number.number(2)
-vend1.activities.create!(
-  name: activity_name,
-  description: activity_description,
-  location: activity_location,
-  price: activity_price
+experience_name = vend1.rolable.name + " Experience"
+experience_description = Faker::Lorem.sentence(5)
+experience_location = "Boulder"
+experience_price = Faker::Number.number(2)
+vend1.rolable.experiences.create!(
+  name: experience_name,
+  description: experience_description,
+  location: experience_location,
+  price: experience_price
 )
 
-activities = Activity.all
-activities.each do |activity|
+experiences = Experience.all
+experiences.each do |experience|
   3.times do
-    activity_start = Time.new(2020, 1, 1, 2, 2, 2, "+02:00")
-    activity_end   = Time.new(2020, 1, 1, 3, 3, 3, "+03:00")
-    activity.activity_times.create!(start_time: activity_start, end_time: activity_end, activity_id: activity.id)
+    experience_start = Time.new(2020, 1, 1, 2, 2, 2, "+02:00")
+    experience_end   = Time.new(2020, 1, 1, 3, 3, 3, "+03:00")
+    experience.experience_times.create!(start_time: experience_start, end_time: experience_end, experience: experience)
   end
 end

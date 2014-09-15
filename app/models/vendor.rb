@@ -1,41 +1,55 @@
 class Vendor < ActiveRecord::Base
-  # Include default devise modules. Others available are:
-  # :token_authenticatable, :confirmable,
-  # :lockable, :timeoutable and :omniauthable
 
-  before_save{ email.downcase! }
+  #--------------------------------------------------------
+  # Attributes
 
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable, :confirmable
-
-  #ACCESS ATTRIBUTES OF THE MODEL
-  attr_accessible :name, :email, :location, :zip_code, :password,
-                  :password_confirmation, :vendor_id, :description,
+  attr_accessible :name, :email, :location, :zip_code, :description, :picture,
                   :confirmed, :address, :phone_number, :country,
-                  :coordinates, :state, :sample_image, :picture
+                  :coordinates, :state, :sample_image, :id
 
-  serialize :coordinates, Hash
-  #VALIDATION
+
+  #--------------------------------------------------------
+  # Associations
+
+  has_many :experiences, dependent: :destroy
+  has_one :user, as: :rolable, dependent: :destroy
+
+
+  #--------------------------------------------------------
+  # Validations
+
   validates :name,         presence: true, length: { maximum: 50 }
   validates :location,     presence: true, length: { maximum: 30 }
-  validates :email,        presence: true, email: true, uniqueness: true
   validates :zip_code,     presence: true, length: { maximum: 5 }
+
   validates_with LocationValidator
 
-  #ASSOCIATIONS
-  has_many :activities
+  serialize :coordinates, Hash
 
-  #Condition to make locations local
+  # Eventually refactor this and move this logic to production.rb
+  if Rails.env == 'production'
+    has_attached_file :picture, :styles => { medium: "300x300#", thumb: "100x100#" }, default_url: 'missing_avatar.jpg'
+  else
+    has_attached_file :picture, :styles => { medium: "300x300#", thumb: "100x100#" }, default_url: ActionController::Base.helpers.asset_path('missing_avatar.jpg')
+  end
+
+  validates_attachment_content_type :picture,
+    :content_type => /^image\/(png|gif|jpeg|jpg)/,
+    :message => 'Only .png .gif .jpeg .jpg images, please.'
+
+  validates_attachment_size :picture,
+    :less_than => 10.megabytes,
+    :message => "Picture too large."
+
+  #--------------------------------------------------------
+  # Class Methods
+
   def self.allowed_locations
     ['Boulder', 'Longmont', 'Broomfield']
   end
 
-  if Rails.env == 'production'
-    has_attached_file :picture, :styles => { medium: "300x300#", thumb: "100x100#" }, default_url: 'Tuxedo-proto.svg'
-  else
-    has_attached_file :picture, :styles => { medium: "300x300#", thumb: "100x100#" }, default_url: ActionController::Base.helpers.asset_path('Tuxedo-proto.svg')
-  end
+  #--------------------------------------------------------
+  # Instance Methods
 
-  validates_attachment_content_type :picture, content_type: /\Aimage\/.*\Z/
 
 end

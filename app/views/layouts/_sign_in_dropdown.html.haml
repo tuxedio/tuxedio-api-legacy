@@ -1,8 +1,0 @@
-%li.navbar-form
-  = bootstrap_form_for(:customer, url:  customer_session_path) do |f|
-    = f.email_field :email, hide_label: true, placeholder: "Email", :autofocus => true, class: "navbar-input", id: "customer_email"
-    = f.password_field :password, hide_label: true, placeholder: "Password", class: "navbar-input", id: "password"
-    = f.submit "Sign in", class: "btn btn-block btn-success navbar-input"
-%li.divider
-%li= link_to "New user? Sign up!", registration_choice_path
-%li= link_to "Vendor? Click here.", new_vendor_session_path
