@@ -1,3 +1,4 @@
+require 'factory_girl'
 include FactoryGirl::Syntax::Methods
 
 namespace :db do
@@ -10,10 +11,10 @@ namespace :db do
     puts "Building Vendors/Experiences..."
     40.times do
       @experience = FactoryGirl.create(:experience)
+
       4.times do
         FactoryGirl.create(:experience_time, experience: @experience)
       end
     end
-
   end
 end
