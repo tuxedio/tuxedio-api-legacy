@@ -19,6 +19,7 @@ pickle-email-*.html
 config/initializers/secret_token.rb
 config/secrets.yml
 config/environments/production.rb
+config/secrets.yml
 
 Gemfile.lock
 
@@ -36,3 +37,4 @@ Gemfile.lock
 
 # Remove OSX's annoying files
 *.DS_Store
+.ruby-version

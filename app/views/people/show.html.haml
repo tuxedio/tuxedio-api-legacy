@@ -16,30 +16,11 @@
           Personal Profile
       .person-info.well
         .person-location
-          = "Based in "+current_user.rolable.location
+          - unless current_user.rolable.location.nil?
+            = "Based in #{current_user.rolable.location}"
         .person-email
           %span= "Email: "
           = current_user.email
         .person-bio
           %span My bio:
           %p.well= current_user.rolable.bio
-
-  /top_choices object, needs serious DRY and redesign, only functional for testing
-  / .row
-  /   .top_three.col-sm-8.col-sm-offset-4
-  /     .row
-  /       .top_three_key.col-sm-3
-  /         %h5 Pick Uno
-  /       .top_three_hash.col-sm-9
-  /         %h6=current_person.top_choices[0]
-  /     .row
-  /       .top_three_key.col-sm-3
-  /         %h5 Pick Dos
-  /       .top_three_hash.col-sm-9
-  /         %h6=current_person.top_choices[1]
-  /     .row
-  /       .top_three_key.col-sm-3
-  /         %h5 Pick Tres
-  /       .top_three_hash.col-sm-9
-  /         %h6= current_person.top_choices[2]
-

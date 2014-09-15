@@ -38,11 +38,6 @@ describe "Person".upcase.colorize(:light_blue) do
       before { @person.name = " " }
       it { should_not be_valid }
     end
-
-    describe "when location is not present" do
-      before { @person.location = " " }
-      it { should_not be_valid }
-    end
   end
 
   describe "\nPerson Validation".upcase.colorize(:light_blue) do

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140424043033) do
+ActiveRecord::Schema.define(version: 20140813041738) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,13 +52,15 @@ ActiveRecord::Schema.define(version: 20140424043033) do
   end
 
   create_table "people", force: true do |t|
-    t.string   "location",             null: false
+    t.string   "location"
     t.string   "name",                 null: false
     t.string   "gender"
     t.string   "hometown"
+    t.string   "facebook_link"
+    t.string   "locale"
     t.text     "bio"
     t.text     "top_choices"
-    t.datetime "date_of_birth"
+    t.date     "date_of_birth"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "picture_file_name"
@@ -86,6 +88,8 @@ ActiveRecord::Schema.define(version: 20140424043033) do
     t.string   "rolable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "provider"
+    t.string   "uid"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

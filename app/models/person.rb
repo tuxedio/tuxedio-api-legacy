@@ -7,6 +7,8 @@ class Person < ActiveRecord::Base
                   :top_choices, :picture_file_size, :picture,
                   :current_adventure, :top_choices
 
+  attr_accessor :picture_remote_url
+
   serialize :top_choices, Array
 
 
@@ -21,7 +23,7 @@ class Person < ActiveRecord::Base
   # Validations
 
   validates :name,          presence: true, length: { maximum: 50 }
-  validates :location,      presence: true, length: { maximum: 30 }
+  validates :location,      length: { maximum: 30 }
   validates :gender,        inclusion: { in: ['male', 'female'] }, allow_nil: true
   validates :top_choices,   choice: true, on: :update
   validates :hometown,      presence: false, length: { maximum: 30 }
@@ -57,4 +59,26 @@ class Person < ActiveRecord::Base
     end
   end
 
+  def picture_remote_url=(url_value)
+    self.picture = open(url_value, :allow_redirections => :safe)
+    picture_remote_url = URI.parse(url_value)
+  end
+
+  #--------------------------------------------------------
+  # Class Methods
+
+  def self.from_omniauth(auth)
+    info = auth.extra.raw_info
+
+    self.create do |person|
+      person.date_of_birth = Date.parse(info.birthday)
+      person.facebook_link = info.link
+      person.gender = info.gender
+      person.hometown = info.hometown.name
+      person.picture_remote_url = auth.info.image
+      person.locale = info.locale
+      person.location = info.location.name
+      person.name = info.name
+    end
+  end
 end

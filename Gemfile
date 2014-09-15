@@ -63,9 +63,11 @@ group :assets do
 end
 
 gem 'bcrypt-ruby', '3.1.2'
+gem 'open_uri_redirections'
 gem 'bootstrap_form'
 gem 'childprocess', '0.3.6'
 gem 'devise'
+gem 'omniauth-facebook'
 gem 'factory_girl_rails', '4.2.1'
 gem 'faker', '1.3.0'
 gem 'haml'
