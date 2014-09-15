@@ -20,6 +20,3 @@ production:
   template: template0
   database: tuxedo_production
   <<: *defaults
-
-cucumber:
-  <<: *test
