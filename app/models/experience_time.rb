@@ -8,11 +8,12 @@ class ExperienceTime < ActiveRecord::Base
   validates_datetime :start_time, :after => Time.now
   validates_datetime :end_time,   :after => :start_time
 
-  belongs_to :experience
+  belongs_to :experience, class_name: 'V1::Experience'
   has_many :journey_items, dependent: :destroy
   has_one :vendor, through: :experience
-  has_one :adventure, through: :experience end
+  has_one :adventure, through: :experience
 
   def format_time
     start_time.to_s(:short)
   end
+end

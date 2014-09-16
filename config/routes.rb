@@ -1,5 +1,9 @@
 TuxedoProto::Application.routes.draw do
 
+  namespace :v1 do
+    # /v1/experiences
+    resources :experiences
+  end
 
   #DEVISE
   # devise_for :vendors
@@ -23,12 +27,6 @@ TuxedoProto::Application.routes.draw do
     collection do
       get :confirm_details
       put :update_details
-    end
-  end
-
-  resource :experiences do
-    member do
-      get :explore
     end
   end
 

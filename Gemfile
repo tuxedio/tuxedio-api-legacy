@@ -47,6 +47,7 @@ group :production do
   gem 'rails_12factor', '0.0.2'
 end
 
+gem 'active_model_serializers'
 gem 'bcrypt-ruby', '3.1.2'
 gem 'open_uri_redirections'
 gem 'childprocess', '0.3.6'
