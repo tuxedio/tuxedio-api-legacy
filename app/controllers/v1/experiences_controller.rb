@@ -21,7 +21,6 @@ class V1::ExperiencesController < ApplicationController
   end
 
   def create
-    binding.pry
     @v1_experience = V1::Experience.new(v1_experience_params)
 
     if @v1_experience.save
