@@ -17,6 +17,7 @@ Spork.prefork do
     config.include Capybara::DSL
     config.include Devise::TestHelpers, type: :controller
     config.include FactoryGirl::Syntax::Methods
+    config.include Requests::JsonHelpers, type: :request
 
     config.use_transactional_fixtures = true
     config.infer_base_class_for_anonymous_controllers = false
