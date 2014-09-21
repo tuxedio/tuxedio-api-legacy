@@ -1,6 +1,6 @@
 FactoryGirl.define do
 
-  factory :person_user, class: User do
+  factory :person_user, class: V1::User do
     sequence(:email) {|n| "person#{n}@example.com"}
     password "foobar1234"
     password_confirmation "foobar1234"
@@ -20,7 +20,7 @@ FactoryGirl.define do
     end
   end
 
-  factory :person1, class: User do
+  factory :person1, class: V1::User do
     sequence(:name)  {Faker::Name.name}
     location "Boulder"
     hometown Faker::Address.city

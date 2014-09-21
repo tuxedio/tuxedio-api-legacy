@@ -1,4 +1,4 @@
-class UserRegistrationsController < Devise::RegistrationsController
+class V1::UserRegistrationsController < Devise::RegistrationsController
   def create
     build_resource(sign_up_params)
 

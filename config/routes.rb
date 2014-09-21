@@ -1,26 +1,26 @@
 TuxedoProto::Application.routes.draw do
 
   namespace :v1 do
-    # /v1/experiences
     resources :experiences
+
+    devise_for :users, class_name: 'V1::User', controllers: {registrations: 'v1/user_registrations', omniauth_callbacks: 'v1/users/omniauth_callbacks'}
+    devise_scope :user do
+      get 'vendor/sign_up' => 'v1/user_registrations#new', :user => { :user_type => 'vendor' }
+      get 'person/sign_up' => 'v1/user_registrations#new', :user => { :user_type => 'person' }
+    end
   end
 
   #DEVISE
   # devise_for :vendors
   # devise_for :people
-  devise_for :users, controllers: {registrations: 'user_registrations', omniauth_callbacks: 'users/omniauth_callbacks'}
 
   #ROUTES
   root to: 'static_pages#home'
   match '/registration_choice', to: 'static_pages#registration_choice', via: 'get'
-  match '/person_profile',    to: 'people#show',                   via: 'get'
+  match '/person_profile',      to: 'people#show',                      via: 'get'
   match '/vendor_profile',      to: 'vendors#show',                     via: 'get'
-  match '/explore',             to: 'experiences#explore',               via: 'get'
+  match '/explore',             to: 'experiences#explore',              via: 'get'
 
-  devise_scope :user do
-    get 'vendor/sign_up' => 'user_registrations#new', :user => { :user_type => 'vendor' }
-    get 'person/sign_up' => 'user_registrations#new', :user => { :user_type => 'person' }
-  end
 
   # Routes for Yelp information
   resource :vendors do
@@ -31,7 +31,7 @@ TuxedoProto::Application.routes.draw do
   end
 
   resource :people do
-	 resource :adventures
+    resource :adventures
   end
 
   resource :adventures do
