@@ -12,7 +12,7 @@ class V1::User < ActiveRecord::Base
   #--------------------------------------------------------
   # Validations
 
-  validates :email,        presence: true, email: true, uniqueness: true
+  validates :email, presence: true, email: true, uniqueness: true
 
   #--------------------------------------------------------
   # Callbacks

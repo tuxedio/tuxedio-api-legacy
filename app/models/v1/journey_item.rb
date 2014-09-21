@@ -5,12 +5,12 @@ class V1::JourneyItem < ActiveRecord::Base
 
   #--------------------------------------------------------
   # Associations
-  has_one :experience, through: :experience_time, class_name: 'V1::Experience'
-  has_one :person,     through: :adventure,       class_name: 'V1::Person'
-  has_one :vendor,     through: :experience_time, class_name: 'V1::Vendor'
+  has_one :experience, through: :experience_time
+  has_one :person,     through: :adventure
+  has_one :vendor,     through: :experience_time
 
-  belongs_to :experience_time, class_name: 'V1::ExperienceTime'
-  belongs_to :adventure,       class_name: 'V1::Adventure'
+  belongs_to :experience_time
+  belongs_to :adventure
 
   #--------------------------------------------------------
   # Validations

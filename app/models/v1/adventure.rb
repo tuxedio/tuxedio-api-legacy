@@ -8,9 +8,9 @@ class V1::Adventure < ActiveRecord::Base
   #--------------------------------------------------------
   # Associations
 
-  belongs_to :person, class_name: 'V1::Person'
-  has_many :journey_items, dependent: :destroy,   class_name: 'V1::JourneyItem'
-  has_many :experiences, through: :journey_items, class_name: 'V1::Experience'
+  belongs_to :person
+  has_many :journey_items, dependent: :destroy
+  has_many :experiences, through: :journey_items
 
   #--------------------------------------------------------
   # Validations

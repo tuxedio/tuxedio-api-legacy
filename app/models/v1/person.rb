@@ -15,9 +15,9 @@ class V1::Person < ActiveRecord::Base
   #--------------------------------------------------------
   # Associations
 
-  has_many :adventures, dependent: :destroy,     class_name: 'V1::Adventure'
-  has_many :journey_items, through: :adventures, class_name: 'V1::JourneyItem'
-  has_one :user, :as => :rolable,                class_name: 'V1::User'
+  has_many :adventures, dependent: :destroy
+  has_many :journey_items, through: :adventures
+  has_one :user, :as => :rolable
 
   #--------------------------------------------------------
   # Validations
