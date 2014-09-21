@@ -7,6 +7,17 @@ TuxedoProto::Application.routes.draw do
       resource :adventures
     end
 
+    resource :vendors do
+      resource :experiences
+    end
+
+    resource :vendors do
+      collection do
+        get :confirm_details
+        put :update_details
+      end
+    end
+
     devise_for :users, class_name: 'V1::User', controllers: {registrations: 'v1/user_registrations', omniauth_callbacks: 'v1/users/omniauth_callbacks'}
     devise_scope :user do
       get 'vendor/sign_up' => 'v1/user_registrations#new', :user => { :user_type => 'vendor' }
@@ -20,16 +31,6 @@ TuxedoProto::Application.routes.draw do
   match '/vendor_profile',      to: 'vendors#show',                     via: 'get'
   match '/explore',             to: 'experiences#explore',              via: 'get'
 
-
-  # Routes for Yelp information
-  resource :vendors do
-    collection do
-      get :confirm_details
-      put :update_details
-    end
-  end
-
-
   resource :adventures do
     resource :journey_items do
       member do
@@ -38,9 +39,6 @@ TuxedoProto::Application.routes.draw do
     end
   end
 
-  resource :vendors do
-    resource :experiences
-  end
 
   resource :experiences do
     resource :experience_times
