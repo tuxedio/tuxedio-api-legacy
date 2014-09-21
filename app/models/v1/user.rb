@@ -43,7 +43,7 @@ class V1::User < ActiveRecord::Base
     where(auth.slice(:provider, :uid)).first_or_create do |user|
       user.email = auth.info.email
       user.password = Devise.friendly_token[0,20]
-      user.rolable = Person.from_omniauth(auth)
+      user.rolable = V1::Person.from_omniauth(auth)
       user.confirm!
     end
   end

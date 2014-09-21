@@ -9,7 +9,7 @@ FactoryGirl.define do
     end
   end
 
-  factory :person, class: Person do
+  factory :person, class: V1::Person do
     sequence(:name)  {Faker::Name.name}
     location "Boulder"
     hometown Faker::Address.city

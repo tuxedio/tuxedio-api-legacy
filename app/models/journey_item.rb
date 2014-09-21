@@ -7,8 +7,8 @@ class JourneyItem < ActiveRecord::Base
   #--------------------------------------------------------
   # Associations
   has_one :experience, through: :experience_time
-  has_one :person, through: :adventure
-  has_one :vendor,   through: :experience_time
+  has_one :person,     through: :adventure, class_name: 'V1::Person'
+  has_one :vendor,     through: :experience_time
 
   belongs_to :experience_time
   belongs_to :adventure
@@ -17,8 +17,8 @@ class JourneyItem < ActiveRecord::Base
   #--------------------------------------------------------
   # Validations
   validates :experience_time, presence: true
-  validates :adventure,          presence: true
-  validates :person,      presence: true
-  validates :vendor,        presence: true
+  validates :adventure,       presence: true
+  validates :person,          presence: true
+  validates :vendor,          presence: true
 
 end

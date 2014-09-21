@@ -2,12 +2,12 @@ require 'spec_helper'
 
 describe Adventure do
 
-  subject(:adventure) { FactoryGirl.build(:adventure) }
+  subject(:adventure) { build :adventure }
 
   describe "instantiation of adventure" do
 
     it "should be a adventure" do
-      expect(adventure).to be_a(Adventure)
+      expect(adventure).to be_an Adventure
       expect(adventure).to be_valid
     end
   end
