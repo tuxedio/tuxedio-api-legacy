@@ -42,7 +42,7 @@ describe "Journey Item".upcase.colorize(:light_blue) do
 
   describe "can access association for  " do
     describe "person" do
-      it { expect(@journey_item.adventure.person).to be_a Person }
+      it { expect(@journey_item.adventure.person).to be_a V1::Person }
     end
 
     describe "vendor" do
