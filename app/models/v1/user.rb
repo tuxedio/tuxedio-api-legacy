@@ -1,4 +1,4 @@
-class User < ActiveRecord::Base
+class V1::User < ActiveRecord::Base
   #--------------------------------------------------------
   # Attributes
 

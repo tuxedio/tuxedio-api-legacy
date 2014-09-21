@@ -17,7 +17,7 @@ class Person < ActiveRecord::Base
 
   has_many :adventures, dependent: :destroy
   has_many :journey_items, through: :adventures
-  has_one :user, :as => :rolable
+  has_one :user, :as => :rolable, class_name: 'V1::User'
 
   #--------------------------------------------------------
   # Validations

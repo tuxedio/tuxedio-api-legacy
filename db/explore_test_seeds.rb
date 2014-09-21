@@ -1,4 +1,4 @@
-vend1 = User.create(
+vend1 = V1::User.create(
   email: "larkburger123@example.com",
   password: "mypassword1",
   password_confirmation: "mypassword1"

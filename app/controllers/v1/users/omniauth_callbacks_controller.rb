@@ -1,7 +1,7 @@
-class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
+class V1::Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def facebook
-    resource = User.from_omniauth(request.env["omniauth.auth"])
-    User.new_with_session(params, session)
+    resource = V1::User.from_omniauth(request.env["omniauth.auth"])
+    V1::User.new_with_session(params, session)
 
     if resource.persisted?
       sign_in_and_redirect resource, :event => :authentication #this will throw if @user is not activated
