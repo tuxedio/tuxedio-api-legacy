@@ -1,4 +1,4 @@
-class ExperienceTime < ActiveRecord::Base
+class V1::ExperienceTime < ActiveRecord::Base
   attr_accessible :start_time, :end_time, :experience_id, :adventure
 
   validates :start_time, presence: true
@@ -10,9 +10,9 @@ class ExperienceTime < ActiveRecord::Base
 
   belongs_to :experience, class_name: 'V1::Experience'
 
-  has_many :journey_items, dependent: :destroy
-  has_one :vendor,    through: :experience, class_name: 'V1::Vendor'
-  has_one :adventure, through: :experience
+  has_one :vendor,    through: :experience,     class_name: 'V1::Vendor'
+  has_one :adventure, through: :experience,     class_name: 'V1::Adventure'
+  has_many :journey_items, dependent: :destroy, class_name: 'V1::JourneyItem'
 
   def format_time
     start_time.to_s :short

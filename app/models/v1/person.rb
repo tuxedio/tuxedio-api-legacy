@@ -15,9 +15,9 @@ class V1::Person < ActiveRecord::Base
   #--------------------------------------------------------
   # Associations
 
-  has_many :adventures, dependent: :destroy
-  has_many :journey_items, through: :adventures
-  has_one :user, :as => :rolable, class_name: 'V1::User'
+  has_many :adventures, dependent: :destroy,     class_name: 'V1::Adventure'
+  has_many :journey_items, through: :adventures, class_name: 'V1::JourneyItem'
+  has_one :user, :as => :rolable,                class_name: 'V1::User'
 
   #--------------------------------------------------------
   # Validations
@@ -51,8 +51,8 @@ class V1::Person < ActiveRecord::Base
 
   def current_adventure(adventure_id)
     if self.adventures.count > 0
-      if Adventure.exists?(adventure_id)
-        Adventure.find(adventure_id)
+      if V1::Adventure.exists?(adventure_id)
+        V1::Adventure.find(adventure_id)
       else
         self.adventures.last
       end
