@@ -8,7 +8,7 @@ class V1::Experience < ActiveRecord::Base
   # Associations
 
   has_many  :experience_times, class_name: 'ExperienceTime'
-  belongs_to :vendor, class_name: 'Vendor'
+  belongs_to :vendor, class_name: 'V1::Vendor'
 
   #--------------------------------------------------------
   # Validations

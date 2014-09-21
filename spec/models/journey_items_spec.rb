@@ -46,7 +46,7 @@ describe "Journey Item".upcase.colorize(:light_blue) do
     end
 
     describe "vendor" do
-      it { expect(@journey_item.experience_time.vendor).to be_a Vendor }
+      it { expect(@journey_item.experience_time.vendor).to be_a V1::Vendor }
     end
   end
 

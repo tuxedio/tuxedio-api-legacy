@@ -1,5 +1,4 @@
 FactoryGirl.define do
-
   factory :vendor_user, class: V1::User do
     sequence(:email) {|n| "vendor#{n}@example.com"}
     password "foobar1234"
@@ -9,7 +8,7 @@ FactoryGirl.define do
     end
   end
 
-  factory :boulder_vendor, class: Vendor do
+  factory :boulder_vendor, class: V1::Vendor do
     name  "Illegal Pete's"
     location "Boulder"
     zip_code "80301"
@@ -18,7 +17,7 @@ FactoryGirl.define do
     end
   end
 
-  factory :vendor, class: Vendor do
+  factory :vendor, class: V1::Vendor do
     sequence(:name)  {Faker::Company.name}
     location "Boulder"
     zip_code "80301"
@@ -27,7 +26,7 @@ FactoryGirl.define do
     end
   end
 
-  factory :vendor1, class: Vendor do
+  factory :vendor1, class: V1::Vendor do
     name  "Larkburger"
     location "Boulder"
     zip_code "80301"
@@ -36,7 +35,7 @@ FactoryGirl.define do
     end
   end
 
-  factory :vendor2, class: Vendor do
+  factory :vendor2, class: V1::Vendor do
     name  "Illegal Pete's"
     location "Boulder"
     zip_code "80301"
@@ -45,7 +44,7 @@ FactoryGirl.define do
     end
   end
 
-  factory :vendor3, class: Vendor do
+  factory :vendor3, class: V1::Vendor do
     name  "Sushi Tora"
     location "Boulder"
     zip_code "80301"
@@ -54,7 +53,7 @@ FactoryGirl.define do
     end
   end
 
-  factory :vendor_with_strange_name, class: Vendor do
+  factory :vendor_with_strange_name, class: V1::Vendor do
     name  "hfgjfsfdtgdf"
     location "Boulder"
     zip_code "11111"
@@ -63,7 +62,7 @@ FactoryGirl.define do
     end
   end
 
-  factory :vendor_with_invalid_city, class: Vendor do
+  factory :vendor_with_invalid_city, class: V1::Vendor do
     name  "Starbucks"
     location "Boulder"
     zip_code "95403"
