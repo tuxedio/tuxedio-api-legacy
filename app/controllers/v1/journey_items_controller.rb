@@ -1,2 +1,4 @@
-class V1::JourneyItemsController < ApplicationController
+module V1
+  class JourneyItemsController < ApplicationController
+  end
 end

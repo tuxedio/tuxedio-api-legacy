@@ -1,3 +1,5 @@
-class V1::AdventuresController < ApplicationController
-  before_action :authenticate_user!
+module V1
+  class AdventuresController < ApplicationController
+    before_action :authenticate_user!
+  end
 end

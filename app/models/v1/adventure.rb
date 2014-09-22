@@ -1,27 +1,29 @@
-class V1::Adventure < ActiveRecord::Base
+module V1
+  class Adventure < ActiveRecord::Base
 
-  #--------------------------------------------------------
-  # Attributes
+    #--------------------------------------------------------
+    # Attributes
 
-  attr_accessible :name, :person, :location, :start_date, :number_of_days, :id, :experience
+    attr_accessible :name, :person, :location, :start_date, :number_of_days, :id, :experience
 
-  #--------------------------------------------------------
-  # Associations
+    #--------------------------------------------------------
+    # Associations
 
-  belongs_to :person
-  has_many :journey_items, dependent: :destroy
-  has_many :experiences, through: :journey_items
+    belongs_to :person
+    has_many :journey_items, dependent: :destroy
+    has_many :experiences, through: :journey_items
 
-  #--------------------------------------------------------
-  # Validations
+    #--------------------------------------------------------
+    # Validations
 
-  validates :name,            presence: true, length: { maximum: 20 }
-  validates :person,          presence: true
-  validates :start_date,      presence: true
-  validates :number_of_days,  presence: true, numericality: { greater_than: 0 }
-  validates :person,          presence: true
+    validates :name,            presence: true, length: { maximum: 20 }
+    validates :person,          presence: true
+    validates :start_date,      presence: true
+    validates :number_of_days,  presence: true, numericality: { greater_than: 0 }
+    validates :person,          presence: true
 
-  validates_date :start_date, on_or_after: Time.now
-  validates_with LocationValidator
+    validates_date :start_date, on_or_after: Time.now
+    validates_with LocationValidator
 
+  end
 end
