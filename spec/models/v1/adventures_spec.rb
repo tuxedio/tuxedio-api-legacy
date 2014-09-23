@@ -1,13 +1,12 @@
 require 'spec_helper'
 
-describe Adventure do
-
+describe V1::Adventure do
   subject(:adventure) { build :adventure }
 
   describe "instantiation of adventure" do
 
     it "should be a adventure" do
-      expect(adventure).to be_an Adventure
+      expect(adventure).to be_an V1::Adventure
       expect(adventure).to be_valid
     end
   end
@@ -50,7 +49,7 @@ describe Adventure do
     describe "when person is destroyed" do
       before { adventure.person.destroy! }
       it "should also destroy associated adventures" do
-        expect(Adventure.count).to equal(0)
+        expect(V1::Adventure.count).to equal(0)
       end
     end
   end

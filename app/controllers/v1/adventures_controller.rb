@@ -1,5 +1,5 @@
 module V1
-  class VendorsController < ApplicationController
+  class AdventuresController < ApplicationController
     before_action :authenticate_user!
   end
 end
