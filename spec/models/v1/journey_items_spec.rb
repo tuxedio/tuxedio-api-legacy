@@ -1,7 +1,7 @@
 require 'spec_helper'
 require 'date'
 
-describe "Journey Item".upcase.colorize(:light_blue) do
+describe "Journey Item" do
 
   before do
     @adventure = FactoryGirl.create(:adventure)
