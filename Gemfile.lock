@@ -5,6 +5,14 @@ GIT
     database_cleaner (1.3.0)
 
 GIT
+  remote: git://github.com/deivid-rodriguez/pry-byebug.git
+  revision: b63935de6fb9bf1f49c7a5d920d9a1d5a7ebf076
+  specs:
+    pry-byebug (2.0.0)
+      byebug (~> 3.4)
+      pry (~> 0.10)
+
+GIT
   remote: git://github.com/thoughtbot/factory_girl_rails.git
   revision: 8c8c56457813e7fe2f72d55185744f744e67f97f
   specs:
@@ -191,9 +199,6 @@ GEM
       method_source (~> 0.8.1)
       slop (~> 3.4)
       spoon (~> 0.0)
-    pry-byebug (2.0.0)
-      byebug (~> 3.4)
-      pry (~> 0.10)
     pry-rails (0.3.2)
       pry (>= 0.9.10)
     rack (1.5.2)
@@ -320,7 +325,7 @@ DEPENDENCIES
   paperclip (~> 4.1)
   pg
   protected_attributes (= 1.0.7)
-  pry-byebug
+  pry-byebug!
   pry-rails
   rails (= 4.1.5)
   rails_12factor (= 0.0.2)
