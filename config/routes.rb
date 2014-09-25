@@ -1,5 +1,5 @@
 TuxedoProto::Application.routes.draw do
-  namespace :v1 do
+  namespace :v1, defaults: { format: :json } do
     resources :experiences
 
     resource :people do

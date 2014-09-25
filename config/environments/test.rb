@@ -39,4 +39,6 @@ TuxedoProto::Application.configure do
   # config.action_mailer.delivery_method = :smtp
   # config.action_mailer.smtp_settings = {:address => "localhost", :port => 25}
   Paperclip::Attachment.default_options[:path] = "#{Rails.root}/features/test_files/:class/:id_partition/:style.:extension"
+
+  config.representer.default_url_options = {:host => "127.0.0.1:3000"}
 end

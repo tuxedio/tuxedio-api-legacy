@@ -79,12 +79,4 @@ TuxedoProto::Application.configure do
   config.log_formatter = ::Logger::Formatter.new
 
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-    :address              => "smtp.gmail.com",
-    :port                 => 465,
-    :domain               => 'baci.lindsaar.net',
-    :user_name            => 'tuxedioapp',
-    :password             => 'nifookamot',
-    :authentication       => 'plain',
-    :enable_starttls_auto => true  }
 end
