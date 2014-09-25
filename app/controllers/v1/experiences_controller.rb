@@ -1,6 +1,11 @@
 module V1
   class ExperiencesController < ApplicationController
+    include Roar::Rails::ControllerAdditions
+
     before_action :authenticate_user!, only: [:new, :create, :edit, :destroy]
+    before_action :set_v1_experience, only: [:show, :edit, :update, :destroy]
+
+    respond_to :json
 
     def index
       @v1_experiences = V1::Experience.all
@@ -9,9 +14,7 @@ module V1
     end
 
     def show
-      @v1_experience = V1::Experience.find params[:id]
-
-      render json: @v1_experience
+      respond_with @v1_experience, represent_with: ExperienceRepresenter
     end
 
     def new
@@ -52,8 +55,7 @@ module V1
     end
 
     def v1_experience_params
-      params[:v1_experience]
-      #params.require(:experience).permit(:name, :location, :description, :vendor, :price)
+      params.require(:experience).permit(:name, :location, :description, :vendor, :price)
     end
   end
 end
