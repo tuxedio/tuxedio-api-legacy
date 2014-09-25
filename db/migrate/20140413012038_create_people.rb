@@ -8,7 +8,6 @@ class CreatePeople < ActiveRecord::Migration
       t.string :facebook_link
       t.string :locale
       t.text :bio
-      t.text :top_choices
       t.date :date_of_birth
 
       t.timestamps

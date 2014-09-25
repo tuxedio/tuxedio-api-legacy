@@ -1,156 +1,45 @@
-require 'spec_helper'
+describe V1::Person do
+  describe '#name' do
+    context 'when name is too long' do
+      subject { build :person, name: 'z' * 51 }
+      it { is_expected.to_not be_valid }
+    end
 
-describe "Person".upcase.colorize(:light_blue) do
-
-
-
-  before { @person = FactoryGirl.build(:person) }
-
-  ## Dummy Vendors
-  before do
-    FactoryGirl.create(:vendor1)
-    FactoryGirl.create(:vendor2)
-    FactoryGirl.create(:vendor3)
-  end
-
-
-
-  subject { @person }
-
-  it { should respond_to(:name) }
-  it { should respond_to(:gender) }
-  it { should respond_to(:date_of_birth) }
-
-  it { should respond_to(:location) }
-  it { should respond_to(:hometown) }
-
-  it { should respond_to(:bio) }
-  it { should respond_to(:top_choices) }
-  it { should respond_to(:picture_file_name) }
-  it { should respond_to(:picture_content_type) }
-  it { should respond_to(:picture_file_size) }
-
-  it { should be_valid }
-
-  #------------------------------------
-  describe "\nCheck parameters for blankness".upcase.colorize(:light_blue) do
-    describe "when name is not present" do
-      before { @person.name = " " }
-      it { should_not be_valid }
+    context 'when name is not present' do
+      subject { build :person, name: '' }
+      it { is_expected.to_not be_valid }
     end
   end
 
-  describe "\nPerson Validation".upcase.colorize(:light_blue) do
-
-    describe "when name is too long" do
-      before { @person.name = "z" * 51 }
-      it { should_not be_valid }
-    end
-
-    describe "when location is too long" do
-      before { @person.location = "z" * 31 }
-      it { should_not be_valid }
-    end
+  describe '#location' do
+    subject { build :person, location: 'z' * 51 }
+    it { is_expected.to_not be_valid }
   end
 
-  #------------------------------------
-  # Bio
-  describe "\nbio".upcase.colorize(:light_blue) do
-    describe "when person has a bio" do
-      before { @person.bio = "Ipsum schplitsum" }
-      it { should be_valid }
-    end
-
-    describe "when person does not have bio" do
-      before { @person.bio = "" }
-      it { should be_valid }
-    end
-
-    describe "when person has invalid gender" do
-      before { @person.gender = "Mail" }
-      it { should_not be_valid }
-    end
-
-    describe "when person has invalid date_of_birth" do
-      before { @person.date_of_birth = "A few years ago" }
-      it { should_not be_valid }
-    end
+  describe '#bio' do
+    subject { build :person, bio: '' }
+    it { is_expected.to_not be_valid }
   end
 
-  #------------------------------------
-  ## Top 3
-  describe "\ntop 3".upcase.colorize(:light_blue) do
-
-    describe "when person has valid top 3" do
-      before { @person.update(top_choices: ["Larkburger", "Sushi Tora", "Illegal Pete's"]) }
-      it { should be_valid }
-    end
-
-    describe "when a person has invalid top 3" do
-      before { @person.update(top_choices: ["Larkburger", "Sushi Tora", "Blah"]) }
-      it { should_not be_valid }
-    end
-  end
-  #------------------------------------
-  # Journey
-  describe "\njourney".upcase.colorize(:light_blue) do
-    describe "when a person has a valid journey" do
-    end
-
-    describe "when a person has a invalid journey" do
-    end
+  describe '#gender' do
+    subject { build :person, gender: 'Mail' }
+    it { is_expected.to_not be_valid }
   end
 
-  #------------------------------------
-  # Profile/Experience Picture
-  describe "\npictures".upcase.colorize(:light_blue) do
-    describe "when a person has a profile picture" do
-      before { @person.picture_file_name = "FishShapes.jpg" }
-      it { should be_valid }
-    end
-
-    describe "when a person's picture is too large" do
-      before { @person.picture_file_size = 63067000 }
-      it { should_not be_valid }
-    end
-
-    describe "when a person's picture is an okay size" do
-      before { @person.picture_file_size = 630670 }
-      it { should be_valid }
-    end
-
-    describe "when a person's picture is the default image" do
-      before { @person.picture_file_name = nil }
-      it { should be_valid }
-    end
+  describe '#date_of_birth' do
+    subject { build :person, date_of_birth: 'A few years ago' }
+    it { is_expected.to_not be_valid }
   end
 
-  #------------------------------------
-  # Current Adventure
-  describe "\ncurrent adventure".upcase.colorize(:light_blue) do
-    describe "when a invalid adventure_id is passed" do
-      before { @adventure = FactoryGirl.create(:adventure, person: @person) }
-      it { expect(@person.current_adventure(3214451324)).to eq(@adventure) }
-    end
+  describe '#picture' do
+    subject { build :person, picture_file_size: 100.megabytes }
+    it { is_expected.to_not be_valid }
+  end
 
-    describe "when a valid adventure_id is passed" do
-      before { @adventure = FactoryGirl.create(:adventure, person: @person) }
-      it { expect(@person.current_adventure(@adventure)).to eq(@adventure) }
-    end
-
-    describe "with multiple adventures" do
-      describe "with invalid adventure_id" do
-        before { @adventure1 = FactoryGirl.create(:adventure, person: @person) }
-        before { @adventure2 = FactoryGirl.create(:adventure, person: @person) }
-        # Should be adventures.last
-        it { expect(@person.current_adventure(12345)).to eq(@adventure2) }
-      end
-
-      describe "with valid adventure_id" do
-        before { @adventure1 = FactoryGirl.create(:adventure, person: @person) }
-        before { @adventure2 = FactoryGirl.create(:adventure, person: @person) }
-        it { expect(@person.current_adventure(@adventure1)).to eq(@adventure1) }
-      end
+  describe '#adventures' do
+    subject { build :person_with_adventures }
+    it 'should contain the adventure' do
+      expect(subject.adventures.size).to be > 0
     end
   end
 end

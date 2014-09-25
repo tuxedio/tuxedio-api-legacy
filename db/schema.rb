@@ -59,7 +59,6 @@ ActiveRecord::Schema.define(version: 20140813041738) do
     t.string   "facebook_link"
     t.string   "locale"
     t.text     "bio"
-    t.text     "top_choices"
     t.date     "date_of_birth"
     t.datetime "created_at"
     t.datetime "updated_at"

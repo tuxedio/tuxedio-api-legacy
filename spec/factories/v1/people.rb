@@ -1,34 +1,25 @@
 FactoryGirl.define do
-  factory :person_user, class: V1::User do
-    sequence(:email) {|n| "person#{n}@example.com"}
-    password "foobar1234"
-    password_confirmation "foobar1234"
-    after(:build) do |user|
-      user.confirm!
-    end
-  end
-
   factory :person, class: V1::Person do
-    sequence(:name)  {Faker::Name.name}
+    sequence(:name)  { Faker::Name.name }
     location "Boulder"
     hometown Faker::Address.city
     gender "male"
     date_of_birth 26.years.ago.to_date
-    after(:build) do |person|
-      person.user = create(:person_user, rolable: person)
-    end
-  end
+    bio Faker::Lorem.paragraph
 
-  factory :person1, class: V1::User do
-    sequence(:name)  {Faker::Name.name}
-    location "Boulder"
-    hometown Faker::Address.city
-    gender "male"
-    zip_code "80301"
-    date_of_birth 26.years.ago.to_date
-    top_choices ["Larkburger", "Sushi Tora", "Illegal Pete's"]
-    after(:build) do |person|
-      person.user = create(:person_user, rolable: person)
+    trait :with_adventures do
+      after :build do |person|
+        person.adventures << create_list(:adventure, 10)
+      end
     end
+
+    trait :with_account do
+      after :build do |person|
+        person.user = build :user, rolable: person
+      end
+    end
+
+    factory :person_with_account,    traits: [:with_account]
+    factory :person_with_adventures, traits: [:with_adventures]
   end
 end

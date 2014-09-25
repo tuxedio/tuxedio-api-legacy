@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+ruby '2.1.3'
 gem  'rails', '4.1.5'
 
 platform :jruby do
@@ -11,7 +12,7 @@ end
 platform :ruby do
   gem 'binding_of_caller', group: :development
   gem 'pg'
-  gem 'pry-byebug'
+  gem 'pry-byebug', github: 'deivid-rodriguez/pry-byebug'
   gem 'spring', group: :development
   gem 'spring-commands-rspec', group: :development
   gem 'thin'
