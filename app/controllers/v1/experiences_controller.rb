@@ -10,7 +10,7 @@ module V1
     def index
       @v1_experiences = V1::Experience.all
 
-      render json: @v1_experiences
+      respond_with @v1_experiences, represent_with: ExperiencesRepresenter
     end
 
     def show
