@@ -6,7 +6,6 @@
 
 *.rbc
 capybara-*.html
-.rspec
 .rvmrc
 
 /public/system
