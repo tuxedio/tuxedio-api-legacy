@@ -1,31 +1,35 @@
 source 'https://rubygems.org'
 
-ruby '2.0.0'
-gem  'rails', '4.1.4'
+ruby '2.1.3'
+gem  'rails', '4.1.5'
 
 platform :jruby do
   gem 'jruby-openssl'
   gem 'activerecord-jdbcpostgresql-adapter'
   gem 'torqbox'
-  gem 'spork', '~> 1.0rc', group: :development
 end
 
 platform :ruby do
+  gem 'binding_of_caller', group: :development
   gem 'pg'
-  gem 'thin'
-  gem 'pry-byebug'
+  gem 'pry-byebug', github: 'deivid-rodriguez/pry-byebug'
   gem 'spring', group: :development
   gem 'spring-commands-rspec', group: :development
+  gem 'thin'
 end
 
 group :development, :test do
+  gem 'better_errors'
+  gem 'deepstruct'
   gem 'pry-rails'
   gem 'sprockets'
   gem 'sprockets-rails', :require => 'sprockets/railtie'
 end
 
 group :development do
-  gem 'guard-rspec', require: false
+  gem 'guard-bundler'
+  gem 'guard-rails'
+  gem 'guard-rspec'
 end
 
 
@@ -35,7 +39,7 @@ group :test do
   gem 'database_cleaner', github: 'bmabey/database_cleaner'
   gem 'growl', '1.0.3'
   gem 'rake'
-  gem 'rspec-rails', '~> 2.99'
+  gem 'rspec-rails'
   gem 'spork-rails'
 end
 
@@ -47,13 +51,14 @@ group :production do
   gem 'rails_12factor', '0.0.2'
 end
 
+gem 'active_model_serializers'
 gem 'bcrypt-ruby', '3.1.2'
 gem 'open_uri_redirections'
 gem 'childprocess', '0.3.6'
 gem 'devise'
 gem 'omniauth-facebook'
-gem 'factory_girl_rails', '4.2.1'
-gem 'faker', '1.3.0'
+gem 'factory_girl_rails', github: 'thoughtbot/factory_girl_rails'
+gem 'faker'
 gem 'jbuilder', '1.0.2'
 gem 'jc-validates_timeliness'
 gem 'oauth-plugin'
