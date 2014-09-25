@@ -92,6 +92,7 @@ GEM
     daemons (1.1.9)
     debug_inspector (0.0.2)
     debugger-linecache (1.2.0)
+    deepstruct (0.0.7)
     devise (3.3.0)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -309,6 +310,7 @@ DEPENDENCIES
   childprocess (= 0.3.6)
   colorize
   database_cleaner!
+  deepstruct
   devise
   factory_girl_rails!
   faker
