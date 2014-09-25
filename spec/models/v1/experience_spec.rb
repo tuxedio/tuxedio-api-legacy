@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe V1::Experience do
   subject (:experience) { build :experience }
 

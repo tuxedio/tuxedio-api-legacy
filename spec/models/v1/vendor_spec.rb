@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "Vendor Create".upcase.colorize(:light_blue) do
+describe "Vendor Create" do
 
   before { @vendor = FactoryGirl.build(:vendor1) }
   subject { @vendor }
@@ -18,7 +18,7 @@ describe "Vendor Create".upcase.colorize(:light_blue) do
   it { should be_valid }
 
 #------------------------------------
-  describe "\nCheck parameters for blankness".upcase.colorize(:light_blue) do
+  describe "\nCheck parameters for blankness" do
     describe "when name is not present" do
       before { @vendor.name = " " }
       it { should_not be_valid }
@@ -37,7 +37,7 @@ describe "Vendor Create".upcase.colorize(:light_blue) do
 
   end
 
-  describe "\nVendor Validation".upcase.colorize(:light_blue) do
+  describe "\nVendor Validation" do
 
     describe "when name is too long" do
       before { @vendor.name = "z" * 51 }

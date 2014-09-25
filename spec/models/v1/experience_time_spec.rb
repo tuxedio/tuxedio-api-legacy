@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "Experience time".upcase.colorize(:light_blue) do
+describe "Experience time".upcase do
 
   before { @experience_time = FactoryGirl.create(:experience_time)}
 

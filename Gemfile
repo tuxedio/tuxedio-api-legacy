@@ -22,6 +22,8 @@ group :development, :test do
   gem 'better_errors'
   gem 'deepstruct'
   gem 'pry-rails'
+  gem 'rake'
+  gem 'rspec-rails'
   gem 'sprockets'
   gem 'sprockets-rails', :require => 'sprockets/railtie'
 end
@@ -34,13 +36,7 @@ end
 
 
 group :test do
-  gem 'capybara'
-  gem 'colorize'
   gem 'database_cleaner', github: 'bmabey/database_cleaner'
-  gem 'growl', '1.0.3'
-  gem 'rake'
-  gem 'rspec-rails'
-  gem 'spork-rails'
 end
 
 group :doc do

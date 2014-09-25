@@ -11,7 +11,6 @@ ActiveRecord::Migration.maintain_test_schema!
 ActiveRecord::Migration.check_pending! if defined?(ActiveRecord::Migration)
 
 RSpec.configure do |config|
-  config.include Capybara::DSL
   config.include Devise::TestHelpers, type: :controller
   config.include FactoryGirl::Syntax::Methods
   config.include RSpec::Rails::RequestExampleGroup, type: :api
@@ -22,4 +21,6 @@ RSpec.configure do |config|
   config.infer_base_class_for_anonymous_controllers = false
   config.order = "random"
   config.infer_spec_type_from_file_location!
+
+  FactoryGirl.register_strategy :json, JsonStrategy
 end
