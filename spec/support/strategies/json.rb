@@ -6,7 +6,7 @@ class JsonStrategy
   delegate :association, to: :@strategy
 
   def result(evaluation)
-    { format: 'json', "#{build_class(evaluation)}" => @strategy.result(evaluation) }.to_json
+    { "#{build_class(evaluation)}" => @strategy.result(evaluation) }.to_json
   end
 
   private
@@ -15,7 +15,7 @@ class JsonStrategy
     evaluation.instance_variable_get(:@attribute_assigner)
       .instance_variable_get(:@build_class)
       .name
+      .demodulize
       .downcase
-      .to_sym
   end
 end

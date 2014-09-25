@@ -1,10 +1,11 @@
 TuxedoProto::Application.routes.draw do
   namespace :v1, defaults: { format: :json } do
     resources :experiences
+    resources :people
 
-    resource :people do
-      resource :adventures
-    end
+    # resource :people do
+    #   resource :adventures
+    # end
 
     resource :vendors do
       resource :experiences
@@ -30,10 +31,5 @@ TuxedoProto::Application.routes.draw do
     end
 
     devise_for :users, class_name: 'V1::User', controllers: {registrations: 'v1/user_registrations', omniauth_callbacks: 'v1/users/omniauth_callbacks'}
-
-    devise_scope :user do
-      get 'vendor/sign_up' => 'v1/user_registrations#new', :user => { :user_type => 'vendor' }
-      get 'person/sign_up' => 'v1/user_registrations#new', :user => { :user_type => 'person' }
-    end
   end
 end

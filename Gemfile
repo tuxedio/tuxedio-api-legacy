@@ -12,7 +12,7 @@ end
 platform :ruby do
   gem 'binding_of_caller', group: :development
   gem 'pg'
-  gem 'pry-byebug', github: 'deivid-rodriguez/pry-byebug'
+  #gem 'pry-byebug', github: 'deivid-rodriguez/pry-byebug'
   gem 'spring', group: :development
   gem 'spring-commands-rspec', group: :development
   gem 'thin'
@@ -55,7 +55,6 @@ gem 'devise'
 gem 'omniauth-facebook'
 gem 'factory_girl_rails', github: 'thoughtbot/factory_girl_rails'
 gem 'faker'
-gem 'jbuilder', '1.0.2'
 gem 'jc-validates_timeliness'
 gem 'oauth-plugin'
 gem 'paperclip', '~> 4.1'
