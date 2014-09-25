@@ -14,7 +14,9 @@ RSpec.configure do |config|
   config.include Capybara::DSL
   config.include Devise::TestHelpers, type: :controller
   config.include FactoryGirl::Syntax::Methods
-  config.include Requests::JsonHelpers, type: :request
+  config.include RSpec::Rails::RequestExampleGroup, type: :api
+  config.include Requests::JsonHelpers, type: :api
+  config.include Requests::HeadersHelpers, type: :api
 
   config.use_transactional_fixtures = true
   config.infer_base_class_for_anonymous_controllers = false

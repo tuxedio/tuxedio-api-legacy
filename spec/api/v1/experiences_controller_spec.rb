@@ -1,4 +1,4 @@
-describe '/v1/experiences' do
+describe '/v1/experiences', type: :api do
   let(:user) { create :person_with_account }
   let(:vendor) { create :vendor }
 
@@ -14,12 +14,12 @@ describe '/v1/experiences' do
 
       it 'should show the objects' do
         get '/v1/experiences'
-        expect(json_response['experiences'].size).to eq 1
+        expect(response_body.experiences.size).to eq 1
       end
 
       it 'should return single experience' do
         get "/v1/experiences/#{experience.to_param}"
-        expect(json_response['experience']['id']).to eq experience.id
+        expect(response_body.experience.id).to eq experience.id
       end
     end
 

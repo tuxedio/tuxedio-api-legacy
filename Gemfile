@@ -20,6 +20,7 @@ end
 
 group :development, :test do
   gem 'better_errors'
+  gem 'deepstruct'
   gem 'pry-rails'
   gem 'sprockets'
   gem 'sprockets-rails', :require => 'sprockets/railtie'
