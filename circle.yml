@@ -2,4 +2,4 @@ test:
   pre:
     - cp config/secrets.yml.ci config/secrets.yml
   override:
-    - bundle exec rspec
+    - bundle exec rspec --format documentation
