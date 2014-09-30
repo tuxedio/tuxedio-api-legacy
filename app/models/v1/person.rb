@@ -11,6 +11,10 @@ module V1
       :top_choices,
       :picture_file_size,
       :picture,
+      :hometown,
+      :gender,
+      :date_of_birth,
+      :user_attributes,
       :current_adventure
 
     #--------------------------------------------------------
@@ -18,7 +22,9 @@ module V1
 
     has_many :adventures, dependent: :destroy
     has_many :journey_items, through: :adventures
-    has_one :user, as: :rolable
+    has_one :user, as: :rolable, dependent: :destroy
+
+    accepts_nested_attributes_for :user
 
     #--------------------------------------------------------
     # Validations
@@ -31,7 +37,7 @@ module V1
 
     validates_date :date_of_birth, before: Date.today, allow_nil: true
 
-    has_attached_file :picture, 
+    has_attached_file :picture,
       styles: { medium: '300x300#', thumb: '100x100#' },
       default_url: ActionController::Base.helpers.asset_path('missing_avatar.jpg')
 

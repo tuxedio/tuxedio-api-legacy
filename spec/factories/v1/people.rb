@@ -19,7 +19,12 @@ FactoryGirl.define do
       end
     end
 
-    factory :person_with_account,    traits: [:with_account]
+    trait :nested_user do
+      user_attributes email: Faker::Internet.email, password: "foobar123"
+    end
+
+    factory :person_with_account, traits: [:with_account]
     factory :person_with_adventures, traits: [:with_adventures]
+    factory :person_nested_user, traits: [:nested_user]
   end
 end

@@ -55,7 +55,13 @@ module V1
     end
 
     def v1_experience_params
-      params.require(:experience).permit(:name, :location, :description, :vendor, :price)
+      params.require(:experience).permit(
+        :name,
+        :location,
+        :description,
+        :vendor,
+        :price
+      )
     end
   end
 end
