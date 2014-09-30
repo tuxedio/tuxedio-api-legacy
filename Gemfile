@@ -12,14 +12,13 @@ end
 platform :ruby do
   gem 'binding_of_caller', group: :development
   gem 'pg'
-  #gem 'pry-byebug', github: 'deivid-rodriguez/pry-byebug'
+  gem 'pry-byebug', github: 'deivid-rodriguez/pry-byebug'
   gem 'spring', group: :development
   gem 'spring-commands-rspec', group: :development
   gem 'thin'
 end
 
 group :development, :test do
-  gem 'better_errors'
   gem 'deepstruct'
   gem 'pry-rails'
   gem 'rake'
@@ -29,11 +28,11 @@ group :development, :test do
 end
 
 group :development do
+  gem 'better_errors'
   gem 'guard-bundler'
   gem 'guard-rails'
   gem 'guard-rspec'
 end
-
 
 group :test do
   gem 'database_cleaner', github: 'bmabey/database_cleaner'
