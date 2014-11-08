@@ -1,7 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.1.3'
-gem  'rails', '4.1.5'
+gem  'rails'
 
 platform :jruby do
   gem 'jruby-openssl'
@@ -58,3 +57,4 @@ gem 'jc-validates_timeliness'
 gem 'oauth-plugin'
 gem 'paperclip', '~> 4.1'
 gem 'protected_attributes', '1.0.7'
+gem 'devise_token_auth', github: 'lynndylanhurley/devise_token_auth'

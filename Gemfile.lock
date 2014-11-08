@@ -13,6 +13,14 @@ GIT
       pry (~> 0.10)
 
 GIT
+  remote: git://github.com/lynndylanhurley/devise_token_auth.git
+  revision: 2d3595d405b743dfa6cfd90348f311330c82b5df
+  specs:
+    devise_token_auth (0.1.30.beta3)
+      devise (~> 3.3)
+      rails (~> 4.1)
+
+GIT
   remote: git://github.com/thoughtbot/factory_girl_rails.git
   revision: 8c8c56457813e7fe2f72d55185744f744e67f97f
   specs:
@@ -306,6 +314,7 @@ DEPENDENCIES
   database_cleaner!
   deepstruct
   devise
+  devise_token_auth!
   factory_girl_rails!
   faker
   guard-bundler
@@ -321,7 +330,7 @@ DEPENDENCIES
   protected_attributes (= 1.0.7)
   pry-byebug!
   pry-rails
-  rails (= 4.1.5)
+  rails
   rails_12factor (= 0.0.2)
   rake
   roar-rails

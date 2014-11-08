@@ -69,7 +69,8 @@ ActiveRecord::Schema.define(version: 20140925181710) do
   end
 
   create_table "users", force: true do |t|
-    t.string   "email",                  default: "", null: false
+    t.string   "provider"
+    t.string   "uid",                    default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
@@ -83,15 +84,19 @@ ActiveRecord::Schema.define(version: 20140925181710) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
+    t.string   "name"
+    t.string   "nickname"
+    t.string   "image"
+    t.string   "email"
+    t.text     "tokens"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "provider"
-    t.string   "uid"
     t.integer  "rolable_id"
     t.string   "rolable_type"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["provider"], name: "index_users_on_provider", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["rolable_id", "rolable_type"], name: "index_users_on_rolable_id_and_rolable_type", using: :btree
 

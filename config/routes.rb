@@ -30,6 +30,8 @@ TuxedoProto::Application.routes.draw do
       resource :experience_times
     end
 
-    devise_for :users, class_name: 'V1::User', controllers: {registrations: 'v1/user_registrations', omniauth_callbacks: 'v1/users/omniauth_callbacks'}
+    # devise_for :users, class_name: 'V1::User', controllers: {registrations: 'v1/user_registrations', omniauth_callbacks: 'v1/users/omniauth_callbacks'}
   end
+
+  mount_devise_token_auth_for 'V1::User', at: 'auth'
 end

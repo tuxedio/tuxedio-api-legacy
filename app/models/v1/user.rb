@@ -3,7 +3,8 @@ module V1
     #--------------------------------------------------------
     # Attributes
 
-    attr_accessible :email, :password, :password_confirmation, :remember_me
+    attr_accessible :email, :password, :password_confirmation, :remember_me,
+      :name, :nickname, :image
 
     #--------------------------------------------------------
     # Associations

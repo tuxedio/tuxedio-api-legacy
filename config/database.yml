@@ -1,6 +1,8 @@
 defaults: &defaults
   adapter: <%= RUBY_ENGINE == 'ruby' ? 'postgresql' : 'jdbcpostgresql' %>
   pool: 5
+  username: postgres
+  password: keepitonthedl
   timeout: 5000
 
 development:

@@ -4,8 +4,6 @@
 # or operating system, you probably want to add a global ignore instead:
 #   git config --global core.excludesfile '~/.gitignore_global'
 
-*.rbc
-capybara-*.html
 .rvmrc
 
 /public/system
@@ -14,12 +12,12 @@ capybara-*.html
 /spec/tmp
 **.orig
 rerun.txt
-pickle-email-*.html
 config/initializers/secret_token.rb
 config/secrets.yml
 config/environments/production.rb
 config/secrets.yml
 .ruby-version
+config/database.yml
 
 Gemfile.lock
 
