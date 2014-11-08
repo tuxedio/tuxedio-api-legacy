@@ -3,6 +3,7 @@ FactoryGirl.define do
     sequence(:email) {|n| "vendor#{n}@example.com"}
     password "foobar1234"
     password_confirmation "foobar1234"
+    uid { Faker::Lorem.characters }
     after(:build) do |user|
       user.confirm!
     end

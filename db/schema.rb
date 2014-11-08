@@ -99,6 +99,7 @@ ActiveRecord::Schema.define(version: 20140925181710) do
   add_index "users", ["provider"], name: "index_users_on_provider", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["rolable_id", "rolable_type"], name: "index_users_on_rolable_id_and_rolable_type", using: :btree
+  add_index "users", ["uid"], name: "index_users_on_uid", unique: true, using: :btree
 
   create_table "vendors", force: true do |t|
     t.string   "name",                                 null: false

@@ -313,7 +313,6 @@ DEPENDENCIES
   childprocess (= 0.3.6)
   database_cleaner!
   deepstruct
-  devise
   devise_token_auth!
   factory_girl_rails!
   faker
