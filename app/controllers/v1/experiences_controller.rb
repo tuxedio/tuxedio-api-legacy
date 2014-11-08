@@ -2,7 +2,6 @@ module V1
   class ExperiencesController < ApplicationController
     include Roar::Rails::ControllerAdditions
 
-    before_action :authenticate_user!, only: [:new, :create, :edit, :destroy]
     before_action :set_v1_experience, only: [:show, :edit, :update, :destroy]
 
     respond_to :json

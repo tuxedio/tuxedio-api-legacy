@@ -2,7 +2,6 @@ module V1
   class PeopleController < ApplicationController
     include Roar::Rails::ControllerAdditions
 
-    #before_action :authenticate_user!, only: [:edit, :destroy, :update]
     before_action :set_v1_person, only: [:show, :edit, :update, :destroy]
     respond_to :json
 
