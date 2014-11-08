@@ -29,7 +29,7 @@ module V1
     #--------------------------------------------------------
     # Validations
 
-    validates :bio,         presence: true, length: { maximum: 255 }
+    validates :bio,         presence: true, length: { maximum: 1000 }
     validates :gender,      inclusion: { in: ['male', 'female'] }, allow_nil: true
     validates :hometown,    presence: false, length: { maximum: 30 }
     validates :location,    length: { maximum: 30 }
